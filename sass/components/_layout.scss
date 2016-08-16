@@ -1,10 +1,9 @@
 .main-menu {
-  background-color: rgba(0,0,0,.3);
   width: 100%;
   max-width: 1920px;
   margin: auto;
   z-index: 100;
-  padding: 5px 15px 0 15px;
+  padding: $gutter;
   position: absolute;
   left: 0;
   right: 0;
@@ -32,10 +31,15 @@
 .logo-brand {
   display: inline-block;
   margin-top: 2px;
+  vertical-align: middle;
+  color: #fff;
+  font-weight: 100;
+  letter-spacing: 3px;
 
   img {
-    border-radius: 100%;
-    height: 36px;
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 20px;
   }
 }
 
@@ -47,11 +51,13 @@
 }
 
 .page-header-hero {
-  background-image: url('../img/bg/bg-hero.jpeg');
+  background-image: url('../img/bg/bg-hero.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100%;
   position: relative;
+  text-align: left;
+  color: #fff;
 
   > * {
     position: relative;
@@ -59,7 +65,6 @@
   }
 
   &::before {
-    background-color: rgba(0,0,0,.5);
     content: '';
     position: absolute;
     height: 100%;
@@ -67,6 +72,22 @@
     top: 0;
     left: 0;
     z-index: 1;
+  }
+
+  .title {
+    font-size: 4rem;
+    color: #fff;
+    letter-spacing: 4.5px;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .info {
+    letter-spacing: 2px;
+    max-width: 530px;
+    font-weight: 100;
+    line-height: 1.7;
+    margin-top: 0;
   }
 }
 

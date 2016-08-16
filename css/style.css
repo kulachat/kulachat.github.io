@@ -16,27 +16,12 @@ input[type="search"] {
   -webkit-appearance: none !important;
   appearance: none !important; }
 
-/* latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Montserrat-Regular"), url(https://fonts.gstatic.com/s/montserrat/v6/zhcz-_WihjSQC0oHJ9TCYAzyDMXhdD8sAj6OAJTFsBI.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
-/* latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  src: local("Montserrat-Bold"), url(https://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcmaVI6zN22yiurzcBKxPjFE.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
 .main-menu {
-  background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 1920px;
   margin: auto;
   z-index: 100;
-  padding: 5px 15px 0 15px;
+  padding: 20px;
   position: absolute;
   left: 0;
   right: 0; }
@@ -59,10 +44,15 @@ input[type="search"] {
 
 .logo-brand {
   display: inline-block;
-  margin-top: 2px; }
+  margin-top: 2px;
+  vertical-align: middle;
+  color: #fff;
+  font-weight: 100;
+  letter-spacing: 3px; }
   .logo-brand img {
-    border-radius: 100%;
-    height: 36px; }
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 20px; }
 
 #subscribe {
   border-radius: 4px;
@@ -71,16 +61,17 @@ input[type="search"] {
   padding: 5px 10px; }
 
 .page-header-hero {
-  background-image: url("../img/bg/bg-hero.jpeg");
+  background-image: url("../img/bg/bg-hero.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 100%;
-  position: relative; }
+  position: relative;
+  text-align: left;
+  color: #fff; }
   .page-header-hero > * {
     position: relative;
     z-index: 100; }
   .page-header-hero::before {
-    background-color: rgba(0, 0, 0, 0.5);
     content: '';
     position: absolute;
     height: 100%;
@@ -88,6 +79,18 @@ input[type="search"] {
     top: 0;
     left: 0;
     z-index: 1; }
+  .page-header-hero .title {
+    font-size: 4rem;
+    color: #fff;
+    letter-spacing: 4.5px;
+    margin-bottom: 0;
+    font-weight: bold; }
+  .page-header-hero .info {
+    letter-spacing: 2px;
+    max-width: 530px;
+    font-weight: 100;
+    line-height: 1.7;
+    margin-top: 0; }
 
 .main-content .title-section {
   font-size: 16px;
