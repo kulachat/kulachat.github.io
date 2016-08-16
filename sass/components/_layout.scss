@@ -1,3 +1,13 @@
+.hide {
+  display: none;
+}
+
+.main-content .title,
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .main-menu {
   width: 100%;
   max-width: 1920px;
@@ -44,10 +54,18 @@
 }
 
 #subscribe {
-  border-radius: 4px;
-  border: 1px solid #fff;
+  font-weight: 300;
   line-height: 20px;
-  padding: 5px 10px;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 1px solid #fff;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #FF5C59;
+    border-color: #FF5C59;
+  }
 }
 
 .page-header-hero {
@@ -100,4 +118,18 @@
     text-transform: uppercase;
     border-bottom: solid 1px #eff0f1;
   }
+}
+
+.sub-info {
+  font-size: .98rem;
+
+  .info {
+    font-weight: 300;
+    color: $body-color-content;
+    margin-top: 0;
+  }
+}
+
+.wrapper-main-table {
+  padding-top: 3rem;
 }
