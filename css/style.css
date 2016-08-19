@@ -68,11 +68,14 @@ body {
 #subscribe {
   font-weight: 300;
   line-height: 20px;
-  padding: 1rem 2rem;
+  padding: 10px 15px;
   text-transform: uppercase;
   letter-spacing: 3px;
   border: 1px solid #fff;
   text-decoration: none; }
+  @media only screen and (min-width: 768px) {
+    #subscribe {
+      padding: 1rem 2rem; } }
   #subscribe:hover {
     background-color: #FF5C59;
     border-color: #FF5C59; }
@@ -98,11 +101,14 @@ body {
     left: 0;
     z-index: 1; }
   .page-header-hero .title {
-    font-size: 4rem;
+    font-size: 2rem;
     color: #fff;
     letter-spacing: 4.5px;
     margin-bottom: 0;
     font-weight: bold; }
+    @media only screen and (min-width: 768px) {
+      .page-header-hero .title {
+        font-size: 4rem; } }
   .page-header-hero .info {
     letter-spacing: 2px;
     max-width: 640px;

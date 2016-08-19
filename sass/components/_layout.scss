@@ -60,11 +60,15 @@ body {
 #subscribe {
   font-weight: 300;
   line-height: 20px;
-  padding: 1rem 2rem;
+  padding: 10px 15px;
   text-transform: uppercase;
   letter-spacing: 3px;
   border: 1px solid #fff;
   text-decoration: none;
+
+  @include media(tablet) {
+    padding: 1rem 2rem;
+  }
 
   &:hover {
     background-color: #FF5C59;
@@ -98,11 +102,15 @@ body {
   }
 
   .title {
-    font-size: 4rem;
+    font-size: 2rem;
     color: #fff;
     letter-spacing: 4.5px;
     margin-bottom: 0;
     font-weight: bold;
+
+    @include media(tablet) {
+      font-size: 4rem;
+    }
   }
 
   .info {
