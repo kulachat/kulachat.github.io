@@ -1,3 +1,7 @@
+body {
+  background-color: #f2f2f2;
+}
+
 .hide {
   display: none;
 }
@@ -83,6 +87,7 @@
   }
 
   &::before {
+    background-color: rgba(0,0,0,.5);
     content: '';
     position: absolute;
     height: 100%;
@@ -102,7 +107,7 @@
 
   .info {
     letter-spacing: 2px;
-    max-width: 530px;
+    max-width: 640px;
     font-weight: 100;
     line-height: 1.7;
     margin-top: 0;
@@ -110,6 +115,11 @@
 }
 
 .main-content {
+  @include media(desktop) {
+    max-width: 1200px;
+    padding: 2rem 40px;
+  }
+
   .title-section {
     font-size: 16px;
     font-weight: bold;

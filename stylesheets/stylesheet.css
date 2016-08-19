@@ -10,7 +10,7 @@ body {
   color: #606c71; }
 
 a {
-  color: #1e6bb8;
+  color: #333;
   text-decoration: none; }
   a:hover {
     text-decoration: underline; }
@@ -229,7 +229,9 @@ a {
   font-weight: bold; }
 
 .site-footer-credits {
-  color: #819198; }
+  font-size: .8rem;
+  color: #819198;
+}
 
 @media screen and (min-width: 64em) {
   .site-footer {

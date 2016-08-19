@@ -16,6 +16,9 @@ input[type="search"] {
   -webkit-appearance: none !important;
   appearance: none !important; }
 
+body {
+  background-color: #f2f2f2; }
+
 .hide {
   display: none; }
 
@@ -86,6 +89,7 @@ input[type="search"] {
     position: relative;
     z-index: 100; }
   .page-header-hero::before {
+    background-color: rgba(0, 0, 0, 0.5);
     content: '';
     position: absolute;
     height: 100%;
@@ -101,11 +105,15 @@ input[type="search"] {
     font-weight: bold; }
   .page-header-hero .info {
     letter-spacing: 2px;
-    max-width: 530px;
+    max-width: 640px;
     font-weight: 100;
     line-height: 1.7;
     margin-top: 0; }
 
+@media only screen and (min-width: 1200px) {
+  .main-content {
+    max-width: 1200px;
+    padding: 2rem 40px; } }
 .main-content .title-section {
   font-size: 16px;
   font-weight: bold;
@@ -136,9 +144,14 @@ input[type="search"] {
   display: flex;
   min-height: 62px;
   padding: 15px;
-  margin: 0 -15px; }
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  -moz-transition: all .1s ease;
+  -webkit-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease; }
   .data-project-list:hover {
-    background-color: #f2f2f2; }
+    border-bottom: 1px solid #b1b1b1; }
   .data-project-list h3 {
     font-size: 20px;
     font-weight: bold;
@@ -167,8 +180,9 @@ input[type="search"] {
 
 .project-tags {
   font-size: 12px;
-  font-weight: bold;
   text-transform: uppercase;
-  color: #f96277; }
+  color: #ddd;
+  font-weight: 300;
+  letter-spacing: 3px; }
 
 /*# sourceMappingURL=style.css.map */
