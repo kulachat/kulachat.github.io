@@ -70,3 +70,66 @@
   font-weight: 300;
   letter-spacing: 3px;
 }
+
+//
+.item {
+  display: block;
+  padding: 40px;
+  margin: 30px 0;
+  background: #fff;
+  -webkit-transform: translatez(0);
+  border-bottom: 1px solid #ddd;
+  @include media(desktop) {
+    font-size: 0;
+  }
+
+  .project-header {
+    margin-bottom: 1rem;
+  }
+
+  .info,
+  .info > div,
+  .screen,
+  .screen > div {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .title {
+    letter-spacing: 2px;
+    margin-bottom: 0;
+  }
+
+  .focus {
+    font-size: .65rem;
+    text-transform: uppercase;
+  }
+
+  .info {
+    padding-right: 80px;
+    font-size: .85rem;
+    @include media(desktop) {
+      width: 35%;
+    }
+  }
+
+  .resource > a {
+    color: #FF5C59;
+    text-decoration: underline;
+  }
+
+  .screen {
+    @include media(desktop) {
+      width: 65%;
+    }
+  }
+
+  .project-short {
+    padding: 1rem 0 0 0;
+
+    @include media(desktop) {
+      padding: 0 0 0 1rem;
+      width: 50%;
+    }
+  }
+}
