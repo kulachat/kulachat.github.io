@@ -79,12 +79,20 @@
   background: #fff;
   -webkit-transform: translatez(0);
   border-bottom: 1px solid #ddd;
+  box-shadow: 0 .2em 1em 0 rgba(4,49,64,.1);
+  transition: height .3s ease-in-out,-webkit-transform .3s ease-in-out,box-shadow .3s ease-in-out;
+  transition: height .3s ease-in-out,transform .3s ease-in-out,box-shadow .3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 .5em 1.5em 0 rgba(4,49,64,.2);
+  }
+
   @include media(desktop) {
-    font-size: 0;
+    overflow: hidden;
   }
 
   .project-header {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   }
 
   .info,
@@ -96,40 +104,67 @@
   }
 
   .title {
+    font-size: 26px;
     letter-spacing: 2px;
     margin-bottom: 0;
+    text-transform: none;
   }
 
   .focus {
-    font-size: .65rem;
+    font-size: 12px;
     text-transform: uppercase;
-  }
+    opacity: .8;
+    letter-spacing: 2px;
+    padding-top: 1rem;
+    display: block;
 
-  .info {
-    padding-right: 80px;
-    font-size: .85rem;
-    @include media(desktop) {
-      width: 35%;
+    > b {
+      display: block;
     }
   }
 
-  .resource > a {
-    color: #FF5C59;
-    text-decoration: underline;
+  .info {
+    padding-right: 40px;
+    font-size: 16px;
+    @include media(desktop) {
+      width: 45%;
+      float: left;
+    }
+  }
+
+  .resource a {
+    color: $body-color-content;
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    text-align: center;
+    margin-right: 1%;
+    text-decoration: none;
+
+    &:hover {
+      border-color: #ddd;
+    }
+  }
+
+  .fa-github {
+    font-size: 20px;
   }
 
   .screen {
     @include media(desktop) {
-      width: 65%;
+      width: 55%;
     }
   }
 
   .project-short {
     padding: 1rem 0 0 0;
+    max-height: 256px;
+    min-height: 256px;
+    overflow: hidden;
 
     @include media(desktop) {
       padding: 0 0 0 1rem;
-      width: 50%;
     }
   }
 }
