@@ -224,7 +224,8 @@ body {
     font-size: 26px;
     letter-spacing: 2px;
     margin-bottom: 0;
-    text-transform: none; }
+    text-transform: none;
+    color: #0087ff; }
   .item .focus {
     font-size: 12px;
     text-transform: uppercase;
