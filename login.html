@@ -1,0 +1,107 @@
+
+
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>AccountKitJS App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <style media="screen">
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Lucida Grande, Tahoma, Verdana, Arial, sans-serif;
+    font-size: 14px;
+  }
+    .application  {
+      max-width: 420px;
+      margin: auto;
+      border: 1px solid #ddd;
+      padding: 5rem 3rem;
+      margin-top: 10vh;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    .application input {
+      border: 1px solid #d3d6db;
+      color: #1d2129;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      height: 40px;
+      line-height: 16px;
+      padding: 8px;
+      display: block;
+      width: 100%;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
+
+    #logo-svg {
+      max-width: 120px;
+      margin: auto;
+      display: block;
+    }
+
+    .title {
+      font-size: 16px;
+    }
+
+    .application button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: block;
+      width: 100%;
+      min-height: 40px;
+      padding: 10px 40px;
+      margin-bottom: 20px;
+      border-radius: 3px;
+      border: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      border: 1px solid #2996cc;
+      font-smoothing: always;
+      text-rendering: optimizeLegibility;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      font-family: "Square Market",Helvetica,Arial,"Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
+      font-size: 13px;
+      line-height: 20px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      color: #2996cc;
+      background-color: #fff;
+      -webkit-transition: background-color .15s linear;
+      transition: background-color .15s linear;
+    }
+
+    .application button:focus,
+    .application button:active,
+    .application button:hover {
+      background-color: #2996cc;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="application">
+  <div>
+    <div class="logo">
+      <img id="logo-svg" src="http://domecloud.io/wp-content/uploads/SVG-01.svg" alt="" />
+    </div>
+    <p class="title">DomeCloud 2FA</p>
+    <button onclick="phone_btn_onclick();">Login via SMS</button>
+    <button onclick="email_btn_onclick();">Login via Email</button>
+  </div>
+    <form id="my_form" name="my_form" action="/sendcode" method="POST" style="display: none;">
+      <input type="text" id="code" name="code">
+      <input type="text" id="csrf_nonce" name="csrf_nonce">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
