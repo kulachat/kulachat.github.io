@@ -1,11 +1,73 @@
+/* AMP Project*/
+body {
+  font-family: "Open Sans",sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #666;
+  padding-top: 70px;
+  margin: 0;
+  text-rendering: optimizeLegibility; }
+
+html {
+  font-size: 62.5%; }
+
+img {
+  max-width: 100%; }
+
+figure {
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Varela Round', sans-serif;
+  margin: 0 0 1rem 0;
+  letter-spacing: 1.5px; }
+
 header {
   position: fixed;
-  width: 100%; }
+  width: 100%;
+  top: 0;
+  background-color: #3A92D3;
+  z-index: 100;
+  padding: 15px 0; }
+
+#logo {
+  width: 68px;
+  height: 58px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start; }
+
+.placeholder-logo {
+  padding-top: 16px;
+  display: inline-block; }
+
+.menu {
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 70px;
+  margin-left: 2rem;
+  color: #fff; }
 
 .container {
   box-sizing: border-box;
   max-width: 1240px;
-  margin: auto; }
+  margin: auto;
+  overflow: hidden; }
 
 .wrap-header {
   display: -webkit-box;
@@ -14,5 +76,171 @@ header {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between; }
+
+h1 {
+  font-size: 3.6rem; }
+
+.title {
+  color: #384047;
+  font-size: 3.2rem; }
+
+.more p {
+  margin-bottom: 0; }
+
+.readmore {
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle; }
+  .readmore:hover {
+    opacity: .8; }
+  .readmore:after {
+    background-repeat: no-repeat;
+    background-image: url(../img/craft/right-arrow.svg);
+    display: inline-block;
+    content: "";
+    background-position: right;
+    width: 14px;
+    height: 16px;
+    margin-left: 10px;
+    vertical-align: middle; }
+
+/* =============================== Into*/
+.into {
+  color: #fff;
+  background-color: #3A92D3;
+  overflow: hidden;
+  padding: 2rem 0; }
+  @media only screen and (min-width: 1200px) {
+    .into {
+      padding: 6rem 0; } }
+  @media only screen and (min-width: 1600px) {
+    .into {
+      padding: 14rem 0; } }
+  .into .readmore {
+    text-decoration: none;
+    color: #fff; }
+
+@media only screen and (min-width: 768px) {
+  .content {
+    width: 47.5%; } }
+.content p {
+  line-height: 32px; }
+@media only screen and (min-width: 768px) {
+  .content-type-left {
+    float: left;
+    padding-right: 2.5%; } }
+@media only screen and (min-width: 768px) {
+  .content-type-right {
+    float: right;
+    padding-left: 2.5%; } }
+.content.text-right {
+  text-align: right; }
+
+/* =============================== Main Service*/
+.service {
+  padding: 2rem 0 0; }
+  @media only screen and (min-width: 1200px) {
+    .service {
+      padding: 6rem 0 0; } }
+  @media only screen and (min-width: 1600px) {
+    .service {
+      padding: 10rem 0 0; } }
+
+/* =============================== Package*/
+.pricing {
+  margin-top: 10rem;
+  padding: 6rem 0;
+  text-align: center; }
+  .pricing > .container {
+    padding-top: 6rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.15); }
+
+.keyword {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2rem;
+  color: #3A92D3;
+  margin-top: 4rem;
+  display: block; }
+
+.box-option {
+  display: inline-block;
+  border: 2px solid #3A92D3;
+  padding: 2rem 4rem 4rem;
+  width: 45%;
+  max-width: 432px;
+  border-radius: 4px;
+  text-align: left; }
+
+.option-list {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #384047;
+  position: relative;
+  margin-bottom: 1rem; }
+  .option-list:before {
+    background-repeat: no-repeat;
+    background-image: url(../img/craft/list.svg);
+    display: inline-block;
+    content: "";
+    background-position: right;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle; }
+
+.title-option {
+  font-family: 'Varela Round', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  color: #384047;
+  padding-bottom: 1rem; }
+
+.clients {
+  padding-top: 4rem; }
+  .clients b {
+    color: #384047; }
+  .clients .-amp-element {
+    margin: 0 2rem;
+    vertical-align: middle; }
+
+.submit {
+  text-align: center;
+  padding-top: 2rem; }
+
+.button {
+  background: #3A92D3;
+  border-radius: 4px;
+  font-size: 2.4rem;
+  color: #FFFFFF;
+  letter-spacing: 0.24px;
+  padding: 1.6rem 2rem;
+  display: block;
+  max-width: 320px;
+  margin: auto; }
+
+.flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+.column {
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 48%;
+  flex: 0 0 48%;
+  -ms-flex: 0 0 calc(50% - 10px);
+  flex: 0 0 calc(50% - 10px); }
+
+footer {
+  padding: 6rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15); }
 
 /*# sourceMappingURL=amp.css.map */
