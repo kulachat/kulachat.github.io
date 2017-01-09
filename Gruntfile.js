@@ -8,6 +8,7 @@ module.exports = function(grunt) {
           'css/baikal.css' : 'sass/project_baikal.scss',
           'css/core.css' : 'sass/core.scss',
           'css/jack.css' : 'sass/jack.scss',
+          'css/amp.css' : 'sass/amp.scss',
         }
       }
     },
