@@ -2,8 +2,18 @@
 @import 'components/responsive';
 
 $color-brand:     #3A92D3;
-$color-headline:  #384047;
-$color-paragraph: #666;
+$color-headline:  #262626;
+$color-paragraph: #969696;
+$bg-hrader:       #ECECEC;
+$bg-gray: #EAEAEA;
+$color-link: #33BBFF;
+
+$raduis: 4px;
+
+@mixin animatoin {
+  -webkit-transition: 3ms all;
+  transition: 3ms all;
+}
 
 
 @mixin gutter-content {
@@ -26,12 +36,15 @@ $color-paragraph: #666;
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Open Sans",sans-serif;
-  font-size: 1.8rem;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  font-size: 2.2rem;
   font-weight: 300;
   color: $color-paragraph;
-  padding-top: 70px;
   margin: 0;
   text-rendering: optimizeLegibility;
 }
@@ -42,23 +55,45 @@ figure { margin: 0; }
 a { text-decoration: none; }
 ul { padding: 0; margin: 0; list-style-type: none; }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Varela Round', sans-serif;
   margin: 0 0 1rem 0;
   letter-spacing: 1.5px;
 }
 
+/* =============================== Unities*/
+.attr-center {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.attr-block {
+  display: block;
+}
+
+.full-content {
+  width: 100%;
+  display: block;
+}
+
+.sub-section {
+  padding: 5rem 2rem;
+}
+
+.description {
+  padding: 6rem 3.5rem 0 3rem;
+}
+
+/* =============================== Header*/
 header {
   position: fixed;
   width: 100%;
   top: 0;
-  background-color: $color-brand;
+  background-color: $bg-hrader;
   z-index: 100;
-  padding: 15px 0;
+  padding: 8px 0;
 }
 
 #logo {
-  width: 68px;
-  height: 58px;
+  height: 46px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,22 +106,32 @@ header {
 }
 
 .placeholder-logo {
-  padding-top: 16px;
+  padding-top: 4px;
   display: inline-block;
 }
 
 .menu {
-  font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   display: inline-block;
-  line-height: 70px;
+  line-height: 4.5rem;
   margin-left: 2rem;
-  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: $color-headline;
+}
+
+.let-chat {
+  margin-right: 3rem;
+  a {
+    color: $color-link;
+    display: inline-block;
+    margin-left: 2rem;
+  }
 }
 
 .container {
   box-sizing: border-box;
-  max-width: 1240px;
+  max-width: 1026px;
   margin: auto;
   overflow: hidden;
 }
@@ -100,10 +145,18 @@ header {
   justify-content: space-between;
 }
 
-h1 { font-size: 3.6rem; }
+h1 {
+  font-size: 3.6rem;
+}
+
 .title {
   color: $color-headline;
-  font-size: 3.2rem;
+  font-size: 4.6rem;
+}
+
+.sub-title {
+  color: $color-headline;
+  font-size: 2.4rem;
 }
 
 .more p {
@@ -111,7 +164,7 @@ h1 { font-size: 3.6rem; }
 }
 
 .readmore {
-  font-weight: bold;
+  color: $color-headline;
   display: inline-block;
   vertical-align: middle;
   &:hover { opacity: .8; }
@@ -129,17 +182,50 @@ h1 { font-size: 3.6rem; }
   }
 }
 
+/* =============================== Buttom*/
+@mixin button-style {
+  padding: 10px 20px;
+  background-color: $color-link;
+  color: #fff;
+  border-radius: $raduis;
+  @include animatoin;
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.btn-small {
+  @include button-style;
+  line-height: normal;
+}
+
 /* =============================== Into*/
 .into {
-  color: #fff;
-  background-color: $color-brand;
+  background-color: $bg-gray;
   overflow: hidden;
-  @include gutter-content;
+  text-align: center;
+  padding: 22rem 1rem 0;
+
+  .into-section {
+    max-width: 820px;
+    margin: auto;
+  }
+
+  .title {
+    font-size: 8rem;
+    line-height: 7.5rem;
+  }
 
   .readmore {
     text-decoration: none;
     color: #fff;
   }
+}
+
+.screen-into {
+  max-width: 1486px;
+  text-align: center;
+  margin: auto;
 }
 
 .content {
@@ -173,29 +259,138 @@ h1 { font-size: 3.6rem; }
 
 /* =============================== Main Service*/
 .service {
-  @include gutter-content-service;
-}
+  max-width: 876px;
+  margin: auto;
+  position: relative;
+  padding: 8rem 240px 0 0;
 
-/* =============================== Package*/
-.pricing {
-  // background-color: #F7F9FA;
-  margin-top: 10rem;
-  padding: 6rem 0;
-  text-align: center;
+  .attr-center {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $color-headline;
+  }
 
-  > .container {
-    padding-top: 6rem;
-    border-top: 1px solid rgba(0,0,0,0.15);
+  .html5 {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 165px;
+
+    b {
+      display: block;
+      @extend .attr-center;
+    }
   }
 }
 
-.keyword {
-  font-family: 'Varela Round', sans-serif;
-  font-size: 2rem;
-  color: $color-brand;
-  margin-top: 4rem;
-  display: block;
+/* =============================== Web Funmdamentals*/
+.web-funmdamentals {
+  padding: 6rem 0;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  margin-top: 6rem;
+
+  .content-box {
+    background-color: #E8F6F7;
+    overflow: hidden;
+    border-radius: $raduis;
+  }
 }
+
+.wrap {
+  max-width: 1026px;
+  margin: auto;
+}
+
+.web-fundamentals-thumb {
+  margin: 3rem 0 -1rem 2rem;
+}
+
+.list-tools {
+  p {
+    font-size: 1.8rem;
+  }
+
+  strong {
+    display: block;
+    color: $color-link;
+    padding-bottom: 1rem;
+  }
+}
+
+/* =============================== Responsive */
+.responsive-web {
+  padding: 6rem 0;
+
+  .content-box {
+    background-color: #FFF6F9;
+    overflow: hidden;
+    position: relative;
+    min-height: 445px;
+    border-radius: $raduis;
+  }
+
+  .description {
+    padding-left: 5rem;
+  }
+}
+
+.list-option {
+  font-size: 1.8rem;
+  line-height: 1.4rem;
+}
+
+.web-resonsive-thumb {
+  position: absolute;
+  right: 0;
+}
+
+/* =============================== clients */
+.clients {
+  padding-bottom: 4rem;
+  text-align: center;
+
+  .sub-title {
+    margin-bottom: 2rem;
+  }
+
+  .i-amphtml-layout {
+    margin: 0 2rem;
+    vertical-align: middle;
+  }
+}
+
+/* =============================== Shares */
+.share-content {
+  margin: 2rem auto;
+  border: 1px solid #d9dbdb;
+  max-width: 844px;
+  border-radius: $raduis;
+
+  .sub-title {
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    line-height: 6rem;
+    margin-bottom: 0;
+    font-weight: 300;
+  }
+}
+
+.share-to-social {
+  text-align: center;
+}
+
+.link-share {
+  display: inline-block;
+  line-height: 7.4rem;
+
+  .icon {
+    position: relative;
+    top: 5px;
+    margin-right: 1rem;
+  }
+}
+
+/* =============================== clients*/
 
 .box-option {
   display: inline-block;
@@ -223,26 +418,6 @@ h1 { font-size: 3.6rem; }
     width: 18px;
     height: 18px;
     margin-right: 10px;
-    vertical-align: middle;
-  }
-}
-
-.title-option {
-  font-family: 'Varela Round', sans-serif;
-  text-align: center;
-  font-size: 2rem;
-  color: $color-headline;
-  padding-bottom: 1rem;
-}
-
-.clients {
-  padding-top: 4rem;
-  b {
-    color: $color-headline;
-  }
-
-  .-amp-element {
-    margin: 0 2rem;
     vertical-align: middle;
   }
 }
@@ -276,15 +451,34 @@ h1 { font-size: 3.6rem; }
 }
 
 .column {
-  margin-bottom: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  @mixin prefix-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  @include prefix-flex;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 48%;
   flex: 0 0 48%;
   -ms-flex: 0 0 calc(50% - 10px);
   flex: 0 0 calc(50% - 10px);
+
+  &-4 {
+    @include prefix-flex;
+    -ms-flex: 0 0 31%;
+    flex: 0 0 31%;
+    -ms-flex: 0 0 calc(33.33333% - 10px);
+    flex: 0 0 calc(33.33333% - 10px);
+  }
+
+  &-6 {
+    @include prefix-flex;
+    -ms-flex: 0 0 48%;
+    flex: 0 0 48%;
+    -ms-flex: 0 0 calc(50% - 10px);
+    flex: 0 0 calc(50% - 10px);
+  }
 }
 
 footer {

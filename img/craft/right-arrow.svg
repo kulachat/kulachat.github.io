@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="8px" height="13px" viewBox="0 0 8 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-    <title>right-arrow</title>
+    <title>Arrow</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Version2" transform="translate(-865.000000, -496.000000)" fill="#FFFFFF">
-            <g id="Section-Intro">
-                <g id="More" transform="translate(678.000000, 493.000000)">
-                    <g id="right-arrow" transform="translate(187.000000, 3.000000)">
-                        <path d="M12.7131702,6.25673534 L6.88303323,0.354992076 C6.66385515,0.133122029 6.35700583,0 6.09399213,0 C5.83097844,0 5.56796474,0.133122029 5.34878665,0.354992076 C4.91043049,0.798732171 4.91043049,1.4199683 5.34878665,1.8637084 L10.4337182,7.0110935 L5.34878665,12.1584786 C4.91043049,12.6022187 4.91043049,13.2234548 5.34878665,13.6671949 C5.78714282,14.110935 6.44467707,14.110935 6.88303323,13.6671949 L12.7131702,7.76545166 C12.9323483,7.54358162 13.0200195,7.27733756 13.0200195,7.0110935 C13.0200195,6.70047544 12.9323483,6.47860539 12.7131702,6.25673534 Z" id="Shape"></path>
-                        <rect id="Shape" x="0" y="6" width="12" height="2" rx="1"></rect>
-                    </g>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arrow" fill="#000000">
+            <g id="chevron-right">
+                <g>
+                    <polygon id="Shape" points="1.53052632 0 0.0273684211 1.49333333 4.96631579 6.4 0.0273684211 11.3066667 1.53052632 12.8 7.97263158 6.4"></polygon>
                 </g>
             </g>
         </g>
