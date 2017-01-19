@@ -136,11 +136,31 @@ h1 {
     vertical-align: middle; }
 
 /* =============================== Buttom*/
+.btn {
+  padding: 10px 20px;
+  background-color: #33BBFF;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  -webkit-transition: 3ms all;
+  transition: 3ms all;
+  display: block;
+  margin-top: 1.5rem; }
+  .btn:hover {
+    opacity: .8; }
+  .btn.btn-white {
+    position: absolute;
+    bottom: 2rem;
+    border: 1px solid #fff;
+    left: 2rem;
+    right: 2rem; }
+
 .btn-small {
   padding: 10px 20px;
   background-color: #33BBFF;
   color: #fff;
   border-radius: 4px;
+  text-align: center;
   -webkit-transition: 3ms all;
   transition: 3ms all;
   line-height: normal; }
@@ -205,7 +225,7 @@ h1 {
 /* =============================== Web Funmdamentals*/
 .web-funmdamentals {
   padding: 6rem 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
   margin-top: 6rem; }
   .web-funmdamentals .content-box {
     background-color: #E8F6F7;
@@ -264,7 +284,7 @@ h1 {
   border-radius: 4px; }
   .share-content .sub-title {
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
     line-height: 6rem;
     margin-bottom: 0;
     font-weight: 300; }
@@ -306,6 +326,59 @@ h1 {
     height: 18px;
     margin-right: 10px;
     vertical-align: middle; }
+
+/* =============================== clients*/
+.section-price {
+  background-color: #F7F7F7;
+  padding: 10rem 0;
+  margin-top: 10rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  text-align: center; }
+
+.price-box {
+  max-width: 970px;
+  margin: auto;
+  padding-top: 2rem; }
+  .price-box .box-item {
+    width: 100%;
+    background-color: #fff;
+    min-height: 320px;
+    text-align: center;
+    border-radius: 6px;
+    position: relative; }
+    .price-box .box-item.enterprise {
+      background-color: #33BBFF;
+      color: #fff; }
+
+.header-price {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  line-height: 46px;
+  font-size: 2rem;
+  font-weight: 400; }
+
+.service-detail {
+  padding: 1rem 2rem 2rem; }
+  .service-detail strong {
+    font-size: 2rem;
+    color: #262626; }
+  .service-detail p {
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 1.6; }
+  .service-detail .pricing {
+    color: #262626;
+    font-size: 7.2rem;
+    font-weight: 500;
+    position: relative; }
+    .service-detail .pricing:before {
+      content: "$";
+      color: #969696;
+      display: inline-block;
+      font-size: 22px;
+      font-weight: 300;
+      vertical-align: 34px;
+      margin-left: -24px;
+      margin-right: 5px; }
 
 .submit {
   text-align: center;
@@ -360,6 +433,6 @@ h1 {
 
 footer {
   padding: 6rem 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15); }
+  border-top: 1px solid rgba(0, 0, 0, 0.09); }
 
 /*# sourceMappingURL=amp.css.map */
