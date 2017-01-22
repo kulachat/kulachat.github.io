@@ -33,7 +33,14 @@
       <div class="container">
         <div class="wrap-header">
           <a id="logo" href="./">
-            <span class="placeholder-logo"><amp-img placeholder width="68" height="46" src="img/craft/Logo.png"></amp-img></span>
+            <span class="hide-mobile">
+              <span class="placeholder-logo">
+                  <amp-img placeholder width="68" height="46" src="img/craft/Logo.png"></amp-img>
+              </span>
+            </span>
+            <span class="hide-large-screen">
+              <span class="placeholder-logo"><amp-img placeholder width="68" height="46" src="img/craft/Logo-mobile.png"></amp-img></span>
+            </span>
           </a>
           <nav role="navigation">
             <span class="menu let-chat">Got questions?  <a href="#">Let Chat</a></span>
@@ -51,8 +58,9 @@
               Nulla vitae elit libero, a pharetra augue. Cras justo odio,
               dapibus ac facilisis in, egestas eget quam.
             </p>
+            <p class="hide-large-screen"><a href="#" class="btn-large">Our work</a></p>
           </div>
-          <div class="screen-into">
+          <div class="screen-into hide-mobile">
             <amp-img placeholder width="1486" height="568" layout="responsive" src="img/craft/Screen.png"></amp-img>
           </div>
         </div>
@@ -304,7 +312,7 @@
             <span class="position">Fulltime CSS Craft</span>
           </p>
           </div>
-          <p>ขอขอบคุณทุกการจ้างงาน ทุกการชำระเงินช่วยสานฝันของเราให้เป็นจริง เรามีความฝันที่จะกลับไปพัฒนาบ้านเกิดของเรา<br>
+          <p class="hide-mobile">ขอขอบคุณทุกการจ้างงาน ทุกการชำระเงินช่วยสานฝันของเราให้เป็นจริง เรามีความฝันที่จะกลับไปพัฒนาบ้านเกิดของเรา<br>
             <a href="#">อ่านเกี่ยวกับจุดมุ่งหมายของเรา</a>
           </p>
       </div>
