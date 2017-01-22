@@ -206,7 +206,7 @@ h1 {
 
 .title {
   color: $color-headline;
-  font-size: 3.2rem;
+  font-size: 3.6rem;
 
   @include media(tablet) {
     font-size: 4.6rem;
@@ -297,7 +297,7 @@ h1 {
   }
 
   .title {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     @include media(tablet) {
       line-height: 10rem;
       font-size: 8rem;
