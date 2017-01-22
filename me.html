@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>CSS Craft</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Handicraft convert beatiful your designs to into websites that respond to various device sizes"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Kulachat.GitHub.io"/>
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round" type='text/css' />
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   </head>
-  <body>
+  <body itemtype="http://schema.org/WebPage">
     <header>
       <div class="container">
         <div class="wrap-header">
@@ -44,11 +44,11 @@
     </header>
     <main role="main">
       <div class="into">
-        <div>
+        <div class="wrap-content">
           <div class="into-section">
             <h1 class="title">Websites load faster to impress the users.</h1>
-            <p>
-              Nulla vitae elit libero, a pharetra augue. Cras justo odio, <br>
+            <p class="into-service">
+              Nulla vitae elit libero, a pharetra augue. Cras justo odio,
               dapibus ac facilisis in, egestas eget quam.
             </p>
           </div>
@@ -59,7 +59,7 @@
       </div>
 
       <div class="service">
-        <div class="">
+        <div class="wrap-content">
           <h2 class="sub-title">What we do?</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur
@@ -74,7 +74,7 @@
               conversion services.
             </b>
           </p>
-          <p class="html5">
+          <p class="html5 hide-mobile">
             <amp-img placeholder width="165" height="64" src="img/craft/html5-badge-h-css3-semantics.png"></amp-img>
             <b>
               We love HTML5 CSS3
@@ -84,11 +84,11 @@
         </div>
       </div>
 
-      <div class="web-funmdamentals">
+      <div class="web-funmdamentals hide-mobile">
         <div class="wrap">
           <div class="content-box flex-column">
             <div class="column">
-              <figure class="web-fundamentals-thumb">
+              <figure class="web-fundamentals-thumb hide-mobile">
                 <amp-img placeholder width="470" height="421" src="img/craft/web-fundamentals.png"></amp-img>
               </figure>
             </div>
@@ -102,7 +102,7 @@
             </div>
           </div>
           <!-- Tools -->
-          <div class="sub-section">
+          <div class="sub-section hide-mobile">
             <h3 class="sub-title">We using validator tools</h3>
             <ul class="flex-column">
               <div class="column-4">
@@ -134,7 +134,7 @@
       </div>
 
       <!-- END -->
-      <div class="responsive-web">
+      <div class="responsive-web hide-mobile">
         <div class="wrap">
           <div class="content-box flex-column">
             <div class="column">
@@ -146,7 +146,7 @@
               </div>
             </div>
             <div class="column">
-              <figure class="web-resonsive-thumb">
+              <figure class="web-resonsive-thumb hide-mobile">
                 <amp-img placeholder width="455" height="450" src="img/craft/Responsive-web.png"></amp-img>
               </figure>
             </div>
@@ -204,7 +204,7 @@
         </div>
       </div>
       <!-- END RWD -->
-      <div class="clients">
+      <div class="clients hide-mobile">
         <h3 class="sub-title">Proud to be work with client</h3>
         <figure>
           <amp-img placeholder width="76" height="60" src="img/craft/iqLogo.png"></amp-img>
@@ -213,6 +213,7 @@
           <amp-img placeholder width="72" height="60" src="img/craft/UN.png"></amp-img>
         </figure>
       </div>
+
       <!--  END Clients -->
 
       <div class="section-price">
@@ -221,7 +222,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           consectetur adipiscing elit.
         </p>
-        <div class="price-box">
+        <div class="price-box hide-mobile">
           <div class="flex-column">
             <div class="column-4 box-item">
               <div class="full-content">
@@ -261,7 +262,7 @@
             </div>
             <div class="column-4 box-item enterprise">
               <div class="full-content">
-                <h3 class="header-price">for Web app, Dashoba</h3>
+                <h3 class="header-price">Partner</h3>
                 <div class="service-detail">
                   <p>
                     Nulla vitae elit libero, a pharetra augue. Cras justo odio,
@@ -270,15 +271,48 @@
                     I worked Jira, Trello , Toggl, Asada
                   </p>
                   <p>
-                    <a href="#" class="btn btn-white">Contact</a>
+                    <a href="#" class="btn btn-white">Let Contact</a>
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="section-contact hide-mobile">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            consectetur adipiscing elit.
+          </p>
+          <p><strong>Got questions?</strong><a href="#" target="_blank"> Let Chat</a></p>
+        </div>
       </div>
+      <!-- END Section Price -->
     </main>
 
+    <footer>
+      <div class="founder wrap-content">
+        <div  itemscope itemptype="http://schema.org/Person">
+          <figure itemprop="image">
+            <amp-img placeholder width="80" height="80" src="img/craft/kulachat-kena.png"></amp-img>
+          </figure>
+          <p id="name">
+            <span itemprop="name">Kulachat Kena</span>
+            <br>
+            <span class="position">Fulltime CSS Craft</span>
+          </p>
+          </div>
+          <p>ขอขอบคุณทุกการจ้างงาน ทุกการชำระเงินช่วยสานฝันของเราให้เป็นจริง เรามีความฝันที่จะกลับไปพัฒนาบ้านเกิดของเรา<br>
+            <a href="#">อ่านเกี่ยวกับจุดมุ่งหมายของเรา</a>
+          </p>
+      </div>
+      <div class="contact">
+        <p>
+          © CSS Craft Studio 2017
+          <br>
+          Say Hi.. <a href="mailto:hello@csscraft.io">hello@csscraf.io</a>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
