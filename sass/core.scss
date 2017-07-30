@@ -1,6 +1,24 @@
 @import 'dreamshare/variables';
 @import 'dreamshare/responsive';
 
+@mixin placeholder-input {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    position: relative;
+    line-height: 40px;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    position: relative;
+    line-height: 40px;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    position: relative;
+    line-height: 40px;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    position: relative;
+    line-height: 40px;
+  }
+}
 body {
   background-color: #716fb4;
   background: url(../img/bg/Home_Purple-background.png) no-repeat bottom center fixed;
@@ -68,9 +86,10 @@ body {
   border: 3px solid #6c6ab1;
   font-size: $font-size-medium;
   border-radius: 99em;
-  padding: 10px 20px;
+  padding: 13px 20px 7px 20px;
   margin-bottom: 20px;
   width: 100%;
+  @include placeholder-input;
   @include media(tablet) {
     margin-bottom: 36px;
   }
@@ -129,7 +148,7 @@ body {
       content: '';
       position: absolute;
       left: 0;
-      top: 4px;
+      top: 1px;
       height: 20px;
       width: 20px;
       background-color: #fff;
@@ -142,8 +161,26 @@ body {
       text-decoration: underline;
     }
   }
+
+  .checkbox-label-list {
+    font-size: $font-size-large;
+    padding-left: 48px;
+    margin-bottom: 0;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      height: 28px;
+      width: 28px;
+      background-color: #fff;
+      border: 3px solid #6c6ab1;
+      border-radius: 8px;
+    }
+  }
 }
 
+// Small Checkbox
 .input-checkbox:checked + .checkbox-label::before {
   background-color: #6c6ab1;
   border-color: #6c6ab1;
@@ -156,17 +193,42 @@ body {
   content: '';
   position: absolute;
   left: 2px;
-  top: 5px;
+  top: 2px;
   height: 16px;
   width: 16px;
   z-index: 200;
 }
 
+// Full Checkbox
+.wrapper-checklist {
+  max-width: 640px;
+  margin: auto;
+}
+
+.input-checkbox:checked + .checkbox-label-list::before {
+  background-color: #6c6ab1;
+  border-color: #6c6ab1;
+}
+
+.input-checkbox:checked + .checkbox-label-list::after {
+  background-image: url(../img/icons/checked.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  height: 20px;
+  width: 20px;
+  z-index: 200;
+}
+
+
 .btn-submit {
   background-color: #6c6ab1;
   font-size: $font-size-medium;
   border-radius: 99em;
-  padding: 10px 20px;
+  padding: 14px 20px 10px;
   box-shadow: 0 2px 5px 1px rgba(0,0,0,.4);
   display: block;
   width: 100%;
