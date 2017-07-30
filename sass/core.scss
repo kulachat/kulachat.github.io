@@ -19,6 +19,7 @@
     line-height: 40px;
   }
 }
+
 body {
   background-color: #716fb4;
   background: url(../img/bg/Home_Purple-background.png) no-repeat bottom center fixed;
@@ -26,6 +27,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-bottom: 25px;
 
   img {
     max-width: 100%;
@@ -72,11 +74,12 @@ body {
   box-shadow: 0 2px 5px 1px rgba(0,0,0,.4);
 
   @include media(tablet) {
-    padding: 40px;
+    padding: 60px 40px 40px;
   }
 }
 
 .title-form  {
+  font-size: $font-size-larger + 2;
   margin: 0 0 32px;
   color: #6c6ab1;
 }
@@ -237,6 +240,46 @@ body {
     color: #fff;
     box-shadow: 0 2px 5px 2px rgba(0,0,0,.4);
   }
+}
+
+// Content
+.content {
+  color: #484848;
+  font-size: $font-size-large + 4;
+}
+
+.text-decoration {
+  text-decoration: underline;
+}
+
+// Coupon
+.coupon-content {
+  background: #b4b2d9;
+  border: 6px solid #716fb4;
+  padding: 20px 10px 35px;
+  color: #716fb4;
+  font-size: $font-size-medium;
+
+  .title {
+    font-size: ($font-size-larger + 2);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  p:not(.data-expire) {
+    font-size: ($font-size-large + 4);
+  }
+}
+
+.coupon-code {
+  background-color: #fff;
+  font-size: 120px;
+  color: #716fb4;
+  padding-top: 35px;
+  line-height: 140px;
+  margin: 35px 0;
 }
 
 // Footer Event info
