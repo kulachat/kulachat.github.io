@@ -241,6 +241,11 @@ body {
   display: block;
   width: 100%;
   color: #fff;
+  letter-spacing: 1px;
+  &.fb-share {
+    background-color: #3b5998;
+  }
+
   &:hover {
     color: #fff;
     box-shadow: 0 2px 5px 2px rgba(0,0,0,.4);
@@ -251,6 +256,10 @@ body {
 .content {
   color: #484848;
   font-size: $font-size-large + 4;
+}
+
+.data-customer {
+  color: #6c6ab1;
 }
 
 .text-decoration {
@@ -280,40 +289,15 @@ body {
 
 .coupon-code {
   background-color: #fff;
-  font-size: 120px;
+  font-size: 6rem;
   color: #716fb4;
   padding-top: 35px;
   line-height: 140px;
   margin: 35px 0;
-}
-
-// Footer Event info
-.section-event-info {
-  padding: 25px 15px 20px;
   @include media(tablet) {
-    padding: 0 15px 20px;
-  }
-
-  .text-left {
-    text-align: center;
-    @include media(tablet) {
-      text-align: left;
-    }
-  }
-  .text-right {
-    text-align: center;
-    @include media(tablet) {
-      text-align: right
-    }
+    font-size: 120px;
   }
 }
-
-.logo-brand {
-  @include media(tablet) {
-    margin-top: 32px;
-  }
-}
-
 
 // Upload Photo
 .wrapper-photo {
@@ -373,3 +357,30 @@ body {
       margin: 14px 20px 0;
     }
   }
+
+// Footer Event info
+.section-event-info {
+  padding: 25px 15px 20px;
+  @include media(tablet) {
+    padding: 0 15px 20px;
+  }
+
+  .text-left {
+    text-align: center;
+    @include media(tablet) {
+      text-align: left;
+    }
+  }
+  .text-right {
+    text-align: center;
+    @include media(tablet) {
+      text-align: right
+    }
+  }
+}
+
+.logo-brand {
+  @include media(tablet) {
+    margin-top: 32px;
+  }
+}

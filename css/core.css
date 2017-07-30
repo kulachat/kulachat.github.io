@@ -190,7 +190,10 @@ body {
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.4);
   display: block;
   width: 100%;
-  color: #fff; }
+  color: #fff;
+  letter-spacing: 1px; }
+  .btn-submit.fb-share {
+    background-color: #3b5998; }
   .btn-submit:hover {
     color: #fff;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.4); }
@@ -198,6 +201,9 @@ body {
 .content {
   color: #484848;
   font-size: 32px; }
+
+.data-customer {
+  color: #6c6ab1; }
 
 .text-decoration {
   text-decoration: underline; }
@@ -217,31 +223,14 @@ body {
 
 .coupon-code {
   background-color: #fff;
-  font-size: 120px;
+  font-size: 6rem;
   color: #716fb4;
   padding-top: 35px;
   line-height: 140px;
   margin: 35px 0; }
-
-.section-event-info {
-  padding: 25px 15px 20px; }
   @media only screen and (min-width: 768px) {
-    .section-event-info {
-      padding: 0 15px 20px; } }
-  .section-event-info .text-left {
-    text-align: center; }
-    @media only screen and (min-width: 768px) {
-      .section-event-info .text-left {
-        text-align: left; } }
-  .section-event-info .text-right {
-    text-align: center; }
-    @media only screen and (min-width: 768px) {
-      .section-event-info .text-right {
-        text-align: right; } }
-
-@media only screen and (min-width: 768px) {
-  .logo-brand {
-    margin-top: 32px; } }
+    .coupon-code {
+      font-size: 120px; } }
 
 .wrapper-photo {
   border: 3px solid #716fb4;
@@ -289,5 +278,25 @@ body {
     height: 34px;
     display: inline-block;
     margin: 14px 20px 0; }
+
+.section-event-info {
+  padding: 25px 15px 20px; }
+  @media only screen and (min-width: 768px) {
+    .section-event-info {
+      padding: 0 15px 20px; } }
+  .section-event-info .text-left {
+    text-align: center; }
+    @media only screen and (min-width: 768px) {
+      .section-event-info .text-left {
+        text-align: left; } }
+  .section-event-info .text-right {
+    text-align: center; }
+    @media only screen and (min-width: 768px) {
+      .section-event-info .text-right {
+        text-align: right; } }
+
+@media only screen and (min-width: 768px) {
+  .logo-brand {
+    margin-top: 32px; } }
 
 /*# sourceMappingURL=core.css.map */
