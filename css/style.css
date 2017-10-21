@@ -144,9 +144,6 @@ body {
 .wrapper-main-table {
   padding-top: 3rem; }
 
-body {
-  background-color: #ff5252; }
-
 .section-home-hero {
   background-color: #fff;
   min-height: 480px; }
@@ -161,7 +158,6 @@ h3,
 h4,
 h5,
 .more-all {
-  font-family: 'Maitree', serif;
   font-weight: 300;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
