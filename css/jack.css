@@ -63,11 +63,11 @@ figure {
   border-color: #ffba00; }
   .button-buy:focus, .button-buy.focus {
     color: #fff;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
     border-color: #805d00; }
   .button-buy:hover {
     color: #fff;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
     border-color: #c28d00; }
 
 .title-page {
