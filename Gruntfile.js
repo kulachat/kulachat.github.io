@@ -4,7 +4,11 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'css/style.css' : 'sass/style.scss'
+          'css/style.css' : 'sass/style.scss',
+          'css/baikal.css' : 'sass/project_baikal.scss',
+          'css/core.css' : 'sass/core.scss',
+          'css/jack.css' : 'sass/jack.scss',
+          'css/amp.css' : 'sass/amp.scss',
         }
       }
     },
@@ -17,7 +21,7 @@ module.exports = function(grunt) {
     browserSync: {
       dev: {
         bsFiles: {
-          src: ['css/*.css', '**/*.php']
+          src: ['css/*.css', '**/*.php' ,'**/*.html']
         },
         options: {
           watchTask: true,

@@ -1,3 +1,160 @@
-.slider {
-  height: 680px;
+*, *:after, *:before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+  color: $body-color-content;
+}
+
+.hide {
+  display: none;
+}
+
+.main-content .title,
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.main-menu {
+  width: 100%;
+  max-width: 1920px;
+  margin: auto;
+  z-index: 100;
+  padding: $gutter;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+[role="navigation"] {
+  float: right;
+  overflow: hidden;
+
+  ul { padding: 0; margin: 0; overflow: hidden; }
+
+  li {
+    display: inline-block;
+    margin: 0 0 0 20px;
+    font-size: 14px;
+
+    > a {
+      color: #fff;
+      display: block;
+      line-height: 40px;
+    }
+  }
+}
+
+.logo-brand {
+  display: inline-block;
+  margin-top: 2px;
+  vertical-align: middle;
+  color: #fff;
+  font-weight: 100;
+  letter-spacing: 3px;
+
+  img {
+    height: 28px;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+}
+
+#subscribe {
+  font-weight: 300;
+  line-height: 20px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 1px solid #fff;
+  text-decoration: none;
+
+  @include media(tablet) {
+    padding: 1rem 2rem;
+  }
+
+  &:hover {
+    background-color: #FF5C59;
+    border-color: #FF5C59;
+  }
+}
+
+.page-header-hero {
+  background-image: url('../img/bg/bg-hero.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  position: relative;
+  text-align: left;
+  color: #fff;
+
+  > * {
+    position: relative;
+    z-index: 100;
+  }
+
+  &::before {
+    background-color: rgba(0,0,0,.5);
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .title {
+    font-size: 2rem;
+    color: #fff;
+    letter-spacing: 4.5px;
+    margin-bottom: 0;
+    font-weight: bold;
+
+    @include media(tablet) {
+      font-size: 4rem;
+    }
+  }
+
+  .info {
+    letter-spacing: 2px;
+    max-width: 640px;
+    font-weight: 100;
+    line-height: 1.7;
+    margin-top: 0;
+  }
+}
+
+.main-content {
+  @include media(desktop) {
+    max-width: 1200px;
+    padding: 2rem 40px;
+  }
+
+  .title-section {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    border-bottom: solid 1px #eff0f1;
+  }
+}
+
+.sub-info {
+  font-size: .98rem;
+
+  .info {
+    font-weight: 300;
+    color: $body-color-content;
+    margin-top: 0;
+  }
+}
+
+.wrapper-main-table {
+  padding-top: 3rem;
 }
