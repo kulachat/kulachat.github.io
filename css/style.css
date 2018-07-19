@@ -399,4 +399,50 @@ h5,
       .item .project-short {
         padding: 0 0 0 1rem; } }
 
+.cover-story {
+  background: #eee;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 3rem; }
+
+.column-figure {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 64%; }
+  .column-figure > .featured-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 57.25%; }
+
+.story-content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 36%;
+  padding: 0 0 0 2rem;
+  color: #555;
+  line-height: 1.48;
+  background-color: #30373b; }
+  .story-content .title-section {
+    color: #fff;
+    margin-bottom: 1rem; }
+  .story-content .content {
+    margin-bottom: 40px; }
+  .story-content > .story-wrap {
+    padding: 40px 45px 35px 32px;
+    color: #fff; }
+  .story-content a {
+    text-decoration: underline;
+    color: #fff; }
+
 /*# sourceMappingURL=style.css.map */
