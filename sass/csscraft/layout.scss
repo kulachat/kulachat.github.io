@@ -1,7 +1,7 @@
 @mixin bg-cover {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
   }
 
   .info-content {
-    padding: 15rem 0;
+    padding: 12rem 0;
     max-width: 780px;
     margin: auto;
     text-align: center;
@@ -29,13 +29,13 @@ body {
     font-size: 64px;
     font-weight: bold;
     color: #fff;
-    margin-bottom: 24px;
+    margin-bottom: 0px;
   }
 
   .info-description {
     font-size: 22px;
   }
-  
+
   margin: auto;
   .info-featured-image {
     @include bg-cover;
@@ -96,5 +96,27 @@ body {
   a {
     text-decoration: underline;
     color: #fff;
+  }
+}
+
+.resgister {
+  padding-top: 20px;
+  .keyword {
+    font-size: 14px;
+    font-weight: 100;
+  }
+
+  .button-resgister {
+    font-size: 18px;
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 4px;
+  }
+
+  .highlight {
+    font-weight: bold;
+    color: #ff5c5c;
   }
 }

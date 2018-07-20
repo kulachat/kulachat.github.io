@@ -411,7 +411,7 @@ body {
   color: #fff;
   margin: auto; }
   .info-featured .info-content {
-    padding: 15rem 0;
+    padding: 12rem 0;
     max-width: 780px;
     margin: auto;
     text-align: center; }
@@ -419,7 +419,7 @@ body {
     font-size: 64px;
     font-weight: bold;
     color: #fff;
-    margin-bottom: 24px; }
+    margin-bottom: 0px; }
   .info-featured .info-description {
     font-size: 22px; }
   .info-featured .info-featured-image {
@@ -472,5 +472,21 @@ body {
   .story-content a {
     text-decoration: underline;
     color: #fff; }
+
+.resgister {
+  padding-top: 20px; }
+  .resgister .keyword {
+    font-size: 14px;
+    font-weight: 100; }
+  .resgister .button-resgister {
+    font-size: 18px;
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 4px; }
+  .resgister .highlight {
+    font-weight: bold;
+    color: #ff5c5c; }
 
 /*# sourceMappingURL=style.css.map */
