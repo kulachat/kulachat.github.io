@@ -11,10 +11,21 @@ body {
   font-size: 17px;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
+  background-color: #f8f9fa;
+}
+
+#header {
+  background-color: #fff;
+  position: fixed;
+  height: 64px;
+  left: 0;
+  top: 0;
+  right: 0;
 }
 
 .info-featured {
   color: #fff;
+  // padding-top: 64px;
   @include media (largescreen) {
   }
 
@@ -29,7 +40,7 @@ body {
     font-size: 64px;
     font-weight: bold;
     color: #fff;
-    margin-bottom: 0px;
+    margin-bottom: 8px;
   }
 
   .info-description {
@@ -48,7 +59,7 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin: 80px 0;
+  margin: 80px 0 40px;
 }
 
 .column-figure {
@@ -109,7 +120,7 @@ body {
   .button-resgister {
     font-size: 18px;
     display: inline-block;
-    padding: 8px 16px;
+    padding: 8px 20px;
     border: 1px solid #fff;
     color: #fff;
     border-radius: 4px;
@@ -119,4 +130,31 @@ body {
     font-weight: bold;
     color: #ff5c5c;
   }
+}
+
+// --------------------------- card-content
+.card-content {
+  background-color: #fff;
+  padding: 40px 30px 60px;
+  margin-bottom: 40px;
+  position: relative;
+  height: 100%;
+
+  p:last-of-type {
+    height: 20px;
+    margin: 0;
+    position: absolute;
+    bottom: 30px;
+  }
+}
+
+.title-section {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.sub-title {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 32px;
 }
