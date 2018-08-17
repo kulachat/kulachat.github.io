@@ -113,7 +113,7 @@ sup,sub{vertical-align:baseline;position:relative;top:-.4em;font-size:86%;}
 sub{top:.4em;}small{font-size:86%;}
 kbd{font-size:80%;border:1px solid #b4babe;padding:2px 5px;border-bottom-width:2px;}
 mark{background-color:#F5F5F5;color:#182025;}
-p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:1.5em 0;}
+p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:0 0 1.5em 0;}
 hr{height:1px;border:none;background-color:#222;}
 
 /* Heading */
@@ -291,8 +291,8 @@ a.home-link {display:none;}
 
 .into-section h1 {
   font-family: &#39;Poppins&#39;, sans-serif;
-  font-size: 42px;
-  line-height: 54px;
+  font-size: 48px;
+  line-height: 60px;
   font-weight: 600;
   margin-bottom: 24px;
   max-width: 440px;
@@ -331,7 +331,7 @@ a.home-link {display:none;}
   list-style: none;
   float: right;
   padding: 0;
-  margin: 0;
+  margin: 0 -1.5em  0;
   display: flex;
 }
 
@@ -346,7 +346,7 @@ a.home-link {display:none;}
   border: none;
   color: #231F20;
   transition: color .2s linear;
-  font-family: &#39;Prompt&#39;, sans-serif;
+  font-family:&#39;Poppins&#39;, sans-serif;
 }
 #navigation ul li a:hover { opacity: .8;}
 #themenu {
@@ -373,7 +373,7 @@ margin:0 0 11px 0;
 }
 .post-container {
   padding:0;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 .post-body{line-height:1.7em;}
 .date-outer { padding-top: 1rem;}
@@ -392,7 +392,7 @@ margin:0 0 11px 0;
 
 h2.post-title, h1.post-title {
   font-size: 18px;
-  font-family: &#39;Prompt&#39;, sans-serif;
+  font-family: &#39;Poppins&#39;,&#39;Prompt&#39;, sans-serif;
 }
 h2.post-title a, h1.post-title a {color:#222;}
 h2.post-title a:hover, 
@@ -500,7 +500,7 @@ ul#share-menu{margin:10px 0;padding:5px 15px}
   margin:20px 0 15px;
 }
 .related-post h4 {
-  font-family:'Poppins', sans-serif;
+  font-family:&#39;Poppins&#39;, sans-serif;
   font-size:18px;
   font-weight:bold;
   padding:20px 0;
@@ -948,10 +948,10 @@ h2.post-title, h1.post-title {
 .cover-photo {display:none;}
 .post-container { padding: 0;}
 h2.post-title, h1.post-title {
-  font-size: 36px;
+  font-size: 48px;
   margin: 0;
   text-transform: capitalize;
-  line-height: normal;
+  line-height: 1.2;
 }
 .post {
   float:none;
@@ -963,11 +963,19 @@ h2.post-title, h1.post-title {
   border: none;
   box-shadow: none;
 }
-.article-content { max-width: 780px; margin: auto;}
+.article-content { max-width: 860px; margin: auto;}
 .article-content h2,
 .article-content h3,
 .article-content h4,
-.article-content h5 { font-family:&#39;Prompt&#39;, sans-serif !important; font-size: 18px !important; font-weight: bold !important;}
+.article-content h5 { 
+ font-family:&#39;Prompt&#39;, sans-serif !important; 
+ font-size: 24px !important; 
+ font-weight: bold !important; 
+ margin: 38px 0 8px;
+ color: #222;
+ }
+
+ .article-content .entry-content { color: #444;}
 .pagenavi {display:none;}
 .hero-content { padding-right: 320px;}
 .section-content {
@@ -1149,10 +1157,10 @@ user is not using shrink to fit then we expand the header.
 <div class='col-md-10 ml-auto text-right d-none d-md-block'>
   <nav id='navigation' role='navigation'>
     <ul class='main-nav'>
-      <li><a href='#'>ผลงาน</a></li>
-      <li><a href='#'>โครงการ</a></li>
-      <li><a href='#'>เว&#3636;ร&#3660;คช&#3655;อป</a></li>
-      <li><a href='#'>ต&#3636;ดต&#3656;อ</a></li>
+      <li><a href='#'>Design</a></li>
+      <li><a href='#'>Collaboration</a></li>
+      <li><a href='#'>Contribute</a></li>
+      <li><a href='#'>About</a></li>
     </ul>
   </nav>
 </div>
@@ -1189,7 +1197,7 @@ user is not using shrink to fit then we expand the header.
           <p class='into-des'>ผมสนใจงานออกแบบท&#3637;&#3656;ม&#3640;&#3656;งเน&#3657;นเพ&#3639;&#3656;อแก&#3657;ไขป&#3633;ญหาของผ&#3641;&#3657;คนในส&#3633;งคมในวงกว&#3657;าง การสร&#3657;างสรรค&#3660;ใหม&#3656;ๆ เพ&#3639;&#3656;อส&#3656;งมอบประสบการณ&#3660;ท&#3637;&#3656;ด&#3637;ให&#3657;ก&#3633;บผ&#3641;&#3657;คนและช&#3640;มชน</p>
         </div>
         <div class='col-md-7'>
-          <img src="https://2.bp.blogspot.com/-X1_wLLx0z38/W2Hj8Vwf1ZI/AAAAAAAAVUg/LMYxETG1axA4BbciE2YI90SH5B-i4KlrwCLcBGAs/s1600/Creative-Content.png" alt="designer for human"/>
+          <img alt='designer for human' src='https://2.bp.blogspot.com/-X1_wLLx0z38/W2Hj8Vwf1ZI/AAAAAAAAVUg/LMYxETG1axA4BbciE2YI90SH5B-i4KlrwCLcBGAs/s1600/Creative-Content.png'/>
         </div>
       </div>
     </section>
@@ -2250,28 +2258,6 @@ this way you can track your subscriptions -->
 
     <!-- Related Components -->
     <!-- Related Post Start -->
-    <aside>
-      <div class='related-post' id='related-post'/>
-      <script type='text/javascript'>
-      var labelArray = [<b:if cond='data:post.labels'><b:loop values='data:post.labels' var='label'>
-      &quot;<data:label.name/>&quot;<b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if></b:loop></b:if>];
-      var relatedPostConfig = {
-      homePage: &quot;<data:blog.homepageUrl/>&quot;,
-      widgetTitle: &quot;&lt;h4&gt;Related &lt;/h4&gt;&quot;,
-      numPosts: 5,
-      summaryLength: 89,
-      titleLength: &quot;auto&quot;,
-      thumbnailSize: 320,
-      noImage: &quot;https://1.bp.blogspot.com/-7FOhzhrIbUI/V5fpKSCZjjI/AAAAAAAAA98/V83I3iYDeDE/s000/no-image.png&quot;,
-      containerId: &quot;related-post&quot;,
-      newTabLink: false,
-      moreText: &quot;&quot;,
-      widgetStyle: 2,
-      callBack: function() {}
-      };
-      </script>
-      <!-- Related Post End -->
-    </aside>
   </article>
   <!--  END article-->
 </b:includable>
