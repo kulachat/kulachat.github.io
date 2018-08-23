@@ -975,7 +975,7 @@ h2.post-title, h1.post-title {
  color: #222;
  }
 
- .article-content .entry-content { color: #444;}
+ .article-content .entry-content { color: #333;}
 .pagenavi {display:none;}
 .hero-content { padding-right: 320px;}
 .section-content {
