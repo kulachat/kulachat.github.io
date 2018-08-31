@@ -102,8 +102,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 strong,b{font-weight:bold;padding: 0;-webkit-transition: color 0.2s;transition: color 0.2s;}
 strong,b:hover{color:#333;left:-0.1em;content: '[';-webkit-transform: translateX(-100%);transform: translateX(-100%);}
 cite,em,i{font-style:italic;}
-a:link{color:#3498DB;text-decoration:none;transition:all 0.25s;}
-a:visited{color:#3498DB;text-decoration:none;}
+a:link{color:#ff0200;text-decoration:none;transition:all 0.25s;}
+a:visited{color:#ff0200;text-decoration:none;}
 a:link:hover{color:#333;text-decoration:none;}
 a:visited:hover{color:#111;text-decoration:none;}
 a img{border:none;border-width:0;outline:none;}
@@ -114,7 +114,7 @@ sub{top:.4em;}small{font-size:86%;}
 kbd{font-size:80%;border:1px solid #b4babe;padding:2px 5px;border-bottom-width:2px;}
 mark{background-color:#F5F5F5;color:#182025;}
 p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:0 0 1.5em 0;}
-hr{height:1px;border:none;background-color:#222;}
+hr{height:1px;border:none;background-color:#000;}
 
 /* Heading */
 h1,h2,h3,h4,h5,h6{
@@ -144,7 +144,7 @@ dd{margin:0 0 .5em 2em}
 
 /* Blockquote */
 blockquote {
-border-left:3px solid #222;
+border-left:3px solid #000;
 border-top:1px solid #EEE;
 border-right:1px solid #EEE;
 border-bottom:1px solid #EEE;
@@ -177,7 +177,7 @@ table.tr-caption-container{padding:1px;margin-bottom:.5em}
 td.tr-caption{font-size:87%}
 
 /* Body */
-body{background:#FFF;margin:0;padding:0;color:#222;text-align:left;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:18px; line-height: 1.62;}
+body{background:#FFF;margin:0;padding:0;color:#000;text-align:left;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:18px; line-height: 1.62;}
 body, input, textarea, select, button {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -207,9 +207,10 @@ a.home-link {display:none;}
 .post-thumbnail{
   position: relative;
   overflow: hidden;
+  height: 240px;
   width: 100%;
-  height: auto;
-  background-color: #222;
+  object-fit: cover;
+  background-color: #000;
 }
 
 .post-thumbnail:hover{opacity:0.9;}
@@ -234,7 +235,6 @@ a.home-link {display:none;}
 
 .into-des {
   font-size: 16px;
-  max-width: 80%;
 }
 
 .into-section {
@@ -291,8 +291,8 @@ a.home-link {display:none;}
 
 .into-section h1 {
   font-family: &#39;Poppins&#39;, sans-serif;
-  font-size: 48px;
-  line-height: 60px;
+  font-size: 60px;
+  line-height: 72px;
   font-weight: 600;
   margin-bottom: 24px;
   max-width: 440px;
@@ -550,6 +550,7 @@ ul#share-menu{margin:10px 0;padding:5px 15px}
   margin:18px 0 0 0;
   display: none;
 }
+
 #subscribe-box h4{font-size:16px;margin:0 0 15px 0;color:#444;text-transform:uppercase}
 #subscribe-box p{font-size:14px;color:#666;margin:0 0 9px 0;padding:0}
 #subscribe-box .emailfield{margin:auto}
@@ -557,6 +558,42 @@ ul#share-menu{margin:10px 0;padding:5px 15px}
 #subscribe-box .emailfield input:focus{color:#555;outline:none;border:1px solid #DDD;}
 #subscribe-box .emailfield .submitbutton{background:#222;color:#fff;display:inline-block;margin:0 0 0 5px;width:100%;max-width:20%;font-size:16px;font-weight:bold;letter-spacing:.5px;padding:11px;border:0;}
 #subscribe-box .emailfield .submitbutton:active,#subscribe-box .emailfield .submitbutton:hover{background:#256B99;transition:all .3s;cursor:pointer;}
+
+/* Author Profile */
+#author-profile {
+    border-top: .0625rem solid rgba(0,0,0,.2);
+    display: -ms-flexbox;
+    display: flex;
+    padding: 2.5rem 0 4rem;
+    align-items: flex-start;
+}
+
+#author-profile .author-profile__info {
+  flex-basis: 80%;
+}
+
+#author-profile .profile__name {
+  font-size: 20px;
+  margin: 0 0 15px;
+}
+
+#author-profile .profile__title {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 300;
+}
+
+#author-profile .author-profile_avatar {
+  text-align: right;
+  flex-basis: 20%;
+}
+
+#author-profile .author-profile_avatar img {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
 
 /* Page Navigation */
 .pagenavi{ clear:both;padding:10px;margin:20px 0 10px 12px;text-align:center;font:bold 13px Arial;color:#444!important;text-transform:uppercase;max-width:1006px;width:100%;}
@@ -570,7 +607,7 @@ span.showdates{font:bold 13px Arial;margin:10px 0 0}
 /* Footer */
 #footer-wrapper {
   margin-bottom:5px;
-  background-color:#262c30;
+  background-color:#111;
   margin:0 auto;
   padding:80px 0;
   overflow:hidden;
@@ -595,7 +632,7 @@ span.showdates{font:bold 13px Arial;margin:10px 0 0}
 }
 
 .outs {
-  background-color:#262c30;
+  background-color:#111;
 }
 .st-text {text-align:left;margin:10px;}
 .nd-text {text-align:left;margin:10px;}
@@ -891,7 +928,7 @@ loadCSS("https://fonts.googleapis.com/css?family=Prompt");loadCSS("https://fonts
 <style type='text/css'>
 .post-body{ font-size:13px;font-family:&#39;Roboto&#39;,Open Sans,Arial,sans-serif;}
 .link-thumbnail {
-  background-color: #222;
+  background-color: #000;
   display: block;
   height: 240px;
   overflow: hidden;
@@ -948,10 +985,10 @@ h2.post-title, h1.post-title {
 .cover-photo {display:none;}
 .post-container { padding: 0;}
 h2.post-title, h1.post-title {
-  font-size: 48px;
-  margin: 0;
+  font-size: 60px;
+  margin: 0 0 1rem;
   text-transform: capitalize;
-  line-height: 1.2;
+  line-height: 120%;
 }
 .post {
   float:none;
@@ -968,14 +1005,14 @@ h2.post-title, h1.post-title {
 .article-content h3,
 .article-content h4,
 .article-content h5 { 
- font-family:&#39;Prompt&#39;, sans-serif !important; 
- font-size: 24px !important; 
- font-weight: bold !important; 
+ font-family:&#39;Prompt&#39;, sans-serif; 
+ font-size: 24px; 
+ font-weight: bold; 
  margin: 38px 0 8px;
- color: #222;
+ color: #000;
  }
 
- .article-content .entry-content { color: #333;}
+ .article-content .entry-content { color: #222;}
 .pagenavi {display:none;}
 .hero-content { padding-right: 320px;}
 .section-content {
@@ -1191,13 +1228,13 @@ user is not using shrink to fit then we expand the header.
   <div class='into-cover'>
     <section class='into-section container'>
       <div class='row'>
-        <div class='col-md-5'>
+        <div class='col-md-6'>
           <span class='label-heading'>designer for human</span>
           <h1 role='heading'>Design Collaboration Contribute</h1>
           <p class='into-des'>ผมสนใจงานออกแบบท&#3637;&#3656;ม&#3640;&#3656;งเน&#3657;นเพ&#3639;&#3656;อแก&#3657;ไขป&#3633;ญหาของผ&#3641;&#3657;คนในส&#3633;งคมในวงกว&#3657;าง การสร&#3657;างสรรค&#3660;ใหม&#3656;ๆ เพ&#3639;&#3656;อส&#3656;งมอบประสบการณ&#3660;ท&#3637;&#3656;ด&#3637;ให&#3657;ก&#3633;บผ&#3641;&#3657;คนและช&#3640;มชน</p>
         </div>
-        <div class='col-md-7'>
-          <img alt='designer for human' src='https://2.bp.blogspot.com/-X1_wLLx0z38/W2Hj8Vwf1ZI/AAAAAAAAVUg/LMYxETG1axA4BbciE2YI90SH5B-i4KlrwCLcBGAs/s1600/Creative-Content.png'/>
+        <div class='col-md-6'>
+          <img alt='designer for human' src='https://1.bp.blogspot.com/-aKdhXacaeYk/W4e-AIdX2UI/AAAAAAAAVfg/q2NWT0ZlVkIKcZLU5WxQPWLUTTIgeUD8QCLcBGAs/s1600/Pattern.png'/>
         </div>
       </div>
     </section>
@@ -2047,6 +2084,7 @@ function pageNavi(o){var m=location.href,l=m.indexOf("/search/label/")!=-1,a=l?m
 <b:else/><data:post.body/></b:if><b:else/><data:post.body/>
 <!-- Banner Ads Footer Article Page  -->
 <br/>
+
 <div id='banner-ads-footer-article'>
   <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
   <!-- Dynamic Ads -->
@@ -2079,6 +2117,15 @@ function pinIt(){var t=document.createElement("script");t.setAttribute("type","t
 //]]>
 </script>
 <!-- Share Button End -->
+<div id='author-profile'>
+  <div class='author-profile__info'>
+  <h2 class='profile__name'>กุลชาติ เค้นา</h2>
+  <h3 class='profile__title'>ลูกชาวนาที่พยายามเรียนรู้และพัฒนาตนเองให้ก้าวทันโลกของเทคโนโลยี เขาหวังว่าสักวันหนึ่งจะต้องเอาความรู้และประสบการณ์กลับไปพัฒนาบ้านเกิดของตนเอง เขาชอบเขียน HTML/CSS สนใจงานด้าน User Experience และยังสนใจแนวทางการทำงานร่วมกันกับคนอื่นเป็นพิเศษ</h3>
+  </div>
+  <div class='author-profile_avatar'>
+    <img src='https://avatars0.githubusercontent.com/u/12696114' alt="kulachat Kena: Product Designer" />
+  </div>
+</div>
 <!-- Subscribe Box Start -->
 <div id='subscribe-box'>
 <h4>Subscribe by Email</h4>
