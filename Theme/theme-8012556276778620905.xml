@@ -373,15 +373,17 @@ margin:0 0 11px 0;
 }
 .post-container {
   padding:0;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .post-body{line-height:1.7em;}
 .date-outer { padding-top: 1rem;}
 .blog-posts .title-section {
-  margin-top: 2rem;
-  text-transform: uppercase;
+  margin: 0 0 2rem 0;
   letter-spacing: 4px;
+  font-size: 36px;
   font-family: &#39;Poppins&#39;, sans-serif;
+  border-top: 1px solid #d7d7d7;
+  padding-top: 2rem;
 }
 .post {
   float:left;
@@ -565,7 +567,7 @@ ul#share-menu{margin:10px 0;padding:5px 15px}
     display: -ms-flexbox;
     display: flex;
     padding: 2.5rem 0 4rem;
-    align-items: flex-start;
+    justify-content: space-between;
 }
 
 #author-profile .author-profile__info {
@@ -586,21 +588,32 @@ ul#share-menu{margin:10px 0;padding:5px 15px}
 
 #author-profile .author-profile_avatar {
   text-align: right;
-  flex-basis: 20%;
 }
 
 #author-profile .author-profile_avatar img {
-  height: 100px;
-  width: 100px;
+  height: 5rem;
+  width: 5rem;
   border-radius: 100%;
 }
 
 /* Page Navigation */
-.pagenavi{ clear:both;padding:10px;margin:20px 0 10px 12px;text-align:center;font:bold 13px Arial;color:#444!important;text-transform:uppercase;max-width:1006px;width:100%;}
-.pagenavi span,.pagenavi a{padding:5px 10px;margin-right:3px;display:inline-block;color:#444;background-color:#EEE;border:1px solid #EEE}
+.pagenavi{ 
+ clear:both;
+ padding: 2rem 0 1.5rem 0;
+ font:bold 13px Arial;
+ color:#444!important;
+ text-transform:uppercase;
+
+ width:100%;
+ }
+.pagenavi span,.pagenavi a {padding:5px 10px;margin-right:3px;display:inline-block;color:#444;background-color:#EEE;border:1px solid #EEE}
 .pagenavi a:hover{background-color:#DDD;border:1px solid #DDD;color:#444 !important}
 .pagenavi .current{color:#444!important;border:1px solid #333;font:bold 13px Arial;}
-.pagenavi .current,.pagenavi .pages{background-color:#3498DB;color:#FFF!important;border:1px solid #3498DB;font:bold 13px Arial;}
+.pagenavi .current,.pagenavi .pages{
+  background-color:#ff0200;
+  color:#FFF!important;
+  border: none;
+  }
 .pagenavi .pages {display:none}
 span.showdates{font:bold 13px Arial;margin:10px 0 0}
 
@@ -985,7 +998,7 @@ h2.post-title, h1.post-title {
 .cover-photo {display:none;}
 .post-container { padding: 0;}
 h2.post-title, h1.post-title {
-  font-size: 60px;
+  font-size: 58px;
   margin: 0 0 1rem;
   text-transform: capitalize;
   line-height: 120%;
@@ -1232,9 +1245,16 @@ user is not using shrink to fit then we expand the header.
           <span class='label-heading'>designer for human</span>
           <h1 role='heading'>Design Collaboration Contribute</h1>
           <p class='into-des'>ผมสนใจงานออกแบบท&#3637;&#3656;ม&#3640;&#3656;งเน&#3657;นเพ&#3639;&#3656;อแก&#3657;ไขป&#3633;ญหาของผ&#3641;&#3657;คนในส&#3633;งคมในวงกว&#3657;าง การสร&#3657;างสรรค&#3660;ใหม&#3656;ๆ เพ&#3639;&#3656;อส&#3656;งมอบประสบการณ&#3660;ท&#3637;&#3656;ด&#3637;ให&#3657;ก&#3633;บผ&#3641;&#3657;คนและช&#3640;มชน</p>
+          <p class='into-des'>
+          <b>CLIENTS &amp; CUSTOMERS</b> <br/>
+          UN, ESCAP, odd-e Japan, SANSIRI, Intel, Hero Digital, Western Digital (WD)
+          </p>
+          <p class="into-des">
+            See my design process on <a href="https://dribbble.com/kena" title="Kena on Dribbble"> Dribbble </a>  and code on <a href="https://kulachat.github.io/" title="Kulachat Kena On Github"> Github </a>
+          </p>
         </div>
         <div class='col-md-6'>
-          <img alt='designer for human' src='https://1.bp.blogspot.com/-aKdhXacaeYk/W4e-AIdX2UI/AAAAAAAAVfg/q2NWT0ZlVkIKcZLU5WxQPWLUTTIgeUD8QCLcBGAs/s1600/Pattern.png'/>
+          <img alt='Mobile Application' src='https://4.bp.blogspot.com/-YaSL-99UOxU/W5I3--OkqkI/AAAAAAAAVjg/gC3t9GR1tLQVFgF9RQccFVdNMLGIw3j6gCLcBGAs/s1600/Mobile-Application.png'/>
         </div>
       </div>
     </section>
@@ -1284,7 +1304,7 @@ user is not using shrink to fit then we expand the header.
     <!-- posts -->
     <div class='blog-posts hfeed'>
       <b:if cond='data:blog.url == data:blog.homepageUrl'>
-        <h2 class='title-section text-center d-none'>Perspective</h2>
+        <h2 class='title-section'>All Stories</h2>
       </b:if>
       <b:include data='top' name='status-message'/>
 
@@ -1952,23 +1972,15 @@ function pageNavi(o){var m=location.href,l=m.indexOf("/search/label/")!=-1,a=l?m
     <b:includable id='post' var='post'>
   <article class='post hentry'>
     <div class='article-content'>
-    <b:if cond='data:post.firstImageUrl'>
-      <div itemprop='image' itemscope='' itemtype='https://schema.org/ImageObject'>
-        <meta expr:content='data:post.firstImageUrl' itemprop='url'/>
-        <img alt='thumbnail' class='cover-photo' expr:src='data:post.firstImageUrl'/>
-      </div>
-      </b:if>
-                  <!-- <meta expr:content='data:blog.blogId' itemprop='blogId'/> -->
-                  <!-- <meta expr:content='data:post.id' itemprop='postId'/> -->
-                  <b:if cond='data:post.thumbnailUrl'>
-                    <a class='link-thumbnail' expr:href='data:post.url'>
-                      <img alt='thumbnail' class='post-thumbnail' expr:src='data:post.thumbnailUrl'/>
-                    </a>
-                    <b:else/>
-                    <a expr:href='data:post.url'>
-                      <img alt='thumbnail' class='post-thumbnail' src='https://3.bp.blogspot.com/-vtmkBJFYAKQ/V5fpKZRyRVI/AAAAAAAAA94/rl0A4UPccDM/s000/default.png'/>
-                    </a>
-                  </b:if>
+            <b:if cond='data:post.thumbnailUrl'>
+              <a class='link-thumbnail' expr:href='data:post.url'>
+                <img alt='thumbnail' class='post-thumbnail' expr:src='data:post.thumbnailUrl'/>
+              </a>
+              <b:else/>
+              <a expr:href='data:post.url'>
+                <img alt='thumbnail' class='post-thumbnail' src='https://3.bp.blogspot.com/-vtmkBJFYAKQ/V5fpKZRyRVI/AAAAAAAAA94/rl0A4UPccDM/s000/default.png'/>
+              </a>
+              </b:if>
                   <b:if cond='data:post.title'>
                     <b:if cond='data:blog.pageType != &quot;item&quot;'>
                       <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
@@ -2085,7 +2097,7 @@ function pageNavi(o){var m=location.href,l=m.indexOf("/search/label/")!=-1,a=l?m
 <!-- Banner Ads Footer Article Page  -->
 <br/>
 
-<div id='banner-ads-footer-article'>
+<div id='banner-ads-footer-article' style='display: none;'>
   <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
   <!-- Dynamic Ads -->
   <ins class='adsbygoogle' data-ad-client='ca-pub-2505815349714761' data-ad-format='auto' data-ad-slot='4008460309' style='display:block'/>
