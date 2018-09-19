@@ -207,7 +207,7 @@ a.home-link {display:none;}
 .post-thumbnail{
   position: relative;
   overflow: hidden;
-  height: 240px;
+  height: 100px;
   width: 100%;
   object-fit: cover;
   background-color: #000;
@@ -231,7 +231,7 @@ a.home-link {display:none;}
   display: none;
 }
 
-.into-cover {}
+.pagenavi { display: none; }
 
 .into-des {
   font-size: 16px;
@@ -383,28 +383,35 @@ margin:0 0 11px 0;
   font-size: 36px;
   font-family: &#39;Poppins&#39;, sans-serif;
   border-top: 1px solid #d7d7d7;
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
+
 .post {
   float:left;
   width:100%;
-  height:328px;
   background:#FFF;
+}
+
+.post > .article-content {
+    display: flex;
+    padding: 30px 0;
+    border-bottom: 1px solid #d7d7d7;
+    overflow: hidden;
 }
 
 h2.post-title, h1.post-title {
   font-size: 18px;
   font-family: &#39;Poppins&#39;,&#39;Prompt&#39;, sans-serif;
 }
-h2.post-title a, h1.post-title a {color:#222;}
+h2.post-title a, h1.post-title a {color:#000;}
 h2.post-title a:hover, 
 h1.post-title a:hover {color:#45484c;text-decoration:none;}
 
 /* Post Info */
-.post-info {background:transparent;margin:0 0 20px;color:#555;font-size:14px;}
+.post-info {background:transparent;margin:0 0 20px;color:#555;font-size:14px; position: static;}
 .post-info a {color:#555;}
 .post-info a:hover {color:#333;}
-.author-info, .time-info, .comment-info { margin-right:10px;display:inline; fonts-size: 15px;}
+.author-info, .time-info, .comment-info { margin-right:10px;display:inline; font-size: 15px;}
 .author-info:before{content:&quot;\f007&quot;;font-family:FontAwesome;font-size:11px;font-weight:normal;color:#888;}
 <!-- .time-info:before{content:&quot;\f133&quot;;font-family:FontAwesome;font-size:11px;font-weight:normal;color:#888;} -->
 .comment-info:before{content:&quot;\f086&quot;;font-family:FontAwesome;font-size:11px;font-weight:normal;color:#888;}
@@ -603,7 +610,6 @@ ul#share-menu{margin:10px 0;padding:5px 15px}
  font:bold 13px Arial;
  color:#444!important;
  text-transform:uppercase;
-
  width:100%;
  }
 .pagenavi span,.pagenavi a {padding:5px 10px;margin-right:3px;display:inline-block;color:#444;background-color:#EEE;border:1px solid #EEE}
@@ -620,11 +626,11 @@ span.showdates{font:bold 13px Arial;margin:10px 0 0}
 /* Footer */
 #footer-wrapper {
   margin-bottom:5px;
-  background-color:#111;
   margin:0 auto;
-  padding:80px 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   overflow:hidden;
-  color:#eee;
+  color:#5f6368;
   font-weight:normal;
   font-size:16px;
   font-family:&#39;Roboto&#39;,Open Sans,Arial,sans-serif;
@@ -636,25 +642,27 @@ span.showdates{font:bold 13px Arial;margin:10px 0 0}
 }
 
 #footer-info .title-footer {
-  font-size: 11px;
+  color: #000;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #AAB2BD;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
 .outs {
-  background-color:#111;
+  background-color:#f8f9fa;
+  margin-top: 5rem;
 }
+
 .st-text {text-align:left;margin:10px;}
 .nd-text {text-align:left;margin:10px;}
 #footer-wrapper a {
-  color:#eee;
+  color:#5f6368;
   font-weight:normal;
   font-family:&#39;Roboto&#39;,Open Sans,Arial,sans-serif;
 }
-#footer-wrapper a:hover {color:#ddd;text-decoration:none;}
+#footer-wrapper a:hover {color:#000;text-decoration:none;}
 .socialmedia{text-align:left;float:right;margin-right:10px;}
 .footersocial a{display:inline-block;text-align:center;margin-top:10px;margin-right:5px;color:#FFF !important;border-radius:30px;}
 .footersocial a i{font-family:FontAwesome;width:32px;height:32px;line-height:32px;display:block}
@@ -755,7 +763,7 @@ display:inline-block;position:absolute;right:15px;top:25%;line-height:30px;}
         font-size: 18px !important;
         line-height: 20px;
         text-align: left !important;
-        padding: 16px;
+        padding: 16px 0;
     }
      #outer-wrapper {
         padding:0;
@@ -793,8 +801,9 @@ display:inline-block;position:absolute;right:15px;top:25%;line-height:30px;}
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      height: 100px !important;
-      margin: 0 0 8px 0!important;
+      height: 88px !important;
+      width: 120px !important;
+      margin: 0 0 0 20px!important;
     }
     .post-thumbnail {
       object-fit: cover;
@@ -936,14 +945,13 @@ loadCSS("https://fonts.googleapis.com/css?family=Prompt");loadCSS("https://fonts
 </style>
 </b:if>
 
-<!-- CSS Homepage  -->
+<!-- Custom CSS Homepage  -->
 <b:if cond='data:blog.url == data:blog.homepageUrl'>
 <style type='text/css'>
 .post-body{ font-size:13px;font-family:&#39;Roboto&#39;,Open Sans,Arial,sans-serif;}
 .link-thumbnail {
   background-color: #000;
   display: block;
-  height: 240px;
   overflow: hidden;
   margin-bottom: 15px;
 }
@@ -955,8 +963,36 @@ loadCSS("https://fonts.googleapis.com/css?family=Prompt");loadCSS("https://fonts
   right: 0;
 }
 
-.cover-photo,
-.post-info { display: none !important;}
+<!-- Flex -->
+.article-content {
+  display: flex;
+  padding: 30px 0;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.link-thumbnail {
+  height: 100px;
+  overflow: hidden;
+  width: 188px;
+  order: 2;
+  justify-content: center;
+  margin: 0;
+}
+
+h2.post-title, h1.post-title {
+  font-size: 28px;
+  font-family: 'Poppins','Prompt', sans-serif;
+  flex: 1;
+  margin: 30px 0 0 0;
+  order: 1;
+  font-weight: 500;
+}
+
+.post-info { 
+  position: absolute;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
 </style>
 </b:if>
 
@@ -978,30 +1014,24 @@ loadCSS("https://fonts.googleapis.com/css?family=Prompt");loadCSS("https://fonts
   box-sizing: border-box;
 }
 
-h2.post-title, h1.post-title {
-  font-size:17.5px;
-  padding:5px 0 14px 0;
-  margin-bottom:12px;
-  text-align:center;
-  text-transform:uppercase;
-}
 .pagenavi,
 #sidebar-wrapper {
   display:none !important;
 }
 </style>
 </b:if>
-<!-- 001 CSS Article Page  -->
+<!-- Custom Article Page  -->
 <b:if cond='data:blog.pageType == &quot;item&quot;'>
 <style type='text/css'>
 .post-thumbnail,
 .cover-photo {display:none;}
-.post-container { padding: 0;}
+.post-container { padding: 0; margin-top: 4rem;}
 h2.post-title, h1.post-title {
-  font-size: 58px;
+  font-size: 56px;
+  font-weight: 500;
   margin: 0 0 1rem;
   text-transform: capitalize;
-  line-height: 120%;
+  line-height: 1.17857;
 }
 .post {
   float:none;
@@ -1013,7 +1043,11 @@ h2.post-title, h1.post-title {
   border: none;
   box-shadow: none;
 }
-.article-content { max-width: 860px; margin: auto;}
+.article-content { 
+  max-width: 860px; margin: auto;
+  display: block !important;
+  border: none !important;
+}
 .article-content h2,
 .article-content h3,
 .article-content h4,
@@ -1322,7 +1356,7 @@ user is not using shrink to fit then we expand the header.
         <!-- <b:if cond='data:post.isDateStart'>
           &lt;div class=&quot;date-posts row&quot;&gt;
         </b:if> -->
-          <div class='post-outer col-md-4'>
+          <div class='post-outer col-md-12'>
             <b:include data='post' name='post'/>
           </div>
         </b:loop>
@@ -2606,26 +2640,26 @@ this way you can track your subscriptions -->
 <div class='outs'>
 <footer class='container' id='footer-wrapper'>
 <div class='row' id='footer-info'>
-  <div class='col-md-5'>
-    <h3 class='title-footer'>ABOUT</h3>
+  <div class='col-md-5 d-none'>
+    <h3 class='title-footer'>About</h3>
     <p>Front-End UI/UX Freelance/Contract ผมเคยทำงานร&#3656;วมก&#3633;บองค&#3660;กรท&#3640;กขนาด ต&#3633;&#3657;งแต&#3656;กระบวนการเร&#3636;&#3656;มต&#3657;นไปจนถ&#3638;งเป&#3636;ดต&#3633;วโปรด&#3633;กส&#3660; ท&#3633;&#3657;งองค&#3660;กรระด&#3633;บนานาชาต&#3636;ไปจนถ&#3638;งแบรนด&#3660;ช&#3633;&#3657;นนำในภาคเอกชนภาคร&#3633;ฐและภาคส&#3633;งคม</p>
   </div>
-  <div class='col-md-3'>
+  <div class='col-md-3 d-none'>
     <h3 class='title-footer'>CLIENTS &amp; CUSTOMERS </h3>
     <p>UN, ESCAP, odd-e Japan, SANSIRI, Intel, Hero Digital, Western Digital (WD)</p>
   </div>
-  <div class='col-md-4'>
+  <div class='col-md-4 d-none'>
     <h3 class='title-footer'>Availability</h3>
     <p>
       ขณะน&#3637;&#3657;ผมกำล&#3633;งทำโครงการพ&#3633;ฒนา UX/UI ให&#3657;ก&#3633;บบร&#3636;ษ&#3633;ทโทรคมนาคมเจ&#3657;าหน&#3638;&#3656;งในไทย ช&#3656;วง Q1 - Q3 ป&#3637; 2018
       คาดว&#3656;าจะสามารถร&#3633;บงานเพ&#3636;&#3656;มได&#3657;อ&#3637;กในเด&#3639;อนต&#3640;ลาคม
     </p>
   </div>
-  <p class='col-md-12'>
+  <div class='col-md-12'>
     <small>
       <a expr:href='data:blog.homepageUrl' rel='copyright'><data:blog.title/></a> &#169; 2016 - All Right Reserved
     </small>
-  </p>
+  </div>
 </div>
 </footer>
 </div>
@@ -2646,7 +2680,7 @@ image[i].src = image[i].src.replace(/\/s72\-c/, "/s" + size + "-c");
  image[i].height = size;
 }
 }
-resizeThumb('post-wrapper', 540);
+resizeThumb('post-wrapper', 188);
 //]]>
 </script>
 </b:if>
