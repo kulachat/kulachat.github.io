@@ -6498,9 +6498,7 @@ header {
   line-height: 1.5; }
 
 .our-service {
-  background-color: #a19f9f;
-  padding: 2rem 0;
-}
+  background-color: #a19f9f; }
 
 .project {
   background-color: #a19f9f; }
@@ -6593,16 +6591,3 @@ body {
 p {
   margin: 0; }
 
-#projects-slide {
-  min-height: 280px;
-  position: relative;
-  padding-bottom: 28px;
-  margin-bottom: 20px;
-}
-
-.projects-slide-navigate {
-  position: absolute;
-  bottom: 8px;
-  left: 10px;
-  right: 10px;
-}
