@@ -1,0 +1,165 @@
+$color-brand: #ed2024;
+$mobile:      480px;
+$tablet:      768px;
+$laptop:      992px;
+$desktop:     1200px;
+$largescreen: 1600px;
+
+@mixin media ($media) {
+  @if $media == mobile {
+    @media only screen and (min-width: $mobile) { @content; }
+  }
+  @if $media == tablet {
+    @media only screen and (min-width: $tablet) { @content; }
+  }
+  @else if $media == laptop {
+    @media only screen and (min-width: $laptop) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $desktop) { @content; }
+  }
+  @else if $media == largescreen {
+    @media only screen and (min-width: $largescreen) { @content; }
+  }
+}
+
+
+// product page
+.product-page {
+  .breadcrumb-product {
+    > * {
+      display: inline-block;
+      margin: 1rem 1.5rem 0 0;
+    }
+    a {
+      color: $color-brand;
+    }
+  }
+
+  .main-content {
+    @include media(tablet) {
+      padding-right: 2.5rem;
+    }
+  }
+
+  .content {
+    color: #fff;
+    line-height: 1.4;
+    padding-top: 3rem;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .title-content {
+    margin-top: 2rem;
+    color: #ff0000;
+  }
+
+  .excellent-properties {
+    list-style-type: none;
+    padding: 20px 0 0;
+    margin: 0;
+
+    > li {
+      margin-bottom: 5px;
+      overflow: hidden;
+    }
+
+    .thumbnail {
+      float: left;
+      overflow: hidden;
+      width: 80px;
+    }
+
+    .content-list {
+      padding-left: 90px;
+    }
+
+    h4 {
+      font-size: 16px;
+      color: #3F4D50;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+
+  #aside-content {
+    .title-content {
+      margin-top: 3rem;
+    }
+  }
+}
+
+// ================== Component Contract
+.main-contact {
+  background-color: #cdcccb;
+  padding: 4rem 0;
+  @include media(tablet) {
+    .col-md-6 {
+      padding: 0 3rem;
+    }
+  }
+}
+
+.component-contact {
+  background-color: $color-brand;
+  padding: 32px 22px;
+  display: inline-block;
+  width: 240px;
+  min-height: 400px;
+  position: relative;
+  color: #fff;
+  border-radius: 4px;
+  text-align: left;
+
+  > .title-contact {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .des-contact {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .contact-to-social {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    .icon-checked {
+      height: 24px;
+      margin-right: 10px;
+    }
+  }
+
+  .contact-list-condition {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: .6rem;
+    .icon-checked {
+      height: 16px;
+      margin-right: 10px;
+    }
+  }
+
+  .button-contact {
+    border: 2px solid #fff;
+    text-align: center;
+    padding: 12px 20px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 22px;
+    right: 22px;
+    bottom: 32px;
+    border-radius: 6px;
+    color: #fff;
+  }
+}
+

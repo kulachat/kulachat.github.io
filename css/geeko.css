@@ -1,0 +1,92 @@
+.product-page .breadcrumb-product > * {
+  display: inline-block;
+  margin: 1rem 1.5rem 0 0; }
+.product-page .breadcrumb-product a {
+  color: #ed2024; }
+@media only screen and (min-width: 768px) {
+  .product-page .main-content {
+    padding-right: 2.5rem; } }
+.product-page .content {
+  color: #fff;
+  line-height: 1.4;
+  padding-top: 3rem; }
+  .product-page .content img {
+    max-width: 100%; }
+.product-page .title-content {
+  margin-top: 2rem;
+  color: #ff0000; }
+.product-page .excellent-properties {
+  list-style-type: none;
+  padding: 20px 0 0;
+  margin: 0; }
+  .product-page .excellent-properties > li {
+    margin-bottom: 5px;
+    overflow: hidden; }
+  .product-page .excellent-properties .thumbnail {
+    float: left;
+    overflow: hidden;
+    width: 80px; }
+  .product-page .excellent-properties .content-list {
+    padding-left: 90px; }
+  .product-page .excellent-properties h4 {
+    font-size: 16px;
+    color: #3F4D50; }
+  .product-page .excellent-properties p {
+    font-size: 13px; }
+.product-page #aside-content .title-content {
+  margin-top: 3rem; }
+
+.main-contact {
+  background-color: #cdcccb;
+  padding: 4rem 0; }
+  @media only screen and (min-width: 768px) {
+    .main-contact .col-md-6 {
+      padding: 0 3rem; } }
+
+.component-contact {
+  background-color: #ed2024;
+  padding: 32px 22px;
+  display: inline-block;
+  width: 240px;
+  min-height: 400px;
+  position: relative;
+  color: #fff;
+  border-radius: 4px;
+  text-align: left; }
+  .component-contact > .title-contact {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 24px; }
+  .component-contact .des-contact {
+    font-size: 16px;
+    margin-bottom: 24px; }
+  .component-contact .contact-to-social {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; }
+    .component-contact .contact-to-social .icon-checked {
+      height: 24px;
+      margin-right: 10px; }
+  .component-contact .contact-list-condition {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: .6rem; }
+    .component-contact .contact-list-condition .icon-checked {
+      height: 16px;
+      margin-right: 10px; }
+  .component-contact .button-contact {
+    border: 2px solid #fff;
+    text-align: center;
+    padding: 12px 20px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 22px;
+    right: 22px;
+    bottom: 32px;
+    border-radius: 6px;
+    color: #fff; }
+
+/*# sourceMappingURL=geeko.css.map */
