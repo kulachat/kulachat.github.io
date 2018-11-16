@@ -23,6 +23,40 @@ $largescreen: 1600px;
   }
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
+
+// -------------------------------------------------------- Title 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Prompt", sans-serif;
+}
+
+.sub-title-content {
+  color: $color-brand;
+  font-size: 22px;
+}
+
+// -------------------------------------------------------- Button
+.btn-contact {
+  background-color: $color-brand;
+  text-align: center;
+  padding: 12px 20px;
+  display: inline-block;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  &:hover {
+    background-color: darken($color-brand, 10%) ;
+    color: #fff;
+  }
+}
 
 // product page
 .product-page {
@@ -163,3 +197,47 @@ $largescreen: 1600px;
   }
 }
 
+// ----------------------------- Contact
+
+.contact-info .address-list {
+  margin: 30px 0 30px 0;
+  padding: 0;
+  list-style-type: none;
+  
+  li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    word-break: break-word;
+    > a {
+      color: #fff;
+    }
+  }
+
+  li .icon {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  li .icon-pin {
+    background-image: url(../gekko/src/assets/pin.1d32f047f44a6b6c07097fb22a318203.png);
+  }
+
+  li .icon-phone {
+    background-image: url(../gekko/src/assets/phone.75e60a67f4640701faf02933a9ad006c.png);
+  }
+
+  li .icon-email {
+    background-image: url(../gekko/src/assets/email.6af368779627ce9c810349197d01167f.png);
+  }
+
+  li .icon-facebook {
+    background-image: url(../gekko/src/assets/facebook.png);
+  }
+}
