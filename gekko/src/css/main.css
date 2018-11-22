@@ -3621,6 +3621,7 @@
      white-space: nowrap;
      vertical-align: baseline;
      border-radius: 0.25rem;
+     text-transform: uppercase;
 }
  .badge:empty {
      display: none;
@@ -7415,7 +7416,7 @@
      height: 80px;
 }
  .testimonial #testimonial-slide .card-title .card-name {
-     color: #565656;
+     color: #333;
      line-height: 1.5;
      margin: 0;
 }
@@ -7426,7 +7427,7 @@
 }
  .testimonial #testimonial-slide .card-text {
      line-height: 1.5;
-     color: #737373;
+     color: #444;
 }
  .testimonial #testimonial-slide .card .line {
      width: 15%;
@@ -7627,6 +7628,8 @@
 }
  .project-item {
      margin: 0 0 20px 0;
+     border-radius: 4px;
+     overflow: hidden;
 }
  body {
      font-family: "Prompt", sans-serif;
