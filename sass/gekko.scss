@@ -42,6 +42,25 @@ h6 {
   font-size: 22px;
 }
 
+// Leanguge component
+.language-component {
+  > * {
+    font-size: 15px;
+    display: inline-block;
+    margin-left: 20px;
+    color: #ed2024;
+    font-weight: bold;
+    text-transform: uppercase;
+    &:hover {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+
+  .current-language {
+    color: #000;
+  }
+}
 // -------------------------------------------------------- Button
 .btn-contact {
   background-color: $color-brand;

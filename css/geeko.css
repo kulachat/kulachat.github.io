@@ -13,6 +13,19 @@ h6 {
   color: #ed2024;
   font-size: 22px; }
 
+.language-component > * {
+  font-size: 15px;
+  display: inline-block;
+  margin-left: 20px;
+  color: #ed2024;
+  font-weight: bold;
+  text-transform: uppercase; }
+  .language-component > *:hover {
+    color: #000;
+    text-decoration: none; }
+.language-component .current-language {
+  color: #000; }
+
 .btn-contact {
   background-color: #ed2024;
   text-align: center;
