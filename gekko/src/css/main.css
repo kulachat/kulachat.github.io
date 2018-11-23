@@ -6927,7 +6927,7 @@
      width: 100%;
 }
  header .top-navbar {
-     background-color: #a19f9f;
+     background-color: #A09E9E;
      width: 100%;
      padding: 15px 0;
      font-size: 14px;
@@ -7403,7 +7403,7 @@
      color: #fff;
 }
  .testimonial {
-     background-color: #a19f9f;
+     background-color: #A09E9E;
 }
  .testimonial #testimonial-slide .card {
      background-color: transparent;
@@ -7474,7 +7474,7 @@
     }
 }
  section .project {
-     background-color: #a19f9f;
+     background-color: #A09E9E;
 }
  section .project-item .item-description {
      padding: 15px;
@@ -7537,7 +7537,7 @@
     }
 }
  .project {
-     background-color: #a19f9f;
+     background-color: #A09E9E;
 }
  .project-title {
      background-color: #cdcccb;
@@ -7550,6 +7550,7 @@
 }
  .project-title .title {
      text-transform: uppercase;
+     margin-bottom: 0;
 }
  @media (max-width: 767.98px) {
      .project-title .title {
@@ -7557,7 +7558,7 @@
     }
 }
  .project-content {
-     background-color: #a19f9f;
+     background-color: #A09E9E;
      position: relative;
      padding: 60px 0;
 }

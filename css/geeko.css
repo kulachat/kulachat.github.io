@@ -164,4 +164,10 @@ h6 {
   .contact-info .address-list li .icon-facebook {
     background-image: url(../gekko/src/assets/facebook.png); }
 
+.section-philosophy {
+  padding: 3rem 0; }
+  .section-philosophy h3 {
+    margin-bottom: 2rem;
+    font-size: 2rem; }
+
 /*# sourceMappingURL=geeko.css.map */
