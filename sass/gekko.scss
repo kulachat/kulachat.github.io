@@ -100,6 +100,14 @@ h6 {
       overflow: hidden;
     }
 
+    .flex-thumbnail {
+      display: flex;
+      align-items: center;
+      .content-list {
+        padding-left: 20px;
+      }
+    }
+
     .thumbnail {
       float: left;
       overflow: hidden;

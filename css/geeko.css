@@ -50,6 +50,11 @@ h6 {
   .product-page .excellent-properties > li {
     margin-bottom: 5px;
     overflow: hidden; }
+  .product-page .excellent-properties .flex-thumbnail {
+    display: flex;
+    align-items: center; }
+    .product-page .excellent-properties .flex-thumbnail .content-list {
+      padding-left: 20px; }
   .product-page .excellent-properties .thumbnail {
     float: left;
     overflow: hidden;
