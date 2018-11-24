@@ -120,10 +120,8 @@ h6 {
     }
 
     .flex-thumbnail {
-      display: flex;
-      align-items: center;
-      .content-list {
-        padding-left: 20px;
+      h4 {
+        margin-top: 30px;
       }
     }
 
@@ -169,12 +167,13 @@ h6 {
   background-color: $color-brand;
   padding: 32px 22px;
   display: inline-block;
-  min-width: 260px;
+  width: 260px;
   min-height: 400px;
   position: relative;
   color: #fff;
   border-radius: 4px;
   text-align: left;
+  margin-bottom: 1rem;
 
   > .title-contact {
     font-size: 22px;

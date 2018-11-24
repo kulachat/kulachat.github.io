@@ -63,11 +63,8 @@ h6 {
   .product-page .excellent-properties > li {
     margin-bottom: 5px;
     overflow: hidden; }
-  .product-page .excellent-properties .flex-thumbnail {
-    display: flex;
-    align-items: center; }
-    .product-page .excellent-properties .flex-thumbnail .content-list {
-      padding-left: 20px; }
+  .product-page .excellent-properties .flex-thumbnail h4 {
+    margin-top: 30px; }
   .product-page .excellent-properties .thumbnail {
     float: left;
     overflow: hidden;
@@ -93,12 +90,13 @@ h6 {
   background-color: #ed2024;
   padding: 32px 22px;
   display: inline-block;
-  min-width: 260px;
+  width: 260px;
   min-height: 400px;
   position: relative;
   color: #fff;
   border-radius: 4px;
-  text-align: left; }
+  text-align: left;
+  margin-bottom: 1rem; }
   .component-contact > .title-contact {
     font-size: 22px;
     font-weight: 500;
