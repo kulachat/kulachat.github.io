@@ -7366,8 +7366,8 @@
      margin-right: 1rem;
 }
  .our-product .media img {
-     width: 64px;
-     height: 64px;
+    width: 100px;
+    height: 100px;
 }
  .our-product .media-body .media-title {
      color: #565656;
