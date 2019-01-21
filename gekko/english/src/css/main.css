@@ -7824,5 +7824,22 @@ body {
       margin-bottom: 2rem;
       font-size: 2rem; }
   
-  /*# sourceMappingURL=geeko.css.map */
-  
+
+.project-column {
+    margin-bottom: 40px;
+}
+
+  .project-column h2 {
+    font-size: 20px;
+    border-top: 1px solid #000;
+    padding-top: 12px;
+  }
+
+  .project-column figure img {
+      max-width: 100%;
+      margin-top: 20px;
+  }
+
+  .project-column .item-date {
+      color: #fff;
+  }
