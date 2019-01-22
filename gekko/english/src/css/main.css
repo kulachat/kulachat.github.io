@@ -7454,7 +7454,7 @@
      font-weight: 500;
      text-transform: uppercase;
      line-height: 1.5;
-     margin-bottom: 30px;
+     margin-bottom: -30px;
 }
  .info .title strong {
      color: #e4212c;
