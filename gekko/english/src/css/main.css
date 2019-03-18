@@ -7843,3 +7843,7 @@ body {
   .project-column .item-date {
       color: #fff;
   }
+
+  .icon-link > a {
+      color: #ED2024;
+  }
