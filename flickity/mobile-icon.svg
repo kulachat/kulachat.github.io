@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="23px" viewBox="0 0 14 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>mopbile-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Promotion" transform="translate(-1448.000000, -104.000000)" fill="#EC3324" fill-rule="nonzero">
+            <g id="Version1-Copy" transform="translate(1404.000000, 60.000000)">
+                <g id="icon-notifcation" transform="translate(32.000000, 36.000000)">
+                    <g id="mopbile-icon" transform="translate(12.000000, 8.000000)">
+                        <path d="M11.9,0 L2.1,0 C0.945,0 0,0.945 0,2.1 L0,20.3 C0,21.455 0.945,22.4 2.1,22.4 L11.9,22.4 C13.055,22.4 14,21.455 14,20.3 L14,2.1 C14,0.945 13.055,0 11.9,0 Z M4.2,1.05 L9.8,1.05 L9.8,1.75 L4.2,1.75 L4.2,1.05 Z M7,21 C6.22680625,21 5.6,20.3731938 5.6,19.6 C5.6,18.8268063 6.22680625,18.2 7,18.2 C7.77319375,18.2 8.4,18.8268063 8.4,19.6 C8.4,20.3731938 7.77319375,21 7,21 Z M12.6,16.8 L1.4,16.8 L1.4,2.8 L12.6,2.8 L12.6,16.8 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
