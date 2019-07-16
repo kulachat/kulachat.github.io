@@ -5,7 +5,8 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'css/style.css' : 'sass/style.scss',
-          'css/geeko.css' : 'sass/gekko.scss'
+          'css/geeko.css' : 'sass/gekko.scss',
+          'css/campus.css' : 'sass/campus.scss'
         }
       }
     },

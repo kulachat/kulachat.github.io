@@ -2,9 +2,6 @@
   "name": "scaffolding",
   "version": "1.0.0",
   "description": "Scaffolding for web design include browsersync, sass and grunt ",
-  "scripts": {
-    "start": "concurrently \"http-server -p 8888\" \"grunt\""
-  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-browser-sync": "^2.1.3",

@@ -1,0 +1,623 @@
+// Color Pallette
+$color-white: #fff;
+$color-light: #f3f5f7;
+$color-dark: #383333;
+$color-alert: #ed546e;
+$color-blue: #3B90E6;
+
+// Specific Type
+$bg-blue: #0960b8;
+$shadow-box-assessment: #d9dbdd;
+$status-process-bar: $color-alert;
+
+// Fonts
+$font-large: 24px;
+$font-medium: 22px;
+$font-regular: 16px;
+$font-small: 14px;
+$font-micro: 12px;
+
+// Radio
+$radio-circle-size: 16px;
+$border-circle-radio: $color-light;
+
+// Shadow
+$box-shadow-button: 0 4px 20px 0 rgba(0, 0, 0, 0.13);
+
+
+body {
+  background-color: $color-light;
+  padding-top: 60px;
+}
+
+.header {
+  height: 60px;
+  box-shadow: inset 0 -1px 0 0 #e3e5e7;
+  background-color: $color-white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+
+  > :first-child {
+    height: 100%;
+    align-items: center;
+  }
+
+  &__logo {
+    img {
+      margin-right: 32px;
+    }
+  }
+
+  &__menu__navigation {
+    .menu__item {
+      font-size: $font-small;
+      font-weight: 500;
+      color: $color-dark;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .profile {
+    > a {
+      font-size: $font-small;
+      font-weight: 500;
+      color: $color-dark;
+      padding: 0.5rem 1rem;
+    }
+
+    .profile__icon {
+      height: 28px;
+      width: 28px;
+      border-radius: 100%;
+      border: 1px solid #e2e5e7;
+      margin-left: 8px;
+    }
+  }
+
+  .checkmark {
+    margin-left: 12px;
+  }
+}
+
+.page {
+  width: 446px;
+  margin: 0 auto;
+  padding: 16px 32px 32px;
+  background-color: $color-white;
+  min-height: 100vh;
+
+  &--example {
+    background-color: $bg-blue !important;
+  }
+}
+
+.page-result {
+  padding: 0 0 16px 0;
+}
+
+.title,
+.page__title {
+  font-size: 24px;
+  font-weight: bold;
+  color: $color-dark;
+}
+
+.cover {
+  margin-left: -32px;
+  margin-right: -32px;
+  .cover__img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.paragraph {
+  .paragraph__title {
+    font-size: $font-medium;
+    color: $color-dark;
+    font-weight: 400;
+  }
+
+  .paragraph__description {
+    font-size: $font-small;
+    color: $color-dark;
+  }
+
+  .paragraph__title--bold {
+    font-size: $font-medium;
+    font-weight: bold;
+  }
+}
+
+.padding-16 {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+}
+.border-top-E3E5E7 {
+  top: 16px;
+  border-top: 1px solid #e3e5e7;
+  position: relative;
+  width: 100%;
+}
+.assessment {
+  display: block;
+  text-decoration: none;
+  width: 382px;
+  height: 302px;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px 0 $shadow-box-assessment;
+  background-color: $color-white;
+
+  &--personality {
+    background-image: url('../assets/images/personality-cover.png');
+    background-size: cover;
+  }
+
+  &--skill {
+    background-image: url('../assets/images/skill-cover.png');
+    background-size: cover;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .assessment__title {
+    text-shadow: 0 0 4px $color-white;
+    font-size: $font-large;
+    font-weight: bold;
+    color: $color-dark;
+  }
+
+  .assessment__description {
+    text-shadow: 0 0 4px $color-white;
+    font-size: $font-small;
+    font-weight: 500;
+    line-height: 1.71;
+    color: $color-dark;
+  }
+}
+
+.button {
+  display: block;
+  width: 188px;
+  font-size: 17px;
+  padding: 12px 16px;
+  border-radius: 28px;
+  text-decoration: none;
+  color: $color-blue;
+  background-color: $color-white;
+  box-shadow: $box-shadow-button;
+  border: 1px solid transparent;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .button__text {
+    text-align: center;
+
+    &.button__text--twoline {
+      font-size: $font-regular + 2;
+      line-height: 16px;
+    }
+    &.button__text--disabled {
+      color: gray;
+    }
+  }
+
+  &.button--disabled {
+    color: gray;
+  }
+
+  .button__subtext {
+    font-size: $font-micro - 2;
+  }
+
+  &.button--alert {
+    color: $color-white;
+    background-color: $color-alert;
+    box-shadow: 0 7px 20px 0 rgba(237, 84, 110, 0.39);
+  }
+
+  &.button--normal {
+    color: $color-blue;
+    background-color: $color-white;
+    box-shadow: $box-shadow-button;
+  }
+}
+
+.txt-blue {
+  color: $color-blue;
+}
+
+// ==================================== Start New Style
+.question {
+  width: 382px;
+  border-radius: 10px;
+  box-shadow: $box-shadow-button;
+  background-color: $color-white;
+  margin: auto;
+
+  .question__text {
+    padding: 16px;
+    font-size: $font-regular;
+    color: $color-dark;
+    box-shadow: inset 0 -1px 0 0 #e3e5e7;
+  }
+
+  .question__answers {
+    padding: 8px 16px;
+    font-size: $font-regular;
+    font-weight: bold;
+    color: $color-dark;
+
+    .question__answer {
+      display: block;
+      position: relative;
+      padding: 12px 16px 16px 36px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      margin: 0;
+
+      &:hover input ~ .checkmark {
+        background-color: darken($border-circle-radio, 2%);
+      }
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        height: 28px;
+        width: 28px;
+        border: 1px solid $border-circle-radio;
+        background-color: $color-white;
+        border-radius: 50%;
+      }
+
+      .checkmark:after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 5px;
+        left: 5px;
+        width: $radio-circle-size;
+        height: $radio-circle-size;
+        border-radius: 50%;
+        background: $color-white;
+      }
+
+      input:checked ~ .checkmark {
+        border-color: $color-blue;
+        &:hover {
+          background-color: $border-circle-radio;
+        }
+        &:after {
+          background-color: $color-blue;
+        }
+      }
+    }
+  }
+
+  // --------------------------- Answers Type Grid
+  .question__answers__grid {
+    display: flex;
+    padding: 8px 16px;
+    font-size: $font-regular;
+    font-weight: bold;
+    color: $color-dark;
+
+    .question__answer {
+      display: block;
+      position: relative;
+      width: 25%;
+      padding: 75px 4px 0 4px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      margin: 0;
+      font-size: 10px;
+      text-align: center;
+
+      &:hover input ~ .checkmark {
+        background-color: darken($border-circle-radio, 2%);
+      }
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        $large-checkbox: 52px;
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        margin-left: -($large-checkbox / 2);
+        height:$large-checkbox;
+        width: $large-checkbox;
+        border: 1px solid $border-circle-radio;
+        background-color: #E3E5E7;
+        border-radius: 50%;
+      }
+
+      .checkmark:after {
+        $large-radio-circle-size: 16px;
+        content: '';
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 50%;
+        margin-left: -($large-radio-circle-size / 2);
+        margin-top: -($large-radio-circle-size / 2);
+        width: $large-radio-circle-size;
+        height: $large-radio-circle-size;
+        border-radius: 50%;
+        background: $color-white;
+      }
+
+      input:checked ~ .checkmark {
+        border-color: transparent;
+        background-color: $color-blue;
+        &:hover {
+          background-color: $color-blue;
+        }
+        &:after {
+          background-color: $color-white;
+        }
+      }
+
+      // Question Answer Medium
+      .checkmark__medium {
+        $medium-checkbox: 32px;
+        position: absolute;
+        top: 24px;
+        left: 50%;
+        margin-left: -($medium-checkbox / 2);
+        height:$medium-checkbox;
+        width: $medium-checkbox;
+        border: 1px solid $border-circle-radio;
+        background-color: #E3E5E7;
+        border-radius: 50%;
+
+        &:after {
+          $medium-radio-circle-size: 10px;
+          content: '';
+          position: absolute;
+          display: block;
+          top: 50%;
+          left: 50%;
+          margin-left: -($medium-radio-circle-size / 2);
+          margin-top: -($medium-radio-circle-size / 2);
+          width: $medium-radio-circle-size;
+          height: $medium-radio-circle-size;
+          border-radius: 50%;
+          background: $color-white;
+        }
+
+        input:checked ~ .checkmark {
+          border-color: transparent;
+          background-color: $color-blue;
+          &:hover {
+            background-color: $color-blue;
+          }
+          &:after {
+            background-color: $color-white;
+          }
+        }
+      }
+    }
+  }
+
+  // Header Question multiple text
+  .question__multiple__text {
+    font-size: $font-small;
+    &:nth-child(2) {
+      position: relative;
+      &::before {
+        $divider-height: 63px;
+        width: 1px;
+        content: "";
+        height: 63px;
+        background-color: #E3E5E7;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -($divider-height / 2);
+      }
+    }
+  }
+}
+
+// ==================================== END New Style
+
+.cp-progress {
+  width: 379px;
+  background-color: $color-light;
+  padding: 15px 16px;
+
+  .cp-progress__text {
+    font-size: $font-small;
+    font-weight: bold;
+    color: $color-dark;
+  }
+
+  .cp-progress__bar {
+    margin-top: 5px;
+
+    .progress-bar {
+      background-color: $status-process-bar;
+    }
+  }
+}
+
+/*rating skill*/
+.box-rating {
+  background-color: #0860b8;
+  border-radius: 5px;
+  margin: 25px 0;
+  padding: 10px;
+  color: #ffffff;
+
+  .bottom__content {
+    clear: both;
+    padding: 0 15px 20px 15px;
+    font-size: 10px;
+    margin-bottom: 0px;
+    color: #ffffff;
+
+    .text__left {
+      float: left;
+      &.q1 {
+        margin-left: 2px;
+      }
+      &.q2 {
+        margin-left: 0px;
+      }
+      &.q3 {
+        margin-left: 11px;
+      }
+    }
+
+    .text__right {
+      float: right;
+      &.q1 {
+        position: relative;
+        right: 29px;
+      }
+      &.q2 {
+        position: relative;
+        right: 7px;
+      }
+      &.q3 {
+        position: relative;
+        right: 18px;
+      }
+    }
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 0px;
+    color: #ffffff;
+  }
+}
+
+.rating {
+  height: 60px;
+  padding-right: 28px;
+}
+
+.rating label {
+  text-indent: -100px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.rating label.stars {
+  background: transparent url(../assets/images/rating-star.png) no-repeat center
+    center;
+  background-size: 35px 35px;
+}
+
+.rating input[type='radio'] {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.rating input[type='radio'],
+.rating label.stars {
+  float: right;
+  margin: 7px;
+}
+
+.rating label.stars:hover ~ label.stars,
+.rating label.stars:hover,
+.rating input[type='radio'][name='stars-1']:checked ~ label.stars {
+  background-image: url(../assets/images/rating-star-hover.png);
+}
+
+.rating label.stars:hover ~ label.stars,
+.rating label.stars:hover,
+.rating input[type='radio'][name='stars-2']:checked ~ label.stars {
+  background-image: url(../assets/images/rating-star-hover.png);
+}
+
+.rating label.stars:hover ~ label.stars,
+.rating label.stars:hover,
+.rating input[type='radio'][name='stars-3']:checked ~ label.stars {
+  background-image: url(../assets/images/rating-star-hover.png);
+}
+
+.chart-container {
+  padding: 30px 0 0 0;
+  text-align: center;
+  background-color: #0960b8;
+}
+
+.result-container {
+  padding: 0 32px;
+  .result-bar-chart {
+    padding: 20px 0;
+    .category-container {
+      padding-top: 20px;
+      font-size: 16px;
+      .category_title {
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .deviation-bar {
+        width: 85%;
+        .progress {
+          background: #f34f6b22;
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+          .progress-bar {
+            background: #f34f6b;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+          }
+        }
+      }
+      .score-label {
+        width: 15%;
+        text-align: right;
+        color: #f34f6b;
+        font-size: 10px;
+        span {
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+      .note {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
