@@ -1320,13 +1320,13 @@ canvas {
 }
 
 body {
-  background: #1d1d1d;
-  color: #fff;
+  background: #fff;
+  color: #1d1d1d;
   font-family: Lora,serif;
   min-width: 315px;
   overflow-x: hidden;
   font-smooth: always;
-  -webkit-font-smoothing: antialiased
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
