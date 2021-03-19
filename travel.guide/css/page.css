@@ -2097,3 +2097,47 @@ amp-carousel .ampstart-image-with-caption {
   font-weight: inherit;
   line-height: 1.12
 }
+
+.grid {
+  display: grid !important;
+  grid-auto-flow: column !important;
+  overflow: auto hidden !important;
+  scroll-snap-type: x mandatory !important;
+  gap: 12px !important;
+  margin: 0px -24px;
+  padding: 4px 24px 8px;
+  scroll-padding: 0px 24px;
+}
+
+.grid:nth-child(n) > * {
+  scroll-snap-align: start !important;
+}
+
+.link-item {
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  cursor: pointer !important;
+  display: block !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  text-align: inherit !important;
+  text-decoration: none !important;
+  height: 100% !important;
+  width: 100% !important;
+  touch-action: manipulation !important;
+}
+
+.link-item > div {
+  -webkit-box-direction: normal !important;
+  -webkit-box-orient: vertical !important;
+  position: relative !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  white-space: normal !important;
+  width: 130px !important;
+  height: 130px !important;
+  overflow: hidden !important;
+}
+
