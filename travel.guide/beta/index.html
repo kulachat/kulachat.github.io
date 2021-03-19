@@ -85,7 +85,9 @@ limitations under the License.
 }
 
 .link-item img,
-.link-item amp-img {
+.link-item amp-img,
+.ampstart-image-with-heading img,
+.ampstart-image-with-heading amp-img {
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 12%), 0 2px 4px 0 rgb(0 0 0 / 8%);
 }
@@ -102,6 +104,7 @@ limitations under the License.
 .title-hotel {
   letter-spacing: 0;
   font-size: 16px;
+  padding-top: 4px;
 }
 </style>
 </head>
@@ -119,10 +122,9 @@ limitations under the License.
     <div role="button" aria-label="close sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger items-start">✕</div>
   </div>
   <nav class="ampstart-sidebar-nav ampstart-nav">
-    <ul class="list-reset m0 p0 ampstart-label">
-          <li class="ampstart-nav-item "><a class="ampstart-nav-link pt1 pb1 block" href="#">Home</a></li>
-          <li class="ampstart-nav-item "><a class="ampstart-nav-link pt1 pb1 block" href="menu.amp.html">Menu</a></li>
-          <li class="ampstart-nav-item "><a class="ampstart-nav-link pt1 pb1 block" href="#locations">Locations & Hours</a></li>
+    <ul class="list-reset m0 p0 ampstart-label mt3">
+          <li class="ampstart-nav-item "><a class="ampstart-nav-link pt1 pb1 block" href="#">หน้าแรก</a></li>
+          <li class="ampstart-nav-item "><a class="ampstart-nav-link pt1 pb1 block" href="#">ผู้มีส่วนร่วม</a></li>
     </ul>
   </nav>
   <ul class="ampstart-social-follow list-reset flex justify-around items-center flex-wrap m0 mb4">
@@ -254,39 +256,39 @@ limitations under the License.
             <div class="flex flex-wrap">
               <div class="col col-6 sm-col-6 mb4 pr1">
                 <figure class="ampstart-image-with-heading  m0 relative">
-                  <amp-img src="../img/cover-menu.jpeg" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
+                  <amp-img src="../img/H2.png" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
                   </figure>
                 <h3 class="title-hotel mb1">ภูผาม่าน โฮมเสตย์</h3>
               </div>
               <div class="col col-6 sm-col-6 mb4 pl1">
                 <figure class="ampstart-image-with-heading  m0 relative">
-                  <amp-img src="../img/cover-menu.jpeg" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
+                  <amp-img src="../img/H1.png" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
                   </figure>
                 <h3 class="title-hotel mb1">ภูผาม่าน แคมป์</h3>
               </div>
               <div class="col col-6 sm-col-6 mb4 pr1">
                 <figure class="ampstart-image-with-heading  m0 relative">
-                  <amp-img src="../img/cover-menu.jpeg" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
+                  <amp-img src="../img/H3.png" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
                   </figure>
                 <h3 class="title-hotel mb1">ภูผา วิวดีรีสอร์ท</h3>
               </div>
               <div class="col col-6 sm-col-6 pl1 mb4">
                 <figure class="ampstart-image-with-heading  m0 relative">
-                  <amp-img src="../img/cover-menu.jpeg" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
+                  <amp-img src="../img/H4.png" width="300" height="300" alt="Happy Hour Monday through Friday 5" layout="responsive"></amp-img>
                   </figure>
                 <h3 class="title-hotel mb1">บ้านผาสุข</h3>
               </div>
             </div>
           <!-- END -->
-            <h2 id="gallery" class="my4 theme2-anchored">Photo Gallery</h2>
+            <h2 id="gallery" class="mt4 theme2-anchored">
+              Photo Gallery
+              <p class="h5 pt0">เล่าเรื่องด้วยภาพ โดย Photoby Dang</p>
+            </h2>
             <amp-image-lightbox id="lightbox" layout="nodisplay"></amp-image-lightbox>
             <amp-carousel class="my2 mxn3" height="200" layout="fixed-height" type="carousel">
-                <amp-img src="../img/themes_2/hero.jpg" width="300" height="200" alt="Dining area" on="tap:lightbox" role="button" tabindex="0"></amp-img>
-                <amp-img src="../img/themes_2/bar.jpg" width="267" height="200" alt="Bar area" on="tap:lightbox" role="button" tabindex="0"></amp-img>
-                <amp-img src="../img/themes_2/waffles.jpg" width="300" height="200" alt="Caramel Banana Waffles" on="tap:lightbox" role="button" tabindex="0"></amp-img>
-                <amp-img src="../img/themes_2/soup.jpg" width="300" height="200" alt="Pumpkin Soup" on="tap:lightbox" role="button" tabindex="0"></amp-img>
-                <amp-img src="../img/themes_2/steak.jpg" width="300" height="200" alt="Steak" on="tap:lightbox" role="button" tabindex="0"></amp-img>
-                <amp-img src="../img/themes_2/pie.jpg" width="300" height="200" alt="Key Lime Pie" on="tap:lightbox" role="button" tabindex="0"></amp-img>
+                <amp-img src="../img/g/photo-by-dang.jpeg" width="300" height="200" alt="Dining area" on="tap:lightbox" role="button" tabindex="0"></amp-img>
+                <amp-img src="../img/g/photo-by-dang-3.jpeg" width="300" height="200" alt="Caramel Banana Waffles" on="tap:lightbox" role="button" tabindex="0"></amp-img>
+                <amp-img src="../img/g/photo-by-dang-4.jpeg" width="300" height="200" alt="Pumpkin Soup" on="tap:lightbox" role="button" tabindex="0"></amp-img>
             </amp-carousel>
       </article>
   </main>
