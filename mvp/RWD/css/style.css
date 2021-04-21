@@ -458,6 +458,11 @@ p {
 }
 
 @media only screen and (min-width: 1200px) {
+  .section-contact-us .wrap-title-contact {
+    margin: 0 !important;
+  }
+}
+@media only screen and (min-width: 1200px) {
   .section-contact-us .call-to-action {
     padding-left: 1rem;
   }
