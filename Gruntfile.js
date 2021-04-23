@@ -6,7 +6,8 @@ module.exports = function(grunt) {
         files: {
           'css/style.css' : 'sass/style.scss',
           'css/geeko.css' : 'sass/gekko.scss',
-          'css/campus.css' : 'sass/campus.scss'
+          'css/campus.css' : 'sass/campus.scss',
+          'css/amp.css' : 'sass/amp.scss'
         }
       }
     },

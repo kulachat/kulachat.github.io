@@ -5,7 +5,7 @@ $color-brand:     #3A92D3;
 $color-headline:  #262626;
 $color-paragraph: #484848;
 $bg-hrader:       #ECECEC;
-$bg-gray: #EAEAEA;
+$bg-gray: #f9ffff;
 $color-link: #33BBFF;
 
 $raduis: 4px;
@@ -137,7 +137,7 @@ header {
   padding: 8px 0;
   @include media(tablet) {
     position: fixed;
-    background-color: $bg-hrader;
+    background-color: #fff;
   }
 }
 
@@ -304,7 +304,6 @@ h1 {
 
 /* ====================================================================== Into*/
 .into {
-  background-color: $color-headline;
   background-image: url(../img/craft/cover-hero.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -313,7 +312,6 @@ h1 {
   margin-bottom: 3.2rem;
   @include media(tablet) {
     background-image: none;
-    background-color: $bg-gray;
     margin-bottom: 0;
     padding: 22rem 1rem 0;
     text-align: center;
