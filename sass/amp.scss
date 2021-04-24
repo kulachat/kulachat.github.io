@@ -2,14 +2,18 @@
 @import 'components/responsive';
 
 $color-brand:     #3A92D3;
-$color-headline: #fff;
+$color-headline: #161613;
 $color-paragraph: #484848;
 $bg-hrader:       #ECECEC;
 $bg-gray: #f9ffff;
-$color-link: #999;
+$color-link: #dd3516;
 
 $font-face: 'Nanum Myeongjo', serif;
 $raduis: 4px;
+
+.hide {
+  opacity: 0;
+}
 
 .seo-only {
   display: none;
@@ -37,10 +41,10 @@ body {
   font-size: 1.7rem;
   line-height: 1.28;
   font-weight: 200;
-  color: #fff;
+  color: #161613;
   margin: 0;
   text-rendering: optimizeLegibility;
-  background-color:  #272725;
+  background-color:  #fff;
   @include media(tablet) {
     font-size: 2rem;
     font-weight: 300;
@@ -57,7 +61,6 @@ body {
   min-height: 100vh;
   padding: 40px 20px;
   max-height: 100vh;
-  overflow: hidden;
   position: relative;
   
   @include media(tablet) {
@@ -73,14 +76,12 @@ body {
     font-size: 20px;
     line-height: 1.4;
     font-weight: 300;
-    @include media(tablet) {
-      color: $color-headline;
-    }
+    color: $color-headline;
   }
 }
 
 .header {
-  margin-bottom: 6rem;
+  margin-bottom: 12rem;
   .title {
     font-family: $font-face;
     font-size: 40px;
@@ -96,7 +97,7 @@ body {
       opacity: 0.8;
       display: block;
       font-family: Circular ,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 400;
       text-transform: uppercase;
     }
@@ -108,7 +109,7 @@ body {
   position: absolute;
   right: 10vw;
   width: 316px;
-  top: 90px;
+  top: 135px;
   font-size: 16px;
 
   .profile {
@@ -136,14 +137,13 @@ body {
   p {
     font-size: 20px;
     font-weight: 300;
-    color: #eee;
     line-height: 1.4;
   }
 
   a {
     font-size: 22px;
     font-family: $font-face;
-    color: #fff;
+    color:  $color-headline;
     text-decoration: none;
   }
 
@@ -166,7 +166,7 @@ body {
     > a {
       font-family: Circular ,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
       font-size: 18px;
-      color: #fff;
+      color:  $color-headline;
       display: block;
       padding: .25rem 0;
       @include animatoin;
@@ -179,22 +179,22 @@ body {
 }
 // =========================== ASIDE
 .aside {
-  li {
+  li,
+   a {
     color: $color-headline;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 300;
     margin-bottom: 14px;
+    text-decoration: none;
+    @include animatoin;
+    color: $color-headline;
+    cursor: pointer;
     &:first-child {
       margin-bottom: 8px;
     }
-
-    > a {
-      text-decoration: none;
-      @include animatoin;
-      color: #fff;
-      &:hover {
-        color: $color-link;
-      }
+    
+    &:hover {
+      color: $color-link;
     }
   }
 
@@ -221,7 +221,7 @@ body {
   .preview-project {
     position: absolute;
     right: 0;
-    width: 65%;
+    width: 80%;
     height: 0;
     padding-top: 31%;
     margin-top: 0;
@@ -230,7 +230,8 @@ body {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 
-    .templates-images-desktop {
+    .templates-images-desktop,
+    .tabpanels {
       position: absolute;
       top: 0;
       left: 0;
@@ -239,11 +240,12 @@ body {
       padding-top: 53%;
       will-change: transform;
 
-      img {
+      figure {
         width: 100%;
         height: 100%;
         position: absolute;
         top: -1.5rem;
+        margin: 0;
       }
   }
 }
