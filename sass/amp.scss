@@ -138,6 +138,7 @@ header {
   @include media(tablet) {
     position: fixed;
     background-color: #fff;
+    opacity: 1;
   }
 }
 

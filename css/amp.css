@@ -133,6 +133,7 @@ header {
   header {
     position: fixed;
     background-color: #fff;
+    opacity: 1;
   }
 }
 
