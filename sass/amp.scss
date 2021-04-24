@@ -6,7 +6,7 @@ $color-headline: #fff;
 $color-paragraph: #484848;
 $bg-hrader:       #ECECEC;
 $bg-gray: #f9ffff;
-$color-link: #33BBFF;
+$color-link: #999;
 
 $font-face: 'Nanum Myeongjo', serif;
 $raduis: 4px;
@@ -170,8 +170,9 @@ body {
       display: block;
       padding: .25rem 0;
       @include animatoin;
+
       &:hover {
-        color: #dd3516;
+        color:  $color-link;
       }
     }
   }
@@ -185,6 +186,15 @@ body {
     margin-bottom: 14px;
     &:first-child {
       margin-bottom: 8px;
+    }
+
+    > a {
+      text-decoration: none;
+      @include animatoin;
+      color: #fff;
+      &:hover {
+        color: $color-link;
+      }
     }
   }
 
