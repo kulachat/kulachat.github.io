@@ -4,7 +4,7 @@
 }
 
 .seo-only {
-  display: none;
+  display: none !important;
   height: 0;
   opacity: 0;
 }
@@ -66,7 +66,12 @@ body {
 }
 
 .header {
-  margin-bottom: 12rem;
+  margin-bottom: 2rem;
+}
+@media only screen and (min-width: 1200px) {
+  .header {
+    margin-bottom: 12rem;
+  }
 }
 .header .title {
   font-family: "Nanum Myeongjo", serif;
@@ -90,12 +95,14 @@ body {
   text-transform: uppercase;
 }
 
-.about {
-  position: absolute;
-  right: 10vw;
-  width: 316px;
-  top: 135px;
-  font-size: 16px;
+@media only screen and (min-width: 1200px) {
+  .about {
+    position: absolute;
+    right: 10vw;
+    width: 316px;
+    top: 135px;
+    font-size: 16px;
+  }
 }
 .about .profile {
   display: flex;
@@ -156,19 +163,35 @@ body {
 
 .aside li,
 .aside a {
+  display: inline-block;
+  vertical-align: middle;
   color: #161613;
   font-size: 22px;
   font-weight: 300;
-  margin-bottom: 14px;
-  text-decoration: none;
-  -webkit-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-  color: #161613;
-  cursor: pointer;
+  padding: 0.25rem;
+  margin-right: 1rem;
+}
+@media only screen and (min-width: 992px) {
+  .aside li,
+.aside a {
+    margin-bottom: 14px;
+    text-decoration: none;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    color: #161613;
+    cursor: pointer;
+  }
 }
 .aside li:first-child,
 .aside a:first-child {
   margin-bottom: 8px;
+  display: none;
+}
+@media only screen and (min-width: 992px) {
+  .aside li:first-child,
+.aside a:first-child {
+    display: block;
+  }
 }
 .aside li:hover,
 .aside a:hover {
@@ -177,6 +200,22 @@ body {
 .aside small {
   font-size: 12px;
   opacity: 0.8;
+}
+
+.menu-scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  padding: 1rem 0;
+}
+@media only screen and (min-width: 768px) {
+  .menu-scroll {
+    display: block;
+    padding: 0;
+    overflow: auto;
+    white-space: inherit;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -194,34 +233,47 @@ body {
 }
 
 .preview-project {
-  position: absolute;
-  right: 0;
-  width: 80%;
-  height: 0;
-  padding-top: 31%;
-  margin-top: 0;
-  margin-bottom: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  margin: 0 -20px;
 }
-.preview-project .templates-images-desktop,
-.preview-project .tabpanels {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  padding-top: 53%;
-  will-change: transform;
+@media only screen and (min-width: 1200px) {
+  .preview-project {
+    margin: 0;
+  }
 }
-.preview-project .templates-images-desktop figure,
-.preview-project .tabpanels figure {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: -1.5rem;
+.preview-project .web-resonsive-thumb {
   margin: 0;
+}
+@media only screen and (min-width: 1200px) {
+  .preview-project {
+    position: absolute;
+    right: 0;
+    width: 80%;
+    height: 0;
+    padding-top: 31%;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .preview-project .templates-images-desktop,
+.preview-project .tabpanels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    padding-top: 53%;
+    will-change: transform;
+  }
+  .preview-project .templates-images-desktop figure,
+.preview-project .tabpanels figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -1.5rem;
+    margin: 0;
+  }
 }
 
 /*# sourceMappingURL=amp.css.map */

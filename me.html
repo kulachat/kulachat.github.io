@@ -30,11 +30,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
     <style amp-custom>
-      :root {
-        --color-primary: #005AF0;
-        --space-1: .5rem;  /* 8px */
-        --space-4: 2rem;   /* 32px */
-      }
   
       /* Styles for the flex layout based tabs */
       amp-selector[role=tablist].tabs-with-flex {
@@ -58,20 +53,10 @@
           display: block;
       }
   
-      /* Styles for the selector based tabs */
-      amp-selector[role=tablist].tabs-with-selector {
-          display: flex;
-      }
       amp-selector[role=tablist].tabs-with-selector [role=tab][selected] {
           outline: none;
           /* custom styling, feel free to change */
-      }
-      amp-selector[role=tablist].tabs-with-selector {
-          display: flex;
-      }
-      amp-selector[role=tablist].tabs-with-selector [role=tab] {
-        /* custom styling, feel free to change */
-        width: 100%;
+          color: #dd3516;
       }
       amp-selector.tabpanels [role=tabpanel] {
         display: none;
@@ -81,7 +66,18 @@
         outline: none;
         display: block;
       }
-  
+      @media only screen and (min-width: 768px) {
+        /* Styles for the selector based tabs */
+        amp-selector[role=tablist].tabs-with-selector {
+          display: flex;
+        }
+
+        amp-selector[role=tablist].tabs-with-selector [role=tab] {
+        /* custom styling, feel free to change */
+          width: 100%;
+        }
+
+      }
   </style>
   </head>
   <body itemtype="http://schema.org/WebPage">
@@ -111,7 +107,7 @@
             </h2>
           </div>
           <p>
-            <span class="hide">
+            <span class="hide seo-only">
               I have worked with Omise, Kaidee, dtac, 
               Cooking, SET, Odds, ThaiBev, Hero Digital(USA), Sansiri
             </span>
@@ -131,7 +127,7 @@
         <section class="templates-container">
           <div class="aside">
             <amp-selector class="tabs-with-selector" role="tablist" on="select:myTabPanels.toggle(index=event.targetOption, value=true)" keyboard-select-mode="focus">
-              <ul>
+              <ul class="menu-scroll">
                 <li><small>PROJECTS</small></li>
                 <li id="sample3-tab1" role="tab" aria-controls="sample3-tabpanel1" option="0" selected>Cookly</li>
                 <li id="sample3-tab2" role="tab" aria-controls="sample3-tabpanel2" option="1">PTT</li>
@@ -149,17 +145,17 @@
               <amp-selector id="myTabPanels" class="tabpanels">
                 <div id="sample3-tabpanel1" role="tabpanel" aria-labelledby="sample3-tab1" option selected>
                   <figure class="web-resonsive-thumb hide-mobile">
-                    <amp-img placeholder width="1075" height="565" src="https://images.unsplash.com/photo-1581291519195-ef11498d1cf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"></amp-img>
+                    <amp-img layout="responsive" placeholder width="1075" height="565" src="https://images.unsplash.com/photo-1581291519195-ef11498d1cf2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"></amp-img>
                   </figure>
                 </div>
                 <div id="sample3-tabpanel2" role="tabpanel" aria-labelledby="sample3-tab2" option>
                   <figure class="web-resonsive-thumb hide-mobile">
-                    <amp-img placeholder width="1075" height="565" src="https://images.unsplash.com/photo-1586717799252-bd134ad00e26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"></amp-img>
+                    <amp-img layout="responsive" placeholder width="1075" height="565" src="https://images.unsplash.com/photo-1586717799252-bd134ad00e26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2250&q=80"></amp-img>
                   </figure>
                 </div>
                 <div id="sample3-tabpanel3" role="tabpanel" aria-labelledby="sample3-tab3" option>
                   <figure class="web-resonsive-thumb hide-mobile">
-                    <amp-img placeholder width="1075" height="565" src="https://images.unsplash.com/photo-1493421419110-74f4e85ba126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2249&q=80"></amp-img>
+                    <amp-img layout="responsive" placeholder width="1075" height="565" src="https://images.unsplash.com/photo-1493421419110-74f4e85ba126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2249&q=80"></amp-img>
                   </figure>
                 </div>
               </amp-selector>
