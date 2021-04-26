@@ -83,7 +83,7 @@ body {
 .header {
   margin-bottom: 2rem;
   @include media (desktop) {
-    margin-bottom: 12rem;
+    margin-bottom: 8rem;
   }
   .title {
     font-family: $font-face;
