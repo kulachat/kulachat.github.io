@@ -1,7 +1,10 @@
-@import 'components/variables';
-@import 'components/responsive';
-@import 'components/form';
-@import 'components/fonts';
-@import 'components/layout';
-@import 'components/helo';
-@import 'components/project_lists';
+body {
+    background-color: rgb(9, 8, 8);
+}
+
+.cover-page {
+    background-image: url(../img/Banner.png);
+    background-size: cover;
+    height: 380px;
+    background-position: center;
+}

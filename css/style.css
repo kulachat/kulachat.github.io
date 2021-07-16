@@ -1,0 +1,12 @@
+body {
+  background-color: #090808;
+}
+
+.cover-page {
+  background-image: url(../img/Banner.png);
+  background-size: cover;
+  height: 380px;
+  background-position: center;
+}
+
+/*# sourceMappingURL=style.css.map */
