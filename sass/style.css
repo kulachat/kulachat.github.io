@@ -27,3 +27,48 @@ body {
 .item.two {
   background-color: #fff;
 }
+
+.grid-parent {
+  height: 100vh;
+}
+
+@media only screen and (min-width: 1200px) {
+  .grid-parent {
+    display: grid;
+    grid-auto-flow: row;
+    grid-column-gap: 15px;
+    grid-template-columns: repeat(18, minmax(0, 1fr));
+  }
+}
+
+.grid-parent .intro-image-container {
+  margin-right: 0;
+  grid-column-end: span 8;
+}
+
+@media only screen and (min-width: 1200px) {
+  .grid-parent .intro-image-container {
+    margin-left: calc(-50vw + 647px);
+  }
+}
+
+.grid-parent .intro-image {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-drag: none;
+  user-select: none;
+  height: 100%;
+  max-height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1600px) {
+  .grid-parent .intro-image {
+    -o-object-position: 100px;
+    object-position: 100px;
+  }
+}
