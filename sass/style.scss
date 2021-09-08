@@ -1,10 +1,67 @@
-body {
-    background-color: rgb(9, 8, 8);
+// THEME
+// https://balboa-demo.squarespace.com/
+// Set Breakpoint Standard Devices
+// Note: Breakpoint = em * browsers font-size base(16px)
+// Example: 30em = 30*16 = 480px
+$mobile:      576px;
+$tablet:      768px;
+$laptop:      992px;
+$desktop:     1200px;
+$largescreen: 1600px;
+$mobilesite: 991px;
+
+@mixin media ($media) {
+  @if $media == mobile {
+    @media only screen and (min-width: $mobile) { @content; }
+  }
+  @if $media == tablet {
+    @media only screen and (min-width: $tablet) { @content; }
+  }
+  @else if $media == laptop {
+    @media only screen and (min-width: $laptop) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $desktop) { @content; }
+  }
+  @else if $media == largescreen {
+    @media only screen and (min-width: $largescreen) { @content; }
+  }
+  @else if $media == mobilesite {
+    @media only screen and (max-width: $mobilesite) { @content; }
+  }
+  @else if $media == smallscreen {
+    @media only screen and (max-width: $mobile) { @content; }
+  }
+  @else if $media == smalldesktop {
+    @media only screen and (min-width:  $tablet) and (max-width:  $desktop) { @content; }
+  }
 }
 
-.cover-page {
-    background-image: url(../img/Banner.png);
-    background-size: cover;
-    height: 380px;
-    background-position: center;
+body {
+    background: #202124;
+    color: #fff;
+    margin: auto;
+    position: relative;
+    height: 100vh;
+}
+
+.slide {
+    height: 100vh;
+    .carousel-control.left,
+    .carousel-control.right {
+        background-image: none;
+    }
+}
+
+
+.item {
+    width: 100vw;
+    height: 100vh;
+    &.one {
+        background-color: #202124;
+    }
+
+    &.two {
+        background-color: #fff;
+    }
 }

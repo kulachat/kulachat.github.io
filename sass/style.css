@@ -1,10 +1,29 @@
 body {
-  background-color: #090808;
+  background: #202124;
+  color: #fff;
+  margin: auto;
+  position: relative;
+  height: 100vh;
 }
 
-.cover-page {
-  background-image: url(../img/Banner.png);
-  background-size: cover;
-  height: 380px;
-  background-position: center;
+.slide {
+  height: 100vh;
+}
+
+.slide .carousel-control.left,
+.slide .carousel-control.right {
+  background-image: none;
+}
+
+.item {
+  width: 100vw;
+  height: 100vh;
+}
+
+.item.one {
+  background-color: #202124;
+}
+
+.item.two {
+  background-color: #fff;
 }

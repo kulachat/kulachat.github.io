@@ -13,3 +13,16 @@ Template scaffolding for themes developer include:
 
 
 [browsersync]: http://www.browsersync.io
+
+
+Start Custom CSS
+Line 223
+
+Page Layout 
+Line 1034
+
+custom-header-page
+Line 327
+
+Gallery Photo Page
+Line 
