@@ -114,5 +114,6 @@ a {
 }
 
 .grid-parent .d-block {
+  height: auto;
   display: block;
 }
