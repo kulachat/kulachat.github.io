@@ -94,12 +94,14 @@ a {
 }
 
 .grid-parent {
+  padding: 20px;
     @include media(desktop) {
         display: grid;
         grid-auto-flow: row;
         grid-column-gap: 15px;
         grid-template-columns: repeat(18,minmax(0,1fr));
         grid-column-gap: 16px;
+        padding: 0;
     }
     
     height: 100vh;

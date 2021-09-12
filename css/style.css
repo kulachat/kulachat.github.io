@@ -52,6 +52,7 @@ a {
 }
 
 .grid-parent {
+  padding: 20px;
   height: 100vh;
 }
 @media only screen and (min-width: 1200px) {
@@ -61,6 +62,7 @@ a {
     grid-column-gap: 15px;
     grid-template-columns: repeat(18, minmax(0, 1fr));
     grid-column-gap: 16px;
+    padding: 0;
   }
 }
 .grid-parent .intro-image-container {
