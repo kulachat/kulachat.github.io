@@ -3,12 +3,19 @@ body {
   color: #fff;
   margin: auto;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   font-family: 'Philosopher', sans-serif;
 }
 
 h1 {
   font-size: 80px;
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+  }
 }
 
 h2,
@@ -18,8 +25,15 @@ h2,
   font-weight: bold;
 }
 
+@media only screen and (max-width: 576px) {
+  h2,
+.sub-title {
+    font-size: 18px;
+  }
+}
+
 p {
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   opacity: .8;
   font-weight: 300;
 }
@@ -30,7 +44,7 @@ a {
 }
 
 .slide {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .slide .carousel-control.left,
@@ -42,9 +56,21 @@ a {
   width: 5%;
 }
 
+@media only screen and (max-width: 576px) {
+  .slide .carousel-control {
+    width: 10%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .slide .carousel-control .glyphicon-chevron-left, .slide .carousel-control .glyphicon-chevron-right, .slide .carousel-control .icon-next, .slide .carousel-control .icon-prev {
+    top: 40px;
+  }
+}
+
 .item {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .item.one {
@@ -56,8 +82,7 @@ a {
 }
 
 .grid-parent {
-  padding: 20px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -74,6 +99,12 @@ a {
 .grid-parent .intro-image-container {
   margin-right: 0;
   grid-column-end: span 8;
+}
+
+@media only screen and (max-width: 576px) {
+  .grid-parent .intro-image-container {
+    height: 30vh;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -103,16 +134,30 @@ a {
   }
 }
 
-.grid-parent .intro-text {
-  align-self: center;
-  grid-column-start: 11;
-  grid-column-end: span 6;
+@media only screen and (max-width: 576px) {
+  .grid-parent .intro-text {
+    padding: 24px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .grid-parent .intro-text {
+    align-self: center;
+    grid-column-start: 11;
+    grid-column-end: span 6;
+  }
 }
 
 .grid-parent .intro-text p {
   font-size: 18px;
   letter-spacing: 1.5;
   font-weight: 300;
+}
+
+@media only screen and (max-width: 576px) {
+  .grid-parent .intro-text p {
+    font-size: 15px;
+  }
 }
 
 .grid-parent .d-block {
