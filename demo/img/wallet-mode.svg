@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="448px" viewBox="0 0 512 448" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>wallet</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="wallet" fill="#1798D5" fill-rule="nonzero">
+            <path d="M448,0 C465.7,0 480,14.33 480,32 C480,49.67 465.7,64 448,64 L80,64 C71.16,64 64,71.2 64,80 C64,88.8 71.16,96 80,96 L448,96 C483.3,96 512,124.7 512,160 L512,384 C512,419.3 483.3,448 448,448 L64,448 C28.65,448 0,419.3 0,384 L0,64 C0,28.65 28.65,0 64,0 L448,0 Z M416,304 C433.7,304 448,289.7 448,272 C448,254.3 433.7,240 416,240 C398.3,240 384,254.3 384,272 C384,289.7 398.3,304 416,304 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

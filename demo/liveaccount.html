@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Live Account</title>
+  <meta name="description" content="">
+  <meta name="og:title" content="">
+  <meta name="og:site_name" content="RUNEX">
+  <meta name="og:url" content="www.runex.co">
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../img/OpenGraphRUNEX.jpg" />
+  <meta property="og:image:width" content="470" />
+  <meta property="og:image:height" content="246" />
+  <meta name="theme-color" content="#222" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400&display=swap" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container-wrap-app">
+    <header class="header-main-app">
+        <div class="wrap-header d-flex justify-content-between">
+        <span class="header-service d-flex align-items-center">
+            <img src="img/wallet-mode.svg" alt="">
+            <span>Account</span>
+        </span>
+        <span class="logo">
+            <img class="logo-small" src="https://dash.maxtrarich.com/static/media/login-logo.d9495f5f.png" alt="">
+        </span>
+        <div class="dropdown">
+            <a href="#" class="avatar dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxgAAAMYCAMAAAB/o7FWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2ODRhMmIzMi1jMjNlLTQ3NjUtOGM1Yi00OWY4NjczMDEyMzQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkZBMzk1RkQxOTAwMTFFNUFGQkFBOTZBODRFNERGMEUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkZBMzk1RkMxOTAwMTFFNUFGQkFBOTZBODRFNERGMEUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowNTZhYzBlOC1hZWQ0LTRkMWItOGIxMS0xZmNiYjI5M2IzZDIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Njg0YTJiMzItYzIzZS00NzY1LThjNWItNDlmODY3MzAxMjM0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" alt="" srcset="">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Profile Setting</a>
+                <a class="dropdown-item" href="#">Change Password</a>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Aside -->
+    <div class="aside-navigation">
+        <div class="sidebar-menu">
+            <ul class="menu">
+                <li class="sidebar-item has-sub active">
+                    <a href="#" class="sidebar-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>
+                        <span>Accounts</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a class="active" href="/customer/accounts/live">Live Accounts</a></li>
+                        <li><a href="/customer/accounts/demo">Demo Accounts</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        <span>Transactions</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/customer/transactions/deposit">Deposit</a></li>
+                        <li><a href="/customer/transactions/withdrawal">Withdrawal</a></li>
+                        <li><a href="/customer/transactions/internal-transfer">Internal Transfer</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span>IB Zone</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/customer/ib">IB</a></li>
+                        <li><a href="/customer/ib/transfer-lot-rebate">Transfer Lot Rebate</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/customer/competition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="7"></circle>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                        </svg>
+                        <span>Competition</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/customer/platforms">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                        <span>Platforms</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="/customer/promotions">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                            <rect x="2" y="7" width="20" height="5"></rect>
+                            <line x1="12" y1="22" x2="12" y2="7"></line>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                        </svg>
+                        <span>Promotions</span>
+                    </a>
+                </li>
+                <li class="sidebar-title">Settings</li>
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#25a6f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Profile Settings</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="/customer/profile?tab=profile">Personal Information</a></li>
+                        <li><a href="/customer/profile?tab=verification">Verification Documents</a></li>
+                        <li><a href="/customer/profile?tab=bank-account">Bank Accounts</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- App -->
+    <div class="main-app">
+        <header class="d-flex justify-content-between">
+            <h1 class="title-section">Live Accounts</h1>
+            <div class="component-new-account">
+                <button class="btn btn-primary me-1 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                     Open New Account
+                </button>
+            </div>
+        </header>
+        <section>
+            <div class="grid-card-account row">
+                <div class="col-md-4">
+                    <div class="card type-hightlight">
+                        <h2 class="title">Wallet</h2>
+                        <span class="data">$0.00</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card type-hightlight">
+                        <h2 class="title">MT4 Balance</h2>
+                        <span class="data">$0.00</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card type-hightlight">
+                        <h2 class="title">Lot Rebate</h2>
+                        <span class="data">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <div class="empty-content">
+            <p>There are no results to show. Try to open a new account from the menu above.</p>
+        </div> -->
+        <section class="account-lists">
+            <div class="grid-card-account row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <h2 class="title d-flex justify-content-between align-items-center">
+                            <span>Account Number: 2090106502</span>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle type-button" href="#" role="button" id="dropdownMenuEdit" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuEdit">
+                                    <a class="dropdown-item" href="#">Change Trading Password</a>
+                                    <a class="dropdown-item" href="#">Change Investor Password</a>
+                                    <a class="dropdown-item" href="#">Change Leverage</a>
+                                </div>
+                            </div>
+                        </h2>
+                        <div class="account-info">
+                            <span class="d-block">Account Type: demoMRF-USD</span>
+                            <span class="d-block mt-2">Leverage: 1:400</span>
+                        </div>
+                        <div>
+                            <span class="d-block mt-4">Balance (USD)</span>
+                            <span class="h1">$0.00</span>
+                            <span class="d-block mt-4">
+                                <button class="btn btn-block btn-primary text-white text-center">Deposit</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+  </div>
+</body>
+<html>
+
