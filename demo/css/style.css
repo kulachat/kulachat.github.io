@@ -33,6 +33,30 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+.custom-modal.modal.type-full-modal .modal-dialog {
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+.custom-modal.modal.type-full-modal .modal-content {
+  height: 100vh;
+}
+.custom-modal.modal.type-full-modal .modal-body,
+.custom-modal.modal.type-full-modal .modal-footer {
+  width: 640px;
+  margin: auto;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.title,
+.modal-title {
+  font-family: "IBM Plex Sans Thai", sans-serif;
+}
 
 .btn-primary {
   background-color: #1798d5;
@@ -209,7 +233,8 @@
   .aside-navigation .sidebar-menu {
     padding-top: 60px;
   }
-  .aside-navigation .sidebar-title {
+  .aside-navigation .sidebar-title,
+.aside-navigation .modal-title {
     padding-top: 40px;
     font-size: 12px;
     border-top: 1px solid #ddd;
@@ -310,6 +335,14 @@
 }
 .main-app .card .data {
   font-size: 22px;
+}
+.main-app .card.card-type-link {
+  cursor: pointer;
+  border: 1px solid transparent;
+  min-height: 0;
+}
+.main-app .card.card-type-link:hover {
+  border: 1px dashed #1898d5;
 }
 .main-app .empty-content {
   text-align: center;
