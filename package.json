@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Scaffolding for web design include browsersync, sass and grunt ",
   "devDependencies": {
+<<<<<<< HEAD
     "grunt": "^1.4.0",
     "grunt-browser-sync": "^2.2.0",
+=======
+    "grunt": "^1.5.2",
+    "grunt-browser-sync": "^0.9.1",
+>>>>>>> 43318baff2ead9225d83b122a8d81586dcc0994e
     "grunt-cli": "^1.4.2",
     "grunt-contrib-sass": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0"
