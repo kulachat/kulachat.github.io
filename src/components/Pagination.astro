@@ -1,0 +1,138 @@
+---
+export interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+  showPrevNext?: boolean;
+  showNumbers?: boolean;
+}
+
+const { 
+  currentPage, 
+  totalPages, 
+  baseUrl,
+  showPrevNext = true,
+  showNumbers = true
+} = Astro.props;
+
+// Generate page numbers to show
+const generatePageNumbers = () => {
+  const pages: (number | string)[] = [];
+  const maxVisiblePages = 7;
+  
+  if (totalPages <= maxVisiblePages) {
+    // Show all pages if total is small
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    // Always show first page
+    pages.push(1);
+    
+    if (currentPage <= 4) {
+      // Show first few pages
+      for (let i = 2; i <= 5; i++) {
+        pages.push(i);
+      }
+      pages.push('...');
+      pages.push(totalPages);
+    } else if (currentPage >= totalPages - 3) {
+      // Show last few pages
+      pages.push('...');
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show middle pages
+      pages.push('...');
+      for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        pages.push(i);
+      }
+      pages.push('...');
+      pages.push(totalPages);
+    }
+  }
+  
+  return pages;
+};
+
+const pageNumbers = generatePageNumbers();
+
+const getPageUrl = (page: number) => {
+  if (page === 1) {
+    return baseUrl;
+  }
+  return `${baseUrl}/page/${page}`;
+};
+---
+
+{totalPages > 1 && (
+  <nav class="flex items-center justify-center space-x-2 mt-12" aria-label="Pagination">
+    {/* Previous Button */}
+    {showPrevNext && currentPage > 1 && (
+      <a
+        href={getPageUrl(currentPage - 1)}
+        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-gray-800 border border-gray-600 rounded-lg hover:bg-gray-700 hover:border-gray-500 hover:text-white transition-all duration-200"
+        aria-label="Previous page"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Previous
+      </a>
+    )}
+    
+    {/* Page Numbers */}
+    {showNumbers && (
+      <div class="flex items-center space-x-1">
+        {pageNumbers.map((page) => 
+          typeof page === 'number' ? (
+            <a
+              href={getPageUrl(page)}
+              class={`inline-flex items-center justify-center w-10 h-10 text-sm font-medium rounded-lg transition-all duration-200 ${
+                page === currentPage
+                  ? 'bg-primary-600 text-white border border-primary-500'
+                  : 'text-gray-300 bg-gray-800 border border-gray-600 hover:bg-gray-700 hover:border-gray-500 hover:text-white'
+              }`}
+              aria-label={`Page ${page}`}
+              aria-current={page === currentPage ? 'page' : undefined}
+            >
+              {page}
+            </a>
+          ) : (
+            <span 
+              class="inline-flex items-center justify-center w-10 h-10 text-sm text-gray-500"
+              aria-hidden="true"
+            >
+              {page}
+            </span>
+          )
+        )}
+      </div>
+    )}
+    
+    {/* Next Button */}
+    {showPrevNext && currentPage < totalPages && (
+      <a
+        href={getPageUrl(currentPage + 1)}
+        class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-300 bg-gray-800 border border-gray-600 rounded-lg hover:bg-gray-700 hover:border-gray-500 hover:text-white transition-all duration-200"
+        aria-label="Next page"
+      >
+        Next
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    )}
+  </nav>
+)}
+
+{/* Page Info */}
+<div class="text-center mt-6">
+  <p class="text-sm text-gray-400">
+    Showing page {currentPage} of {totalPages}
+    {totalPages > 1 && (
+      <span> • {totalPages * 10 - 10 + (currentPage === totalPages ? (totalPages - 1) * 10 : 10)} posts total</span>
+    )}
+  </p>
+</div>
