@@ -1,0 +1,84 @@
+---
+import DemoLayout from '../../layouts/DemoLayout.astro';
+---
+
+<DemoLayout title="Demo Account - RUNEX">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-center">Demo Account Setup</h3>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-info">
+              <strong>Demo Account Benefits:</strong>
+              <ul class="mt-2 mb-0">
+                <li>Practice trading with virtual money</li>
+                <li>No financial risk</li>
+                <li>Real-time market data</li>
+                <li>Full platform features</li>
+              </ul>
+            </div>
+            
+            <form>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" required />
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+              
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" />
+              </div>
+              
+              <div class="mb-3">
+                <label for="experience" class="form-label">Trading Experience</label>
+                <select class="form-select" id="experience">
+                  <option value="">Select your experience level</option>
+                  <option value="beginner">Beginner (0-1 years)</option>
+                  <option value="intermediate">Intermediate (1-3 years)</option>
+                  <option value="advanced">Advanced (3+ years)</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="virtualBalance" class="form-label">Initial Virtual Balance</label>
+                <select class="form-select" id="virtualBalance">
+                  <option value="10000">$10,000</option>
+                  <option value="50000">$50,000</option>
+                  <option value="100000" selected>$100,000</option>
+                </select>
+              </div>
+              
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="terms" required />
+                <label class="form-check-label" for="terms">
+                  I agree to the <a href="#">Terms and Conditions</a>
+                </label>
+              </div>
+              
+              <button type="submit" class="btn btn-success w-100">Create Demo Account</button>
+            </form>
+            
+            <div class="text-center mt-3">
+              <p>Already have an account? <a href="/demo/login">Login here</a></p>
+              <p>Ready for live trading? <a href="/demo/liveaccount">Open Live Account</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DemoLayout>

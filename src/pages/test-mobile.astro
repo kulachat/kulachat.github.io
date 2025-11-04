@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Mobile Menu Test - KulaChat">
+  <main class="min-h-screen pt-20 bg-gray-900">
+    <div class="container mx-auto px-4 py-12">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-white mb-8">Mobile Menu Test</h1>
+        <p class="text-xl text-gray-300 mb-8">
+          This page is for testing the mobile menu functionality.
+        </p>
+        
+        <div class="max-w-2xl mx-auto space-y-6">
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 class="text-2xl font-semibold text-white mb-4">Test Instructions</h2>
+            <ul class="text-left text-gray-300 space-y-2">
+              <li>• Open browser developer tools (F12)</li>
+              <li>• Switch to mobile device view</li>
+              <li>• Click the hamburger menu button (☰)</li>
+              <li>• Verify menu slides in from the right</li>
+              <li>• Test navigation links</li>
+              <li>• Test clicking outside to close menu</li>
+              <li>• Test pressing Escape key to close menu</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 class="text-2xl font-semibold text-white mb-4">Expected Behavior</h2>
+            <ul class="text-left text-gray-300 space-y-2">
+              <li>✅ Menu button visible on screens &lt; 768px</li>
+              <li>✅ Smooth slide animation when opening/closing</li>
+              <li>✅ Overlay appears behind menu</li>
+              <li>✅ Body scroll locked when menu is open</li>
+              <li>✅ Accessible with keyboard navigation</li>
+              <li>✅ Proper ARIA attributes for screen readers</li>
+            </ul>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">Desktop View</h3>
+              <p class="text-blue-100">Full navigation visible in header</p>
+            </div>
+            <div class="bg-gradient-to-r from-green-600 to-teal-600 rounded-lg p-6">
+              <h3 class="text-xl font-semibold text-white mb-2">Mobile View</h3>
+              <p class="text-green-100">Hamburger menu with slide-out panel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

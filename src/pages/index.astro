@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Digital Nomad Hub - Work From Anywhere" 
+  description="Join a global community of digital nomads. Learn how to work remotely, travel the world, and live location-independently with our comprehensive resources and tools."
+>
+  <Header />
+  <Hero 
+    title="Digital Nomad Hub"
+    subtitle="Work from anywhere, live everywhere"
+    description="เขามั่นหมายที่จะนั่งทำงานจากที่ไหนก็ได้บนโลกใบนี้ ชายผู้ปุกปั่นท่องเที่ยวภูผาม่านด้วยก้อนหินสามก้อน ด้วยหลักคิดแบบนักออกแบบ เขา เป็น นักทดลองตัวยง. Join thousands of professionals who have embraced the freedom of location independence."
+    ctaText="Start Your Journey"
+    ctaLink="/guide"
+  />
+  <Features />
+  <Footer />
+</BaseLayout>

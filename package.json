@@ -1,25 +1,33 @@
 {
-  "name": "scaffolding",
+  "name": "digital-nomad-hub",
   "version": "1.0.0",
-  "description": "Scaffolding for web design include browsersync, sass and grunt ",
+  "description": "A modern digital nomad platform built with Astro and Tailwind CSS",
+  "type": "module",
   "devDependencies": {
-<<<<<<< HEAD
-    "grunt": "^1.4.0",
-    "grunt-browser-sync": "^2.2.0",
-=======
-    "grunt": "^1.5.2",
-    "grunt-browser-sync": "^0.9.1",
->>>>>>> 43318baff2ead9225d83b122a8d81586dcc0994e
-    "grunt-cli": "^1.4.2",
-    "grunt-contrib-sass": "^2.0.0",
-    "grunt-contrib-watch": "^1.1.0"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.1",
+    "@tailwindcss/typography": "^0.5.15",
+    "astro": "^4.15.9",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.3"
   },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "concurrently": "^6.0.2",
-    "http-server": "^14.1.0",
-    "js-yaml": ">=3.13.1",
-    "lodash": "^4.17.21",
-    "underscore.string": ">=3.3.5"
+  "dependencies": {},
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "clean": "rm -rf dist .astro",
+    "type-check": "astro check",
+    "lint": "prettier --check . && astro check",
+    "format": "prettier --write ."
+  },
+  "overrides": {
+    "axios": "^1.13.1",
+    "send": "^0.19.0",
+    "serve-static": "^1.16.2"
   }
 }

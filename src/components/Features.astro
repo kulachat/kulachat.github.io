@@ -1,0 +1,169 @@
+---
+// Features section component inspired by GitHub Docs
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  links: Array<{
+    name: string;
+    href: string;
+    external?: boolean;
+  }>;
+  iconColor: string;
+}
+
+const features: Feature[] = [
+  {
+    icon: "🚀",
+    title: "Get started",
+    description: "Begin your digital nomad journey with essential tools and resources",
+    iconColor: "text-green-400",
+    links: [
+      { name: "Getting started guide", href: "/guide" },
+      { name: "Location scouting", href: "/locations" },
+      { name: "Essential tools setup", href: "/tools" },
+      { name: "Remote work basics", href: "/remote-work" },
+      { name: "Community guidelines", href: "/community" }
+    ]
+  },
+  {
+    icon: "🤝",
+    title: "Collaborative working",
+    description: "Connect and collaborate with fellow digital nomads worldwide",
+    iconColor: "text-blue-400",
+    links: [
+      { name: "Co-working spaces", href: "/coworking" },
+      { name: "Remote teams", href: "/teams" },
+      { name: "Project collaboration", href: "/projects" },
+      { name: "Skill sharing", href: "/skills" },
+      { name: "Networking events", href: "/events" }
+    ]
+  },
+  {
+    icon: "🎯",
+    title: "Digital Nomad Life",
+    description: "Master the art of working remotely while traveling the world",
+    iconColor: "text-purple-400",
+    links: [
+      { name: "Lifestyle tips", href: "/lifestyle" },
+      { name: "Travel planning", href: "/travel" },
+      { name: "Productivity hacks", href: "/productivity" },
+      { name: "Work-life balance", href: "/balance" },
+      { name: "Success stories", href: "/stories" }
+    ]
+  },
+  {
+    icon: "🔒",
+    title: "Security and finance",
+    description: "Stay secure and manage finances while working remotely",
+    iconColor: "text-red-400",
+    links: [
+      { name: "Digital security", href: "/security" },
+      { name: "VPN recommendations", href: "/vpn" },
+      { name: "Banking solutions", href: "/banking" },
+      { name: "Tax considerations", href: "/tax" },
+      { name: "Insurance options", href: "/insurance" }
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobile apps",
+    description: "Essential mobile applications for digital nomads on the go",
+    iconColor: "text-indigo-400",
+    links: [
+      { name: "Travel apps", href: "/apps/travel" },
+      { name: "Productivity apps", href: "/apps/productivity" },
+      { name: "Communication tools", href: "/apps/communication" },
+      { name: "Expense tracking", href: "/apps/expenses" }
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Project management",
+    description: "Organize and manage your work effectively from anywhere",
+    iconColor: "text-yellow-400",
+    links: [
+      { name: "Task management", href: "/project/tasks" },
+      { name: "Time tracking", href: "/project/time" },
+      { name: "Client communication", href: "/project/clients" },
+      { name: "Portfolio building", href: "/project/portfolio" }
+    ]
+  },
+  {
+    icon: "👥",
+    title: "Community",
+    description: "Join a thriving community of location-independent professionals",
+    iconColor: "text-pink-400",
+    links: [
+      { name: "Discussion forums", href: "/community/forums" },
+      { name: "Local meetups", href: "/community/meetups" },
+      { name: "Mentorship program", href: "/community/mentorship" },
+      { name: "Success network", href: "/community/network" }
+    ]
+  },
+  {
+    icon: "📚",
+    title: "More resources",
+    description: "Additional tools and resources to enhance your nomad experience",
+    iconColor: "text-cyan-400",
+    links: [
+      { name: "Learning resources", href: "/resources/learning" },
+      { name: "Equipment guides", href: "/resources/equipment" },
+      { name: "Health & wellness", href: "/resources/health" },
+      { name: "Legal considerations", href: "/resources/legal" }
+    ]
+  }
+];
+---
+
+<section id="learn-more" class="py-20 bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Everything you need for digital nomad life
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Comprehensive resources and tools to help you work remotely from anywhere in the world
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((feature) => (
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/10">
+          <div class="flex items-center mb-4">
+            <div class={`text-2xl ${feature.iconColor} mr-3`}>
+              {feature.icon}
+            </div>
+            <h3 class="text-lg font-semibold text-white">
+              {feature.title}
+            </h3>
+          </div>
+          
+          <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+            {feature.description}
+          </p>
+          
+          <ul class="space-y-2">
+            {feature.links.map((link) => (
+              <li>
+                <a 
+                  href={link.href}
+                  class="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200 flex items-center group"
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                >
+                  {link.name}
+                  {link.external && (
+                    <svg class="w-3 h-3 ml-1 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

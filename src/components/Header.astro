@@ -1,0 +1,166 @@
+---
+// Header component inspired by GitHub Docs
+---
+
+<header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo and Brand -->
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.84L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.84l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+            </svg>
+          </div>
+          <span class="text-xl font-semibold text-white">Digital Nomad Hub</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a>
+        <a href="/demo" class="text-gray-300 hover:text-white transition-colors duration-200">Demo</a>
+        <a href="/projects" class="text-gray-300 hover:text-white transition-colors duration-200">Projects</a>
+        <a href="/community" class="text-gray-300 hover:text-white transition-colors duration-200">Community</a>
+        <a href="/resources" class="text-gray-300 hover:text-white transition-colors duration-200">Resources</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center space-x-4">
+        <button class="hidden sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+          Get Started
+        </button>
+        
+        <!-- Mobile menu button -->
+        <button 
+          id="mobile-menu-button"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition-colors duration-200"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Hamburger icon -->
+          <svg id="menu-icon-open" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <!-- Close icon -->
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="md:hidden hidden transition-all duration-300 ease-in-out">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-800 border-t border-gray-700 animate-slide-up">
+        <a href="/" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+          Home
+        </a>
+        <a href="/demo" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+          Demo
+        </a>
+        <a href="/projects" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+          Projects
+        </a>
+        <a href="/community" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+          Community
+        </a>
+        <a href="/resources" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+          Resources
+        </a>
+        <div class="px-3 py-2">
+          <button class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    if (mobileMenuButton && mobileMenu && menuIconOpen && menuIconClose) {
+      mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle menu visibility with smooth animation
+        if (isExpanded) {
+          // Close menu
+          mobileMenu.style.opacity = '0';
+          mobileMenu.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 200);
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+          menuIconOpen.classList.remove('hidden');
+          menuIconOpen.classList.add('block');
+          menuIconClose.classList.remove('block');
+          menuIconClose.classList.add('hidden');
+        } else {
+          // Open menu
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.style.opacity = '0';
+          mobileMenu.style.transform = 'translateY(-10px)';
+          
+          // Trigger animation
+          requestAnimationFrame(() => {
+            mobileMenu.style.opacity = '1';
+            mobileMenu.style.transform = 'translateY(0)';
+          });
+          
+          mobileMenuButton.setAttribute('aria-expanded', 'true');
+          menuIconOpen.classList.remove('block');
+          menuIconOpen.classList.add('hidden');
+          menuIconClose.classList.remove('hidden');
+          menuIconClose.classList.add('block');
+        }
+      });
+
+      // Helper function to close menu with animation
+      const closeMenu = () => {
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.transform = 'translateY(-10px)';
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 200);
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        menuIconOpen.classList.remove('hidden');
+        menuIconOpen.classList.add('block');
+        menuIconClose.classList.remove('block');
+        menuIconClose.classList.add('hidden');
+      };
+
+      // Close menu when clicking on a link
+      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const isClickInsideMenu = mobileMenu.contains(event.target as Node);
+        const isClickOnButton = mobileMenuButton.contains(event.target as Node);
+        
+        if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
+          closeMenu();
+        }
+      });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+          closeMenu();
+        }
+      });
+    }
+  });
+</script>
