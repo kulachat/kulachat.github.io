@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToSchool — Career Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #4FC3F7;
+    --sky-dark: #0288D1;
+    --mint: #80CBC4;
+    --coral: #FF8A80;
+    --sun: #FFD54F;
+    --lavender: #CE93D8;
+    --surface: #F0F9FF;
+    --white: #FFFFFF;
+    --text: #1A237E;
+    --text-soft: #546E7A;
+    --card-bg: rgba(255,255,255,0.92);
+    --radius: 24px;
+    --radius-sm: 14px;
+    --shadow: 0 8px 32px rgba(2,136,209,0.13);
+    --shadow-lg: 0 20px 60px rgba(2,136,209,0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans Thai', sans-serif;
+    background: linear-gradient(145deg, #E3F2FD 0%, #E8F5E9 40%, #FFF9C4 100%);
+    min-height: 100vh;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── FLOATING BLOBS ─── */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+  }
+  .blob-1 { width: 420px; height: 420px; background: #4FC3F7; top: -120px; left: -120px; animation-delay: 0s; }
+  .blob-2 { width: 320px; height: 320px; background: #80CBC4; bottom: 0; right: -80px; animation-delay: 3s; }
+  .blob-3 { width: 200px; height: 200px; background: #FFD54F; top: 50%; left: 60%; animation-delay: 5s; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+
+  /* ─── SCREENS ─── */
+  .screen { display: none; position: relative; z-index: 1; min-height: 100vh; padding: 24px 20px; align-items: center; justify-content: center; flex-direction: column; }
+  .screen.active { display: flex; animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ─── CARD ─── */
+  .card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 460px;
+    border: 1.5px solid rgba(255,255,255,0.8);
+  }
+  .card-wide { max-width: 720px; }
+  .card-full { max-width: 900px; }
+
+  /* ─── LOGO ─── */
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Kanit', sans-serif; font-weight: 700;
+    font-size: 22px; color: var(--sky-dark);
+    margin-bottom: 28px; justify-content: center;
+  }
+  .logo-icon {
+    width: 42px; height: 42px; background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; box-shadow: 0 4px 14px rgba(2,136,209,0.3);
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1 { font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 26px; color: var(--text); line-height: 1.3; }
+  h2 { font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 20px; color: var(--text); }
+  h3 { font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 16px; color: var(--text); }
+  p { font-size: 14px; color: var(--text-soft); line-height: 1.7; }
+  .subtitle { font-size: 15px; color: var(--text-soft); margin-top: 8px; }
+
+  /* ─── INPUTS ─── */
+  .input-group { margin-bottom: 18px; }
+  .input-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; display: block; }
+  .input-field {
+    width: 100%; padding: 14px 18px;
+    border: 2px solid rgba(79,195,247,0.3);
+    border-radius: var(--radius-sm);
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 15px; color: var(--text);
+    background: rgba(255,255,255,0.7);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input-field:focus {
+    border-color: var(--sky);
+    box-shadow: 0 0 0 4px rgba(79,195,247,0.15);
+  }
+  .input-field::placeholder { color: #B0BEC5; }
+
+  /* ─── BUTTONS ─── */
+  .btn {
+    width: 100%; padding: 15px 20px;
+    border: none; border-radius: var(--radius-sm);
+    font-family: 'Kanit', sans-serif; font-weight: 600; font-size: 16px;
+    cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--sky), var(--sky-dark));
+    color: white;
+    box-shadow: 0 6px 20px rgba(2,136,209,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(2,136,209,0.45); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: rgba(79,195,247,0.1);
+    color: var(--sky-dark);
+    border: 2px solid rgba(79,195,247,0.3);
+  }
+  .btn-secondary:hover { background: rgba(79,195,247,0.18); }
+  .btn-coral {
+    background: linear-gradient(135deg, #FF8A80, #F44336);
+    color: white;
+    box-shadow: 0 6px 20px rgba(244,67,54,0.3);
+  }
+  .btn-mint {
+    background: linear-gradient(135deg, var(--mint), #00897B);
+    color: white;
+    box-shadow: 0 6px 20px rgba(0,137,123,0.3);
+  }
+  .btn-sm { padding: 10px 18px; font-size: 14px; width: auto; }
+
+  /* ─── BADGE / TAG ─── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 600;
+  }
+  .badge-sky { background: rgba(79,195,247,0.15); color: var(--sky-dark); }
+  .badge-mint { background: rgba(128,203,196,0.2); color: #00695C; }
+  .badge-coral { background: rgba(255,138,128,0.15); color: #C62828; }
+  .badge-sun { background: rgba(255,213,79,0.2); color: #E65100; }
+
+  /* ─── AVATAR ─── */
+  .avatar {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--sky), var(--lavender));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 16px; box-shadow: 0 4px 18px rgba(79,195,247,0.3);
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-wrap { margin: 20px 0; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-soft); margin-bottom: 8px; }
+  .progress-bar { height: 8px; background: rgba(79,195,247,0.15); border-radius: 100px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--sky), var(--sky-dark)); transition: width 0.6s ease; }
+
+  /* ─── STEP INDICATOR ─── */
+  .steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 28px; }
+  .step { display: flex; align-items: center; flex-direction: column; position: relative; }
+  .step-dot {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    border: 2.5px solid rgba(79,195,247,0.3);
+    color: var(--text-soft); background: white;
+    transition: all 0.3s;
+  }
+  .step-dot.done { background: var(--sky-dark); color: white; border-color: var(--sky-dark); }
+  .step-dot.active { background: var(--sky); color: white; border-color: var(--sky); box-shadow: 0 0 0 5px rgba(79,195,247,0.2); }
+  .step-label { font-size: 10px; font-weight: 600; color: var(--text-soft); margin-top: 5px; white-space: nowrap; }
+  .step-line { width: 50px; height: 2px; background: rgba(79,195,247,0.25); margin-bottom: 16px; }
+  .step-line.done { background: var(--sky-dark); }
+
+  /* ─── CAREER CARDS ─── */
+  .career-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+  .career-card {
+    background: white; border-radius: 18px;
+    padding: 18px 14px; text-align: center;
+    border: 2.5px solid transparent; cursor: pointer;
+    transition: all 0.2s; box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+  }
+  .career-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .career-card.selected { border-color: var(--sky); background: rgba(79,195,247,0.06); }
+  .career-icon { font-size: 32px; margin-bottom: 8px; display: block; }
+  .career-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .career-sub { font-size: 11px; color: var(--text-soft); margin-top: 3px; }
+
+  /* ─── WELCOME BANNER ─── */
+  .welcome-banner {
+    background: linear-gradient(135deg, var(--sky-dark), #1565C0);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    color: white; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .welcome-text { flex: 1; }
+  .welcome-text h2 { color: white; font-size: 18px; }
+  .welcome-text p { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 4px; }
+  .welcome-emoji { font-size: 48px; }
+
+  /* ─── INFO ALERT ─── */
+  .alert {
+    border-radius: var(--radius-sm); padding: 14px 18px;
+    margin-bottom: 18px; font-size: 13px; display: flex; gap: 10px; align-items: flex-start;
+  }
+  .alert-info { background: rgba(79,195,247,0.1); color: var(--sky-dark); border-left: 4px solid var(--sky); }
+  .alert-success { background: rgba(128,203,196,0.15); color: #00695C; border-left: 4px solid var(--mint); }
+
+  /* ─── RESULT CARD ─── */
+  .result-big {
+    background: linear-gradient(135deg, #E3F2FD, #E8F5E9);
+    border-radius: var(--radius);
+    padding: 32px; text-align: center;
+    border: 2px solid rgba(79,195,247,0.2);
+  }
+  .result-score { font-family: 'Kanit', sans-serif; font-size: 72px; font-weight: 700; color: var(--sky-dark); line-height: 1; }
+  .result-label { font-size: 14px; color: var(--text-soft); margin-top: 6px; }
+
+  /* ─── DIVIDER ─── */
+  .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--text-soft); font-size: 12px; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.08); }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: #1A237E; color: white; padding: 12px 24px; border-radius: 100px;
+    font-size: 14px; font-weight: 500; z-index: 9999;
+    transition: transform 0.3s ease; pointer-events: none;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 24px rgba(26,35,126,0.3);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ─── QUESTION STYLE ─── */
+  .question-text { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.7; margin-bottom: 20px; }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    padding: 14px 18px; border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.8); border: 2px solid rgba(79,195,247,0.2);
+    cursor: pointer; font-size: 14px; color: var(--text);
+    transition: all 0.2s; display: flex; align-items: center; gap: 12px;
+  }
+  .option:hover { border-color: var(--sky); background: rgba(79,195,247,0.06); }
+  .option.selected { border-color: var(--sky-dark); background: rgba(79,195,247,0.1); font-weight: 600; }
+  .option-letter {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(79,195,247,0.15); color: var(--sky-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+  }
+  .option.selected .option-letter { background: var(--sky-dark); color: white; }
+
+  /* ─── NAV BACK ─── */
+  .nav-back {
+    display: flex; align-items: center; gap: 6px;
+    color: var(--text-soft); font-size: 13px; cursor: pointer;
+    margin-bottom: 20px; padding: 8px 12px;
+    border-radius: var(--radius-sm); width: fit-content;
+    transition: background 0.15s;
+  }
+  .nav-back:hover { background: rgba(0,0,0,0.05); }
+
+  /* ─── POPUP OVERLAY ─── */
+  .overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26,35,126,0.35); backdrop-filter: blur(6px);
+    z-index: 500; align-items: center; justify-content: center; padding: 20px;
+  }
+  .overlay.active { display: flex; animation: fadeIn 0.25s ease; }
+  .popup {
+    background: white; border-radius: var(--radius);
+    padding: 36px 32px; max-width: 400px; width: 100%;
+    box-shadow: var(--shadow-lg); text-align: center;
+  }
+  .popup-icon { font-size: 52px; margin-bottom: 16px; }
+  .popup h2 { margin-bottom: 10px; }
+  .popup p { margin-bottom: 24px; }
+  .popup-actions { display: flex; gap: 10px; }
+
+  @media (max-width: 600px) {
+    .card { padding: 28px 22px; }
+    .career-grid { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BLOBS -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- ═══════════ SCREEN 1: LOGIN ═══════════ -->
+<div class="screen active" id="screen-login">
+  <div class="card">
+    <div class="logo">
+      <div class="logo-icon">🎓</div>
+      <span>ToSchool</span>
+    </div>
+
+    <div style="text-align:center; margin-bottom: 28px;">
+      <h1>ยินดีต้อนรับ! 👋</h1>
+      <p class="subtitle">เข้าสู่ระบบด้วย Username และ Password ที่คุณครูให้มา</p>
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">👤 ชื่อผู้ใช้ (Username)</label>
+      <input class="input-field" id="username" type="text" placeholder="กรอก Username ของคุณ">
+    </div>
+    <div class="input-group">
+      <label class="input-label">🔒 รหัสผ่าน (Password)</label>
+      <input class="input-field" id="password" type="password" placeholder="กรอก Password ของคุณ">
+    </div>
+
+    <button class="btn btn-primary" style="margin-top:8px;" onclick="handleLogin()">
+      🚀 เข้าสู่ระบบ
+    </button>
+
+    <div class="divider">หรือ</div>
+
+    <div class="alert alert-info">
+      <span>💡</span>
+      <div><strong>ไม่มี Username?</strong> ให้ถามคุณครูประจำวิชาเพื่อขอรับ Username และ Password</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 2: RETURNING USER WELCOME ═══════════ -->
+<div class="screen" id="screen-returning">
+  <div class="card card-wide">
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h2>ยินดีต้อนรับกลับมา! 🎉</h2>
+        <p>ระบบจำข้อมูลของคุณไว้แล้ว พร้อมต่อได้เลย</p>
+      </div>
+      <div class="welcome-emoji">🎒</div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:24px;">
+      <div class="avatar">👦</div>
+      <div>
+        <h2>นาย ก</h2>
+        <div style="display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;">
+          <span class="badge badge-sky">📚 ม.5</span>
+          <span class="badge badge-mint">✅ มีข้อมูลเดิม</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>ความคืบหน้าของคุณ</span>
+        <span>Pre-test ผ่านแล้ว</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+    </div>
+
+    <p style="margin-bottom:20px;">คุณสำรวจอาชีพได้เลยโดยไม่ต้องทำ Pre-test ซ้ำ หรือต้องการเริ่มใหม่?</p>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn btn-primary" style="flex:2;" onclick="goTo('screen-career')">
+        🔭 สำรวจอาชีพต่อ
+      </button>
+      <button class="btn btn-secondary" style="flex:1;" onclick="goTo('screen-pretest')">
+        🔄 เริ่มใหม่
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 3: NEW USER WELCOME ═══════════ -->
+<div class="screen" id="screen-newuser">
+  <div class="card">
+    <div style="text-align:center; margin-bottom:24px;">
+      <div style="font-size:56px; margin-bottom:12px;">🌟</div>
+      <h1>สวัสดี นาย ข!</h1>
+      <p class="subtitle">ยินดีต้อนรับสู่การสำรวจอาชีพครั้งแรก<br>มาเริ่มรู้จักตัวเองกันเถอะ!</p>
+    </div>
+
+    <div class="alert alert-info">
+      <span>📋</span>
+      <div>ก่อนเริ่มสำรวจอาชีพ ให้ทำ <strong>แบบทดสอบก่อนเรียน (Pre-test)</strong> สั้นๆ ก่อนนะ ใช้เวลาแค่ 5 นาที!</div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
+      <div style="display:flex; align-items:center; gap:12px; padding:12px; background:rgba(79,195,247,0.06); border-radius:12px;">
+        <span style="font-size:24px;">1️⃣</span>
+        <div><strong style="font-size:13px;">ทำ Pre-test</strong><br><span style="font-size:12px; color:var(--text-soft);">ประเมินความรู้เบื้องต้น ~5 นาที</span></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px; padding:12px; background:rgba(79,195,247,0.06); border-radius:12px;">
+        <span style="font-size:24px;">2️⃣</span>
+        <div><strong style="font-size:13px;">สำรวจอาชีพ</strong><br><span style="font-size:12px; color:var(--text-soft);">ดูอาชีพที่น่าสนใจสำหรับคุณ</span></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px; padding:12px; background:rgba(79,195,247,0.06); border-radius:12px;">
+        <span style="font-size:24px;">3️⃣</span>
+        <div><strong style="font-size:13px;">ทำ Post-test</strong><br><span style="font-size:12px; color:var(--text-soft);">วัดผลหลังเรียนรู้</span></div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="goTo('screen-pretest')">
+      ✏️ เริ่มทำ Pre-test
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 4: PRE-TEST ═══════════ -->
+<div class="screen" id="screen-pretest">
+  <div class="card card-wide">
+    <div class="nav-back" onclick="goTo('screen-newuser')">← กลับ</div>
+
+    <!-- Steps -->
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot active">1</div>
+        <div class="step-label">Pre-test</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-label">สำรวจอาชีพ</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-label">Post-test</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-label">ผลลัพธ์</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <span class="badge badge-sky">📝 Pre-test</span>
+      <div class="progress-wrap" style="margin-top:10px;">
+        <div class="progress-label">
+          <span>ข้อที่ 1 จาก 5</span>
+          <span>20%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+      </div>
+    </div>
+
+    <div class="question-text">
+      คุณคิดว่าตนเองมีความสนใจในด้านใดมากที่สุด?
+    </div>
+
+    <div class="options">
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ก</div>
+        <span>วิทยาศาสตร์และเทคโนโลยี</span>
+      </div>
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ข</div>
+        <span>ศิลปะ ดนตรี และความคิดสร้างสรรค์</span>
+      </div>
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ค</div>
+        <span>การช่วยเหลือและดูแลผู้อื่น</span>
+      </div>
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ง</div>
+        <span>ธุรกิจ การค้า และการจัดการ</span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" style="margin-top:24px;" onclick="goTo('screen-landing')">
+      ถัดไป →
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 5: LANDING PAGE (after pre-test) ═══════════ -->
+<div class="screen" id="screen-landing">
+  <div class="card card-wide">
+    <div class="steps">
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">Pre-test</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot active">2</div><div class="step-label">สำรวจอาชีพ</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot">3</div><div class="step-label">Post-test</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot">4</div><div class="step-label">ผลลัพธ์</div></div>
+    </div>
+
+    <div class="alert alert-success">
+      <span>🎉</span>
+      <div><strong>ทำ Pre-test เสร็จแล้ว!</strong> ตอนนี้มาสำรวจอาชีพที่น่าสนใจกันเลย</div>
+    </div>
+
+    <h2 style="margin-bottom:6px;">เลือกอาชีพที่อยากรู้จัก</h2>
+    <p>เลือกได้ 1 อาชีพที่สนใจ เพื่อเรียนรู้และทำแบบทดสอบ</p>
+
+    <div class="career-grid">
+      <div class="career-card" onclick="selectCareer(this)">
+        <span class="career-icon">👨‍💻</span>
+        <div class="career-title">นักพัฒนาซอฟต์แวร์</div>
+        <div class="career-sub">IT & Tech</div>
+      </div>
+      <div class="career-card" onclick="selectCareer(this)">
+        <span class="career-icon">👩‍⚕️</span>
+        <div class="career-title">พยาบาลวิชาชีพ</div>
+        <div class="career-sub">การแพทย์</div>
+      </div>
+      <div class="career-card" onclick="selectCareer(this)">
+        <span class="career-icon">🎨</span>
+        <div class="career-title">นักออกแบบกราฟิก</div>
+        <div class="career-sub">ครีเอทีฟ</div>
+      </div>
+      <div class="career-card" onclick="selectCareer(this)">
+        <span class="career-icon">⚖️</span>
+        <div class="career-title">ทนายความ</div>
+        <div class="career-sub">กฎหมาย</div>
+      </div>
+      <div class="career-card" onclick="selectCareer(this)">
+        <span class="career-icon">👨‍🍳</span>
+        <div class="career-title">เชฟมืออาชีพ</div>
+        <div class="career-sub">อาหาร & การบริการ</div>
+      </div>
+      <div class="career-card" onclick="selectCareer(this)">
+        <span class="career-icon">✈️</span>
+        <div class="career-title">นักบิน</div>
+        <div class="career-sub">การบิน</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" style="margin-top:24px;" id="btn-career" disabled onclick="goTo('screen-career')">
+      🔭 เริ่มสำรวจอาชีพ →
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 6: CAREER DETAIL ═══════════ -->
+<div class="screen" id="screen-career">
+  <div class="card card-wide">
+    <div class="steps">
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">Pre-test</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot active">2</div><div class="step-label">สำรวจอาชีพ</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot">3</div><div class="step-label">Post-test</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot">4</div><div class="step-label">ผลลัพธ์</div></div>
+    </div>
+
+    <div style="text-align:center; padding:20px 0;">
+      <div style="font-size:64px; margin-bottom:12px;">👨‍💻</div>
+      <h1>นักพัฒนาซอฟต์แวร์</h1>
+      <div style="display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap;">
+        <span class="badge badge-sky">💻 IT & Tech</span>
+        <span class="badge badge-sun">💰 เงินเดือน 35,000–120,000 บาท</span>
+        <span class="badge badge-mint">📈 ตลาดงานสูง</span>
+      </div>
+    </div>
+
+    <div style="background:rgba(79,195,247,0.06); border-radius:16px; padding:20px; margin-bottom:20px;">
+      <h3 style="margin-bottom:10px;">🔍 ทำอะไร?</h3>
+      <p>เขียนโปรแกรม ออกแบบระบบ และพัฒนาแอปพลิเคชันที่ใช้ในชีวิตประจำวัน เช่น Line, TikTok, หรือระบบธนาคาร</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
+      <div style="background:rgba(128,203,196,0.1); border-radius:14px; padding:14px;">
+        <div style="font-size:20px; margin-bottom:6px;">📚</div>
+        <h3 style="font-size:13px;">เรียนอะไร?</h3>
+        <p style="font-size:12px; margin-top:4px;">วิทยาการคอมพิวเตอร์, วิศวกรรมซอฟต์แวร์</p>
+      </div>
+      <div style="background:rgba(255,213,79,0.1); border-radius:14px; padding:14px;">
+        <div style="font-size:20px; margin-bottom:6px;">🏆</div>
+        <h3 style="font-size:13px;">ทักษะสำคัญ</h3>
+        <p style="font-size:12px; margin-top:4px;">การแก้ปัญหา, ความคิดสร้างสรรค์, ทีมเวิร์ก</p>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="showPostTestPopup()">
+      ✏️ ทำแบบทดสอบอาชีพนี้ →
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 7: POST-TEST ═══════════ -->
+<div class="screen" id="screen-posttest">
+  <div class="card card-wide">
+    <div class="steps">
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">Pre-test</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">สำรวจอาชีพ</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot active">3</div><div class="step-label">Post-test</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-dot">4</div><div class="step-label">ผลลัพธ์</div></div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <span class="badge badge-coral">📝 Post-test</span>
+      <div class="progress-wrap" style="margin-top:10px;">
+        <div class="progress-label">
+          <span>ข้อที่ 1 จาก 5</span>
+          <span>20%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:20%; background:linear-gradient(90deg,#FF8A80,#F44336)"></div></div>
+      </div>
+    </div>
+
+    <div class="question-text">
+      หลังจากที่ได้เรียนรู้เรื่องนักพัฒนาซอฟต์แวร์แล้ว คุณคิดว่าทักษะใดสำคัญที่สุด?
+    </div>
+
+    <div class="options">
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ก</div>
+        <span>ทักษะการเขียนโปรแกรม</span>
+      </div>
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ข</div>
+        <span>ทักษะการสื่อสารและทีมเวิร์ก</span>
+      </div>
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ค</div>
+        <span>ทักษะการแก้ปัญหา</span>
+      </div>
+      <div class="option" onclick="selectOption(this)">
+        <div class="option-letter">ง</div>
+        <span>ทักษะการออกแบบ</span>
+      </div>
+    </div>
+
+    <button class="btn btn-coral" style="margin-top:24px;" onclick="goTo('screen-result')">
+      ส่งคำตอบ ✓
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ SCREEN 8: RESULT ═══════════ -->
+<div class="screen" id="screen-result">
+  <div class="card card-wide">
+    <div class="steps">
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">Pre-test</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">สำรวจอาชีพ</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot done">✓</div><div class="step-label">Post-test</div></div>
+      <div class="step-line done"></div>
+      <div class="step"><div class="step-dot active">4</div><div class="step-label">ผลลัพธ์</div></div>
+    </div>
+
+    <div style="text-align:center; margin-bottom:24px;">
+      <div style="font-size:48px; margin-bottom:8px;">🏅</div>
+      <h1>ผลการประเมิน</h1>
+      <p>เยี่ยมมาก! คุณทำครบทุกขั้นตอนแล้ว</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+      <div class="result-big">
+        <div class="result-score">8</div>
+        <div style="font-size:12px;color:var(--text-soft);">/ 10 คะแนน</div>
+        <div class="result-label">Pre-test</div>
+      </div>
+      <div class="result-big" style="background:linear-gradient(135deg,#E8F5E9,#F1F8E9);">
+        <div class="result-score" style="color:#2E7D32;">9</div>
+        <div style="font-size:12px;color:var(--text-soft);">/ 10 คะแนน</div>
+        <div class="result-label">Post-test</div>
+      </div>
+    </div>
+
+    <div class="alert alert-success">
+      <span>📈</span>
+      <div><strong>คะแนนเพิ่มขึ้น +1 คะแนน!</strong> แสดงว่าคุณเรียนรู้ได้ดีมาก การสำรวจอาชีพช่วยให้คุณเข้าใจมากขึ้น</div>
+    </div>
+
+    <div style="background:rgba(79,195,247,0.06); border-radius:16px; padding:18px; margin-bottom:20px;">
+      <h3 style="margin-bottom:8px;">💡 อาชีพที่เหมาะกับคุณ</h3>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:10px;">
+        <span style="font-size:32px;">👨‍💻</span>
+        <div>
+          <strong>นักพัฒนาซอฟต์แวร์</strong>
+          <p style="font-size:12px; margin-top:2px;">ความสนใจตรงกับโปรไฟล์ของคุณ 85%</p>
+        </div>
+        <span class="badge badge-mint" style="margin-left:auto;">85%</span>
+      </div>
+    </div>
+
+    <button class="btn btn-mint" onclick="goTo('screen-login'); showToast('✅ บันทึกข้อมูลเรียบร้อยแล้ว')">
+      🏠 กลับหน้าหลัก
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════ POPUP: POST-TEST CONFIRM ═══════════ -->
+<div class="overlay" id="popup-posttest">
+  <div class="popup">
+    <div class="popup-icon">✏️</div>
+    <h2>พร้อมทำแบบทดสอบแล้วใช่ไหม?</h2>
+    <p>คุณสำรวจอาชีพครบแล้ว ตอนนี้ทำ Post-test เพื่อวัดผลการเรียนรู้ของคุณ</p>
+    <div class="popup-actions">
+      <button class="btn btn-secondary" onclick="closePopup()">ยังไม่พร้อม</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="closePopup(); goTo('screen-posttest')">เริ่มทำเลย! →</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ <span id="toast-text"></span></div>
+
+<script>
+  // ─── State ───
+  let selectedCareer = null;
+
+  // ─── Navigation ───
+  function goTo(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  // ─── Login Logic ───
+  function handleLogin() {
+    const user = document.getElementById('username').value.trim();
+    const pass = document.getElementById('password').value.trim();
+    if (!user || !pass) { showToast('⚠️ กรุณากรอก Username และ Password'); return; }
+
+    // Simulate: "ก" = returning, "ข" = new user
+    if (user === 'ก' || user.toLowerCase() === 'a') {
+      goTo('screen-returning');
+    } else {
+      goTo('screen-newuser');
+    }
+  }
+
+  // ─── Option Selection ───
+  function selectOption(el) {
+    el.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // ─── Career Selection ───
+  function selectCareer(el) {
+    document.querySelectorAll('.career-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedCareer = el.querySelector('.career-title').textContent;
+    document.getElementById('btn-career').disabled = false;
+    document.getElementById('btn-career').textContent = '🔭 สำรวจ ' + selectedCareer + ' →';
+  }
+
+  // ─── Post-test Popup ───
+  function showPostTestPopup() {
+    document.getElementById('popup-posttest').classList.add('active');
+  }
+  function closePopup() {
+    document.querySelectorAll('.overlay').forEach(o => o.classList.remove('active'));
+  }
+
+  // ─── Toast ───
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = msg.replace(/^[^\s]+ /,'');
+    t.querySelector('span').previousSibling && (t.childNodes[0].textContent = msg.match(/^[^\s]+/)[0] + ' ');
+    t.innerHTML = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // ─── Demo shortcut: press Enter on login ───
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const ls = document.getElementById('screen-login');
+      if (ls && ls.classList.contains('active')) handleLogin();
+    }
+  });
+</script>
+</body>
+</html>
