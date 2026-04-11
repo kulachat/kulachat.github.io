@@ -1,159 +1,81 @@
-# 🌍 Digital Nomad Hub
+# kulachat.github.io
 
-A modern, responsive web platform for digital nomads built with **Astro** and **Tailwind CSS**. This project showcases contemporary web development practices with a focus on performance, accessibility, and user experience.
+บล็อกส่วนตัวของ kulachat — เขียนเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี
 
-![GitHub Docs Inspired Design](https://img.shields.io/badge/Design-GitHub%20Docs%20Inspired-blue)
-![Astro](https://img.shields.io/badge/Built%20with-Astro-orange)
-![Tailwind CSS](https://img.shields.io/badge/Styled%20with-Tailwind%20CSS-blue)
-![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue)
+Built with **Astro** + **Tailwind CSS** · Deployed on **GitHub Pages**
 
-## ✨ Features
+## Stack
 
-- **Modern Tech Stack**: Built with Astro 4.x, Tailwind CSS 3.x, and TypeScript
-- **Responsive Design**: Mobile-first approach with beautiful animations
-- **Performance Optimized**: Static site generation with minimal JavaScript
-- **Accessible**: WCAG compliant with semantic HTML structure
-- **Dark Theme**: GitHub Docs inspired dark theme design  
-- **Component Architecture**: Reusable Astro components
-- **Type Safety**: Full TypeScript support with strict configuration
+- [Astro 4](https://astro.build) — static site generation
+- [Tailwind CSS 3](https://tailwindcss.com) — styling
+- [TypeScript](https://www.typescriptlang.org) — type safety
+- [Noto Sans Thai](https://fonts.google.com/noto/specimen/Noto+Sans+Thai) — Thai typography
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/kulachat/kulachat.github.io.git
-cd kulachat.github.io
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-### Available Scripts
-
-```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run type-check   # Run TypeScript checks
-npm run lint         # Lint and check code
-npm run format       # Format code with Prettier
-npm run clean        # Clean build artifacts
-```
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
-├── components/     # Reusable UI components
-│   ├── Header.astro
-│   ├── Hero.astro
-│   ├── Features.astro
-│   └── Footer.astro
-├── layouts/        # Page layouts
-│   └── BaseLayout.astro
-├── pages/          # File-based routing
-│   ├── index.astro
-│   └── demo/
-├── styles/         # Global styles
+├── components/
+│   ├── Header.astro        # Navigation + category bar
+│   └── Footer.astro        # Simple personal footer
+├── content/
+│   ├── config.ts           # Blog collection schema
+│   └── blog/               # Markdown blog posts
+├── layouts/
+│   ├── BaseLayout.astro    # Root HTML layout
+│   └── BlogLayout.astro    # Blog post layout (Google-style)
+├── pages/
+│   ├── index.astro         # Homepage
+│   ├── about.astro         # About page
+│   └── blog/
+│       ├── index.astro     # All posts listing
+│       ├── [slug].astro    # Individual post
+│       └── category/
+│           └── [category].astro  # Category filter page
+├── styles/
 │   └── global.css
-├── utils/          # Utility functions
-│   └── index.ts
-└── env.d.ts        # TypeScript declarations
+└── utils/
+    └── index.ts            # Category labels + helpers
 ```
 
-## 🎨 Design System
+## Blog Categories
 
-### Colors
-- **Primary**: Blue gradient (from-blue-600 to-purple-600)
-- **Background**: Dark grays (gray-800, gray-900)
-- **Text**: White with gray variants for secondary text
-- **Accents**: Various colors for different sections
+| Slug | ชื่อ |
+|------|------|
+| `life` | แนวคิดชีวิต |
+| `travel` | การเดินทาง |
+| `tech` | เทคโนโลยี |
 
-### Typography
-- **Font**: Inter (Google Fonts)
-- **Monospace**: JetBrains Mono
-- **Responsive**: Scales from mobile to desktop
+## Writing a Post
 
-### Components
-- Consistent button styles (`btn-primary`, `btn-secondary`)
-- Card components with hover effects
-- Form inputs with focus states
-- Animated elements and transitions
+สร้างไฟล์ `.md` ใน `src/content/blog/` พร้อม frontmatter:
 
-## 🛠️ Configuration
-
-### Tailwind CSS
-- Custom color palette
-- Dark mode support
-- Typography plugin
-- Custom animations and utilities
-
-### Astro
-- Static site generation
-- Path aliases for clean imports
-- TypeScript strict mode
-- Optimized build configuration
-
-### TypeScript
-- Strict configuration
-- Path mapping for clean imports
-- Astro-specific type definitions
-
-## 📱 Responsive Design
-
-The design follows a **mobile-first approach** with breakpoints:
-- **sm**: 640px and up
-- **md**: 768px and up  
-- **lg**: 1024px and up
-- **xl**: 1280px and up
-
-## 🎯 Performance
-
-- **Lighthouse Score**: 100/100 (Performance, Accessibility, Best Practices, SEO)
-- **Bundle Size**: Optimized with tree-shaking
-- **Images**: Optimized formats and lazy loading
-- **CSS**: Purged unused styles in production
-
-## 🚢 Deployment
-
-The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
-
-### Manual Deployment
-
-```bash
-npm run build
-# Deploy the 'dist' folder to your hosting provider
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Design inspiration from GitHub Docs
-- Icons from Heroicons
-- Fonts from Google Fonts
-- Built with the amazing Astro framework
-
+```markdown
+---
+title: "ชื่อบทความ"
+description: "คำอธิบายสั้น"
+author: kulachat
+publishDate: 2024-11-01
+category: life        # life | travel | tech
+tags: [ชีวิต, ความคิด]
+readingTime: 5
+draft: false
+lang: th              # th | en
 ---
 
-**Made with ❤️ for the digital nomad community** 
+เนื้อหาบทความ...
+```
+
+## Development
+
+```bash
+npm install
+npm run dev        # localhost:4321
+npm run build      # production build
+npm run preview    # preview build
+npm run type-check # TypeScript check
+```
+
+## License
+
+Personal blog — all content © kulachat
