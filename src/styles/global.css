@@ -24,11 +24,11 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200;
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 transition-all duration-200;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-5 py-2.5 border border-gray-300 text-sm font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200;
+    @apply inline-flex items-center justify-center px-5 py-2.5 border border-gray-300 text-sm font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200;
   }
 
   .card {
@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .category-badge {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-blue-700 hover:text-blue-800 transition-colors;
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-gray-700 hover:text-gray-900 transition-colors;
   }
 
   /* Mobile menu */
@@ -54,4 +54,9 @@ h1, h2, h3, h4, h5, h6 {
 .thai {
   font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.9;
+}
+
+.font-google-sans {
+  font-family: 'Google Sans', sans-serif !important;
+  font-weight: 700 !important;
 }
