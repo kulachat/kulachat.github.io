@@ -5,7 +5,7 @@ const blogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    author: z.string().default('KulaChat Team'),
+    author: z.string().default('kulachat'),
     publishDate: z.date(),
     updatedDate: z.date().optional(),
     featured: z.boolean().default(false),
@@ -17,6 +17,7 @@ const blogCollection = defineCollection({
       alt: z.string(),
     }).optional(),
     readingTime: z.number().optional(),
+    lang: z.enum(['th', 'en']).default('th'),
   }),
 });
 

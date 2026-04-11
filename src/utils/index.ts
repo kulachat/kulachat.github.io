@@ -1,4 +1,17 @@
 /**
+ * Category slug → Thai display label mapping
+ */
+export const categoryLabels: Record<string, string> = {
+  life: 'แนวคิดชีวิต',
+  travel: 'การเดินทาง',
+  tech: 'เทคโนโลยี',
+};
+
+export function getCategoryLabel(slug: string): string {
+  return categoryLabels[slug] ?? slug;
+}
+
+/**
  * Utility function to merge CSS classes with proper handling of conflicts
  */
 export function cn(...classes: (string | undefined | null | false)[]): string {
