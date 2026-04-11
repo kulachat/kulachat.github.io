@@ -53,6 +53,6 @@
 
 /* Thai language line height fix */
 :lang(th), .thai {
-  line-height: 1.9;
+  line-height: 1.4;
   font-family: 'Noto Sans Thai', 'Inter', sans-serif;
 }
