@@ -26,6 +26,10 @@ const {
   image,
 } = Astro.props;
 
+const siteURL = "https://kulachat.github.io";
+const canonicalURL = Astro.url.href;
+const ogImage = image?.src ?? "/images/Me.jpg";
+
 const formattedPublishDate = publishDate.toLocaleDateString('th-TH', {
   year: 'numeric',
   month: 'long',
@@ -36,9 +40,39 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('th-TH', {
   month: 'long',
   day: 'numeric',
 });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "image": ogImage.startsWith("http") ? ogImage : `${siteURL}${ogImage}`,
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": siteURL,
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "kulachat",
+    "url": siteURL,
+  },
+  "datePublished": publishDate.toISOString(),
+  "dateModified": (updatedDate ?? publishDate).toISOString(),
+  "url": canonicalURL,
+  "inLanguage": "th",
+  "keywords": tags.join(", "),
+};
 ---
 
-<BaseLayout title={`${title} — kulachat`} description={description}>
+<BaseLayout
+  title={`${title} — kulachat`}
+  description={description}
+  ogType="article"
+  ogImage={ogImage}
+  canonicalURL={canonicalURL}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <div class="page-wrap">
 
