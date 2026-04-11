@@ -57,7 +57,7 @@ const latestPosts = allPosts
           {latestPosts.map(post => (
             <article class="group">
               {post.data.image && (
-                <a href={`/blog/${post.slug}`} class="block mb-4 overflow-hidden rounded-xl aspect-video bg-gray-50">
+                <a href={`/blog/${post.id}`} class="block mb-4 overflow-hidden rounded-xl aspect-video bg-gray-50">
                   <img
                     src={post.data.image.src}
                     alt={post.data.image.alt}
@@ -76,7 +76,7 @@ const latestPosts = allPosts
                 </a>
 
                 <h3 class="mt-1 text-lg font-bold text-gray-900 leading-snug group-hover:text-blue-600 transition-colors">
-                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
                 </h3>
 
                 <p class="mt-2 text-sm text-gray-500 line-clamp-2">

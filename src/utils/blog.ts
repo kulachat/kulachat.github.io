@@ -51,12 +51,12 @@ export async function getAllTags() {
 // Get related posts based on tags and category
 export async function getRelatedPosts(currentSlug: string, limit: number = 3) {
   const posts = await getAllPosts();
-  const currentPost = posts.find(post => post.slug === currentSlug);
+  const currentPost = posts.find(post => post.id === currentSlug);
   
   if (!currentPost) return [];
   
   const relatedPosts = posts
-    .filter(post => post.slug !== currentSlug)
+    .filter(post => post.id !== currentSlug)
     .map(post => {
       let score = 0;
       
