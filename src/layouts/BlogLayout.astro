@@ -108,13 +108,20 @@ const jsonLd = {
           </div>
         )}
 
+        <!-- Article body -->
+        <article class="prose">
+          <slot />
+        </article>
+
         <!-- Author row inside paper -->
         <div class="paper-author">
-          <img src="/images/Me.jpg" alt={author} class="author-avatar" />
-          <div class="author-info">
-            <span class="author-name">{author}</span>
-            {updatedDate && <span class="updated-date"> · อัปเดต {formattedUpdatedDate}</span>}
-          </div>
+          <a href="/" class="author-link">
+            <img src="/images/Me.jpg" alt={author} class="author-avatar" />
+            <div class="author-info">
+              <span class="author-name">{author}</span>
+              {updatedDate && <span class="updated-date"> · อัปเดต {formattedUpdatedDate}</span>}
+            </div>
+          </a>
           <button id="share-btn" class="share-btn" title="แชร์">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -122,20 +129,6 @@ const jsonLd = {
             </svg>
           </button>
         </div>
-
-        <!-- Article body -->
-        <article class="prose">
-          <slot />
-        </article>
-
-        <!-- Tags -->
-        {tags.length > 0 && (
-          <div class="paper-tags">
-            {tags.map(tag => (
-              <span class="tag">#{tag}</span>
-            ))}
-          </div>
-        )}
 
         <!-- Back link -->
         <div class="paper-back">
@@ -222,7 +215,7 @@ const jsonLd = {
   /* ── Paper stack ── */
   .paper-stack-wrap {
     position: relative;
-    max-width: 760px;
+    max-width: 928px;
     margin: 0 auto;
     padding: 0 2rem 4rem;
   }
@@ -239,13 +232,13 @@ const jsonLd = {
   }
 
   .paper-sheet-back {
-    transform: rotate(-1.4deg) translateX(-3px) translateY(6px);
+    transform: rotate(-2deg) translateX(-3px) translateY(6px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     z-index: 0;
   }
 
   .paper-sheet-mid {
-    transform: rotate(0.7deg) translateX(2px) translateY(4px);
+    transform: rotate(2deg) translateX(2px) translateY(4px);
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     z-index: 1;
   }
@@ -277,7 +270,15 @@ const jsonLd = {
     align-items: center;
     gap: 0.75rem;
     padding: 1.5rem 2.5rem;
-    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .author-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex: 1;
   }
 
   .author-avatar {
@@ -317,7 +318,9 @@ const jsonLd = {
 
   /* ── Prose ── */
   .prose {
-    padding: 2.5rem 2.5rem 2rem;
+    padding: 4rem 2.5rem 2rem;
+    max-width: 640px;
+    margin: 0 auto;
     font-family: 'Sarabun', sans-serif;
     color: #1f1f1f;
     font-size: 1.0625rem;
@@ -329,7 +332,6 @@ const jsonLd = {
     .paper-stack-wrap { padding: 0 1.25rem 3rem; }
     .paper-author { padding: 1.25rem 1.25rem; }
     .prose { padding: 2rem 1.25rem 1.5rem; }
-    .paper-tags { padding: 1rem 1.25rem 1.5rem; }
     .paper-back { padding: 1rem 1.25rem 1.5rem; }
   }
 
@@ -403,24 +405,6 @@ const jsonLd = {
   .prose table { width: 100%; border-collapse: collapse; margin: 1.75rem 0; font-size: 0.95em; }
   .prose th { background: #f7f7f7; font-weight: 600; padding: 0.75rem; border: 1px solid #e5e5e5; text-align: left; }
   .prose td { padding: 0.75rem; border: 1px solid #e5e5e5; }
-
-  /* ── Tags ── */
-  .paper-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 1.25rem 2.5rem 1.75rem;
-    border-top: 1px solid #f0f0f0;
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    font-family: 'Sarabun', sans-serif;
-    color: #999;
-    background: #f5f5f5;
-    padding: 0.2rem 0.65rem;
-    border-radius: 9999px;
-  }
 
   /* ── Back link ── */
   .paper-back {
