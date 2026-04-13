@@ -406,6 +406,46 @@ const jsonLd = {
   .prose th { background: #f7f7f7; font-weight: 600; padding: 0.75rem; border: 1px solid #e5e5e5; text-align: left; }
   .prose td { padding: 0.75rem; border: 1px solid #e5e5e5; }
 
+  /* ── Media card ── */
+  :global(.media-card) {
+    border: 1px solid #e8e8e8;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  :global(.media-card img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* ── Podcast player ── */
+  :global(.podcast-player) {
+    padding: 1.25rem 2rem;
+    background: #fafafa;
+  }
+
+  :global(.podcast-meta) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.75rem;
+    padding: 0;
+  }
+
+  :global(.podcast-player audio) {
+    width: 100%;
+    display: block;
+  }
+
   /* ── Back link ── */
   .paper-back {
     padding: 1.25rem 2.5rem 2rem;
