@@ -20,7 +20,7 @@ lang: th
       <span>ฟังเป็น Podcast</span>
     </div>
     <audio controls preload="none">
-      <source src="/audio/ปัญญาประดิษฐ์.m4a" type="audio/mpeg" />
+      <source src="/audio/%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%8D%E0%B8%B2%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B4%E0%B8%A9%E0%B8%90%E0%B9%8C.m4a" type="audio/mp4" />
       เบราว์เซอร์ของคุณไม่รองรับ audio
     </audio>
   </div>
