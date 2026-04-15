@@ -30,6 +30,7 @@
     "serve-static": "^1.16.2"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2"
+    "@astrojs/sitemap": "^3.7.2",
+    "plyr": "^3.8.4"
   }
 }
