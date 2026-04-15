@@ -465,14 +465,20 @@ const jsonLd = {
     display: block;
   }
 
+  /* ── Podcast player brand color — แก้ที่นี่ที่เดียว ── */
+  :global(.podcast-player) {
+    --player-brand: #a9130f;
+    --player-brand-hover: #c41510;
+  }
+
   /* ── Plyr custom theme ── */
   :global(.plyr) {
     --plyr-color-main: #1a1a1a;
     --plyr-audio-controls-background: transparent;
     --plyr-audio-control-color: #555;
     --plyr-audio-control-color-hover: #fff;
-    --plyr-range-fill-background: #1a1a1a;
-    --plyr-range-thumb-background: #1a1a1a;
+    --plyr-range-fill-background: var(--player-brand);
+    --plyr-range-thumb-background: var(--player-brand);
     --plyr-range-track-height: 3px;
     --plyr-range-thumb-height: 13px;
     --plyr-range-thumb-width: 13px;
@@ -485,6 +491,36 @@ const jsonLd = {
     background: transparent;
     border-radius: 0;
     padding: 4px 0;
+  }
+
+  :global(.plyr--audio .plyr__control[data-plyr="play"]) {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--player-brand) !important;
+    color: #fff !important;
+    transition: transform 0.15s ease, background 0.15s ease !important;
+  }
+
+  :global(.plyr--audio .plyr__control[data-plyr="play"]:hover) {
+    transform: scale(1.1);
+    background: var(--player-brand-hover) !important;
+  }
+
+  :global(.plyr--audio .plyr__control[data-plyr="mute"]) {
+    color: var(--player-brand) !important;
+  }
+
+  :global(.plyr--audio .plyr__control[data-plyr="mute"]:hover) {
+    background: var(--player-brand) !important;
+    color: #fff !important;
+    transform: scale(1.1);
+    transition: transform 0.15s ease, background 0.15s ease !important;
   }
 
   :global(.plyr--audio) {
