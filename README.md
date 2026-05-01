@@ -6,24 +6,24 @@ Built with **Astro** + **Tailwind CSS** · Deployed on **GitHub Pages**
 
 ## Stack
 
-- [Astro 4](https://astro.build) — static site generation
+- [Astro 6](https://astro.build) — static site generation
 - [Tailwind CSS 3](https://tailwindcss.com) — styling
 - [TypeScript](https://www.typescriptlang.org) — type safety
-- [Noto Sans Thai](https://fonts.google.com/noto/specimen/Noto+Sans+Thai) — Thai typography
+- [Plyr](https://plyr.io/) — audio player for podcast embeds
+- Google Sans, Sarabun, Prompt — typography
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── Header.astro        # Navigation + category bar
 │   └── Footer.astro        # Simple personal footer
 ├── content/
-│   ├── config.ts           # Blog collection schema
 │   └── blog/               # Markdown blog posts
+├── content.config.ts       # Blog collection schema
 ├── layouts/
 │   ├── BaseLayout.astro    # Root HTML layout
-│   └── BlogLayout.astro    # Blog post layout (Google-style)
+│   └── BlogLayout.astro    # Blog post layout with SEO, schema, and audio player setup
 ├── pages/
 │   ├── index.astro         # Homepage
 │   ├── about.astro         # About page
@@ -36,6 +36,12 @@ src/
 │   └── global.css
 └── utils/
     └── index.ts            # Category labels + helpers
+
+public/
+├── audio/                  # Podcast/audio files
+├── images/                 # Static images
+├── favicon.svg
+└── robots.txt
 ```
 
 ## Blog Categories
