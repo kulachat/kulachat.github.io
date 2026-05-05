@@ -1,0 +1,118 @@
+/*
+  Design System Tokens
+  Source of truth for every standalone design-system HTML page in /public.
+
+  Update tokens/theme here first. Page-level CSS should consume these values
+  through --ds-* variables or local aliases that point back to --ds-*.
+*/
+
+:root {
+  color-scheme: light;
+
+  /* Primitive color tokens */
+  --ds-palette-teal-50: #e8fbf8;
+  --ds-palette-teal-100: #c7f3ec;
+  --ds-palette-teal-500: #00b2b2;
+  --ds-palette-teal-700: #006a6a;
+  --ds-palette-teal-900: #003e3e;
+  --ds-palette-primary-50: #edf8fd;
+  --ds-palette-primary-100: #cfeefa;
+  --ds-palette-primary-500: #2997cd;
+  --ds-palette-primary-700: #1e6f96;
+  --ds-palette-primary-900: #0e3b52;
+  --ds-palette-gold-100: #fff2bf;
+  --ds-palette-gold-400: #fed651;
+  --ds-palette-gold-700: #735d00;
+  --ds-palette-orange-500: #ff8a4c;
+  --ds-palette-blue-500: #3797f1;
+  --ds-palette-pink-500: #ef6aa7;
+  --ds-palette-skin-300: #ffd7b5;
+  --ds-palette-red-100: #ffdad6;
+  --ds-palette-red-600: #ba1a1a;
+  --ds-palette-gray-0: #ffffff;
+  --ds-palette-gray-50: #f9f9f9;
+  --ds-palette-gray-100: #f3f3f3;
+  --ds-palette-gray-200: #e2e2e2;
+  --ds-palette-gray-300: #bbc9c8;
+  --ds-palette-gray-500: #6c7a79;
+  --ds-palette-gray-700: #3c4949;
+  --ds-palette-gray-900: #333333;
+
+  /* Primitive spacing and shape tokens */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-pill: 999px;
+  --ds-container-max: 1280px;
+
+  /* Primitive typography tokens */
+  --ds-font-display: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-body: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ds-font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ds-text-display-lg: 48px;
+  --ds-text-display-md: 36px;
+  --ds-text-headline: 24px;
+  --ds-text-body-lg: 18px;
+  --ds-text-body-md: 16px;
+  --ds-text-label: 14px;
+  --ds-text-caption: 12px;
+
+  /* Semantic color tokens */
+  --ds-color-background: var(--ds-palette-gray-50);
+  --ds-color-surface: var(--ds-palette-gray-0);
+  --ds-color-surface-muted: var(--ds-palette-gray-100);
+  --ds-color-surface-raised: var(--ds-palette-gray-0);
+  --ds-color-border: var(--ds-palette-gray-200);
+  --ds-color-border-strong: var(--ds-palette-gray-500);
+  --ds-color-text: var(--ds-palette-gray-900);
+  --ds-color-text-muted: var(--ds-palette-gray-700);
+  --ds-color-primary: var(--ds-palette-primary-500);
+  --ds-color-primary-accent: var(--ds-palette-primary-500);
+  --ds-color-primary-soft: var(--ds-palette-primary-50);
+  --ds-color-on-primary: var(--ds-palette-gray-0);
+  --ds-color-secondary: var(--ds-palette-gold-400);
+  --ds-color-on-secondary: var(--ds-palette-gold-700);
+  --ds-color-danger: var(--ds-palette-red-600);
+  --ds-color-danger-soft: var(--ds-palette-red-100);
+  --ds-color-hero-gradient-start: #edfff9;
+  --ds-color-hero-gradient-end: #fff9e8;
+
+  /* Effect tokens */
+  --ds-shadow-raised: 0 18px 40px rgba(14, 59, 82, 0.1);
+  --ds-shadow-soft: 0 18px 44px rgba(32, 33, 36, 0.09);
+  --ds-shadow-pressed-primary: 0 4px 0 var(--ds-palette-primary-900);
+  --ds-shadow-pressed-secondary: 0 4px 0 #d4af37;
+  --ds-focus-ring: 0 0 0 4px rgba(0, 178, 178, 0.18);
+
+  /* Component tokens */
+  --ds-app-shell-header-height: 72px;
+  --ds-app-shell-gutter: var(--ds-space-6);
+  --ds-nav-link-height: 40px;
+  --ds-button-height-md: 44px;
+  --ds-button-padding-x: var(--ds-space-5);
+  --ds-card-padding: var(--ds-space-5);
+  --ds-field-height: 46px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ds-color-background: #101616;
+  --ds-color-surface: #182020;
+  --ds-color-surface-muted: #202b2b;
+  --ds-color-surface-raised: #202b2b;
+  --ds-color-border: #314242;
+  --ds-color-border-strong: #8ba3a3;
+  --ds-color-text: #f5fbfb;
+  --ds-color-text-muted: #b7c9c9;
+  --ds-color-primary: var(--ds-palette-primary-500);
+  --ds-color-primary-soft: #102b3a;
+  --ds-shadow-raised: 0 18px 40px rgba(0, 0, 0, 0.24);
+}

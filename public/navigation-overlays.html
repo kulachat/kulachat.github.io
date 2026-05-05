@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Navigation & Overlays Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="design-system-tokens.css" rel="stylesheet" />
+    <link href="web-document.css" rel="stylesheet" />
+  </head>
+  <body data-density="comfortable" data-platform="web" data-theme="light">
+    <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+
+    <header class="topbar" data-component="doc-topbar">
+      <a class="brand" href="design-guide.html" aria-label="Design system home">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span>Design System</span>
+      </a>
+
+      <nav class="top-actions" aria-label="Page actions">
+        <a class="top-link" href="design-guide.html">Design Guide</a>
+        <a class="top-link" href="ux-ui-vibe-design-system.html">Token System</a>
+        <a class="pill-button" href="#patterns">Patterns</a>
+        <a class="pill-button" data-variant="accent" href="#mobile">Mobile</a>
+      </nav>
+    </header>
+
+    <nav class="tabs" aria-label="Documentation tabs">
+      <a class="tab-link" href="design-guide.html">▱ Documentation</a>
+      <a class="tab-link" aria-current="page" href="navigation-overlays.html">☰ Navigation</a>
+      <a class="tab-link" href="ux-ui-vibe-design-system.html">✧ Token System</a>
+      <a class="tab-link" href="#patterns">☷ Patterns</a>
+      <a class="tab-link" href="#mobile">⌘ Mobile</a>
+    </nav>
+
+    <div class="doc-shell">
+      <aside class="sidebar" data-component="doc-sidebar" aria-label="Navigation sections">
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Navigation</h2>
+          <ul class="sidebar-list">
+            <li><a class="sidebar-link" aria-current="page" href="#overview"><span>□</span><span>Overview</span></a></li>
+            <li><a class="sidebar-link" href="#topbar"><span>▱</span><span>Top navigation</span></a></li>
+            <li><a class="sidebar-link" href="#tabs"><span>☰</span><span>Tab navigation</span></a></li>
+            <li><a class="sidebar-link" href="#sidebar"><span>☷</span><span>Sidebar</span></a></li>
+            <li><a class="sidebar-link" href="#mobile"><span>⌘</span><span>Mobile menu</span></a></li>
+            <li><a class="sidebar-link" href="#overlays"><span>◇</span><span>Overlays</span></a></li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Related Pages</h2>
+          <ul class="sidebar-list">
+            <li><a class="sidebar-link" href="design-guide.html"><span>□</span><span>Design guide</span></a></li>
+            <li><a class="sidebar-link" href="ux-ui-vibe-design-system.html"><span>✧</span><span>Token system</span></a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <main id="main">
+        <section class="doc-section" id="overview">
+          <p class="doc-kicker">Navigation & Overlays</p>
+          <div class="title-row">
+            <span class="title-icon" aria-hidden="true">☰</span>
+            <h1>Navigation</h1>
+          </div>
+          <p class="lead">
+            เอกสารนี้อธิบาย structure ของ navigation และ overlays แบบ Web Document ที่ใช้ร่วมกับ
+            Design System Tokens กลาง เพื่อให้ทุกหน้ามี pattern เดียวกัน
+          </p>
+
+          <div class="card-grid">
+            <article class="doc-card">
+              <div class="doc-card__visual">
+                <div class="token-stack" aria-hidden="true">
+                  <span class="token-line" data-tone="accent"></span>
+                  <span class="token-line" style="width: 70%"></span>
+                  <span class="token-line" data-tone="primary" style="width: 58%"></span>
+                </div>
+              </div>
+              <div class="doc-card__body">
+                <h3>Document shell</h3>
+                <p>ใช้ topbar, tabbar, sidebar, content area และ right rail เป็นโครงเอกสารหลัก</p>
+              </div>
+            </article>
+
+            <article class="doc-card">
+              <div class="doc-card__visual">
+                <div class="token-stack" aria-hidden="true">
+                  <span class="token-line" data-tone="primary"></span>
+                  <span class="token-line" data-tone="accent" style="width: 80%"></span>
+                  <span class="token-line" style="width: 64%"></span>
+                </div>
+              </div>
+              <div class="doc-card__body">
+                <h3>Responsive behavior</h3>
+                <p>desktop แสดง navigation ครบ ส่วน tablet/mobile ยุบ right rail และทำ sidebar เป็น block</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="topbar">
+          <h2>Top navigation</h2>
+          <p>Topbar เป็นพื้นที่สำหรับ brand, search, global actions และ account actions</p>
+          <table class="token-table">
+            <thead><tr><th>Element</th><th>Token dependency</th><th>Behavior</th></tr></thead>
+            <tbody>
+              <tr><td>Header height</td><td><code>--doc-header-height</code></td><td>sticky top ระดับแรก</td></tr>
+              <tr><td>Search</td><td><code>--ds-radius-pill</code>, <code>--ds-color-border</code></td><td>อยู่กลางบน desktop และซ่อนบน mobile</td></tr>
+              <tr><td>Actions</td><td><code>--doc-accent</code></td><td>ใช้ accent สำหรับ primary action</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="doc-section" id="tabs">
+          <h2>Tab navigation</h2>
+          <p>Tabbar ทำหน้าที่เชื่อมหน้าเอกสารหลัก และใช้ <code>aria-current="page"</code> เพื่อบอกหน้าปัจจุบัน</p>
+          <ul class="contract-list">
+            <li><strong>Active tab</strong> ใช้เส้นล่างสี accent และข้อความสี accent</li>
+            <li><strong>Overflow</strong> บน mobile ให้ scroll แนวนอนแทนการบีบข้อความ</li>
+            <li><strong>Static links</strong> ใช้ relative URL เพื่อเปิดได้ทั้ง local และหลัง deploy</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="sidebar">
+          <h2>Sidebar</h2>
+          <p>Sidebar ใช้เป็น local navigation สำหรับหัวข้อในหน้าเดียวกัน แบ่งเป็นหมวดและ link ย่อย</p>
+          <div class="three-grid">
+            <article class="component-box"><h3>Section title</h3><p>ใช้ uppercase label เพื่อแบ่งหมวด เช่น Navigation, Related Pages</p></article>
+            <article class="component-box"><h3>Current item</h3><p>ใช้ border-left สี accent และ <code>aria-current</code></p></article>
+            <article class="component-box"><h3>Sticky position</h3><p>desktop sticky ใต้ header+tabs, mobile กลายเป็น block ปกติ</p></article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="mobile">
+          <h2>Mobile menu</h2>
+          <p>บน mobile โครงเอกสารควรลดความซับซ้อน โดยซ่อน search/right rail และให้ sidebar อยู่บนเนื้อหา</p>
+          <div class="component-box">
+            <h3>Mobile structure</h3>
+            <ul class="contract-list">
+              <li><strong>Topbar</strong> เหลือ brand เป็นหลัก</li>
+              <li><strong>Tabs</strong> เลื่อนแนวนอนได้</li>
+              <li><strong>Sidebar</strong> เปลี่ยนจาก sticky rail เป็น card-like block</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="doc-section" id="overlays">
+          <h2>Overlays</h2>
+          <p>Overlay controls เช่น Back to Top หรือ mobile drawer ควรวางเป็น utility ไม่ปนกับ footer</p>
+          <div class="three-grid">
+            <article class="component-box"><h3>Back to Top</h3><p><button class="ghost-button" type="button">↑ Top</button></p></article>
+            <article class="component-box"><h3>Mobile drawer</h3><p>แสดง navigation ซ้อนบนเนื้อหาเมื่อ viewport แคบ</p></article>
+            <article class="component-box"><h3>Command menu</h3><p>ใช้สำหรับ search หรือ quick switcher เมื่อระบบต้องการ</p></article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="patterns">
+          <h2>Implementation pattern</h2>
+          <p>
+            หน้า navigation ใช้ layout กลางจาก <code>web-document.css</code> และเรียก token จาก
+            <code>design-system-tokens.css</code> เพื่อให้ theme update ครั้งเดียวแล้วทุกหน้าเปลี่ยนตาม
+          </p>
+        </section>
+      </main>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>a-chieve UI Components Design Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="design-system-tokens.css" rel="stylesheet" />
+    <link href="web-document.css" rel="stylesheet" />
+  </head>
+  <body data-density="comfortable" data-platform="web" data-theme="light">
+    <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+
+    <header class="topbar" data-component="doc-topbar">
+      <a class="brand" href="design-guide.html" aria-label="Design guide home">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span>Design System</span>
+      </a>
+
+      <nav class="top-actions" aria-label="Page actions">
+        <a class="top-link" href="navigation-overlays.html">Navigation</a>
+        <a class="top-link" href="ux-ui-vibe-design-system.html">Token System</a>
+      </nav>
+    </header>
+
+    <nav class="tabs" aria-label="Documentation tabs">
+      <a class="tab-link" aria-current="page" href="design-guide.html">▱ Documentation</a>
+      <a class="tab-link" href="navigation-overlays.html">☰ Navigation</a>
+      <a class="tab-link" href="ux-ui-vibe-design-system.html">✧ Token System</a>
+      <a class="tab-link" href="#components">☷ Components</a>
+      <a class="tab-link" href="#forms">⌘ Forms</a>
+    </nav>
+
+    <div class="doc-shell">
+      <aside class="sidebar" data-component="doc-sidebar" aria-label="Design guide sections">
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Design Guide</h2>
+          <ul class="sidebar-list">
+            <li><a class="sidebar-link" aria-current="page" href="#overview"><span>□</span><span>Overview</span></a></li>
+            <li><a class="sidebar-link" href="#navigation"><span>☰</span><span>Navigation & Overlays</span></a></li>
+            <li><a class="sidebar-link" href="#buttons"><span>◉</span><span>Buttons & Indicators</span></a></li>
+            <li><a class="sidebar-link" href="#components"><span>▦</span><span>Content containers</span></a></li>
+            <li><a class="sidebar-link" href="#media"><span>✧</span><span>Media & Assets</span></a></li>
+            <li><a class="sidebar-link" href="#typography"><span>¶</span><span>Typography & Grids</span></a></li>
+            <li><a class="sidebar-link" href="#forms"><span>⌘</span><span>Forms & Interactive</span></a></li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Related Pages</h2>
+          <ul class="sidebar-list">
+            <li><a class="sidebar-link" href="navigation-overlays.html"><span>☰</span><span>Navigation page</span></a></li>
+            <li><a class="sidebar-link" href="ux-ui-vibe-design-system.html"><span>✧</span><span>Token system</span></a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <main id="main">
+        <section class="doc-section" id="overview">
+          <p class="doc-kicker">Documentation</p>
+          <div class="title-row">
+            <span class="title-icon" aria-hidden="true">□</span>
+            <h1>Design Guide</h1>
+          </div>
+          <p class="lead">
+            เอกสารรวม Components UI ที่ถอดจากโครงสร้างและองค์ประกอบของ a-chieve.org
+            เพื่อใช้เป็นจุดตั้งต้นสำหรับสร้าง Design Guide และต่อยอดเป็น Design System
+          </p>
+
+          <div class="card-grid">
+            <article class="doc-card">
+              <div class="doc-card__visual">
+                <div class="token-stack" aria-hidden="true">
+                  <span class="token-line" data-tone="accent"></span>
+                  <span class="token-line" data-tone="primary" style="width: 72%"></span>
+                  <span class="token-line" style="width: 86%"></span>
+                </div>
+              </div>
+              <div class="doc-card__body">
+                <h3>Component inventory</h3>
+                <p>รวมหมวด navigation, buttons, cards, media, typography และ forms ในหน้าเดียว</p>
+              </div>
+            </article>
+
+            <article class="doc-card">
+              <div class="doc-card__visual">
+                <div class="token-stack" aria-hidden="true">
+                  <span class="token-line" data-tone="primary"></span>
+                  <span class="token-line" style="width: 64%"></span>
+                  <span class="token-line" data-tone="accent" style="width: 78%"></span>
+                </div>
+              </div>
+              <div class="doc-card__body">
+                <h3>Token connected</h3>
+                <p>ทุกสีและขนาดหลักเรียกผ่าน <code>design-system-tokens.css</code> เป็น source of truth</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="navigation">
+          <h2>Navigation & Overlays</h2>
+          <p>โครงนำทางหลักควรชัดเจนบน desktop และยุบเป็นเมนูที่แตะง่ายบน mobile</p>
+          <div class="three-grid">
+            <article class="component-box"><h3>Navbar / Sticky Header</h3><p>แถบเมนูบนสุด ใช้สำหรับ brand, search, navigation และ action หลัก</p></article>
+            <article class="component-box"><h3>Hamburger Menu</h3><p>ปุ่มเมนูสำหรับเปิด mobile drawer หรือ overlay menu</p></article>
+            <article class="component-box"><h3>Back to Top Button</h3><p>floating action สำหรับเอกสารหรือหน้าที่มีเนื้อหายาว</p></article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="buttons">
+          <h2>Buttons & Indicators</h2>
+          <p>จัดประเภท button ให้ไม่ซ้ำกัน: Primary CTA ใช้สำหรับ action หลักที่สุดของหน้า, Secondary Button ใช้สำหรับ action รอง และ Status Indicator ใช้สื่อสถานะ</p>
+          <div class="primary-cta-preview">
+            <a class="primary-cta" href="#forms" data-component="primary-cta">ออกแบบเลย!</a>
+          </div>
+          <div class="three-grid">
+            <article class="component-box"><h3>Primary CTA</h3><p>ปุ่มหลักแบบ pill comic ใช้ class <code>.primary-cta</code> และสีจาก <code>--ds-color-primary</code></p></article>
+            <article class="component-box"><h3>Secondary Button</h3><p><button class="ghost-button" type="button">Learn more</button></p></article>
+            <article class="component-box"><h3>Status Indicator</h3><p><span class="chip" data-state="selected">Completed</span></p></article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="components">
+          <h2>Content containers</h2>
+          <p>ใช้จัดกลุ่มเนื้อหาให้สแกนง่าย เหมาะกับบทความ กิจกรรม บริการ และสถิติ</p>
+          <div class="three-grid">
+            <article class="component-box"><h3>Service Card</h3><p>สำหรับบริการหรือ feature หลัก เช่น แบบประเมิน คลังอาชีพ หรือ workshop</p></article>
+            <article class="component-box"><h3>Article Card</h3><p>รองรับ thumbnail, metadata, title และ description</p></article>
+            <article class="component-box"><h3>Stat Counter Block</h3><p>ใช้ตัวเลขเด่นเพื่อสื่อ impact หรือ progress</p></article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="media">
+          <h2>Media & Assets</h2>
+          <p>visual language ควรเป็นมิตร สว่าง และมี subject ชัดเพื่อช่วยการเรียนรู้</p>
+          <ul class="contract-list">
+            <li><strong>Character Illustration</strong> mascot หรือภาพประกอบที่ทำให้แบรนด์เข้าถึงง่าย</li>
+            <li><strong>Icon Set</strong> line icons ที่ใช้ร่วมกับ label และ navigation ได้ดี</li>
+            <li><strong>Badges / Labels</strong> ป้ายบอกหมวดหมู่ สถานะ หรือระดับเนื้อหา</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="typography">
+          <h2>Typography & Grids</h2>
+          <p>ใช้ heading ที่ชัด, body text ที่อ่านง่าย และ grid ที่รองรับทั้ง desktop/mobile</p>
+          <table class="token-table">
+            <thead><tr><th>Role</th><th>Token</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td>Heading</td><td><code>--ds-font-display</code></td><td>หัวข้อหลักและ section title</td></tr>
+              <tr><td>Body</td><td><code>--ds-font-body</code></td><td>เนื้อหาและคำอธิบายภาษาไทย</td></tr>
+              <tr><td>Spacing</td><td><code>--ds-space-*</code></td><td>ระยะ section, card และ form controls</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="doc-section" id="forms">
+          <h2>Forms & Interactive</h2>
+          <p>ฟอร์มควรเรียบง่าย แตะง่าย และใช้ state ที่ชัดเจนสำหรับแบบประเมิน</p>
+          <div class="three-grid">
+            <article class="component-box"><h3>Search Bar</h3><p><input class="field-demo" placeholder="ค้นหาบทความหรืออาชีพ" /></p></article>
+            <article class="component-box"><h3>Input Field</h3><p><input class="field-demo" placeholder="ชื่อเล่น" /></p></article>
+            <article class="component-box"><h3>Choice Chip</h3><div class="chip-row"><span class="chip" data-state="selected">ชอบมาก</span><span class="chip">เฉยๆ</span></div></article>
+          </div>
+        </section>
+      </main>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design System Tokens Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="design-system-tokens.css" rel="stylesheet" />
+    <link href="web-document.css" rel="stylesheet" />
+  </head>
+  <body data-density="comfortable" data-platform="web" data-theme="light">
+    <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+
+    <header class="topbar" data-component="doc-topbar">
+      <a class="brand" href="design-guide.html" aria-label="Design system home">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span>Design System</span>
+      </a>
+
+      <nav class="top-actions" aria-label="Account actions">
+        <a class="top-link" href="design-guide.html">Product</a>
+        <a class="top-link" href="navigation-overlays.html">Navigation</a>
+      </nav>
+    </header>
+
+    <nav class="tabs" aria-label="Documentation tabs">
+      <a class="tab-link" aria-current="page" href="ux-ui-vibe-design-system.html">▱ Documentation</a>
+      <a class="tab-link" href="design-guide.html">☷ Guides</a>
+      <a class="tab-link" href="navigation-overlays.html">⌘ Developers</a>
+      <a class="tab-link" href="#handoff">☰ Changelog</a>
+      <a class="tab-link" href="#tokens">ⓘ Resources</a>
+    </nav>
+
+    <div class="doc-shell">
+      <aside class="sidebar" data-component="doc-sidebar" aria-label="Documentation sidebar">
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Get Started</h2>
+          <ul class="sidebar-list">
+            <li><a class="sidebar-link" aria-current="page" href="#overview"><span>□</span><span>Overview</span></a></li>
+            <li><a class="sidebar-link" href="#structure"><span>⚡</span><span>Structure layers</span></a></li>
+            <li><a class="sidebar-link" href="#tokens"><span>✧</span><span>Token architecture</span></a></li>
+            <li><a class="sidebar-link" href="#components"><span>↔</span><span>Component contract</span></a></li>
+            <li><a class="sidebar-link" href="#states"><span>⟡</span><span>States and variants</span></a></li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Design System</h2>
+          <ul class="sidebar-list">
+            <li><a class="sidebar-link" href="design-guide.html"><span>☷</span><span>Design guide</span></a></li>
+            <li><a class="sidebar-link" href="navigation-overlays.html"><span>☰</span><span>Navigation page</span></a></li>
+            <li><a class="sidebar-link" href="#handoff"><span>⇱</span><span>Handoff standard</span></a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <main id="main">
+        <section class="doc-section" id="overview">
+          <p class="doc-kicker">Get Started</p>
+          <div class="title-row">
+            <span class="title-icon" aria-hidden="true">□</span>
+            <h1>Overview</h1>
+          </div>
+          <p class="lead">
+            โครงเอกสารนี้ใช้สำหรับอธิบาย Design System Token แบบเรียบง่ายเหมือน Web Document โดยยังคง
+            <code>design-system-tokens.css</code> เป็น source of truth สำหรับทุกหน้า preview ในระบบ
+          </p>
+
+          <div class="card-grid">
+            <article class="doc-card">
+              <div class="doc-card__visual">
+                <div class="token-stack" aria-hidden="true">
+                  <span class="token-line" data-tone="accent"></span>
+                  <span class="token-line" style="width: 82%"></span>
+                  <span class="token-line" data-tone="primary" style="width: 64%"></span>
+                </div>
+              </div>
+              <div class="doc-card__body">
+                <h3>Quickstart</h3>
+                <p>เรียก token กลางจาก <code>design-system-tokens.css</code> แล้วให้ page-level CSS consume ผ่าน <code>--ds-*</code></p>
+              </div>
+            </article>
+
+            <article class="doc-card">
+              <div class="doc-card__visual">
+                <div class="token-stack" aria-hidden="true">
+                  <span class="token-line" data-tone="primary" style="width: 58%"></span>
+                  <span class="token-line" data-tone="accent"></span>
+                  <span class="token-line" style="width: 76%"></span>
+                </div>
+              </div>
+              <div class="doc-card__body">
+                <h3>Theme update</h3>
+                <p>แก้สี, spacing, radius, typography และ component tokens ที่ไฟล์เดียว แล้วหน้าอื่นจะตามไปด้วย</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="structure">
+          <h2>Structure layers</h2>
+          <p>ระบบนี้แบ่ง token เป็น 4 ชั้น เพื่อให้ designer, developer และ Vibe Code workflow อ่านภาษาเดียวกัน</p>
+          <ul class="contract-list">
+            <li><strong>Primitive tokens</strong> ค่าดิบ เช่น palette, spacing, radius, typography และ shadow</li>
+            <li><strong>Semantic tokens</strong> ค่าที่มีความหมาย เช่น background, surface, primary, border, text-muted</li>
+            <li><strong>Component tokens</strong> ค่าที่ผูกกับ UI contract เช่น button height, field height, card padding</li>
+            <li><strong>Pattern structure</strong> layout และ component ที่ใช้ <code>data-component</code>, <code>data-state</code>, <code>data-variant</code></li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="tokens">
+          <h2>Token architecture</h2>
+          <p>ตารางนี้คือ naming contract สำหรับนำไปใช้ต่อใน CSS variables, Tailwind theme, Figma variables หรือ React props</p>
+
+          <table class="token-table" data-component="token-table">
+            <thead>
+              <tr>
+                <th>Layer</th>
+                <th>Naming pattern</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Primitive</td>
+                <td><code>--ds-palette-{color}-{step}</code></td>
+                <td><code>--ds-palette-teal-500</code></td>
+              </tr>
+              <tr>
+                <td>Semantic</td>
+                <td><code>--ds-color-{role}</code></td>
+                <td><code>--ds-color-primary-accent</code>, <code>--ds-color-surface</code></td>
+              </tr>
+              <tr>
+                <td>Component</td>
+                <td><code>--ds-{component}-{property}</code></td>
+                <td><code>--ds-button-height-md</code>, <code>--ds-card-padding</code></td>
+              </tr>
+              <tr>
+                <td>State</td>
+                <td><code>[data-state="{state}"]</code></td>
+                <td><code>active</code>, <code>selected</code>, <code>disabled</code>, <code>loading</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="doc-section" id="components">
+          <h2>Component contract</h2>
+          <p>component ทุกตัวควรมีชื่อและ state ที่อ่านจาก DOM ได้ เพื่อให้การแก้ UI ไม่ต้องเดาจาก class เพียงอย่างเดียว</p>
+
+          <div class="component-row">
+            <article class="component-box" data-component="button-spec">
+              <h3>Button</h3>
+              <p><code>data-component="button"</code></p>
+              <a class="primary-cta" href="#handoff" data-component="primary-cta">ออกแบบเลย!</a>
+            </article>
+
+            <article class="component-box" data-component="field-spec">
+              <h3>Input field</h3>
+              <p><code>data-component="input-field"</code></p>
+              <input class="field-demo" placeholder="ค้นหาบทเรียน" />
+            </article>
+
+            <article class="component-box" data-component="chip-spec">
+              <h3>Choice chip</h3>
+              <p><code>data-state="selected"</code></p>
+              <div class="chip-row">
+                <span class="chip" data-state="selected">Selected</span>
+                <span class="chip">Default</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section" id="states">
+          <h2>States and variants</h2>
+          <p>state และ variant ควรใช้ attribute เป็น contract หลัก เช่น <code>data-state</code>, <code>data-variant</code>, <code>data-size</code></p>
+          <ul class="contract-list">
+            <li><strong>Variant</strong> ใช้แยก intent เช่น primary, secondary, ghost, danger</li>
+            <li><strong>State</strong> ใช้บอกสถานะ เช่น default, hover, active, selected, disabled, loading</li>
+            <li><strong>Size</strong> ใช้กำหนด density เช่น sm, md, lg โดยอิง component token</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="handoff">
+          <h2>Handoff standard</h2>
+          <p>
+            ถ้าจะ update token หรือ update theme ให้แก้ที่ <code>public/design-system-tokens.css</code> ก่อนเสมอ
+            ส่วนไฟล์ HTML ควรทำหน้าที่เป็นเอกสารและตัวอย่าง implementation ที่เรียกใช้ token กลางเท่านั้น
+          </p>
+        </section>
+      </main>
+
+    </div>
+  </body>
+</html>
