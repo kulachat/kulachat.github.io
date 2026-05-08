@@ -415,6 +415,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") { closeDrawe
 // ── Notification ──────────────────────────────────────────────────────────────
 
 function openNotif() {
+  closeUserMenu();
   renderNotifList();
   notifDropdown.classList.remove("hidden");
   notifButton.setAttribute("aria-expanded", "true");
@@ -448,6 +449,7 @@ mobileMenuButton.addEventListener("click", () => {
 // ── User dropdown ─────────────────────────────────────────────────────────────
 
 function openUserMenu() {
+  closeNotif();
   userDropdown.classList.remove("hidden");
   userMenuButton.setAttribute("aria-expanded", "true");
   userMenuChevron.style.transform = "rotate(180deg)";

@@ -42,6 +42,17 @@ const lessonPackageDownload = {
 
 const webToolUrl = "https://a-chieve.org/doll-activity/map";
 
+const webToolContent = {
+  name: "แผนที่อาชีพ",
+  domain: "a-chieve.org",
+  image: "https://service.a-chieve.org/uploads/Onboarding_screen_09_41f86a4f99.png",
+  description: [
+    "เป็นการประมวลผลจากข้อมูลที่ใส่ในตุ๊กตาขนมปัง ซึ่งแต่ละคนอาจได้ผลที่แตกต่างกันไป",
+    "จะเปลี่ยนแปลงตามการอัปเดตข้อมูลในตุ๊กตาขนมปัง",
+  ],
+  ctaLabel: "ดูรายชื่ออาชีพของฉัน",
+};
+
 const assetDownloadsByIcon = {
   description: {
     label: "ดาวน์โหลด PDF",
@@ -240,7 +251,12 @@ const previewDocumentTitle = document.querySelector("#previewDocumentTitle");
 const previewDocumentIcon = document.querySelector("#previewDocumentIcon");
 const previewDocumentBody = document.querySelector("#previewDocumentBody");
 const previewFileType = document.querySelector("#previewFileType");
+const previewFileName = document.querySelector("#previewFileName");
+const previewFileNameLabel = document.querySelector("#previewFileNameLabel");
+const previewFileMetaLabel = document.querySelector("#previewFileMetaLabel");
+const previewFileMetaValue = document.querySelector("#previewFileMetaValue");
 const previewTeacherNote = document.querySelector("#previewTeacherNote");
+const previewTeacherActions = document.querySelector("#previewTeacherActions");
 const previewSidebarSections = document.querySelector("#previewSidebarSections");
 const webToolActionPanel = document.querySelector("#webToolActionPanel");
 const webToolUrlInput = document.querySelector("#webToolUrl");
@@ -450,17 +466,60 @@ function renderPreviewModal() {
   previewDocumentIcon.textContent = "slideshow";
   previewFileType.textContent = activeDownload.type;
   previewTeacherNote.textContent = content.note;
-  previewDocumentBody.innerHTML = `
-    <div class="rounded-lg bg-slate-50 p-3">
-      <div class="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs font-normal text-slate-500">
-        <span class="inline-flex items-center gap-1.5"><span class="material-symbols-rounded text-[17px] text-achieve-deep">article</span>A4 preview • 5 หน้า</span>
-        <span class="inline-flex items-center gap-1.5"><span class="material-symbols-rounded text-[17px] text-achieve-deep">source</span>Modern_Education_Mockup_A4.pptx</span>
+
+  if (icon === "link") {
+    previewFileNameLabel.textContent = "ชื่อเครื่องมือ";
+    previewFileName.textContent = webToolContent.name;
+    previewFileMetaLabel.textContent = "โดเมน";
+    previewFileMetaValue.textContent = webToolContent.domain;
+    previewTeacherActions.innerHTML = `
+      <li class="flex gap-2"><span class="material-symbols-rounded text-[17px] text-achieve-deep">content_copy</span>คัดลอก link เพื่อแชร์นักเรียน</li>
+      <li class="flex gap-2"><span class="material-symbols-rounded text-[17px] text-achieve-deep">open_in_new</span>เปิดทดลองใช้งานก่อนสอน</li>
+      <li class="flex gap-2"><span class="material-symbols-rounded text-[17px] text-achieve-deep">send</span>ส่งเป็นการบ้านให้ห้องเรียนที่เลือก</li>
+    `;
+    previewDocumentBody.innerHTML = `
+      <div class="overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+        <img src="${webToolContent.image}" class="w-full object-cover" alt="" loading="lazy" />
       </div>
-      <div class="grid gap-5">
-        ${pptxPreviewPages.map((page, index) => renderPptxPreviewPage(page, index)).join("")}
+      <div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">📋 รายละเอียด</p>
+        <ul class="space-y-3">
+          ${webToolContent.description.map(d => `
+            <li class="flex items-start gap-2.5 text-sm leading-relaxed text-slate-700">
+              <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400"></span>
+              ${d}
+            </li>
+          `).join("")}
+        </ul>
       </div>
-    </div>
-  `;
+      <a href="${webToolUrl}" target="_blank" rel="noopener"
+         class="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3.5 font-title font-semibold text-white shadow-sm transition-all hover:from-sky-500 hover:to-blue-600">
+        <span class="material-symbols-rounded text-[20px]">open_in_new</span>
+        ${webToolContent.ctaLabel}
+      </a>
+    `;
+  } else {
+    previewFileNameLabel.textContent = "ชื่อไฟล์";
+    previewFileName.textContent = "Modern_Education_Mockup_A4";
+    previewFileMetaLabel.textContent = "จำนวนหน้า";
+    previewFileMetaValue.textContent = "5 หน้า";
+    previewTeacherActions.innerHTML = `
+      <li class="flex gap-2"><span class="material-symbols-rounded text-[17px] text-achieve-deep">visibility</span>ตรวจ preview ให้ครบทุกหน้า</li>
+      <li class="flex gap-2"><span class="material-symbols-rounded text-[17px] text-achieve-deep">download</span>ดาวน์โหลดไฟล์ไว้ใช้สอน</li>
+      <li class="flex gap-2"><span class="material-symbols-rounded text-[17px] text-achieve-deep">send</span>ส่งเป็นการบ้านให้ห้องเรียนที่เลือก</li>
+    `;
+    previewDocumentBody.innerHTML = `
+      <div class="rounded-lg bg-slate-50 p-3">
+        <div class="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs font-normal text-slate-500">
+          <span class="inline-flex items-center gap-1.5"><span class="material-symbols-rounded text-[17px] text-achieve-deep">article</span>A4 preview • 5 หน้า</span>
+          <span class="inline-flex items-center gap-1.5"><span class="material-symbols-rounded text-[17px] text-achieve-deep">source</span>Modern_Education_Mockup_A4.pptx</span>
+        </div>
+        <div class="grid gap-5">
+          ${pptxPreviewPages.map((page, index) => renderPptxPreviewPage(page, index)).join("")}
+        </div>
+      </div>
+    `;
+  }
   previewSidebarSections.innerHTML = content.sections.map(([sectionTitle, sectionDetail]) => `
     <article class="py-3 first:pt-0 last:pb-0">
       <h5 class="mb-1 font-title text-sm font-semibold text-slate-900">${sectionTitle}</h5>
