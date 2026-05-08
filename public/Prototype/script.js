@@ -369,15 +369,21 @@ function openPreviewModal(lessonId) {
   closeDrawer(successDrawer);
   closeDrawer(unopenedStudentsDrawer);
   renderPreviewModal();
-  previewModal.classList.remove("hidden");
+  previewModal.classList.remove("hidden", "modal-exit");
+  previewModal.classList.add("modal-enter");
   previewModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("overflow-hidden");
 }
 
 function closePreviewModal() {
-  previewModal.classList.add("hidden");
+  previewModal.classList.remove("modal-enter");
+  previewModal.classList.add("modal-exit");
   previewModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("overflow-hidden");
+  previewModal.addEventListener("animationend", () => {
+    previewModal.classList.add("hidden");
+    previewModal.classList.remove("modal-exit");
+  }, { once: true });
 }
 
 function openHelpModal() {
