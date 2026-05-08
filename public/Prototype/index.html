@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>e-achieve to school - Assignment Prototype</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&display=swap" />
+    <meta name="description" content="จัดการใบงาน ติดตามความคืบหน้าของนักเรียน และสร้างสื่อการเรียนรู้บนแพลตฟอร์ม a-achieve" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>จัดการใบงาน — a-achieve</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0" />
     <script>
@@ -15,7 +14,7 @@
           extend: {
             fontFamily: {
               sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', '"Noto Sans Thai"', 'sans-serif'],
-              title: ['Prompt', '"Noto Sans Thai"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              title: ['"FC Subject Rounded"', '"Noto Sans Thai"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             },
             colors: {
               achieve: {
@@ -41,10 +40,10 @@
     <div class="min-h-screen transition-[grid-template-columns] duration-200 lg:grid lg:grid-cols-[256px_minmax(0,1fr)]" id="appShell">
       <aside class="z-20 flex h-auto flex-col overflow-hidden border-r border-achieve-line bg-white px-3 py-5 transition-all duration-200 lg:sticky lg:top-0 lg:h-screen" id="sidebar">
         <div class="flex items-center justify-between gap-3" id="sidebarHeader">
-          <a class="inline-flex min-w-0 items-center gap-2.5 font-bold leading-none text-achieve-blue" href="#" aria-label="e-achieve to school" id="sidebarBrand">
-            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 border-current text-2xl">e</span>
+          <a class="inline-flex min-w-0 items-center gap-2.5 font-bold leading-none text-achieve-blue" href="#" aria-label="a-achieve to school" id="sidebarBrand">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 border-current text-2xl">a</span>
             <span>
-              <span class="block text-sm leading-4">e-achieve</span>
+              <span class="block text-sm leading-4">a-achieve</span>
               <span class="block text-[11px] font-medium leading-4 text-slate-500">to school</span>
             </span>
           </a>
@@ -59,14 +58,14 @@
           <a class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg px-2.5 py-2 text-slate-600 hover:bg-slate-50" href="#">
             <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">home</span>
             <span class="min-w-0">
-              <span class="block font-semibold leading-5">หน้าหลัก</span>
+              <span class="block font-title font-semibold leading-5">หน้าหลัก</span>
               <span class="block truncate text-xs font-normal leading-4 text-slate-500">ภาพรวมของโรงเรียน</span>
             </span>
           </a>
           <a class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg px-2.5 py-2 text-slate-600 hover:bg-slate-50" href="#">
             <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">menu_book</span>
             <span class="min-w-0">
-              <span class="block font-semibold leading-5">คลังสื่อสำหรับครู</span>
+              <span class="block font-title font-semibold leading-5">คลังสื่อสำหรับครู</span>
               <span class="block truncate text-xs font-normal leading-4 text-slate-500">แผนการสอนและสื่อประกอบ</span>
             </span>
           </a>
@@ -134,7 +133,7 @@
           <button class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg px-2.5 py-2 text-left text-slate-600 hover:bg-slate-50" type="button" id="homeworkReportMenuButton">
             <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">summarize</span>
             <span class="min-w-0">
-              <span class="block font-semibold leading-5">รายงานสรุป</span>
+              <span class="block font-title font-semibold leading-5">รายงานสรุป</span>
               <span class="block truncate text-xs font-normal leading-4 text-slate-500">สรุปผลทั้งห้องเรียน</span>
             </span>
           </button>
@@ -157,12 +156,12 @@
       <main class="min-w-0 bg-[linear-gradient(#ffffff,#f8fbfd_24rem)]">
         <header class="sticky top-0 z-10 flex min-h-24 flex-col gap-4 border-b border-achieve-line bg-white/85 px-5 py-4 backdrop-blur md:flex-row md:items-center md:justify-between lg:px-8">
           <div class="flex min-w-0 gap-2 overflow-x-auto md:gap-5" aria-label="เทอมและภาพรวม">
-            <button class="min-h-12 shrink-0 rounded-full bg-achieve-soft px-7 font-semibold text-achieve-deep" type="button">เทอม 1</button>
-            <button class="min-h-12 shrink-0 rounded-full px-7 font-semibold text-slate-700 hover:bg-slate-50" type="button">เทอม 2</button>
-            <button class="min-h-12 shrink-0 rounded-full px-7 font-semibold text-slate-700 hover:bg-slate-50" type="button">ภาพรวมแผนการสอน</button>
+            <button class="min-h-12 shrink-0 rounded-full bg-achieve-soft px-7 font-title font-semibold text-achieve-deep" type="button">เทอม 1</button>
+            <button class="min-h-12 shrink-0 rounded-full px-7 font-title font-semibold text-slate-700 hover:bg-slate-50" type="button">เทอม 2</button>
+            <button class="min-h-12 shrink-0 rounded-full px-7 font-title font-semibold text-slate-700 hover:bg-slate-50" type="button">ภาพรวมแผนการสอน</button>
           </div>
 
-          <button class="inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-slate-100 px-3 font-semibold text-slate-700 hover:bg-slate-50" type="button" aria-label="เมนูผู้ใช้">
+          <button class="inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-slate-100 px-3 font-title font-semibold text-slate-700 hover:bg-slate-50" type="button" aria-label="เมนูผู้ใช้">
             <span class="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-amber-200 to-orange-300 text-amber-900">ป</span>
             <span>ปฐุมพงศ์ ไชยศรี</span>
             <span>⌄</span>
