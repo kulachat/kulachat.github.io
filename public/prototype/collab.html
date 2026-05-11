@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="จัดการใบงาน ติดตามความคืบหน้าของนักเรียน และสร้างสื่อการเรียนรู้บนแพลตฟอร์ม a-achieve" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Collab — a-achieve</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', '"Noto Sans Thai"', 'sans-serif'],
+              title: ['"FC Subject Rounded"', '"Noto Sans Thai"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              achieve: {
+                blue: 'var(--ci-brand)',
+                deep: 'var(--ci-brand-hover)',
+                ink: 'var(--ci-ink)',
+                line: 'var(--ci-line)',
+                soft: 'var(--ci-brand-soft)',
+              },
+            },
+            boxShadow: {
+              card: 'var(--ci-shadow-card)',
+              soft: 'var(--ci-shadow-soft)',
+              drawer: 'var(--ci-shadow-drawer)',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="collab.css" />
+  </head>
+  <body class="bg-[#f7fbff] font-sans text-[14px] text-achieve-ink antialiased">
+    <div class="min-h-screen transition-[grid-template-columns] duration-200 lg:grid lg:grid-cols-[256px_minmax(0,1fr)]" id="appShell">
+      <aside class="z-20 flex h-auto flex-col overflow-hidden border-r border-achieve-line bg-white px-3 py-5 transition-all duration-200 lg:sticky lg:top-0 lg:h-screen" id="sidebar">
+        <div class="flex items-center justify-between gap-3" id="sidebarHeader">
+          <a class="inline-flex min-w-0 items-center gap-2.5 font-bold leading-none text-achieve-blue" href="#" aria-label="a-achieve to school" id="sidebarBrand">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 border-current text-2xl">a</span>
+            <span>
+              <span class="block text-sm leading-4">a-achieve</span>
+              <span class="block text-[11px] font-medium leading-4 text-slate-500">to school</span>
+            </span>
+          </a>
+          <button class="group relative grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-achieve-line bg-white text-slate-600 shadow-soft hover:bg-slate-50" type="button" id="sidebarToggle" aria-label="ซ่อนแถบเมนูด้านซ้าย" aria-expanded="true">
+            <span class="material-symbols-rounded text-[21px]" id="sidebarToggleIcon">left_panel_close</span>
+            <span class="pointer-events-none absolute left-full top-1/2 z-30 ml-2 w-max -translate-y-1/2 rounded-md bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-soft transition-opacity group-hover:opacity-100" id="sidebarToggleTooltip">ซ่อนแถบเมนู</span>
+          </button>
+        </div>
+
+        <nav class="mt-7 grid gap-2" id="sidebarPrimaryNav" aria-label="เมนูหลัก">
+          <p class="px-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">เมนูหลัก</p>
+          <a class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg bg-achieve-soft px-2.5 py-2 text-achieve-deep" href="#" aria-current="page">
+            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-white text-[22px] text-achieve-deep">home</span>
+            <span class="min-w-0">
+              <span class="block font-title font-semibold leading-5">หน้าหลัก</span>
+              <span class="block truncate text-xs font-normal leading-4 text-slate-500">ภาพรวมของโรงเรียน</span>
+            </span>
+          </a>
+          <a class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg px-2.5 py-2 text-slate-600 hover:bg-slate-50" href="#">
+            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">menu_book</span>
+            <span class="min-w-0">
+              <span class="block font-title font-semibold leading-5">คลังสื่อสำหรับครู</span>
+              <span class="block truncate text-xs font-normal leading-4 text-slate-500">แผนการสอนและสื่อประกอบ</span>
+            </span>
+          </a>
+          <div class="my-2 h-px bg-achieve-line"></div>
+          <p class="px-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">ห้องเรียนที่ใช้งาน</p>
+          <button class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)_18px] items-center gap-3 rounded-lg px-2.5 py-2 text-left text-slate-600 hover:bg-slate-50" type="button" id="gradeMenuButton" data-grade-toggle="grade5Rooms" aria-expanded="false">
+            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">school</span>
+            <span class="min-w-0">
+              <span class="block font-title text-[15px] font-semibold leading-5">ชั้น ม.5</span>
+              <span class="block truncate text-xs font-normal leading-4 text-slate-500">แผนการสอนปีการศึกษา 2568</span>
+            </span>
+            <span class="material-symbols-rounded text-[18px] text-slate-400" data-grade-icon>chevron_right</span>
+          </button>
+          <div class="hidden gap-3 pt-1" id="grade5Rooms">
+            <button class="relative ml-6 grid min-h-10 grid-cols-[28px_minmax(0,1fr)] items-center gap-2.5 rounded-md border border-achieve-line bg-white px-2.5 py-2 text-left text-achieve-deep shadow-soft hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" id="classMenuButton" data-action="show-lesson-plans">
+              <span class="material-symbols-rounded grid h-7 w-7 place-items-center rounded-md bg-slate-50 text-[18px] text-achieve-deep">groups</span>
+              <span class="min-w-0">
+                <span class="block font-title text-sm font-semibold leading-5">ม. 5/1</span>
+                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">32 นักเรียน</span>
+              </span>
+            </button>
+          </div>
+          <button class="mt-3 grid min-h-12 grid-cols-[34px_minmax(0,1fr)_18px] items-center gap-3 rounded-lg px-2.5 py-2 text-left text-slate-600 hover:bg-slate-50" type="button" data-grade-toggle="grade6Rooms" aria-expanded="false">
+            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">school</span>
+            <span class="min-w-0">
+              <span class="block font-title text-[15px] font-semibold leading-5">ชั้น ม.6</span>
+              <span class="block truncate text-xs font-normal leading-4 text-slate-500">3 ห้องเรียน</span>
+            </span>
+            <span class="material-symbols-rounded text-[18px] text-slate-400" data-grade-icon>chevron_right</span>
+          </button>
+          <div class="hidden gap-3 pt-1" id="grade6Rooms">
+            <button class="relative ml-6 grid min-h-10 grid-cols-[26px_minmax(0,1fr)] items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-slate-600 hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" data-action="show-lesson-plans">
+              <span class="material-symbols-rounded grid h-6 w-6 place-items-center rounded-md bg-slate-50 text-[17px] text-slate-500">groups</span>
+              <span class="min-w-0">
+                <span class="block font-title text-[13px] font-semibold leading-5">ม. 6/1</span>
+                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">31 นักเรียน</span>
+              </span>
+            </button>
+            <button class="relative ml-6 grid min-h-10 grid-cols-[26px_minmax(0,1fr)] items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-slate-600 hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" data-action="show-lesson-plans">
+              <span class="material-symbols-rounded grid h-6 w-6 place-items-center rounded-md bg-slate-50 text-[17px] text-slate-500">groups</span>
+              <span class="min-w-0">
+                <span class="block font-title text-[13px] font-semibold leading-5">ม. 6/2</span>
+                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">30 นักเรียน</span>
+              </span>
+            </button>
+            <button class="relative ml-6 grid min-h-10 grid-cols-[26px_minmax(0,1fr)] items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-slate-600 hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" data-action="show-lesson-plans">
+              <span class="material-symbols-rounded grid h-6 w-6 place-items-center rounded-md bg-slate-50 text-[17px] text-slate-500">groups</span>
+              <span class="min-w-0">
+                <span class="block font-title text-[13px] font-semibold leading-5">ม. 6/3</span>
+                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">33 นักเรียน</span>
+              </span>
+            </button>
+          </div>
+        </nav>
+      </aside>
+
+      <button class="group fixed left-4 top-4 z-30 hidden h-10 w-10 place-items-center rounded-lg border border-achieve-line bg-white text-slate-600 shadow-soft hover:bg-slate-50" type="button" id="sidebarRestore" aria-label="แสดงแถบเมนูด้านซ้าย">
+        <span class="material-symbols-rounded text-[22px]">left_panel_open</span>
+        <span class="pointer-events-none absolute left-full top-1/2 ml-2 w-max -translate-y-1/2 rounded-md bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-soft transition-opacity group-hover:opacity-100">แสดงแถบเมนู</span>
+      </button>
+
+      <main class="collab-page">
+        <header class="collab-header">
+          <div class="collab-header__inner">
+            <div class="collab-header__brand">
+              <img class="collab-school-logo" src="assets/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College" />
+              <div class="collab-school-copy">
+                <span class="collab-school-name">Bangkok Christian College</span>
+                <span class="collab-school-subtitle">A-Chieve to School partnership with BCC</span>
+              </div>
+            </div>
+
+            <div class="collab-header__actions">
+              <label class="collab-search">
+                <span class="sr-only">ค้นหา</span>
+                <input class="collab-search__input" placeholder="ค้นหา..." type="search" />
+                <span class="material-symbols-rounded collab-search__icon">search</span>
+              </label>
+              <button class="collab-notification" type="button" aria-label="แจ้งเตือน">
+                <span class="collab-notification__dot"></span>
+                <span class="material-symbols-rounded">notifications</span>
+              </button>
+              <button class="collab-user" type="button" aria-label="เมนูผู้ใช้">
+                <span class="collab-user__avatar">ช</span>
+                <span>ชาร์ค ทีม</span>
+                <span class="material-symbols-rounded collab-user__chevron">expand_more</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <section class="collab-content">
+          <div class="collab-panel">
+            <div class="collab-panel__header">
+              <div class="collab-school-badge collab-school-badge--large"><span class="material-symbols-rounded">analytics</span></div>
+              <div class="min-w-0 flex-1">
+                <h2 class="collab-panel__title">BCC Student Tools Dashboard</h2>
+                <p class="collab-panel__subtitle">ภาพรวม 2 ชั้นเรียน · 4 ห้องเรียน · 126 นักเรียน</p>
+              </div>
+              <div class="collab-year-control">
+                <span class="collab-year-control__label">ปีการศึกษา</span>
+                <div class="collab-year-control__pills" role="group" aria-label="เลือกปีการศึกษา">
+                  <button class="collab-year-control__pill" type="button">2567</button>
+                  <button class="collab-year-control__pill" type="button">2568</button>
+                  <button class="collab-year-control__pill collab-year-control__pill--active" type="button" aria-pressed="true">2569</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="collab-metrics">
+              <article class="collab-metric-card">
+                <span class="material-symbols-rounded collab-metric-card__icon collab-metric-card__icon--blue">groups</span>
+                <div>
+                  <p class="collab-metric-card__label">นักเรียนทั้งหมด</p>
+                  <strong class="collab-metric-card__value">126 คน</strong>
+                </div>
+              </article>
+              <article class="collab-metric-card">
+                <span class="material-symbols-rounded collab-metric-card__icon collab-metric-card__icon--green">home_work</span>
+                <div>
+                  <p class="collab-metric-card__label">ห้องเรียนที่ดูแล</p>
+                  <strong class="collab-metric-card__value">2 ชั้น / 4 ห้องเรียน</strong>
+                </div>
+              </article>
+              <article class="collab-metric-card">
+                <span class="material-symbols-rounded collab-metric-card__icon collab-metric-card__icon--violet">transgender</span>
+                <div>
+                  <p class="collab-metric-card__label">สัดส่วนเพศ</p>
+                  <strong class="collab-metric-card__value">ชาย 61 / หญิง 65</strong>
+                </div>
+              </article>
+            </div>
+
+            <section class="collab-usage">
+              <h3 class="collab-usage__title">ภาพรวมการใช้เครื่องมือของนักเรียน</h3>
+              <div class="collab-usage__grid">
+                <article class="collab-tool-card collab-tool-card--purple">
+                  <div class="collab-tool-card__body">
+                    <div class="collab-tool-card__head">
+                      <span class="material-symbols-rounded collab-tool-card__icon collab-tool-card__icon--orange">diversity_3</span>
+                      <div class="collab-tool-card__copy">
+                        <h4>ตุ๊กตาแบ่งปัน</h4>
+                        <p>ใช้งานแล้ว 71%</p>
+                      </div>
+                    </div>
+                    <p class="collab-tool-card__value">89<span>/126</span></p>
+                    <div class="collab-progress">
+                      <div class="collab-progress__bar" style="width: 71%"></div>
+                    </div>
+                    <a class="collab-tool-card__action" href="#">ดูรายชื่อ 37 คนที่ยังไม่ได้ใช้ <span class="material-symbols-rounded">arrow_forward</span></a>
+                  </div>
+                </article>
+
+                <article class="collab-tool-card collab-tool-card--yellow">
+                  <div class="collab-tool-card__body">
+                    <div class="collab-tool-card__head">
+                      <span class="material-symbols-rounded collab-tool-card__icon collab-tool-card__icon--cyan">psychology</span>
+                      <div class="collab-tool-card__copy">
+                        <h4>ประเมินอาชีพ</h4>
+                        <p>ใช้งานแล้ว 43%</p>
+                      </div>
+                    </div>
+                    <p class="collab-tool-card__value">54<span>/126</span></p>
+                    <div class="collab-progress">
+                      <div class="collab-progress__bar" style="width: 43%"></div>
+                    </div>
+                    <a class="collab-tool-card__action" href="#">ดูรายชื่อ 72 คนที่ยังไม่ได้ใช้ <span class="material-symbols-rounded">arrow_forward</span></a>
+                  </div>
+                </article>
+
+                <article class="collab-tool-card collab-tool-card--green">
+                  <div class="collab-tool-card__body">
+                    <div class="collab-tool-card__head">
+                      <span class="material-symbols-rounded collab-tool-card__icon collab-tool-card__icon--blue">explore</span>
+                      <div class="collab-tool-card__copy">
+                        <h4>วางแผนชีวิต</h4>
+                        <p>ใช้งานแล้ว 30%</p>
+                      </div>
+                    </div>
+                    <p class="collab-tool-card__value">38<span>/126</span></p>
+                    <div class="collab-progress">
+                      <div class="collab-progress__bar" style="width: 30%"></div>
+                    </div>
+                    <a class="collab-tool-card__action" href="#">ดูรายชื่อ 88 คนที่ยังไม่ได้ใช้ <span class="material-symbols-rounded">arrow_forward</span></a>
+                  </div>
+                </article>
+
+                <article class="collab-tool-card collab-tool-card--indigo">
+                  <div class="collab-tool-card__body">
+                    <div class="collab-tool-card__head">
+                      <span class="material-symbols-rounded collab-tool-card__icon collab-tool-card__icon--sky">self_improvement</span>
+                      <div class="collab-tool-card__copy">
+                        <h4>แบบสำรวจอารมณ์</h4>
+                        <p>ใช้งานแล้ว 89%</p>
+                      </div>
+                    </div>
+                    <p class="collab-tool-card__value">112<span>/126</span></p>
+                    <div class="collab-progress">
+                      <div class="collab-progress__bar" style="width: 89%"></div>
+                    </div>
+                    <a class="collab-tool-card__action" href="#">ดูรายชื่อ 14 คนที่ยังไม่ได้ใช้ <span class="material-symbols-rounded">arrow_forward</span></a>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="collab-roster">
+              <div class="collab-roster__header">
+                <h3 class="collab-roster__title">รายชื่อนักเรียน ม.5/1 — สถานะการใช้เครื่องมือ</h3>
+                <a class="collab-roster__link" href="#">ดูทั้งหมด <span class="material-symbols-rounded">arrow_forward</span></a>
+              </div>
+              <div class="collab-roster__table-wrap">
+                <table class="collab-roster__table">
+                  <thead>
+                    <tr>
+                      <th>ชื่อ-สกุล</th>
+                      <th>ตุ๊กตาแบ่งปัน</th>
+                      <th>ประเมินอาชีพ</th>
+                      <th>วางแผนชีวิต</th>
+                      <th>แบบสำรวจอารมณ์</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>ปรีดา เกษมสุข</td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                    </tr>
+                    <tr>
+                      <td>มัลลิกา อ่อนละมัย</td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                    </tr>
+                    <tr>
+                      <td>ธนวัฒน์ สุทธิพงษ์</td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                    </tr>
+                    <tr>
+                      <td>สิริพร เพ็งพันธ์</td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                    </tr>
+                    <tr>
+                      <td>กิตติพงษ์ วรรณสุทธิ์</td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                    </tr>
+                    <tr>
+                      <td>นภาพร ทองสุข</td>
+                      <td><span class="collab-status collab-status--pending">ยังไม่ได้ใช้</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                      <td><span class="collab-status collab-status--done"><span class="material-symbols-rounded">check_circle</span>เสร็จแล้ว</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+          </div>
+        </section>
+
+        <footer class="collab-footer">
+          <div class="collab-footer__inner">
+            <div class="collab-footer__brand">
+              <strong>a-chieve to school</strong>
+              <span class="collab-school-badge"><span class="material-symbols-rounded collab-footer__badge-icon">school</span></span>
+            </div>
+            <p class="collab-footer__copyright">© สงวนลิขสิทธิ์ 2569 a-chieve.org</p>
+          </div>
+        </footer>
+      </main>
+
+    </div>
+
+    <script src="collab.js"></script>
+  </body>
+</html>
