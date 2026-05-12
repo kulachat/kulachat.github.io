@@ -39,93 +39,104 @@
   </head>
   <body class="bg-[#f7fbff] font-sans text-[14px] text-achieve-ink antialiased">
     <div class="min-h-screen transition-[grid-template-columns] duration-200 lg:grid lg:grid-cols-[256px_minmax(0,1fr)]" id="appShell">
-      <aside class="z-20 flex h-auto flex-col overflow-hidden border-r border-achieve-line bg-white px-3 py-5 transition-all duration-200 lg:sticky lg:top-0 lg:h-screen" id="sidebar">
-        <div class="flex items-center justify-between gap-3" id="sidebarHeader">
-          <a class="inline-flex min-w-0 items-center gap-2.5 font-bold leading-none text-achieve-blue" href="#" aria-label="a-achieve to school" id="sidebarBrand">
-            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 border-current text-2xl">a</span>
-            <span>
-              <span class="block text-sm leading-4">a-achieve</span>
-              <span class="block text-[11px] font-medium leading-4 text-slate-500">to school</span>
+      <aside class="collab-sidebar" id="sidebar">
+        <div class="collab-sidebar__header" id="sidebarHeader">
+          <a class="collab-sidebar__brand" href="#" aria-label="a-achieve to school" id="sidebarBrand">
+            <span class="collab-sidebar__brand-icon">a</span>
+            <span class="collab-sidebar__brand-copy">
+              <span class="collab-sidebar__brand-name">a-achieve</span>
+              <span class="collab-sidebar__brand-sub">to school</span>
             </span>
           </a>
-          <button class="group relative grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-achieve-line bg-white text-slate-600 shadow-soft hover:bg-slate-50" type="button" id="sidebarToggle" aria-label="ซ่อนแถบเมนูด้านซ้าย" aria-expanded="true">
-            <span class="material-symbols-rounded text-[21px]" id="sidebarToggleIcon">left_panel_close</span>
-            <span class="pointer-events-none absolute left-full top-1/2 z-30 ml-2 w-max -translate-y-1/2 rounded-md bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-soft transition-opacity group-hover:opacity-100" id="sidebarToggleTooltip">ซ่อนแถบเมนู</span>
+          <button class="collab-sidebar__toggle" type="button" id="sidebarToggle" aria-label="ซ่อนแถบเมนูด้านซ้าย" aria-expanded="true">
+            <span class="material-symbols-rounded" id="sidebarToggleIcon">left_panel_close</span>
+            <span class="collab-sidebar__toggle-tooltip" id="sidebarToggleTooltip">ซ่อนแถบเมนู</span>
           </button>
         </div>
 
-        <nav class="mt-7 grid gap-2" id="sidebarPrimaryNav" aria-label="เมนูหลัก">
-          <p class="px-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">เมนูหลัก</p>
-          <a class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg bg-achieve-soft px-2.5 py-2 text-achieve-deep" href="#" aria-current="page">
-            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-white text-[22px] text-achieve-deep">home</span>
-            <span class="min-w-0">
-              <span class="block font-title font-semibold leading-5">หน้าหลัก</span>
-              <span class="block truncate text-xs font-normal leading-4 text-slate-500">ภาพรวมของโรงเรียน</span>
+        <nav class="collab-sidebar__nav" id="sidebarPrimaryNav" aria-label="เมนูหลัก">
+          <p class="collab-sidebar__label">เมนูหลัก</p>
+          <a class="collab-sidebar__item collab-sidebar__item--active" href="#" aria-current="page" data-page-link="dashboard">
+            <span class="material-symbols-rounded collab-sidebar__icon">home</span>
+            <span class="collab-sidebar__item-copy">
+              <span class="collab-sidebar__item-name">หน้าหลัก</span>
+              <span class="collab-sidebar__item-sub">ภาพรวมของโรงเรียน</span>
             </span>
           </a>
-          <a class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)] items-center gap-3 rounded-lg px-2.5 py-2 text-slate-600 hover:bg-slate-50" href="#">
-            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">menu_book</span>
-            <span class="min-w-0">
-              <span class="block font-title font-semibold leading-5">คลังสื่อสำหรับครู</span>
-              <span class="block truncate text-xs font-normal leading-4 text-slate-500">แผนการสอนและสื่อประกอบ</span>
+          <a class="collab-sidebar__item" href="#">
+            <span class="material-symbols-rounded collab-sidebar__icon">menu_book</span>
+            <span class="collab-sidebar__item-copy">
+              <span class="collab-sidebar__item-name">คลังสื่อสำหรับครู</span>
+              <span class="collab-sidebar__item-sub">แผนการสอนและสื่อประกอบ</span>
             </span>
           </a>
-          <div class="my-2 h-px bg-achieve-line"></div>
-          <p class="px-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">ห้องเรียนที่ใช้งาน</p>
-          <button class="grid min-h-14 grid-cols-[34px_minmax(0,1fr)_18px] items-center gap-3 rounded-lg px-2.5 py-2 text-left text-slate-600 hover:bg-slate-50" type="button" id="gradeMenuButton" data-grade-toggle="grade5Rooms" aria-expanded="false">
-            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">school</span>
-            <span class="min-w-0">
-              <span class="block font-title text-[15px] font-semibold leading-5">ชั้น ม.5</span>
-              <span class="block truncate text-xs font-normal leading-4 text-slate-500">แผนการสอนปีการศึกษา 2568</span>
+          <div class="collab-sidebar__divider"></div>
+          <p class="collab-sidebar__label">ห้องเรียนที่ใช้งาน</p>
+          <button class="collab-sidebar__grade-btn" type="button" id="gradeMenuButton" data-grade-toggle="grade5Rooms" aria-expanded="false">
+            <span class="material-symbols-rounded collab-sidebar__icon">school</span>
+            <span class="collab-sidebar__item-copy">
+              <span class="collab-sidebar__item-name">ชั้น ม.5</span>
+              <span class="collab-sidebar__item-sub">แผนการสอนปีการศึกษา 2568</span>
             </span>
-            <span class="material-symbols-rounded text-[18px] text-slate-400" data-grade-icon>chevron_right</span>
+            <span class="material-symbols-rounded collab-sidebar__item-chevron" data-grade-icon>chevron_right</span>
           </button>
-          <div class="hidden gap-3 pt-1" id="grade5Rooms">
-            <button class="relative ml-6 grid min-h-10 grid-cols-[28px_minmax(0,1fr)] items-center gap-2.5 rounded-md border border-achieve-line bg-white px-2.5 py-2 text-left text-achieve-deep shadow-soft hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" id="classMenuButton" data-action="show-lesson-plans">
-              <span class="material-symbols-rounded grid h-7 w-7 place-items-center rounded-md bg-slate-50 text-[18px] text-achieve-deep">groups</span>
-              <span class="min-w-0">
-                <span class="block font-title text-sm font-semibold leading-5">ม. 5/1</span>
-                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">32 นักเรียน</span>
+          <div class="collab-sidebar__room-list" id="grade5Rooms">
+            <button class="collab-sidebar__room-item" type="button" id="classMenuButton" data-action="show-lesson-plans" data-page-link="dashboard">
+              <span class="material-symbols-rounded collab-sidebar__room-icon">groups</span>
+              <span>
+                <span class="collab-sidebar__room-name">ม. 5/1</span>
+                <span class="collab-sidebar__room-sub">32 นักเรียน</span>
               </span>
             </button>
           </div>
-          <button class="mt-3 grid min-h-12 grid-cols-[34px_minmax(0,1fr)_18px] items-center gap-3 rounded-lg px-2.5 py-2 text-left text-slate-600 hover:bg-slate-50" type="button" data-grade-toggle="grade6Rooms" aria-expanded="false">
-            <span class="material-symbols-rounded grid h-9 w-9 place-items-center rounded-md bg-slate-50 text-[22px] text-slate-500">school</span>
-            <span class="min-w-0">
-              <span class="block font-title text-[15px] font-semibold leading-5">ชั้น ม.6</span>
-              <span class="block truncate text-xs font-normal leading-4 text-slate-500">3 ห้องเรียน</span>
+          <button class="collab-sidebar__grade-btn" type="button" data-grade-toggle="grade6Rooms" aria-expanded="false">
+            <span class="material-symbols-rounded collab-sidebar__icon">school</span>
+            <span class="collab-sidebar__item-copy">
+              <span class="collab-sidebar__item-name">ชั้น ม.6</span>
+              <span class="collab-sidebar__item-sub">3 ห้องเรียน</span>
             </span>
-            <span class="material-symbols-rounded text-[18px] text-slate-400" data-grade-icon>chevron_right</span>
+            <span class="material-symbols-rounded collab-sidebar__item-chevron" data-grade-icon>chevron_right</span>
           </button>
-          <div class="hidden gap-3 pt-1" id="grade6Rooms">
-            <button class="relative ml-6 grid min-h-10 grid-cols-[26px_minmax(0,1fr)] items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-slate-600 hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" data-action="show-lesson-plans">
-              <span class="material-symbols-rounded grid h-6 w-6 place-items-center rounded-md bg-slate-50 text-[17px] text-slate-500">groups</span>
-              <span class="min-w-0">
-                <span class="block font-title text-[13px] font-semibold leading-5">ม. 6/1</span>
-                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">31 นักเรียน</span>
+          <div class="collab-sidebar__room-list" id="grade6Rooms">
+            <button class="collab-sidebar__room-item" type="button" data-action="show-lesson-plans" data-page-link="dashboard">
+              <span class="material-symbols-rounded collab-sidebar__room-icon">groups</span>
+              <span>
+                <span class="collab-sidebar__room-name">ม. 6/1</span>
+                <span class="collab-sidebar__room-sub">31 นักเรียน</span>
               </span>
             </button>
-            <button class="relative ml-6 grid min-h-10 grid-cols-[26px_minmax(0,1fr)] items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-slate-600 hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" data-action="show-lesson-plans">
-              <span class="material-symbols-rounded grid h-6 w-6 place-items-center rounded-md bg-slate-50 text-[17px] text-slate-500">groups</span>
-              <span class="min-w-0">
-                <span class="block font-title text-[13px] font-semibold leading-5">ม. 6/2</span>
-                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">30 นักเรียน</span>
+            <button class="collab-sidebar__room-item" type="button" data-action="show-lesson-plans" data-page-link="dashboard">
+              <span class="material-symbols-rounded collab-sidebar__room-icon">groups</span>
+              <span>
+                <span class="collab-sidebar__room-name">ม. 6/2</span>
+                <span class="collab-sidebar__room-sub">30 นักเรียน</span>
               </span>
             </button>
-            <button class="relative ml-6 grid min-h-10 grid-cols-[26px_minmax(0,1fr)] items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-slate-600 hover:bg-slate-50 before:absolute before:-left-3.5 before:top-0 before:h-1/2 before:w-3.5 before:rounded-bl-md before:border-b before:border-l before:border-achieve-line" type="button" data-action="show-lesson-plans">
-              <span class="material-symbols-rounded grid h-6 w-6 place-items-center rounded-md bg-slate-50 text-[17px] text-slate-500">groups</span>
-              <span class="min-w-0">
-                <span class="block font-title text-[13px] font-semibold leading-5">ม. 6/3</span>
-                <span class="block truncate text-[11px] font-normal leading-4 text-slate-500">33 นักเรียน</span>
+            <button class="collab-sidebar__room-item" type="button" data-action="show-lesson-plans" data-page-link="dashboard">
+              <span class="material-symbols-rounded collab-sidebar__room-icon">groups</span>
+              <span>
+                <span class="collab-sidebar__room-name">ม. 6/3</span>
+                <span class="collab-sidebar__room-sub">33 นักเรียน</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="collab-sidebar__bottom">
+            <div class="collab-sidebar__divider"></div>
+            <button class="collab-sidebar__item" type="button" data-page-link="setup-theme">
+              <span class="material-symbols-rounded collab-sidebar__icon">palette</span>
+              <span class="collab-sidebar__item-copy">
+                <span class="collab-sidebar__item-name">Setup Theme</span>
+                <span class="collab-sidebar__item-sub">ตั้งค่า CI โรงเรียน</span>
               </span>
             </button>
           </div>
         </nav>
       </aside>
 
-      <button class="group fixed left-4 top-4 z-30 hidden h-10 w-10 place-items-center rounded-lg border border-achieve-line bg-white text-slate-600 shadow-soft hover:bg-slate-50" type="button" id="sidebarRestore" aria-label="แสดงแถบเมนูด้านซ้าย">
-        <span class="material-symbols-rounded text-[22px]">left_panel_open</span>
-        <span class="pointer-events-none absolute left-full top-1/2 ml-2 w-max -translate-y-1/2 rounded-md bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-white opacity-0 shadow-soft transition-opacity group-hover:opacity-100">แสดงแถบเมนู</span>
+      <button class="collab-sidebar__restore" type="button" id="sidebarRestore" aria-label="แสดงแถบเมนูด้านซ้าย">
+        <span class="material-symbols-rounded">left_panel_open</span>
+        <span class="collab-sidebar__restore-tooltip">แสดงแถบเมนู</span>
       </button>
 
       <main class="collab-page">
@@ -158,7 +169,12 @@
           </div>
         </header>
 
-        <section class="collab-content">
+        <div class="collab-toast" id="themeToast" role="status" aria-live="polite" hidden>
+          <span class="material-symbols-rounded">check_circle</span>
+          <span>บันทึกธีมเรียบร้อยแล้ว</span>
+        </div>
+
+        <section class="collab-content collab-view" data-page-view="dashboard">
           <div class="collab-panel">
             <div class="collab-panel__header">
               <div class="collab-school-badge collab-school-badge--large"><span class="material-symbols-rounded">analytics</span></div>
@@ -337,6 +353,194 @@
               </div>
             </section>
 
+          </div>
+        </section>
+
+        <section class="collab-content collab-view" data-page-view="setup-theme" hidden>
+          <div class="collab-panel">
+            <div class="collab-panel__header">
+              <div class="collab-school-badge collab-school-badge--large"><span class="material-symbols-rounded">palette</span></div>
+              <div class="min-w-0 flex-1">
+                <h2 class="collab-panel__title">Setup Theme</h2>
+                <p class="collab-panel__subtitle">ตั้งค่าโลโก้ สี CI และหน้าตา sidebar สำหรับโรงเรียน</p>
+              </div>
+              <div class="collab-theme-actions">
+                <button class="collab-theme-back" type="button" data-page-link="dashboard">
+                  <span class="material-symbols-rounded">arrow_back</span>
+                  กลับ Dashboard
+                </button>
+                <button class="collab-theme-reset" type="button" id="themeResetButton">
+                  <span class="material-symbols-rounded">restart_alt</span>
+                  คืนค่าเดิม
+                </button>
+                <button class="collab-theme-save" type="submit" form="themeForm">
+                <span class="material-symbols-rounded">save</span>
+                บันทึกธีม
+              </button>
+              </div>
+            </div>
+
+            <form class="collab-theme" id="themeForm">
+              <section class="collab-theme-card collab-theme-card--school">
+                <div class="collab-theme-card__header">
+                  <span class="material-symbols-rounded collab-theme-card__icon">badge</span>
+                  <div>
+                    <h3>ข้อมูลโรงเรียน</h3>
+                    <p>ข้อมูลนี้จะแสดงบน header และ dashboard title</p>
+                  </div>
+                </div>
+
+                <div class="collab-theme-form">
+                  <div class="collab-theme-field collab-theme-field--logo">
+                    <span class="collab-theme-field__label">โลโก้โรงเรียน</span>
+                    <span class="collab-theme-logo-control">
+                      <img src="assets/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College" id="themeLogoPreview" />
+                      <span>
+                        <strong id="themeLogoFileName">Bangkok_Christian_College_logo.png</strong>
+                        <small>PNG หรือ SVG พื้นหลังโปร่งใส</small>
+                      </span>
+                      <button type="button" id="themeLogoButton">เปลี่ยน</button>
+                      <input class="collab-theme-logo-input" id="themeLogoInput" type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" />
+                    </span>
+                  </div>
+
+                  <label class="collab-theme-field">
+                    <span class="collab-theme-field__label">ชื่อโรงเรียน</span>
+                    <input type="text" value="Bangkok Christian College" data-theme-field="schoolName" />
+                  </label>
+
+                  <label class="collab-theme-field">
+                    <span class="collab-theme-field__label">Subtitle</span>
+                    <input type="text" value="A-Chieve to School partnership with BCC" data-theme-field="schoolSubtitle" />
+                  </label>
+
+                  <label class="collab-theme-field">
+                    <span class="collab-theme-field__label">Dashboard Title</span>
+                    <input type="text" value="BCC Student Tools Dashboard" data-theme-field="dashboardTitle" />
+                  </label>
+                </div>
+              </section>
+
+              <section class="collab-theme-card">
+                <div class="collab-theme-card__header">
+                  <span class="material-symbols-rounded collab-theme-card__icon collab-theme-card__icon--blue">format_color_fill</span>
+                  <div>
+                    <h3>สีประจำโรงเรียน</h3>
+                    <p>เลือกสี CI หลัก แล้วระบบจะคำนวณสีเข้มและสีอ่อนสำหรับสถานะต่างๆ ให้เอง</p>
+                  </div>
+                </div>
+
+                <div class="collab-brand-builder">
+                  <label class="collab-brand-field">
+                    <span class="collab-theme-field__label">สี CI หลัก</span>
+                    <span class="collab-brand-field__control">
+                      <input type="color" value="#4A235A" data-theme-brand-picker />
+                      <input type="text" value="#4A235A" data-theme-token="--ci-brand" data-theme-brand-text />
+                    </span>
+                  </label>
+
+                  <div class="collab-derive-list">
+                    <label class="collab-derive-field">
+                      <span class="collab-derive-field__top">
+                        <strong>สีปุ่มตอน hover</strong>
+                        <span><output data-theme-percent-output="hover">22</output>% เข้มขึ้น</span>
+                      </span>
+                      <input type="range" min="5" max="40" value="22" data-theme-percent="hover" />
+                      <span class="collab-derived-color">
+                        <span class="collab-token-field__swatch" data-derived-swatch="--ci-brand-hover"></span>
+                        <code data-derived-value="--ci-brand-hover">#3a1b47</code>
+                      </span>
+                    </label>
+
+                    <label class="collab-derive-field">
+                      <span class="collab-derive-field__top">
+                        <strong>พื้นหลังอ่อนมาก</strong>
+                        <span><output data-theme-percent-output="soft">92</output>% อ่อนลง</span>
+                      </span>
+                      <input type="range" min="75" max="96" value="92" data-theme-percent="soft" />
+                      <span class="collab-derived-color">
+                        <span class="collab-token-field__swatch" data-derived-swatch="--ci-brand-soft"></span>
+                        <code data-derived-value="--ci-brand-soft">#f5eff7</code>
+                      </span>
+                    </label>
+
+                    <label class="collab-derive-field">
+                      <span class="collab-derive-field__top">
+                        <strong>พื้นหลังหัวข้อ</strong>
+                        <span><output data-theme-percent-output="tint">84</output>% อ่อนลง</span>
+                      </span>
+                      <input type="range" min="65" max="92" value="84" data-theme-percent="tint" />
+                      <span class="collab-derived-color">
+                        <span class="collab-token-field__swatch" data-derived-swatch="--ci-brand-tint"></span>
+                        <code data-derived-value="--ci-brand-tint">#eadff0</code>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="collab-theme-card">
+                <div class="collab-theme-card__header">
+                  <span class="material-symbols-rounded collab-theme-card__icon collab-theme-card__icon--green">view_sidebar</span>
+                  <div>
+                    <h3>แถบเมนูด้านซ้าย</h3>
+                    <p>เลือกสีพื้นและระดับความชัดของเมนูให้เหมาะกับสีโรงเรียน</p>
+                  </div>
+                </div>
+
+                <div class="collab-theme-sidebar-preview">
+                  <div class="collab-theme-sidebar-preview__surface">
+                    <div class="collab-theme-sidebar-preview__brand">
+                      <span>a</span>
+                      <strong>a-achieve</strong>
+                    </div>
+                    <div class="collab-theme-sidebar-preview__item is-active">
+                      <span class="material-symbols-rounded">home</span>
+                      <span>หน้าหลัก</span>
+                    </div>
+                    <div class="collab-theme-sidebar-preview__item">
+                      <span class="material-symbols-rounded">palette</span>
+                      <span>Setup Theme</span>
+                    </div>
+                  </div>
+
+                  <div class="collab-sidebar-settings">
+                    <label class="collab-brand-field">
+                      <span class="collab-theme-field__label">สีพื้นแถบเมนู</span>
+                      <span class="collab-brand-field__control">
+                        <input type="color" value="#4A235A" data-sidebar-color-picker />
+                        <input type="text" value="#4A235A" data-sidebar-color-text />
+                      </span>
+                    </label>
+
+                    <label class="collab-derive-field">
+                      <span class="collab-derive-field__top">
+                        <strong>ความสว่างของตัวอักษร</strong>
+                        <span><output data-sidebar-percent-output="text">92</output>%</span>
+                      </span>
+                      <input type="range" min="55" max="100" value="92" data-sidebar-percent="text" />
+                    </label>
+
+                    <label class="collab-derive-field">
+                      <span class="collab-derive-field__top">
+                        <strong>ความเด่นของเมนูที่เลือก</strong>
+                        <span><output data-sidebar-percent-output="active">15</output>%</span>
+                      </span>
+                      <input type="range" min="6" max="32" value="15" data-sidebar-percent="active" />
+                    </label>
+
+                    <label class="collab-derive-field">
+                      <span class="collab-derive-field__top">
+                        <strong>ความสว่างของพื้นหลัง icon</strong>
+                        <span><output data-sidebar-percent-output="icon">10</output>%</span>
+                      </span>
+                      <input type="range" min="4" max="24" value="10" data-sidebar-percent="icon" />
+                    </label>
+                  </div>
+                </div>
+              </section>
+              <p class="collab-theme-status" id="themeStatus" role="status" aria-live="polite"></p>
+            </form>
           </div>
         </section>
 

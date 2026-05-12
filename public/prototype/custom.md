@@ -18,7 +18,7 @@
 <span class="collab-school-name">ชื่อโรงเรียน</span>  <!-- ← เปลี่ยนชื่อ -->
 ```
 
-ค่าอื่นๆ ที่เหลือ derive มาจาก `--ci-brand` ทั้งหมด
+ค่าอื่นๆ ที่เหลือ derive มาจากสีหลักอัตโนมัติ เช่น สี hover จะเข้มขึ้นเป็น %, สีพื้นหลังอ่อนจะอ่อนลงเป็น %
 
 ---
 
@@ -35,50 +35,43 @@
 
 ---
 
-## 2. สี CI Brand — เปลี่ยนที่ `:root` ใน `collab.css`
+## 2. สี CI Brand
 
-เปลี่ยนค่าเหล่านี้ให้ตรงกับ CI ของโรงเรียน — ระบบจะ apply ทั่วทั้ง Dashboard
+สำหรับหน้าจอ Setup Theme ให้ครูเลือกแค่ “สี CI หลัก” แล้วระบบจะคำนวณสีอื่นจากเปอร์เซ็นต์เข้มขึ้น/อ่อนลงให้เอง
 
 | Token | ค่า Default (BCC) | ใช้ที่ไหน |
 |-------|------------------|----------|
 | `--ci-brand` | `#4A235A` | Sidebar bg, active nav, badge, border accent, progress bar, icon |
-| `--ci-brand-hover` | `#3a1b47` | Hover state ของ brand elements ทุกจุด |
-| `--ci-brand-soft` | `#f5eff7` | Background อ่อนๆ ของ icon, active nav, year pill hover |
-| `--ci-brand-tint` | `#eadff0` | Panel header background |
+| `--ci-brand-hover` | คำนวณจากสีหลักให้เข้มขึ้น | Hover state ของ brand elements ทุกจุด |
+| `--ci-brand-soft` | คำนวณจากสีหลักให้อ่อนลงมาก | Background อ่อนๆ ของ icon, active nav, year pill hover |
+| `--ci-brand-tint` | คำนวณจากสีหลักให้อ่อนลง | Panel header background |
 | `--ci-brand-muted` | `#7a5688` | Text รอง, border อ่อน |
 | `--ci-ink` | `#2d1736` | Text สีเข้มสุด (heading ทั่วไป) |
 
-### วิธีคำนวณค่า brand จากสีหลัก
+### วิธีคำนวณค่า brand จากสีหลักในหน้า Setup Theme
 
 ```
---ci-brand        = สีหลัก (เต็ม)
---ci-brand-hover  = สีหลัก เข้มขึ้น ~10%
---ci-brand-muted  = สีหลัก อ่อนลง ~30%
---ci-brand-soft   = สีหลัก opacity 8% บนพื้นขาว
---ci-brand-tint   = สีหลัก opacity 14% บนพื้นขาว
---ci-ink          = สีหลัก เข้มมากๆ (ใกล้ดำ)
+สี CI หลัก             = สีโรงเรียนเต็ม
+สีปุ่มตอน hover       = สี CI หลัก เข้มขึ้นตาม %
+พื้นหลังอ่อนมาก       = สี CI หลัก อ่อนลงตาม %
+พื้นหลังหัวข้อ         = สี CI หลัก อ่อนลงตาม %
 ```
 
 ---
 
-## 3. Sidebar Theme
+## 3. แถบเมนูด้านซ้าย
 
-Sidebar ใช้ Token ระบบแยก `--sb-*` scoped ใน `#sidebar`  
-เปลี่ยน `--sb-bg` คือเปลี่ยนธีม sidebar ทั้งหมด
+ในหน้า Setup Theme ผู้ใช้ไม่ต้องกรอก token ของ sidebar เอง
+ให้เลือก “สีพื้นแถบเมนู” และปรับ slider สำหรับความสว่าง/ความเด่นแทน
 
-| Token | ค่า Default | ผล |
-|-------|------------|-----|
-| `--sb-bg` | `var(--ci-brand)` | พื้นหลัง sidebar |
-| `--sb-bg-active` | `rgba(255,255,255,0.15)` | รายการ active |
-| `--sb-bg-hover` | `rgba(255,255,255,0.09)` | รายการ hover |
-| `--sb-text` | `rgba(255,255,255,0.92)` | ข้อความหลัก |
-| `--sb-text-sub` | `rgba(255,255,255,0.52)` | ข้อความรอง |
-| `--sb-text-label` | `rgba(255,255,255,0.36)` | Section labels |
-| `--sb-border` | `rgba(255,255,255,0.12)` | เส้นแบ่ง / divider |
-| `--sb-icon-bg` | `rgba(255,255,255,0.10)` | Icon background ปกติ |
-| `--sb-icon-active` | `rgba(255,255,255,0.18)` | Icon background active |
+| รายการในหน้า Setup | ผล |
+|--------------------|-----|
+| สีพื้นแถบเมนู | พื้นหลัง sidebar |
+| ความสว่างของตัวอักษร | ข้อความหลักและข้อความรองใน sidebar |
+| ความเด่นของเมนูที่เลือก | พื้นหลังของรายการ active/hover |
+| ความสว่างของพื้นหลัง icon | กล่องพื้นหลังของ icon และเส้นแบ่ง |
 
-> **หมายเหตุ:** ถ้าเปลี่ยน `--sb-bg` เป็นสีอ่อน ให้ปรับ `--sb-text`, `--sb-text-sub`, `--sb-text-label` เป็นสีเข้มด้วย เพื่อให้ contrast ผ่าน WCAG
+เบื้องหลังระบบจะ derive ค่า `--sb-*` ให้เอง เพื่อให้ครูไม่ต้องเข้าใจ token name แบบ developer
 
 ---
 
