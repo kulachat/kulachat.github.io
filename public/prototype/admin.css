@@ -268,13 +268,12 @@
 }
 
 .admin-content {
-  max-width: 1120px;
-  margin: 0 auto;
+  width: 100%;
   padding: 28px 24px 40px;
 }
 
 .admin-content--wide {
-  max-width: 1180px;
+  width: 100%;
 }
 
 .admin-content .collab-panel {
@@ -283,6 +282,42 @@
 
 .admin-content .collab-panel__header {
   background: #f1f8fd;
+}
+
+.admin-breadcrumb {
+  display: flex;
+  min-height: 34px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  color: #0a8dcd;
+  text-decoration: none;
+}
+
+.admin-breadcrumb a:hover {
+  color: #0677ad;
+}
+
+.admin-breadcrumb .material-symbols-rounded {
+  font-size: 18px;
+}
+
+.admin-breadcrumb span:not(.material-symbols-rounded)::before {
+  content: "/";
+  margin-right: 8px;
+  color: #cbd5e1;
+  font-weight: 700;
 }
 
 .admin-list-panel {
