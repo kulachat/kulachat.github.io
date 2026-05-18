@@ -62,10 +62,13 @@ function setSidebarCollapsed(collapsed) {
   isSidebarCollapsed = collapsed;
   if (!appShell || !sidebar || !sidebarRestore) return;
 
+  const expandedGridClass = "lg:grid-cols-[256px_minmax(0,1fr)]";
+
   document.body.classList.toggle("collab-sidebar-collapsed", collapsed);
   appShell.classList.toggle("lg:grid-cols-[0_minmax(0,1fr)]", collapsed);
-  appShell.classList.toggle("lg:grid-cols-[256px_minmax(0,1fr)]", !collapsed);
+  appShell.classList.toggle(expandedGridClass, !collapsed);
   sidebar.classList.toggle("collab-sidebar--collapsed", collapsed);
+  sidebar.classList.toggle("admin-sidebar--collapsed", collapsed);
   sidebarRestore.classList.toggle("collab-sidebar__restore--visible", collapsed);
 
   if (sidebarToggle) {
@@ -423,7 +426,9 @@ themeForm?.addEventListener("submit", (event) => {
   if (themeStatus?.textContent === "") {
     setThemeStatus("บันทึกธีมเรียบร้อยแล้ว");
   }
-  showPage("dashboard");
+  if (document.querySelector('[data-page-view="dashboard"]')) {
+    showPage("dashboard");
+  }
   showThemeToast("บันทึกธีมเรียบร้อยแล้ว");
 });
 
