@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Admin setup theme สำหรับแพลตฟอร์ม a-chieve" />
+    <meta name="description" content="รายการโรงเรียนพาร์ทเนอร์สำหรับผู้ดูแลระบบ a-chieve" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Admin — a-chieve</title>
+    <title>School Partnership — a-chieve</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0" />
     <script>
@@ -50,7 +50,7 @@
         </div>
 
         <nav class="admin-sidebar__nav" id="sidebarPrimaryNav" aria-label="เมนูหลัก">
-          <a class="admin-sidebar__item admin-sidebar__item--active" href="#" aria-current="page">
+          <a class="admin-sidebar__item" href="#">
             <span class="material-symbols-rounded admin-sidebar__icon">dashboard</span>
             <span>หน้าหลัก</span>
           </a>
@@ -65,7 +65,7 @@
             <span>สนับสนุนการแนะแนว</span>
           </a>
 
-          <a class="admin-sidebar__item" href="admin.html">
+          <a class="admin-sidebar__item admin-sidebar__item--active" href="admin.html" aria-current="page">
             <span class="material-symbols-rounded admin-sidebar__icon">partner_exchange</span>
             <span>School partnership</span>
           </a>
@@ -115,8 +115,8 @@
           <div class="admin-header__title">
             <span class="material-symbols-rounded">admin_panel_settings</span>
             <div>
-              <h1>Admin</h1>
-              <p>ตั้งค่าหน้าตาและข้อมูลโรงเรียนบน a-chieve</p>
+              <h1>School partnership</h1>
+              <p>จัดการรายชื่อและธีมของโรงเรียนพาร์ทเนอร์</p>
             </div>
           </div>
 
@@ -132,187 +132,85 @@
           <span>บันทึกธีมเรียบร้อยแล้ว</span>
         </div>
 
-        <section class="admin-content collab-view" data-page-view="setup-theme">
-          <div class="collab-panel">
-            <div class="collab-panel__header">
-              <div class="collab-school-badge collab-school-badge--large"><span class="material-symbols-rounded">palette</span></div>
-              <div class="min-w-0 flex-1">
-                <h2 class="collab-panel__title">Setup Theme</h2>
-                <p class="collab-panel__subtitle">ตั้งค่าโลโก้ สี CI และหน้าตา sidebar สำหรับโรงเรียน</p>
+        <section class="admin-content admin-content--wide collab-view" data-page-view="school-partnership">
+          <div class="admin-list-panel">
+            <div class="admin-list-panel__header">
+              <div>
+                <p class="admin-eyebrow">School partnership</p>
+                <h2>รายการโรงเรียน</h2>
+                <p>เลือกโรงเรียนเพื่อเข้าไปตั้งค่า Setup Theme และข้อมูล CI ของโรงเรียนนั้น</p>
               </div>
-              <div class="collab-theme-actions">
-                <button class="collab-theme-reset" type="button" id="themeResetButton">
-                  <span class="material-symbols-rounded">restart_alt</span>
-                  คืนค่าเดิม
-                </button>
-                <button class="collab-theme-save" type="submit" form="themeForm">
-                  <span class="material-symbols-rounded">save</span>
-                  บันทึกธีม
-                </button>
-              </div>
+              <a class="admin-primary-action" href="admin-theme.html">
+                <span class="material-symbols-rounded">add</span>
+                เพิ่มโรงเรียน
+              </a>
             </div>
 
-            <form class="collab-theme" id="themeForm">
-              <section class="collab-theme-card collab-theme-card--school">
-                <div class="collab-theme-card__header">
-                  <span class="material-symbols-rounded collab-theme-card__icon">badge</span>
-                  <div>
-                    <h3>ข้อมูลโรงเรียน</h3>
-                    <p>ข้อมูลนี้จะแสดงบน header และ dashboard title</p>
-                  </div>
-                </div>
+            <div class="admin-school-toolbar" aria-label="ตัวกรองรายการโรงเรียน">
+              <label class="admin-school-search">
+                <span class="material-symbols-rounded">search</span>
+                <input type="search" placeholder="ค้นหาโรงเรียน" />
+              </label>
+              <button class="admin-filter-button" type="button">
+                <span class="material-symbols-rounded">tune</span>
+                ตัวกรอง
+              </button>
+            </div>
 
-                <div class="collab-theme-form">
-                  <div class="collab-theme-field collab-theme-field--logo">
-                    <span class="collab-theme-field__label">โลโก้โรงเรียน</span>
-                    <span class="collab-theme-logo-control">
-                      <img src="assets/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College" id="themeLogoPreview" />
-                      <span>
-                        <strong id="themeLogoFileName">Bangkok_Christian_College_logo.png</strong>
-                        <small>PNG หรือ SVG พื้นหลังโปร่งใส</small>
-                      </span>
-                      <button type="button" id="themeLogoButton">เปลี่ยน</button>
-                      <input class="collab-theme-logo-input" id="themeLogoInput" type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" />
-                    </span>
-                  </div>
+            <div class="admin-school-list" aria-label="รายการโรงเรียนพาร์ทเนอร์">
+              <a class="admin-school-row" href="admin-theme.html?school=bcc">
+                <span class="admin-school-row__logo">
+                  <img src="assets/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College" />
+                </span>
+                <span class="admin-school-row__main">
+                  <strong>Bangkok Christian College</strong>
+                  <small>A-Chieve to School partnership with BCC</small>
+                </span>
+                <span class="admin-school-row__meta">
+                  <span class="admin-status-pill admin-status-pill--active">Active</span>
+                  <small>อัปเดตล่าสุด 18 พ.ค. 2569</small>
+                </span>
+                <span class="admin-school-row__stats">
+                  <strong>126</strong>
+                  <small>นักเรียน</small>
+                </span>
+                <span class="material-symbols-rounded admin-school-row__arrow">chevron_right</span>
+              </a>
 
-                  <label class="collab-theme-field">
-                    <span class="collab-theme-field__label">ชื่อโรงเรียน</span>
-                    <input type="text" value="Bangkok Christian College" data-theme-field="schoolName" />
-                  </label>
+              <a class="admin-school-row" href="admin-theme.html?school=demo-north">
+                <span class="admin-school-row__logo admin-school-row__logo--text">น</span>
+                <span class="admin-school-row__main">
+                  <strong>โรงเรียนบ้านเหนือ</strong>
+                  <small>โครงการนำร่องห้องเรียนแนะแนว</small>
+                </span>
+                <span class="admin-school-row__meta">
+                  <span class="admin-status-pill">Draft</span>
+                  <small>รอตรวจ CI โรงเรียน</small>
+                </span>
+                <span class="admin-school-row__stats">
+                  <strong>84</strong>
+                  <small>นักเรียน</small>
+                </span>
+                <span class="material-symbols-rounded admin-school-row__arrow">chevron_right</span>
+              </a>
 
-                  <label class="collab-theme-field">
-                    <span class="collab-theme-field__label">Subtitle</span>
-                    <input type="text" value="A-Chieve to School partnership with BCC" data-theme-field="schoolSubtitle" />
-                  </label>
-
-                  <label class="collab-theme-field">
-                    <span class="collab-theme-field__label">Dashboard Title</span>
-                    <input type="text" value="BCC Student Tools Dashboard" data-theme-field="dashboardTitle" />
-                  </label>
-                </div>
-              </section>
-
-              <section class="collab-theme-card">
-                <div class="collab-theme-card__header">
-                  <span class="material-symbols-rounded collab-theme-card__icon collab-theme-card__icon--blue">format_color_fill</span>
-                  <div>
-                    <h3>สีประจำโรงเรียน</h3>
-                    <p>เลือกสี CI หลัก แล้วระบบจะคำนวณสีเข้มและสีอ่อนสำหรับสถานะต่างๆ ให้เอง</p>
-                  </div>
-                </div>
-
-                <div class="collab-brand-builder">
-                  <label class="collab-brand-field">
-                    <span class="collab-theme-field__label">สี CI หลัก</span>
-                    <span class="collab-brand-field__control">
-                      <input type="color" value="#4A235A" data-theme-brand-picker />
-                      <input type="text" value="#4A235A" data-theme-token="--ci-brand" data-theme-brand-text />
-                    </span>
-                  </label>
-
-                  <div class="collab-derive-list">
-                    <label class="collab-derive-field">
-                      <span class="collab-derive-field__top">
-                        <strong>สีปุ่มตอน hover</strong>
-                        <span><output data-theme-percent-output="hover">22</output>% เข้มขึ้น</span>
-                      </span>
-                      <input type="range" min="5" max="40" value="22" data-theme-percent="hover" />
-                      <span class="collab-derived-color">
-                        <span class="collab-token-field__swatch" data-derived-swatch="--ci-brand-hover"></span>
-                        <code data-derived-value="--ci-brand-hover">#3a1b47</code>
-                      </span>
-                    </label>
-
-                    <label class="collab-derive-field">
-                      <span class="collab-derive-field__top">
-                        <strong>พื้นหลังอ่อนมาก</strong>
-                        <span><output data-theme-percent-output="soft">92</output>% อ่อนลง</span>
-                      </span>
-                      <input type="range" min="75" max="96" value="92" data-theme-percent="soft" />
-                      <span class="collab-derived-color">
-                        <span class="collab-token-field__swatch" data-derived-swatch="--ci-brand-soft"></span>
-                        <code data-derived-value="--ci-brand-soft">#f5eff7</code>
-                      </span>
-                    </label>
-
-                    <label class="collab-derive-field">
-                      <span class="collab-derive-field__top">
-                        <strong>พื้นหลังหัวข้อ</strong>
-                        <span><output data-theme-percent-output="tint">84</output>% อ่อนลง</span>
-                      </span>
-                      <input type="range" min="65" max="92" value="84" data-theme-percent="tint" />
-                      <span class="collab-derived-color">
-                        <span class="collab-token-field__swatch" data-derived-swatch="--ci-brand-tint"></span>
-                        <code data-derived-value="--ci-brand-tint">#eadff0</code>
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </section>
-
-              <section class="collab-theme-card">
-                <div class="collab-theme-card__header">
-                  <span class="material-symbols-rounded collab-theme-card__icon collab-theme-card__icon--green">view_sidebar</span>
-                  <div>
-                    <h3>แถบเมนูด้านซ้าย</h3>
-                    <p>เลือกสีพื้นและระดับความชัดของเมนูให้เหมาะกับสีโรงเรียน</p>
-                  </div>
-                </div>
-
-                <div class="collab-theme-sidebar-preview">
-                  <div class="collab-theme-sidebar-preview__surface">
-                    <div class="collab-theme-sidebar-preview__brand">
-                      <span>a</span>
-                      <strong>a-chieve</strong>
-                    </div>
-                    <div class="collab-theme-sidebar-preview__item is-active">
-                      <span class="material-symbols-rounded">dashboard</span>
-                      <span>หน้าหลัก</span>
-                    </div>
-                    <div class="collab-theme-sidebar-preview__item">
-                      <span class="material-symbols-rounded">palette</span>
-                      <span>Setup Theme</span>
-                    </div>
-                  </div>
-
-                  <div class="collab-sidebar-settings">
-                    <label class="collab-brand-field">
-                      <span class="collab-theme-field__label">สีพื้นแถบเมนู</span>
-                      <span class="collab-brand-field__control">
-                        <input type="color" value="#4A235A" data-sidebar-color-picker />
-                        <input type="text" value="#4A235A" data-sidebar-color-text />
-                      </span>
-                    </label>
-
-                    <label class="collab-derive-field">
-                      <span class="collab-derive-field__top">
-                        <strong>ความสว่างของตัวอักษร</strong>
-                        <span><output data-sidebar-percent-output="text">92</output>%</span>
-                      </span>
-                      <input type="range" min="55" max="100" value="92" data-sidebar-percent="text" />
-                    </label>
-
-                    <label class="collab-derive-field">
-                      <span class="collab-derive-field__top">
-                        <strong>ความเด่นของเมนูที่เลือก</strong>
-                        <span><output data-sidebar-percent-output="active">15</output>%</span>
-                      </span>
-                      <input type="range" min="6" max="32" value="15" data-sidebar-percent="active" />
-                    </label>
-
-                    <label class="collab-derive-field">
-                      <span class="collab-derive-field__top">
-                        <strong>ความสว่างของพื้นหลัง icon</strong>
-                        <span><output data-sidebar-percent-output="icon">10</output>%</span>
-                      </span>
-                      <input type="range" min="4" max="24" value="10" data-sidebar-percent="icon" />
-                    </label>
-                  </div>
-                </div>
-              </section>
-              <p class="collab-theme-status" id="themeStatus" role="status" aria-live="polite"></p>
-            </form>
+              <a class="admin-school-row" href="admin-theme.html?school=demo-south">
+                <span class="admin-school-row__logo admin-school-row__logo--text">ใ</span>
+                <span class="admin-school-row__main">
+                  <strong>โรงเรียนชุมชนใต้</strong>
+                  <small>เตรียมเปิดใช้งานภาคเรียนหน้า</small>
+                </span>
+                <span class="admin-school-row__meta">
+                  <span class="admin-status-pill admin-status-pill--pending">Pending</span>
+                  <small>รอข้อมูลครูผู้ประสานงาน</small>
+                </span>
+                <span class="admin-school-row__stats">
+                  <strong>52</strong>
+                  <small>นักเรียน</small>
+                </span>
+                <span class="material-symbols-rounded admin-school-row__arrow">chevron_right</span>
+              </a>
+            </div>
           </div>
         </section>
       </main>
