@@ -1,0 +1,186 @@
+---
+import PrototypeLayout from '../../layouts/PrototypeLayout.astro';
+---
+<PrototypeLayout
+  title="School Partnership — a-chieve"
+  description="รายการโรงเรียนพาร์ทเนอร์สำหรับผู้ดูแลระบบ a-chieve"
+  bodyClass="bg-[#f7fbff] font-sans text-[14px] text-achieve-ink antialiased"
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/prototype/css/collab.css" />
+    <link rel="stylesheet" href="/prototype/css/admin.css" />
+  </Fragment>
+
+  <div class="admin-shell min-h-screen transition-[grid-template-columns] duration-200 lg:grid lg:grid-cols-[256px_minmax(0,1fr)]" id="appShell">
+    <aside class="admin-sidebar" id="sidebar">
+      <div class="admin-sidebar__header" id="sidebarHeader">
+        <a class="admin-sidebar__brand" href="#" aria-label="a-chieve admin" id="sidebarBrand">a-chieve</a>
+        <button class="admin-sidebar__toggle" type="button" id="sidebarToggle" aria-label="ซ่อนแถบเมนูด้านซ้าย" aria-expanded="true">
+          <span class="material-symbols-rounded" id="sidebarToggleIcon">left_panel_close</span>
+          <span class="admin-sidebar__tooltip" id="sidebarToggleTooltip">ซ่อนแถบเมนู</span>
+        </button>
+      </div>
+
+      <nav class="admin-sidebar__nav" id="sidebarPrimaryNav" aria-label="เมนูหลัก">
+        <a class="admin-sidebar__item" href="#">
+          <span class="material-symbols-rounded admin-sidebar__icon">dashboard</span>
+          <span>หน้าหลัก</span>
+        </a>
+        <a class="admin-sidebar__item" href="#">
+          <span class="material-symbols-rounded admin-sidebar__icon">menu_book</span>
+          <span>รายงานระบบ a-chieve</span>
+        </a>
+        <a class="admin-sidebar__item" href="#">
+          <span class="material-symbols-rounded admin-sidebar__icon">menu_book</span>
+          <span>สนับสนุนการแนะแนว</span>
+        </a>
+        <a class="admin-sidebar__item admin-sidebar__item--active" href="/prototype/admin/" aria-current="page">
+          <span class="material-symbols-rounded admin-sidebar__icon">partner_exchange</span>
+          <span>School partnership</span>
+        </a>
+        <button class="admin-sidebar__item admin-sidebar__item--group" type="button" data-grade-toggle="adminManageMenu" aria-expanded="true">
+          <span class="material-symbols-rounded admin-sidebar__icon">checklist_rtl</span>
+          <span>จัดการ</span>
+          <span class="material-symbols-rounded admin-sidebar__chevron" data-grade-icon>expand_less</span>
+        </button>
+        <div class="admin-sidebar__submenu is-open" id="adminManageMenu">
+          <a class="admin-sidebar__item admin-sidebar__subitem" href="#">
+            <span class="material-symbols-rounded admin-sidebar__icon">school</span>
+            <span>นำเข้าข้อมูลโรงเรียน</span>
+          </a>
+          <a class="admin-sidebar__item admin-sidebar__subitem" href="#">
+            <span class="material-symbols-rounded admin-sidebar__icon">edit_calendar</span>
+            <span>ข้อมูลปีการศึกษา</span>
+          </a>
+          <a class="admin-sidebar__item admin-sidebar__subitem" href="#">
+            <span class="material-symbols-rounded admin-sidebar__icon">event_busy</span>
+            <span>เด็กเรียนจบ</span>
+          </a>
+          <a class="admin-sidebar__item admin-sidebar__subitem" href="#">
+            <span class="material-symbols-rounded admin-sidebar__icon">groups</span>
+            <span>ข้อมูลครู</span>
+          </a>
+          <a class="admin-sidebar__item admin-sidebar__subitem" href="#">
+            <span class="material-symbols-rounded admin-sidebar__icon">menu_book</span>
+            <span>แผนการสอน</span>
+          </a>
+          <a class="admin-sidebar__item admin-sidebar__subitem" href="#">
+            <span class="material-symbols-rounded admin-sidebar__icon">format_list_bulleted</span>
+            <span>นำเข้าจาก GoogleSheet</span>
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <button class="admin-sidebar__restore" type="button" id="sidebarRestore" aria-label="แสดงแถบเมนูด้านซ้าย">
+      <span class="material-symbols-rounded">left_panel_open</span>
+      <span class="admin-sidebar__restore-tooltip">แสดงแถบเมนู</span>
+    </button>
+
+    <main class="admin-page">
+      <header class="admin-header">
+        <div class="admin-header__title">
+          <span class="material-symbols-rounded">admin_panel_settings</span>
+          <div>
+            <h1>School partnership</h1>
+            <p>จัดการรายชื่อและธีมของโรงเรียนพาร์ทเนอร์</p>
+          </div>
+        </div>
+        <button class="admin-user" type="button" aria-label="เมนูผู้ใช้">
+          <span class="admin-user__avatar">ช</span>
+          <span>ชาร์ค ทีม</span>
+          <span class="material-symbols-rounded">expand_more</span>
+        </button>
+      </header>
+
+      <div class="collab-toast" id="themeToast" role="status" aria-live="polite" hidden>
+        <span class="material-symbols-rounded">check_circle</span>
+        <span>บันทึกธีมเรียบร้อยแล้ว</span>
+      </div>
+
+      <section class="admin-content admin-content--wide collab-view" data-page-view="school-partnership">
+        <div class="admin-list-panel">
+          <div class="admin-list-panel__header">
+            <div>
+              <p class="admin-eyebrow">School partnership</p>
+              <h2>รายการโรงเรียน</h2>
+              <p>เลือกโรงเรียนเพื่อเข้าไปตั้งค่า Setup Theme และข้อมูล CI ของโรงเรียนนั้น</p>
+            </div>
+            <a class="admin-primary-action" href="/prototype/admin-theme/">
+              <span class="material-symbols-rounded">add</span>
+              เพิ่มโรงเรียน
+            </a>
+          </div>
+
+          <div class="admin-school-toolbar" aria-label="ตัวกรองรายการโรงเรียน">
+            <label class="admin-school-search">
+              <span class="material-symbols-rounded">search</span>
+              <input type="search" placeholder="ค้นหาโรงเรียน" />
+            </label>
+            <button class="admin-filter-button" type="button">
+              <span class="material-symbols-rounded">tune</span>
+              ตัวกรอง
+            </button>
+          </div>
+
+          <div class="admin-school-list" aria-label="รายการโรงเรียนพาร์ทเนอร์">
+            <a class="admin-school-row" href="/prototype/admin-theme/?school=bcc">
+              <span class="admin-school-row__logo">
+                <img src="/prototype/assets/logos/Bangkok_Christian_College_logo.png" alt="Bangkok Christian College" />
+              </span>
+              <span class="admin-school-row__main">
+                <strong>Bangkok Christian College</strong>
+                <small>A-Chieve to School partnership with BCC</small>
+              </span>
+              <span class="admin-school-row__meta">
+                <span class="admin-status-pill admin-status-pill--active">Active</span>
+                <small>อัปเดตล่าสุด 18 พ.ค. 2569</small>
+              </span>
+              <span class="admin-school-row__stats">
+                <strong>126</strong>
+                <small>นักเรียน</small>
+              </span>
+              <span class="material-symbols-rounded admin-school-row__arrow">chevron_right</span>
+            </a>
+
+            <a class="admin-school-row" href="/prototype/admin-theme/?school=demo-north">
+              <span class="admin-school-row__logo admin-school-row__logo--text">น</span>
+              <span class="admin-school-row__main">
+                <strong>โรงเรียนบ้านเหนือ</strong>
+                <small>โครงการนำร่องห้องเรียนแนะแนว</small>
+              </span>
+              <span class="admin-school-row__meta">
+                <span class="admin-status-pill">Draft</span>
+                <small>รอตรวจ CI โรงเรียน</small>
+              </span>
+              <span class="admin-school-row__stats">
+                <strong>84</strong>
+                <small>นักเรียน</small>
+              </span>
+              <span class="material-symbols-rounded admin-school-row__arrow">chevron_right</span>
+            </a>
+
+            <a class="admin-school-row" href="/prototype/admin-theme/?school=demo-south">
+              <span class="admin-school-row__logo admin-school-row__logo--text">ใ</span>
+              <span class="admin-school-row__main">
+                <strong>โรงเรียนชุมชนใต้</strong>
+                <small>เตรียมเปิดใช้งานภาคเรียนหน้า</small>
+              </span>
+              <span class="admin-school-row__meta">
+                <span class="admin-status-pill admin-status-pill--pending">Pending</span>
+                <small>รอข้อมูลครูผู้ประสานงาน</small>
+              </span>
+              <span class="admin-school-row__stats">
+                <strong>52</strong>
+                <small>นักเรียน</small>
+              </span>
+              <span class="material-symbols-rounded admin-school-row__arrow">chevron_right</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script defer src="/prototype/js/collab.js"></script>
+</PrototypeLayout>

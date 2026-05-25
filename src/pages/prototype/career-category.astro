@@ -1,0 +1,356 @@
+---
+import PrototypeLayout from '../../layouts/PrototypeLayout.astro';
+import HeaderStudent from '../../components/prototype/HeaderStudent.astro';
+---
+<PrototypeLayout
+  title="แพทย์และสุขภาพ — a-achieve"
+  description="สำรวจ 17 อาชีพในกลุ่มแพทย์และสุขภาพ — คลังข้อมูลอาชีพ a-achieve"
+  bodyClass="bg-white font-sans text-[14px] text-achieve-ink antialiased"
+>
+  <div class="min-h-screen">
+
+    <HeaderStudent />
+
+    <main class="pb-16">
+
+      <div class="border-b border-sky-100 bg-white">
+        <div class="mx-auto max-w-7xl px-5 py-3 lg:px-8">
+          <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
+            <a href="/prototype/career-content/" class="flex items-center gap-1 font-semibold text-sky-600 hover:text-sky-700 transition-colors">
+              <span class="material-symbols-rounded text-[16px]">local_library</span>
+              คลังข้อมูลอาชีพ
+            </a>
+            <span class="material-symbols-rounded text-[16px] text-slate-300">chevron_right</span>
+            <span class="font-semibold text-slate-600">แพทย์และสุขภาพ</span>
+          </nav>
+        </div>
+      </div>
+
+      <section class="border-b border-sky-100 bg-[#eef8ff]">
+        <div class="relative mx-auto max-w-7xl overflow-hidden px-5 py-7 lg:px-8 lg:py-9">
+          <div class="flex items-end justify-between gap-6">
+            <div class="relative flex-1">
+              <div class="mb-3 inline-flex items-center gap-1.5 rounded-full border border-sky-100 bg-white px-3 py-1 text-xs font-bold text-sky-700 shadow-soft">
+                <span class="material-symbols-rounded text-[15px]">medical_services</span>
+                หมวดอาชีพ
+              </div>
+              <h1 class="font-title text-2xl font-bold leading-tight text-slate-950 md:text-3xl lg:text-[2.25rem]">แพทย์และสุขภาพ</h1>
+              <p class="mt-2 max-w-xl text-sm leading-6 text-slate-600">อาชีพที่ใช้ความรู้วิทยาศาสตร์ชีวภาพในการรักษา ดูแล และส่งเสริมสุขภาพมนุษย์ ทั้งกายและใจ</p>
+
+              <div class="mt-5 grid max-w-xl grid-cols-1 divide-y divide-sky-100 rounded-lg border border-sky-100 bg-white/80 shadow-[0_8px_24px_rgba(14,165,233,0.08)] sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+                <div class="flex min-h-12 items-center gap-2.5 px-4 py-2.5">
+                  <p class="font-title text-2xl font-bold leading-none text-sky-600">17</p>
+                  <p class="text-xs leading-tight text-slate-500">อาชีพ<br/>ทั้งหมด</p>
+                </div>
+                <div class="flex min-h-12 items-center gap-2.5 px-4 py-2.5">
+                  <span class="text-xl">🧬</span>
+                  <div>
+                    <p class="text-[11px] leading-none text-slate-500">วิชาหลักที่ใช้</p>
+                    <p class="mt-0.5 text-sm font-bold text-slate-800">ชีววิทยา · เคมี</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hidden shrink-0 lg:block">
+              <img src="https://a-chieve.org/uploads/large_1_70165d76dd.png" alt=""
+                class="h-40 w-40 object-contain drop-shadow-xl" loading="eager" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="sticky top-0 z-20 border-b border-slate-100 bg-white/95 backdrop-blur">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="flex items-center gap-3 py-2.5">
+            <div class="flex flex-1 gap-2 overflow-x-auto pb-0.5" id="subTabs" role="tablist">
+              <button class="sub-tab sub-tab--active" type="button" data-sub="all">ทั้งหมด</button>
+              <button class="sub-tab" type="button" data-sub="treat">🩺 เน้นรักษาโรค</button>
+              <button class="sub-tab" type="button" data-sub="mental">🧠 สุขภาพจิต</button>
+              <button class="sub-tab" type="button" data-sub="bone">🦴 กล้ามเนื้อ&amp;กระดูก</button>
+              <button class="sub-tab" type="button" data-sub="support">🏥 ทีมสนับสนุน</button>
+            </div>
+            <div class="hidden shrink-0 sm:block">
+              <select id="sortSelect" class="sort-select">
+                <option value="popular">⭐ ยอดนิยม</option>
+                <option value="latest">⏱️ อัปเดตล่าสุด</option>
+                <option value="alpha">ก–ฮ ตัวอักษร</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="mx-auto max-w-7xl px-5 py-6 lg:px-8">
+        <div class="mb-4 flex items-center justify-between gap-4">
+          <p class="text-sm text-slate-500">
+            แสดง <span class="font-semibold text-slate-800" id="careerCount">17</span> อาชีพ
+          </p>
+          <select id="sortSelectMobile" class="sort-select sm:hidden">
+            <option value="popular">⭐ ยอดนิยม</option>
+            <option value="latest">⏱️ อัปเดตล่าสุด</option>
+            <option value="alpha">ก–ฮ ตัวอักษร</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="careerGrid"></div>
+
+        <div class="mt-10 flex items-center justify-center gap-2">
+          <button class="flex h-9 w-9 items-center justify-center rounded-full border border-sky-100 bg-white text-slate-300 shadow-soft cursor-not-allowed" disabled type="button">
+            <span class="material-symbols-rounded text-[20px]">chevron_left</span>
+          </button>
+          <button class="h-9 min-w-[2.25rem] rounded-full bg-gradient-to-r from-sky-400 to-blue-500 px-3.5 text-sm font-bold text-white shadow-card" type="button">1</button>
+          <button class="h-9 min-w-[2.25rem] rounded-full border border-sky-100 bg-white px-3.5 text-sm font-semibold text-slate-600 shadow-soft hover:bg-sky-50 transition-colors" type="button">2</button>
+          <button class="flex h-9 w-9 items-center justify-center rounded-full border border-sky-100 bg-white text-sky-500 shadow-soft hover:bg-sky-50 transition-colors" type="button">
+            <span class="material-symbols-rounded text-[20px]">chevron_right</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <style is:global>
+    .sub-tab {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      min-height: 2.2rem;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 0.3rem 0.9rem;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .sub-tab:hover { background: #f0f9ff; border-color: #bae6fd; color: #0369a1; }
+    .sub-tab--active { border-color: #38bdf8; background: #e0f2fe; color: #0369a1; box-shadow: inset 0 0 0 1px rgba(14,165,233,0.15); }
+
+    .sort-select {
+      height: 2.25rem;
+      appearance: none;
+      border-radius: 999px;
+      border: 1px solid #e0f2fe;
+      background: #ffffff;
+      padding: 0 1.25rem 0 0.875rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #475569;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      outline: none;
+      cursor: pointer;
+    }
+    .sort-select:focus { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56,189,248,0.15); }
+
+    .career-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      padding: 11px 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+    .career-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+    .cc-icon {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .cc-body { flex: 1; min-width: 0; }
+    .cc-name {
+      font-family: 'FC Subject Rounded', 'Noto Sans Thai', ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    .cc-tagline {
+      font-size: 0.75rem;
+      color: #64748b;
+      line-height: 1.5;
+      margin-top: 2px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cc-subjects { display: none; }
+    .cc-footer   { display: none; }
+    .cc-chevron  { flex-shrink: 0; color: #7dd3fc; }
+
+    @media (min-width: 640px) {
+      .career-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        min-height: 290px;
+      }
+      .cc-icon {
+        width: 100%;
+        height: 112px;
+        border-radius: 0;
+        font-size: 38px;
+      }
+      .cc-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 14px 16px 16px;
+      }
+      .cc-name { font-size: 0.95rem; min-height: 2.5rem; }
+      .cc-tagline { font-size: 0.8rem; margin-top: 6px; min-height: 2.5rem; color: #475569; }
+      .cc-subjects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+      }
+      .cc-subject-tag {
+        border-radius: 999px;
+        background: #f1f5f9;
+        padding: 2px 8px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #64748b;
+      }
+      .cc-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 12px;
+        margin-top: 12px;
+        border-top: 1px solid #f1f5f9;
+      }
+      .cc-updated { font-size: 0.68rem; color: #94a3b8; }
+      .cc-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        border-radius: 999px;
+        border: 1.5px solid #0ea5e9;
+        padding: 4px 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #0284c7;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+        background: transparent;
+      }
+      .career-card:hover .cc-cta { background: #0ea5e9; color: #fff; }
+      .cc-chevron { display: none; }
+    }
+  </style>
+
+  <script is:inline>
+    const careers = [
+      { id:  1, name: 'พยาบาล',               tagline: 'ผู้ดูแลทั้งกายและใจ หัวใจสำคัญของทีมดูแลผู้ป่วยทุกแห่ง',             subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['support'],         icon: '🏥', bg: '#ecfdf5', views: 3210, day: 5  },
+      { id:  2, name: 'กุมารแพทย์',            tagline: 'หมอเด็กผู้เต็มใจ ดูแลสุขภาพเด็กตั้งแต่แรกเกิดจนโตเป็นวัยรุ่น',   subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['treat'],           icon: '🧒', bg: '#fdf2f8', views: 2890, day: 3  },
+      { id:  3, name: 'แพทย์ผิวหนัง',          tagline: 'ดูแลผิวหนังและความงามทางการแพทย์ ผสานวิทยาศาสตร์กับสุนทรียภาพ',   subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['treat'],           icon: '✨', bg: '#fefce8', views: 2670, day: 16 },
+      { id:  4, name: 'ศัลยแพทย์',             tagline: 'คุณหมอที่มือไม่สั่น ผู้ตัดสินใจในห้องผ่าตัดเพื่อรักษาชีวิต',       subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['treat'],           icon: '🔬', bg: '#f0f9ff', views: 2450, day: 12 },
+      { id:  5, name: 'แพทย์เวชศาสตร์ฉุกเฉิน', tagline: 'หมอห้องฉุกเฉิน ผู้ตัดสินใจได้ทุกวินาทีในสถานการณ์วิกฤต',          subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['treat'],           icon: '🚑', bg: '#fff7ed', views: 2100, day: 14 },
+      { id:  6, name: 'จิตแพทย์',              tagline: 'แพทย์ผู้เชี่ยวชาญด้านจิตใจ รับฟังและบำบัดด้วยความเข้าใจ',          subjects: ['ชีววิทยา', 'จิตวิทยา'],              sub: ['treat', 'mental'], icon: '🧠', bg: '#f5f3ff', views: 1890, day: 10 },
+      { id:  7, name: 'สูตินรีแพทย์',           tagline: 'ดูแลสุขภาพผู้หญิงตลอดทุกช่วงชีวิต ตั้งแต่วัยรุ่นจนถึงวัยทอง',    subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['treat'],           icon: '👶', bg: '#fff1f2', views: 1780, day: 7  },
+      { id:  8, name: 'วิสัญญีแพทย์',           tagline: 'คุณหมอดมยา ผู้อยู่เบื้องหลังความปลอดภัยในห้องผ่าตัด',             subjects: ['ชีววิทยา', 'เคมี', 'เภสัชวิทยา'],   sub: ['treat'],           icon: '💊', bg: '#eef2ff', views: 1670, day: 8  },
+      { id:  9, name: 'นักกายภาพบำบัด',         tagline: 'ช่วยให้ร่างกายเคลื่อนไหวอีกครั้ง ด้วยการออกกำลังกายเชิงการแพทย์', subjects: ['ชีววิทยา', 'กายวิภาค'],              sub: ['bone'],            icon: '🤸', bg: '#f0fdfa', views: 1450, day: 9  },
+      { id: 10, name: 'แพทย์ออโธปิดิกส์',       tagline: 'แพทย์กระดูกและข้อ ดูแลทุกการเคลื่อนไหวของร่างกายอย่างเชี่ยวชาญ',  subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['treat', 'bone'],   icon: '🦴', bg: '#fffbeb', views: 1520, day: 15 },
+      { id: 11, name: 'รังสีแพทย์',             tagline: 'อ่านภาพทางการแพทย์เพื่อค้นพบโรคที่ซ่อนอยู่ในร่างกาย',             subjects: ['ฟิสิกส์', 'ชีววิทยา'],               sub: ['treat'],           icon: '🔭', bg: '#ecfeff', views: 1230, day: 13 },
+      { id: 12, name: 'นักจิตวิทยาคลินิก',      tagline: 'นักฟังที่ช่วยจิตใจเข้มแข็ง ด้วยการประเมินและบำบัดอย่างเป็นระบบ',  subjects: ['จิตวิทยา', 'ชีววิทยา'],              sub: ['mental'],          icon: '💬', bg: '#faf5ff', views: 1340, day: 11 },
+      { id: 13, name: 'หมอนวดแผนไทย',           tagline: 'นักบำบัดที่ใช้มือสร้างความผ่อนคลาย รักษาด้วยภูมิปัญญาไทย',        subjects: ['ชีววิทยา', 'แพทย์แผนไทย'],           sub: ['support'],         icon: '💆', bg: '#fff7ed', views: 1120, day: 2  },
+      { id: 14, name: 'แพทย์เวชศาสตร์ฟื้นฟู',   tagline: 'ช่วยร่างกายกลับมาเต็มพิกัด หลังผ่านการบาดเจ็บและโรคร้าย',        subjects: ['ชีววิทยา', 'กายวิภาค'],              sub: ['bone', 'treat'],   icon: '💪', bg: '#f7fee7', views: 1100, day: 1  },
+      { id: 15, name: 'พยาบาลวิกฤต',            tagline: 'พยาบาลสายด่วนชีวิต ดูแลผู้ป่วยที่ต้องการความช่วยเหลือทันที',       subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['support'],         icon: '❤️', bg: '#fef2f2', views: 980,  day: 6  },
+      { id: 16, name: 'แพทย์จุลชีววิทยา',       tagline: 'นักสืบจุลินทรีย์ ผู้อยู่เบื้องหลังการป้องกันและควบคุมการระบาด',   subjects: ['ชีววิทยา', 'เคมี', 'จุลชีววิทยา'],  sub: ['treat'],           icon: '🦠', bg: '#f0fdf4', views: 890,  day: 17 },
+      { id: 17, name: 'วิสัญญีพยาบาล',          tagline: 'พยาบาลเฉพาะทางในทีมผ่าตัด คอยดูแลทุกลมหายใจของคนไข้',            subjects: ['ชีววิทยา', 'เคมี'],                  sub: ['support'],         icon: '💉', bg: '#eff6ff', views: 870,  day: 4  },
+    ];
+
+    const updatedLabel = c => `อัปเดต ${c.day} พ.ค. 68`;
+
+    let activeSub  = 'all';
+    let activeSort = 'popular';
+
+    function getFiltered() {
+      let list = activeSub === 'all' ? [...careers] : careers.filter(c => c.sub.includes(activeSub));
+      if (activeSort === 'popular') list.sort((a, b) => b.views - a.views);
+      else if (activeSort === 'latest') list.sort((a, b) => b.day - a.day);
+      else if (activeSort === 'alpha') list.sort((a, b) => a.name.localeCompare(b.name, 'th'));
+      return list;
+    }
+
+    function render() {
+      const grid  = document.getElementById('careerGrid');
+      const count = document.getElementById('careerCount');
+      const list  = getFiltered();
+      if (count) count.textContent = list.length;
+      if (!grid) return;
+
+      if (!list.length) {
+        grid.innerHTML = `<div class="col-span-full rounded-2xl border border-sky-100 bg-white p-10 text-center shadow-soft">
+          <span class="material-symbols-rounded block text-[40px] text-sky-300">search_off</span>
+          <p class="mt-2 font-title text-base font-bold text-slate-700">ยังไม่มีอาชีพในกลุ่มนี้</p>
+        </div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(c => `
+        <a href="/prototype/career-detail/" class="career-card">
+          <div class="cc-icon" style="background:${c.bg}">${c.icon}</div>
+          <div class="cc-body">
+            <p class="cc-name">${c.name}</p>
+            <p class="cc-tagline">${c.tagline}</p>
+            <div class="cc-subjects">
+              ${c.subjects.map(s => `<span class="cc-subject-tag">${s}</span>`).join('')}
+            </div>
+            <div class="cc-footer">
+              <span class="cc-updated">${updatedLabel(c)}</span>
+              <span class="cc-cta">
+                อ่านเพิ่มเติม
+                <span class="material-symbols-rounded" style="font-size:14px">arrow_forward</span>
+              </span>
+            </div>
+          </div>
+          <span class="material-symbols-rounded cc-chevron" style="font-size:22px">chevron_right</span>
+        </a>
+      `).join('');
+    }
+
+    document.querySelectorAll('[data-sub]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeSub = btn.dataset.sub;
+        document.querySelectorAll('[data-sub]').forEach(b => b.classList.toggle('sub-tab--active', b === btn));
+        render();
+      });
+    });
+
+    function syncSort(val) {
+      activeSort = val;
+      document.querySelectorAll('#sortSelect, #sortSelectMobile').forEach(s => { if (s) s.value = val; });
+      render();
+    }
+
+    document.getElementById('sortSelect')?.addEventListener('change', e => syncSort(e.target.value));
+    document.getElementById('sortSelectMobile')?.addEventListener('change', e => syncSort(e.target.value));
+
+    render();
+  </script>
+</PrototypeLayout>

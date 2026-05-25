@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './public/prototype/career-content.html',
-    './public/prototype/career-category.html',
-    './public/prototype/career-detail.html',
-    './public/prototype/components/header-student.html',
+    './src/pages/prototype/**/*.astro',
+    './src/components/prototype/**/*.astro',
+    './public/prototype/js/**/*.js',
   ],
   theme: {
     extend: {

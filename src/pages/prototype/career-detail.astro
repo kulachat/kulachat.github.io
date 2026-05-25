@@ -1,0 +1,593 @@
+---
+import PrototypeLayout from '../../layouts/PrototypeLayout.astro';
+import HeaderStudent from '../../components/prototype/HeaderStudent.astro';
+---
+<PrototypeLayout
+  title="พยาบาล — a-achieve"
+  description="ข้อมูลเจาะลึกอาชีพพยาบาล — เส้นทางเรียน ทุนการศึกษา และผลตอบแทน"
+  bodyClass="bg-white font-sans text-[14px] text-achieve-ink antialiased"
+>
+  <div class="min-h-screen">
+
+    <HeaderStudent />
+
+    <main class="pb-16">
+
+      <div class="border-b border-sky-100 bg-white">
+        <div class="mx-auto max-w-7xl px-5 py-3 lg:px-8">
+          <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
+            <a href="/prototype/career-content/" class="flex items-center gap-1 font-semibold text-sky-600 hover:text-sky-700 transition-colors">
+              <span class="material-symbols-rounded text-[16px]">local_library</span>
+              คลังข้อมูลอาชีพ
+            </a>
+            <span class="material-symbols-rounded text-[16px] text-slate-300">chevron_right</span>
+            <a href="/prototype/career-category/" class="font-semibold text-sky-600 hover:text-sky-700 transition-colors">แพทย์และสุขภาพ</a>
+            <span class="material-symbols-rounded text-[16px] text-slate-300">chevron_right</span>
+            <span class="font-semibold text-slate-600">พยาบาล</span>
+          </nav>
+        </div>
+      </div>
+
+      <section class="border-b border-sky-100 bg-[#eef8ff]">
+        <div class="relative mx-auto max-w-7xl overflow-hidden px-5 py-7 lg:px-8 lg:py-9">
+          <div class="flex items-center justify-between gap-6">
+            <div class="relative flex-1">
+
+              <a href="/prototype/career-category/" class="mb-3 inline-flex items-center gap-1.5 rounded-full border border-sky-100 bg-white px-3 py-1 text-xs font-bold text-sky-700 shadow-soft transition-colors hover:bg-sky-50">
+                <span class="material-symbols-rounded text-[15px]">medical_services</span>
+                แพทย์และสุขภาพ
+              </a>
+
+              <div class="flex items-center gap-3">
+                <div class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-sky-100 bg-white text-4xl shadow-soft sm:flex">🏥</div>
+                <div>
+                  <h1 class="font-title text-2xl font-bold leading-tight text-slate-950 md:text-3xl lg:text-[2.25rem]">พยาบาล</h1>
+                  <p class="mt-1.5 text-sm leading-6 text-slate-600">ผู้ดูแลทั้งกายและใจ หัวใจสำคัญของทีมดูแลผู้ป่วยทุกแห่ง</p>
+                </div>
+              </div>
+
+              <div class="mt-5 grid max-w-2xl grid-cols-1 divide-y divide-sky-100 rounded-lg border border-sky-100 bg-white/80 shadow-[0_8px_24px_rgba(14,165,233,0.08)] sm:grid-cols-[1.15fr_1fr] sm:divide-x sm:divide-y-0">
+                <div class="px-4 py-3">
+                  <p class="mb-1.5 text-[11px] text-slate-500">สายสามัญที่รับ</p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-sky-50 px-2.5 py-0.5 text-xs font-bold text-sky-700">🧬 วิทย์-คณิต</span>
+                    <span class="inline-flex items-center gap-1 rounded-full bg-slate-50 px-2.5 py-0.5 text-xs font-bold text-slate-600">📈 ศิลป์-คำนวณ*</span>
+                  </div>
+                  <p class="mt-1.5 text-[10px] text-slate-400">* บางสถาบันเปิดรับ</p>
+                </div>
+                <div class="flex items-center gap-2.5 px-4 py-3">
+                  <span class="text-xl">💰</span>
+                  <div>
+                    <p class="text-[11px] text-slate-500">ค่าตอบแทนเฉลี่ย</p>
+                    <p class="mt-0.5 text-sm font-bold text-slate-800">18,000 – 35,000+ บาท/เดือน</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hidden shrink-0 lg:block">
+              <div class="flex h-56 w-56 items-center justify-center rounded-full bg-white/70 p-4 shadow-[0_16px_36px_rgba(14,165,233,0.14)] xl:h-64 xl:w-64">
+                <img
+                  class="h-full w-full object-contain"
+                  src="https://a-chieve.org/uploads/large_Health_professional_team_pana_4489c3cc76.png"
+                  alt=""
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="sticky top-0 z-20 border-b border-slate-100 bg-white/95 backdrop-blur">
+        <div class="mx-auto max-w-7xl px-5 lg:px-8">
+          <div class="flex gap-1 overflow-x-auto py-2.5" id="mainTabs" role="tablist">
+            <button class="main-tab main-tab--active" type="button" data-tab="scope">📋 งานนี้ทำอะไรบ้าง?</button>
+            <button class="main-tab" type="button" data-tab="uni">🏫 เช็กสถาบัน &amp; ทุน</button>
+            <button class="main-tab" type="button" data-tab="growth">📈 ผลตอบแทน &amp; เติบโต</button>
+            <button class="main-tab" type="button" data-tab="next">🎯 ขั้นตอนถัดไป</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-5 py-6 lg:px-8">
+
+        <div id="tab-scope" class="tab-panel">
+
+          <blockquote class="mb-6 rounded-lg border-l-4 border-sky-400 bg-white px-6 py-5 shadow-soft">
+            <p class="font-title text-base font-semibold leading-relaxed text-slate-800">
+              "พยาบาลคือผู้ดูแลสุขภาพผู้ป่วยตลอด 24 ชั่วโมง ทำงานเป็นทีมร่วมกับแพทย์และบุคลากรสุขภาพอื่นๆ เพื่อให้ผู้ป่วยได้รับการดูแลที่ดีที่สุด"
+            </p>
+            <footer class="mt-2 text-xs text-slate-400">— คำอธิบายสั้นๆ จากสภาการพยาบาล</footer>
+          </blockquote>
+
+          <div class="mb-6">
+            <h2 class="mb-4 font-title text-base font-bold text-slate-800">ขั้นตอนการทำงานในวันปกติ</h2>
+            <div class="relative space-y-0">
+              <div class="absolute left-[19px] top-5 bottom-5 w-0.5 bg-sky-200"></div>
+
+              <div class="timeline-step">
+                <div class="timeline-dot bg-sky-400">1</div>
+                <div class="timeline-content">
+                  <p class="font-title text-sm font-bold text-slate-800">คัดกรองและวัดสัญญาณชีพ</p>
+                  <p class="mt-1 text-xs text-slate-500">ตรวจวัดความดัน ชีพจร อุณหภูมิ และบันทึกอาการเบื้องต้นของผู้ป่วยทุกราย</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-dot bg-sky-500">2</div>
+                <div class="timeline-content">
+                  <p class="font-title text-sm font-bold text-slate-800">ส่งพบแพทย์และรายงานอาการ</p>
+                  <p class="mt-1 text-xs text-slate-500">สรุปข้อมูลส่งต่อแพทย์ผู้รักษา และช่วยอธิบายแผนการรักษาให้ผู้ป่วยและครอบครัวเข้าใจ</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-dot bg-sky-500">3</div>
+                <div class="timeline-content">
+                  <p class="font-title text-sm font-bold text-slate-800">จัดการแผนรักษาและให้ยา</p>
+                  <p class="mt-1 text-xs text-slate-500">บริหารยา ฉีดน้ำเกลือ ทำแผล และประสานกับเภสัชกรในการจ่ายยาตามคำสั่งแพทย์</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-dot bg-sky-600">4</div>
+                <div class="timeline-content">
+                  <p class="font-title text-sm font-bold text-slate-800">ดูแลและประเมินผลต่อเนื่อง</p>
+                  <p class="mt-1 text-xs text-slate-500">ติดตามอาการ บันทึก Chart รายงานความผิดปกติ และให้กำลังใจผู้ป่วยตลอดกะ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-sky-100 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 font-title text-base font-bold text-slate-800">เพื่อนร่วมงาน (Work Ecosystem)</h2>
+            <div class="flex flex-wrap gap-3">
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-blue-100 text-blue-600">👨‍⚕️</div><span>แพทย์</span></div>
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-purple-100 text-purple-600">💊</div><span>เภสัชกร</span></div>
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-cyan-100 text-cyan-600">🤸</div><span>นักกายภาพ</span></div>
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-orange-100 text-orange-600">🧪</div><span>นักเทคนิคการแพทย์</span></div>
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-pink-100 text-pink-600">🩻</div><span>รังสีเทคนิค</span></div>
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-sky-100 text-sky-600">🏥</div><span>ผู้ช่วยพยาบาล</span></div>
+              <div class="ecosystem-badge"><div class="ecosystem-icon bg-yellow-100 text-yellow-600">👥</div><span>นักสังคมสงเคราะห์</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="tab-uni" class="tab-panel hidden">
+
+          <div class="mb-4 rounded-lg border border-sky-100 bg-white px-3 py-3 shadow-soft">
+            <div class="grid gap-3 xl:grid-cols-[1fr_1fr_1.05fr] xl:items-center">
+              <div class="flex min-w-0 flex-wrap items-center gap-2" id="eligibilityFilter">
+                <span class="mr-1 text-xs font-bold text-slate-500">สายเรียน</span>
+                <button class="elig-btn elig-btn--active" type="button" data-elig="all">ทั้งหมด</button>
+                <button class="elig-btn" type="button" data-elig="sci">วิทย์-คณิต</button>
+                <button class="elig-btn" type="button" data-elig="arts">ศิลป์</button>
+              </div>
+              <div class="flex min-w-0 flex-wrap items-center gap-2" id="scholarshipTypeFilter">
+                <span class="mr-1 text-xs font-bold text-slate-500">ทุน</span>
+                <button class="elig-btn elig-btn--active" type="button" data-scholarship="all">ทั้งหมด</button>
+                <button class="elig-btn" type="button" data-scholarship="with">มีทุน</button>
+                <button class="elig-btn" type="button" data-scholarship="without">ไม่มีทุน</button>
+              </div>
+              <div class="flex min-w-0 flex-wrap items-center gap-2 xl:justify-end" id="regionTabs">
+                <span class="mr-1 text-xs font-bold text-slate-500">ภูมิภาค</span>
+                <button class="region-tab region-tab--active" type="button" data-region="all">ทั้งหมด</button>
+                <button class="region-tab" type="button" data-region="central">กลาง</button>
+                <button class="region-tab" type="button" data-region="north">เหนือ</button>
+                <button class="region-tab" type="button" data-region="northeast">อีสาน</button>
+                <button class="region-tab" type="button" data-region="south">ใต้</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative mb-4">
+            <span class="material-symbols-rounded absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-slate-400">search</span>
+            <input type="search" id="uniSearch" placeholder="ค้นหาชื่อสถาบัน..." class="w-full rounded-xl border border-sky-100 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-700 shadow-soft outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition" />
+          </div>
+
+          <div class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm" id="uniTable">
+                <thead>
+                  <tr class="border-b border-sky-100 bg-sky-50">
+                    <th class="py-3 pl-4 pr-3 text-left text-xs font-bold text-slate-500 lg:pl-5">สถาบัน</th>
+                    <th class="py-3 px-3 text-left text-xs font-bold text-slate-500 whitespace-nowrap">สายที่รับ</th>
+                    <th class="py-3 px-3 text-left text-xs font-bold text-slate-500">ทุนการศึกษา 🎁</th>
+                    <th class="py-3 pl-3 pr-4 text-left text-xs font-bold text-slate-500 lg:pr-5 whitespace-nowrap">รายละเอียด</th>
+                  </tr>
+                </thead>
+                <tbody id="uniTableBody">
+                  <tr class="uni-row uni-row--highlight" data-elig="sci" data-region="central" data-scholarship="with" data-name="กลุ่มวิทยาลัยพยาบาลบรมราชชนนี สธ">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">กลุ่มวิทยาลัยพยาบาลบรมราชชนนี (สธ.)</p><span class="mt-1 inline-block rounded-full bg-sky-600 px-2 py-0.5 text-[10px] font-bold text-white">⭐ ทุนจบมามีงานแน่นอน</span></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-600"><span class="schol-tag schol-tag--green">ทุน</span> ✨ ทุนโควตาผูกพัน — เรียนฟรี+หอพัก+มีงานทำทันที</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row" data-elig="sci" data-region="central" data-scholarship="with" data-name="คณะพยาบาลศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">คณะพยาบาลศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย</p></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-600"><span class="schol-tag">ทุน</span> ทุนจุฬาฯ เพื่อผู้มีความสามารถดีเด่น</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row" data-elig="all" data-region="central" data-scholarship="with" data-name="คณะพยาบาลศาสตร์ มหาวิทยาลัยหัวเฉียวเฉลิมพระเกียรติ">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">คณะพยาบาลศาสตร์ มหาวิทยาลัยหัวเฉียวเฉลิมพระเกียรติ</p></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-bold text-purple-700 whitespace-nowrap">ทุกสาย</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-600"><span class="schol-tag">ทุน</span> ทุนปลูกต้นกล้าพยาบาล (สนับสนุนค่าเทอมบางส่วน)</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row" data-elig="sci" data-region="north" data-scholarship="with" data-name="คณะพยาบาลศาสตร์ มหาวิทยาลัยเชียงใหม่">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">คณะพยาบาลศาสตร์ มหาวิทยาลัยเชียงใหม่</p></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-600"><span class="schol-tag">ทุน</span> ทุนเรียนดีวิทยาศาสตร์แห่งประเทศไทย</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row uni-row--highlight" data-elig="sci" data-region="northeast" data-scholarship="with" data-name="วิทยาลัยพยาบาลบรมราชชนนี อุดรธานี">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">วิทยาลัยพยาบาลบรมราชชนนี อุดรธานี</p><span class="mt-1 inline-block rounded-full bg-sky-600 px-2 py-0.5 text-[10px] font-bold text-white">⭐ ทุนจบมามีงานแน่นอน</span></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-600"><span class="schol-tag schol-tag--green">ทุน</span> ✨ ทุนโควตาผูกพัน สธ. — จบแล้วบรรจุทันที</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row" data-elig="sci" data-region="south" data-scholarship="with" data-name="คณะพยาบาลศาสตร์ มหาวิทยาลัยสงขลานครินทร์">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">คณะพยาบาลศาสตร์ มหาวิทยาลัยสงขลานครินทร์</p></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-600"><span class="schol-tag">ทุน</span> ทุนพระราชดำริสมเด็จพระเทพฯ</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row" data-elig="sci" data-region="central" data-scholarship="without" data-name="คณะพยาบาลศาสตร์ มหาวิทยาลัยมหิดล">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">คณะพยาบาลศาสตร์ มหาวิทยาลัยมหิดล</p></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-500"><span class="schol-tag schol-tag--muted">ไม่มีทุน</span> ยังไม่มีข้อมูลทุนในระบบ</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                  <tr class="uni-row" data-elig="sci" data-region="northeast" data-scholarship="without" data-name="คณะพยาบาลศาสตร์ มหาวิทยาลัยขอนแก่น">
+                    <td class="pl-4 lg:pl-5"><p class="font-title text-sm font-bold text-slate-800 leading-snug">คณะพยาบาลศาสตร์ มหาวิทยาลัยขอนแก่น</p></td>
+                    <td class="px-3"><span class="inline-block rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-bold text-sky-700 whitespace-nowrap">วิทย์-คณิต</span></td>
+                    <td class="px-3 max-w-[260px]"><p class="text-xs text-slate-500"><span class="schol-tag schol-tag--muted">ไม่มีทุน</span> ยังไม่มีข้อมูลทุนในระบบ</p></td>
+                    <td class="pl-3 pr-4 lg:pr-5"><a href="#" class="inline-flex items-center gap-1 rounded-xl border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-700 hover:bg-sky-100 transition-colors whitespace-nowrap">ดูเกณฑ์สอบ <span class="material-symbols-rounded text-[13px]">arrow_forward</span></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p class="mt-3 text-xs text-slate-400 text-center">* ข้อมูลอ้างอิงจากประกาศรับสมัคร ปีการศึกษา 2567–2568 อาจมีการเปลี่ยนแปลง กรุณาตรวจสอบกับสถาบันโดยตรง</p>
+
+        </div>
+
+        <div id="tab-growth" class="tab-panel hidden">
+
+          <div class="mb-6">
+            <h2 class="mb-4 font-title text-base font-bold text-slate-800">เปรียบเทียบ ข้อดี vs ข้อท้าทาย</h2>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-sky-100 bg-white p-5 shadow-soft">
+                <div class="mb-3 flex items-center gap-2"><div class="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-100"><span class="text-lg">✅</span></div><p class="font-title text-sm font-bold text-sky-700">ข้อดี (Pros)</p></div>
+                <ul class="space-y-2.5">
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-600">✓</span><span class="text-xs text-slate-700 leading-relaxed">ได้ช่วยชีวิตคนและสร้างผลกระทบเชิงบวกต่อสังคมทุกวัน</span></li>
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-600">✓</span><span class="text-xs text-slate-700 leading-relaxed">ตลาดงานสูงมาก ทั้งในไทยและต่างประเทศ แทบไม่มีตกงาน</span></li>
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-600">✓</span><span class="text-xs text-slate-700 leading-relaxed">เงินเดือนราชการมั่นคง มีสิทธิ์ข้าราชการและสวัสดิการครอบครัว</span></li>
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-600">✓</span><span class="text-xs text-slate-700 leading-relaxed">สามารถก้าวสู่ตำแหน่งหัวหน้าหอผู้ป่วย ผู้อำนวยการพยาบาล หรือผู้เชี่ยวชาญเฉพาะทางได้</span></li>
+                </ul>
+              </div>
+              <div class="rounded-2xl border border-orange-100 bg-white p-5 shadow-soft">
+                <div class="mb-3 flex items-center gap-2"><div class="flex h-8 w-8 items-center justify-center rounded-xl bg-orange-100"><span class="text-lg">⚠️</span></div><p class="font-title text-sm font-bold text-orange-700">ข้อท้าทาย (Cons)</p></div>
+                <ul class="space-y-2.5">
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-orange-100 text-[10px] font-bold text-orange-600">!</span><span class="text-xs text-slate-700 leading-relaxed">ทำงานเป็นกะ (เช้า/บ่าย/ดึก) รวมถึงวันหยุดนักขัตฤกษ์และวันสำคัญ</span></li>
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-orange-100 text-[10px] font-bold text-orange-600">!</span><span class="text-xs text-slate-700 leading-relaxed">มีความเสี่ยงสัมผัสเชื้อโรคและสารเคมีในสภาพแวดล้อมโรงพยาบาล</span></li>
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-orange-100 text-[10px] font-bold text-orange-600">!</span><span class="text-xs text-slate-700 leading-relaxed">ภาระงานสูง อาจเกิดภาวะหมดไฟ (Burnout) โดยเฉพาะในโรงพยาบาลรัฐ</span></li>
+                  <li class="flex items-start gap-2.5"><span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-orange-100 text-[10px] font-bold text-orange-600">!</span><span class="text-xs text-slate-700 leading-relaxed">ต้องรับมือกับความเครียดทางอารมณ์จากการดูแลผู้ป่วยวิกฤตและสูญเสีย</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-6 rounded-2xl border border-sky-100 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 font-title text-base font-bold text-slate-800">บันไดเงินเดือนตามประสบการณ์</h2>
+            <div class="space-y-3">
+              <div class="salary-row"><div class="salary-label"><span class="salary-badge bg-slate-100 text-slate-600">เพิ่งจบ</span><span class="text-xs text-slate-500">0–2 ปี · พยาบาลวิชาชีพ</span></div><div class="salary-bar-wrap"><div class="salary-bar bg-sky-300" style="width:35%"></div></div><span class="salary-num">15,000–18,000</span></div>
+              <div class="salary-row"><div class="salary-label"><span class="salary-badge bg-sky-100 text-sky-700">มีประสบการณ์</span><span class="text-xs text-slate-500">3–7 ปี · ชำนาญการ</span></div><div class="salary-bar-wrap"><div class="salary-bar bg-sky-400" style="width:55%"></div></div><span class="salary-num">20,000–30,000</span></div>
+              <div class="salary-row"><div class="salary-label"><span class="salary-badge bg-blue-100 text-blue-700">เชี่ยวชาญ</span><span class="text-xs text-slate-500">8+ ปี · หัวหน้างาน/เฉพาะทาง</span></div><div class="salary-bar-wrap"><div class="salary-bar bg-sky-500" style="width:75%"></div></div><span class="salary-num">30,000–45,000</span></div>
+              <div class="salary-row"><div class="salary-label"><span class="salary-badge bg-blue-100 text-blue-700">ผู้บริหาร</span><span class="text-xs text-slate-500">ผู้อำนวยการ / ต่างประเทศ</span></div><div class="salary-bar-wrap"><div class="salary-bar bg-blue-500" style="width:95%"></div></div><span class="salary-num">50,000+</span></div>
+            </div>
+            <p class="mt-2 text-[11px] text-slate-400">หน่วย: บาท/เดือน (ข้อมูลอ้างอิงจากตลาดงาน 2567)</p>
+          </div>
+
+        </div>
+
+        <div id="tab-next" class="tab-panel hidden">
+
+          <div class="mb-6">
+            <h2 class="mb-3 font-title text-base font-bold text-slate-800">ดูก่อน: Vlog 1 วันจริงของพี่พยาบาล</h2>
+            <div class="overflow-hidden rounded-2xl border border-sky-100 bg-black shadow-card">
+              <div class="aspect-video w-full">
+                <iframe class="h-full w-full" src="https://www.youtube.com/embed/8Y_YqcJqFNc" title="Vlog 1 วันของพี่พยาบาล" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+            <p class="mt-2 text-xs text-slate-400">📺 คลิปจาก YouTube · เปิดดูเพื่อทำความรู้จักชีวิตพยาบาลในวันทำงานจริง</p>
+          </div>
+
+          <div class="mb-6 rounded-2xl border border-sky-100 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 font-title text-base font-bold text-slate-800">เตรียมพร้อมก่อนสมัคร</h2>
+            <div class="space-y-3">
+              <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /><div><p class="text-sm font-semibold text-slate-800">เรียน TPAT2 (วิชาเฉพาะ) ให้คะแนนผ่านเกณฑ์ขั้นต่ำ</p><p class="text-xs text-slate-400">ส่วนใหญ่กำหนดที่ 30–40% ขึ้นไป ตรวจสอบแต่ละสถาบัน</p></div></label>
+              <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /><div><p class="text-sm font-semibold text-slate-800">ตรวจสอบสุขภาพร่างกายตามเกณฑ์คณะ</p><p class="text-xs text-slate-400">ไม่ตาบอดสี ได้ยินปกติ สายตาไม่เกินเกณฑ์ที่กำหนด</p></div></label>
+              <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /><div><p class="text-sm font-semibold text-slate-800">เตรียม Portfolio และจดหมายแนะนำตัว</p><p class="text-xs text-slate-400">กิจกรรมจิตอาสา ค่ายสุขภาพ หรือประสบการณ์ดูแลผู้ป่วยเสริมคะแนนได้</p></div></label>
+              <label class="checklist-item"><input type="checkbox" class="checklist-checkbox" /><div><p class="text-sm font-semibold text-slate-800">ลงทะเบียน TCAS รอบที่ต้องการ</p><p class="text-xs text-slate-400">ตรวจ mytcas.com และดูปฏิทินรับสมัครของแต่ละสถาบัน</p></div></label>
+            </div>
+          </div>
+
+          <div class="rounded-lg border border-sky-100 bg-sky-50 p-6 text-center shadow-soft">
+            <p class="font-title text-lg font-bold text-slate-800 mb-1">อาชีพนี้เหมาะกับเราแค่ไหน?</p>
+            <p class="text-xs text-slate-500 mb-4">ทำแบบทดสอบสั้นๆ เพื่อดูว่าบุคลิกและทักษะของคุณ<br/>ตรงกับความต้องการของอาชีพพยาบาลมากแค่ไหน</p>
+            <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-8 py-3.5 font-title text-base font-bold text-white shadow-card transition-all hover:-translate-y-0.5 hover:bg-sky-700"><span class="text-xl">🎯</span>ลองเช็กเลย! อาชีพนี้เหมาะกับเรากี่ %</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="border-t border-sky-100 bg-white mt-4">
+        <div class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+          <h2 class="mb-5 font-title text-base font-bold text-slate-800">อาชีพใกล้เคียงที่อาจสนใจ</h2>
+          <div class="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory" id="relatedCarousel">
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <style is:global>
+    .main-tab {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      min-height: 2.2rem;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 0.3rem 0.9rem;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .main-tab:hover { background: #f0f9ff; border-color: #bae6fd; color: #0369a1; }
+    .main-tab--active { border-color: #38bdf8; background: #e0f2fe; color: #0369a1; box-shadow: inset 0 0 0 1px rgba(14,165,233,0.14); }
+
+    .elig-btn {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 0.28rem 0.75rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .elig-btn:hover { border-color: #bae6fd; background: #f0f9ff; color: #0369a1; }
+    .elig-btn--active { border-color: #0ea5e9; background: #e0f2fe; color: #0369a1; }
+
+    .region-tab {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      border-radius: 999px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 0.28rem 0.75rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .region-tab:hover { background: #f0f9ff; color: #0369a1; }
+    .region-tab--active { border-color: #0ea5e9; background: #e0f2fe; color: #0369a1; }
+
+    .uni-row td { padding: 12px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+    .uni-row:last-child td { border-bottom: none; }
+    .uni-row:hover td { background: #f8fafc; }
+    .uni-row--highlight td { background: #f0fdf4; }
+    .uni-row--highlight:hover td { background: #dcfce7; }
+    .uni-row--hidden { display: none; }
+
+    .schol-tag {
+      display: inline-block;
+      border-radius: 6px;
+      background: #fef9c3;
+      padding: 1px 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #854d0e;
+      margin-bottom: 3px;
+    }
+    .schol-tag--green { background: #dcfce7; color: #166534; }
+    .schol-tag--muted { background: #f1f5f9; color: #64748b; }
+
+    .timeline-step {
+      display: flex;
+      gap: 14px;
+      padding-bottom: 20px;
+      padding-left: 4px;
+    }
+    .timeline-dot {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: white;
+      margin-top: 2px;
+    }
+    .timeline-content {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+    }
+
+    .ecosystem-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #475569;
+      text-align: center;
+    }
+    .ecosystem-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      font-size: 22px;
+    }
+
+    .salary-row { display: flex; align-items: center; gap: 10px; }
+    .salary-label { display: flex; flex-direction: column; gap: 2px; min-width: 120px; flex-shrink: 0; }
+    @media (max-width: 480px) { .salary-label { min-width: 90px; } }
+    .salary-badge { display: inline-block; border-radius: 999px; padding: 2px 8px; font-size: 0.7rem; font-weight: 700; }
+    .salary-bar-wrap { flex: 1; height: 8px; border-radius: 999px; background: #f1f5f9; overflow: hidden; }
+    .salary-bar { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+    .salary-num { flex-shrink: 0; font-size: 0.72rem; font-weight: 700; color: #334155; min-width: 80px; text-align: right; }
+    @media (max-width: 480px) { .salary-num { min-width: 65px; font-size: 0.65rem; } }
+
+    .skill-tag {
+      display: inline-block;
+      border-radius: 999px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0369a1;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 12px;
+      transition: background 0.15s;
+    }
+    .checklist-item:hover { background: #f8fafc; }
+    .checklist-checkbox { margin-top: 2px; flex-shrink: 0; width: 18px; height: 18px; accent-color: #0284c7; cursor: pointer; }
+
+    .related-card {
+      flex: 0 0 200px;
+      snap-align: start;
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .related-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .related-card-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-size: 22px; }
+  </style>
+
+  <script is:inline>
+    const panels = ['scope', 'uni', 'growth', 'next'];
+    document.getElementById('mainTabs').addEventListener('click', e => {
+      const btn = e.target.closest('[data-tab]');
+      if (!btn) return;
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.main-tab').forEach(b => b.classList.toggle('main-tab--active', b === btn));
+      panels.forEach(p => document.getElementById('tab-' + p).classList.toggle('hidden', p !== tab));
+    });
+
+    let activeElig = 'all';
+    let activeRegion = 'all';
+    let activeScholarship = 'all';
+    let searchQuery = '';
+
+    function filterUniRows() {
+      document.querySelectorAll('#uniTableBody .uni-row').forEach(row => {
+        const eligOk = activeElig === 'all' || row.dataset.elig === 'all' || row.dataset.elig === activeElig;
+        const regionOk = activeRegion === 'all' || row.dataset.region === activeRegion;
+        const scholarshipOk = activeScholarship === 'all' || row.dataset.scholarship === activeScholarship;
+        const searchOk = !searchQuery || row.dataset.name.toLowerCase().includes(searchQuery.toLowerCase());
+        row.classList.toggle('uni-row--hidden', !(eligOk && regionOk && scholarshipOk && searchOk));
+      });
+    }
+
+    document.getElementById('eligibilityFilter')?.addEventListener('click', e => {
+      const btn = e.target.closest('[data-elig]');
+      if (!btn) return;
+      activeElig = btn.dataset.elig;
+      document.querySelectorAll('[data-elig]').forEach(b => b.classList.toggle('elig-btn--active', b === btn));
+      filterUniRows();
+    });
+
+    document.getElementById('scholarshipTypeFilter')?.addEventListener('click', e => {
+      const btn = e.target.closest('[data-scholarship]');
+      if (!btn) return;
+      activeScholarship = btn.dataset.scholarship;
+      document.querySelectorAll('[data-scholarship]').forEach(b => b.classList.toggle('elig-btn--active', b === btn));
+      filterUniRows();
+    });
+
+    document.getElementById('regionTabs')?.addEventListener('click', e => {
+      const btn = e.target.closest('[data-region]');
+      if (!btn) return;
+      activeRegion = btn.dataset.region;
+      document.querySelectorAll('[data-region]').forEach(b => b.classList.toggle('region-tab--active', b === btn));
+      filterUniRows();
+    });
+
+    document.getElementById('uniSearch')?.addEventListener('input', e => {
+      searchQuery = e.target.value.trim();
+      filterUniRows();
+    });
+
+    const related = [
+      { name: 'วิสัญญีพยาบาล',     tagline: 'พยาบาลเฉพาะทางในทีมผ่าตัด',        icon: '💉', bg: '#eff6ff' },
+      { name: 'พยาบาลวิกฤต',        tagline: 'สายด่วนชีวิต ดูแลผู้ป่วยฉุกเฉิน',   icon: '❤️', bg: '#fef2f2' },
+      { name: 'นักจิตวิทยาคลินิก',  tagline: 'นักฟังที่ช่วยจิตใจเข้มแข็ง',         icon: '💬', bg: '#faf5ff' },
+      { name: 'นักกายภาพบำบัด',     tagline: 'ช่วยให้ร่างกายเคลื่อนไหวอีกครั้ง',  icon: '🤸', bg: '#ecfeff' },
+      { name: 'แพทย์เวชศาสตร์ฟื้นฟู', tagline: 'ช่วยร่างกายกลับมาเต็มพิกัด',      icon: '💪', bg: '#f7fee7' },
+    ];
+
+    const carousel = document.getElementById('relatedCarousel');
+    if (carousel) {
+      carousel.innerHTML = related.map(r => `
+        <a href="/prototype/career-detail/" class="related-card snap-start">
+          <div class="related-card-icon" style="background:${r.bg}">${r.icon}</div>
+          <div>
+            <p class="font-title text-sm font-bold text-slate-800">${r.name}</p>
+            <p class="mt-0.5 text-xs text-slate-500 line-clamp-2 leading-relaxed">${r.tagline}</p>
+          </div>
+          <span class="mt-auto inline-flex items-center gap-1 text-xs font-bold text-sky-600">
+            อ่านต่อ
+            <span class="material-symbols-rounded text-[13px]">arrow_forward</span>
+          </span>
+        </a>
+      `).join('');
+    }
+  </script>
+</PrototypeLayout>

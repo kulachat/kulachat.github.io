@@ -2,17 +2,12 @@
 
 อัปเดตล่าสุด: 2026-05-25
 
-รายการนี้สรุปไฟล์งานในโฟลเดอร์ `public/prototype` ซึ่งเป็นต้นทางของ prototype ก่อนถูก build ไปที่ `dist/prototype`
+รายการนี้สรุปไฟล์งาน prototype หลังย้ายหน้า HTML หลักเข้า Astro แล้ว โดยหน้าเว็บถูกสร้างจาก `src/pages/prototype` และยังใช้ assets เดิมใน `public/prototype`
 
 ## Folder Structure
 
 ```text
 public/prototype/
-├── index.html
-├── student.html
-├── collab.html
-├── admin.html
-├── admin-theme.html
 ├── css/
 ├── js/
 ├── docs/
@@ -22,18 +17,33 @@ public/prototype/
     ├── logos/
     ├── preview/
     └── references/
+
+src/
+├── pages/prototype/
+│   ├── index.html.ts
+│   ├── student.html.ts
+│   ├── collab.html.ts
+│   ├── admin.html.ts
+│   ├── admin-theme.html.ts
+│   ├── career-content.html.ts
+│   ├── career-category.html.ts
+│   └── career-detail.html.ts
+├── prototype-html/
+└── utils/prototypeHtml.ts
 ```
 
 ## Pages
 
-| ไฟล์ | ชื่อ/หน้าที่ | ไฟล์ที่เกี่ยวข้อง |
-|---|---|---|
-| [index.html](../index.html) | หน้าจัดการใบงานสำหรับครู: มอบหมายแผนการสอน, ติดตามการบ้าน, รายงานสรุป | [js/script.js](../js/script.js) |
-| [student.html](../student.html) | หน้านักเรียน: ดูใบงาน/งานที่ได้รับมอบหมาย | [js/student.js](../js/student.js) |
-| [career-content.html](../career-content.html) | หน้าโครงสำหรับคลังข้อมูลอาชีพ โดยเว้น wrapper content กลางไว้ | [components/header-student.html](../components/header-student.html) |
-| [collab.html](../collab.html) | Dashboard สำหรับโรงเรียน/partner พร้อม custom theme | [css/collab.css](../css/collab.css), [js/collab.js](../js/collab.js) |
-| [admin.html](../admin.html) | หน้า School Partnership สำหรับ admin: รายการโรงเรียน | [css/admin.css](../css/admin.css) |
-| [admin-theme.html](../admin-theme.html) | หน้า Setup Theme สำหรับ admin | [css/admin.css](../css/admin.css) |
+| URL | Astro source | HTML source | ชื่อ/หน้าที่ |
+|---|---|---|---|
+| `/prototype/index.html` | `src/pages/prototype/index.html.ts` | `src/prototype-html/index.html` | หน้าจัดการใบงานสำหรับครู: มอบหมายแผนการสอน, ติดตามการบ้าน, รายงานสรุป |
+| `/prototype/student.html` | `src/pages/prototype/student.html.ts` | `src/prototype-html/student.html` | หน้านักเรียน: ดูใบงาน/งานที่ได้รับมอบหมาย |
+| `/prototype/career-content.html` | `src/pages/prototype/career-content.html.ts` | `src/prototype-html/career-content.html` | หน้าคลังข้อมูลอาชีพ |
+| `/prototype/career-category.html` | `src/pages/prototype/career-category.html.ts` | `src/prototype-html/career-category.html` | หน้าหมวดอาชีพ |
+| `/prototype/career-detail.html` | `src/pages/prototype/career-detail.html.ts` | `src/prototype-html/career-detail.html` | หน้าเจาะลึกอาชีพ |
+| `/prototype/collab.html` | `src/pages/prototype/collab.html.ts` | `src/prototype-html/collab.html` | Dashboard สำหรับโรงเรียน/partner พร้อม custom theme |
+| `/prototype/admin.html` | `src/pages/prototype/admin.html.ts` | `src/prototype-html/admin.html` | หน้า School Partnership สำหรับ admin: รายการโรงเรียน |
+| `/prototype/admin-theme.html` | `src/pages/prototype/admin-theme.html.ts` | `src/prototype-html/admin-theme.html` | หน้า Setup Theme สำหรับ admin |
 
 ## Scripts And Styles
 
@@ -42,7 +52,9 @@ public/prototype/
 | [js/script.js](../js/script.js) | Mock data, render UI, drawer state, navigation, loading state ของหน้า `index.html` |
 | [js/student.js](../js/student.js) | Logic และ mock state ของหน้านักเรียน |
 | [js/collab.js](../js/collab.js) | Logic สำหรับ dashboard และ theme controls ของหน้า `collab.html` |
+| `src/utils/prototypeHtml.ts` | Loader/renderer กลางสำหรับแปลง HTML source เป็น Astro-generated `.html` routes |
 | [css/style.css](../css/style.css) | Shared font-face และ CSS เสริมขนาดเล็กของ prototype |
+| [css/prototype-tailwind.css](../css/prototype-tailwind.css) | Compiled Tailwind CSS สำหรับ prototype pages |
 | [css/collab.css](../css/collab.css) | Design tokens, layout, และ custom theme styles ของ dashboard โรงเรียน |
 | [css/admin.css](../css/admin.css) | Styles สำหรับหน้า admin และ setup theme |
 
@@ -54,6 +66,7 @@ public/prototype/
 | [docs/custom.md](custom.md) | Custom Theme Guide สำหรับ dashboard โรงเรียน |
 | [docs/log.html](log.html) | Log เก็บ brief และ content ที่เคยทดลองวางในหน้า `career-content.html` |
 | [docs/career-content-filter-logic.md](career-content-filter-logic.md) | สรุป logic ของ filter/search ในหน้า Career Content prototype |
+| [docs/movec-data-integration-brief.md](movec-data-integration-brief.md) | Brief ระบบเชื่อมโยงข้อมูลอาชีวศึกษาจาก M-OVEC สำหรับหน้าอาชีพ |
 | [docs/pagelist.md](pagelist.md) | ไฟล์นี้: สารบัญไฟล์งานใน `public/prototype` |
 
 ## Assets
@@ -94,6 +107,8 @@ public/prototype/
 
 ## Notes
 
-- HTML pages ยังอยู่ที่ root ของ `public/prototype` เพื่อให้ URL เดิมของแต่ละหน้าเปลี่ยนน้อยที่สุด
+- Root HTML pages ถูกย้ายเข้า Astro แล้ว URL เดิมยังคงเป็น `/prototype/*.html`
+- แก้ markup ของหน้า prototype ที่ `src/prototype-html/*.html`
+- Astro endpoint ใน `src/pages/prototype/*.html.ts` เป็นตัวสร้างไฟล์ `.html` ตอน build
 - ไฟล์ `.DS_Store` เป็น metadata ของ macOS ไม่ใช่ไฟล์งาน prototype
-- ถ้าแก้ไฟล์ใน `public/prototype` แล้วต้องการให้ `dist/prototype` อัปเดต ให้รัน build ของโปรเจกต์อีกครั้ง
+- ถ้าแก้ไฟล์ prototype แล้วต้องการให้ `dist/prototype` อัปเดต ให้รัน build ของโปรเจกต์อีกครั้ง

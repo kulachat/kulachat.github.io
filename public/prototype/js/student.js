@@ -426,25 +426,9 @@ function closeNotif() {
   notifButton?.setAttribute("aria-expanded", "false");
 }
 
-notifButton?.addEventListener("click", e => {
-  e.stopPropagation();
-  notifDropdown.classList.contains("hidden") ? openNotif() : closeNotif();
-});
-
 notifButtonMobile?.addEventListener("click", () => openDrawer(
   assignments.find(a => a.status === "unread")?.id || assignments[0].id
 ));
-
-document.addEventListener("click", () => closeNotif());
-
-// ── Mobile menu ───────────────────────────────────────────────────────────────
-
-mobileMenuButton.addEventListener("click", () => {
-  const isOpen = !mobileMenu.classList.contains("hidden");
-  mobileMenu.classList.toggle("hidden", isOpen);
-  mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
-  mobileMenuIcon.textContent = isOpen ? "menu" : "close";
-});
 
 // ── User dropdown ─────────────────────────────────────────────────────────────
 
@@ -461,14 +445,7 @@ function closeUserMenu() {
   userMenuChevron.style.transform = "";
 }
 
-userMenuButton.addEventListener("click", e => {
-  e.stopPropagation();
-  userDropdown.classList.contains("hidden") ? openUserMenu() : closeUserMenu();
-});
-
-document.addEventListener("click", () => closeUserMenu());
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeUserMenu(); });
-
 // ── Init ──────────────────────────────────────────────────────────────────────
 
+window.onNotifOpen = renderNotifList;
 renderAssignments();
