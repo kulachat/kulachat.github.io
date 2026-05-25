@@ -50,8 +50,8 @@ const defaultTheme = {
     icon: 10,
   },
   logo: {
-    src: "assets/logos/bangkok-christian-college-logo.png",
-    name: "Bangkok_Christian_College_logo.png",
+    src: "/prototype/assets/logos/bangkok-christian-college-logo.png",
+    name: "bangkok-christian-college-logo.png",
   },
 };
 
@@ -128,7 +128,12 @@ function getSavedTheme() {
         active: savedTheme.sidebar?.active ?? opacityPercent(savedTheme.tokens?.["--sb-bg-active"], defaultTheme.sidebar.active),
         icon: savedTheme.sidebar?.icon ?? opacityPercent(savedTheme.tokens?.["--sb-icon-bg"], defaultTheme.sidebar.icon),
       },
-      logo: { ...defaultTheme.logo, ...savedTheme.logo },
+      logo: (() => {
+        const saved = savedTheme.logo || {};
+        const src = saved.src || "";
+        const validSrc = src.startsWith("/prototype/") || src.startsWith("blob:") || src.startsWith("data:");
+        return validSrc ? { ...defaultTheme.logo, ...saved } : { ...defaultTheme.logo };
+      })(),
     };
   } catch {
     return JSON.parse(JSON.stringify(defaultTheme));
