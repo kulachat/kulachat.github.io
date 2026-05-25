@@ -37,13 +37,13 @@
     </script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="bg-[#f7fbff] font-sans text-[14px] text-achieve-ink antialiased">
+  <body class="bg-white font-sans text-[14px] text-achieve-ink antialiased">
     <div class="min-h-screen">
       <div id="app-header"></div>
 
       <main class="pb-14">
         <div id="career-content-wrapper">
-          <section class="bg-white">
+          <section class="border-b border-sky-100 bg-[#eef8ff]">
             <div class="mx-auto max-w-7xl px-5 py-6 lg:px-8">
               <p class="font-title text-sm font-semibold text-sky-600">คลังข้อมูลอาชีพ</p>
               <h1 class="mt-1 max-w-3xl font-title text-2xl font-bold leading-tight text-slate-950 md:text-3xl lg:text-[40px]">หาอาชีพที่ใช่ จากสิ่งที่เป็นเธอ</h1>
@@ -64,7 +64,7 @@
                   </label>
                 </form>
 
-                <div class="grid grid-cols-3 gap-2 rounded-lg border border-sky-100 bg-sky-50 p-2">
+                <div class="grid grid-cols-2 gap-2 rounded-lg border border-sky-100 bg-white/70 p-2 shadow-[0_8px_24px_rgba(14,165,233,0.08)]">
                   <div class="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-2.5 py-2 text-center shadow-soft">
                     <p class="font-title text-2xl font-bold leading-none text-sky-600">15</p>
                     <p class="text-left text-xs leading-tight text-slate-500">หมวด<br />อาชีพ</p>
@@ -73,16 +73,12 @@
                     <p class="font-title text-2xl font-bold leading-none text-emerald-600">178</p>
                     <p class="text-left text-xs leading-tight text-slate-500">อาชีพ<br />ทั้งหมด</p>
                   </div>
-                  <div class="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-2.5 py-2 text-center shadow-soft">
-                    <p class="font-title text-2xl font-bold leading-none text-amber-600">3</p>
-                    <p class="text-left text-xs leading-tight text-slate-500">วิธีเริ่ม<br />ค้นหา</p>
-                  </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <section class="sticky top-0 z-20 border-y border-sky-100 bg-[#f7fbff]/95 backdrop-blur" id="careerFilterBar">
+          <section class="sticky top-0 z-20 border-b border-slate-100 bg-white/95 backdrop-blur" id="careerFilterBar">
             <div class="mx-auto max-w-7xl px-5 py-2.5 lg:px-8">
               <div class="flex gap-2 overflow-x-auto pb-1" id="careerFilterTabs" role="tablist" aria-label="ตัวกรองอาชีพ">
                 <button class="career-filter-tab career-filter-tab--active" type="button" data-filter="all">
@@ -117,7 +113,7 @@
             </div>
           </section>
 
-          <section class="mx-auto max-w-7xl px-5 pb-5 pt-6 lg:px-8" id="filteredCategorySection">
+          <section class="mx-auto max-w-7xl bg-white px-5 pb-5 pt-6 lg:px-8" id="filteredCategorySection">
             <div class="mb-3 flex flex-wrap items-end justify-between gap-3">
               <div>
                 <div class="mb-1.5 flex flex-wrap items-center gap-2">
@@ -141,14 +137,14 @@
             </div>
           </section>
 
-          <section class="mx-auto max-w-7xl px-5 py-4 lg:px-8" id="allCategorySection">
+          <section class="mx-auto max-w-7xl bg-white px-5 py-4 lg:px-8" id="allCategorySection">
             <div class="mb-4 flex flex-wrap items-end justify-between gap-3">
               <div>
                 <h2 class="font-title text-xl font-bold text-slate-950">หมวดอาชีพทั้งหมด</h2>
                 <p class="mt-1 text-sm text-slate-500"><span id="careerResultCount">15</span> หมวดที่ตรงกับการค้นหา</p>
               </div>
             </div>
-            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="careerCategoryGrid"></div>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="careerCategoryGrid"></div>
           </section>
         </div>
       </main>
@@ -216,7 +212,7 @@
         right: 0;
         top: 0;
         width: 4.5rem;
-        background: linear-gradient(90deg, rgba(247, 251, 255, 0), #f7fbff 74%);
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff 74%);
       }
 
       .career-rail-arrow {
