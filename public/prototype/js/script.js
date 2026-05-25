@@ -36,7 +36,7 @@ const assets = [
 ];
 
 const lessonPackageDownload = {
-  url: "assets/preview/Modern_Education_Mockup_A4.pptx",
+  url: "/prototype/assets/preview/Modern_Education_Mockup_A4.pptx",
   filename: "ชุดแผนการสอน_สายอาชีพแห่งอนาคต.pptx",
 };
 
@@ -70,7 +70,7 @@ const assetDownloadsByIcon = {
     label: "ดาวน์โหลด PPTX",
     filename: "ไฟล์สไลด์นำเสนอ.pptx",
     type: "PPTX",
-    url: "assets/preview/Modern_Education_Mockup_A4.pptx",
+    url: "/prototype/assets/preview/Modern_Education_Mockup_A4.pptx",
   },
   picture_as_pdf: {
     label: "ดาวน์โหลด PDF",
@@ -149,12 +149,12 @@ const pptxPreviewPages = [
   {
     title: "แผนการสอนนักเรียน",
     subtitle: "สายอาชีพแห่งอนาคต",
-    image: "assets/preview/image1.png",
+    image: "/prototype/assets/preview/image1.png",
     footer: "Modern Education Mockup • เทคไทบ้าน",
   },
   {
     title: "จุดประสงค์การเรียนรู้",
-    image: "assets/preview/image2.png",
+    image: "/prototype/assets/preview/image2.png",
     bullets: [
       "เข้าใจทักษะสายอาชีพยุคดิจิทัล",
       "เรียนรู้การออกแบบสื่อออนไลน์",
@@ -164,7 +164,7 @@ const pptxPreviewPages = [
   },
   {
     title: "ตารางแผนการสอน",
-    image: "assets/preview/image3.png",
+    image: "/prototype/assets/preview/image3.png",
     table: [
       ["1", "รู้จักอาชีพดิจิทัล", "วิเคราะห์สายอาชีพ"],
       ["2", "ถ่ายภาพสินค้า", "Workshop ภาพถ่าย"],
@@ -175,12 +175,12 @@ const pptxPreviewPages = [
   },
   {
     title: "ทักษะที่นักเรียนจะได้รับ",
-    image: "assets/preview/image1.png",
+    image: "/prototype/assets/preview/image1.png",
     bullets: ["Creative Thinking", "Digital Communication", "AI Literacy", "Content Creation", "Team Collaboration"],
   },
   {
     title: "พื้นที่เรียนรู้แห่งอนาคต",
-    image: "assets/preview/image2.png",
+    image: "/prototype/assets/preview/image2.png",
     paragraph: "พื้นที่เรียนรู้ที่เชื่อมโยงชุมชน การศึกษา และเทคโนโลยี ผ่านแนวคิดชุมชนปรัชญาประดิษฐ์ เพื่อเปิดโอกาสให้เด็กและเยาวชนเข้าถึงทักษะแห่งอนาคตอย่างเท่าเทียม",
   },
 ];

@@ -32,7 +32,11 @@ jobs:
       - name: Create capital-P redirects (case-sensitive on Linux)
         run: |
           mkdir -p dist/Prototype
-          for page in student admin admin-theme collab index career-content career-category career-detail; do
+          mkdir -p "dist/Prototype/index"
+          cat > "dist/Prototype/index/index.html" <<EOF
+          <!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/prototype/"><link rel="canonical" href="/prototype/"></head><body><script>location.replace('/prototype/')</script></body></html>
+          EOF
+          for page in student admin admin-theme collab career-content career-category career-detail; do
             mkdir -p "dist/Prototype/${page}"
             cat > "dist/Prototype/${page}/index.html" <<EOF
           <!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/prototype/${page}/"><link rel="canonical" href="/prototype/${page}/"></head><body><script>location.replace('/prototype/${page}/')</script></body></html>
@@ -42,7 +46,10 @@ jobs:
       - name: Create legacy .html redirects for old URLs
         run: |
           mkdir -p dist/prototype
-          for page in student admin admin-theme collab index career-content career-category career-detail; do
+          cat > "dist/prototype/index.html" <<EOF
+          <!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/prototype/"><link rel="canonical" href="/prototype/"></head><body><script>location.replace('/prototype/')</script></body></html>
+          EOF
+          for page in student admin admin-theme collab career-content career-category career-detail; do
             cat > "dist/prototype/${page}.html" <<EOF
           <!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/prototype/${page}/"><link rel="canonical" href="/prototype/${page}/"></head><body><script>location.replace('/prototype/${page}/')</script></body></html>
           EOF
