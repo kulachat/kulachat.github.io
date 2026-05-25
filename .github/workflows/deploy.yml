@@ -29,6 +29,15 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Create capital-P redirects (case-sensitive on Linux)
+        run: |
+          mkdir -p dist/Prototype
+          for page in student admin admin-theme collab index; do
+            cat > "dist/Prototype/${page}.html" <<EOF
+          <!doctype html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/prototype/${page}.html"><link rel="canonical" href="/prototype/${page}.html"></head><body><script>location.replace('/prototype/${page}.html')</script></body></html>
+          EOF
+          done
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

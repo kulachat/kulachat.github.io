@@ -50,7 +50,7 @@ const defaultTheme = {
     icon: 10,
   },
   logo: {
-    src: "assets/Bangkok_Christian_College_logo.png",
+    src: "assets/logos/bangkok-christian-college-logo.png",
     name: "Bangkok_Christian_College_logo.png",
   },
 };

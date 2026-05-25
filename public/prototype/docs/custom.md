@@ -1,20 +1,20 @@
 # Custom Theme Guide — a-achieve to school (Collab Dashboard)
 
 ไฟล์นี้รวบรวมทุกจุดที่ Admin สามารถ Custom ได้ต่อโรงเรียน  
-การเปลี่ยนแปลงทั้งหมดทำใน `collab.css` และ `collab.html`
+การเปลี่ยนแปลงทั้งหมดทำใน `css/collab.css` และ `collab.html`
 
 ---
 
 ## TL;DR — เปลี่ยนแค่ 3 จุดก็ได้ธีมใหม่
 
 ```css
-/* collab.css → :root */
+/* css/collab.css → :root */
 --ci-brand: #4A235A;       /* ← เปลี่ยนสีหลักโรงเรียน */
 ```
 
 ```html
 <!-- collab.html -->
-<img src="assets/YOUR_SCHOOL_LOGO.png" />   <!-- ← เปลี่ยนโลโก้ -->
+<img src="assets/logos/YOUR_SCHOOL_LOGO.png" />   <!-- ← เปลี่ยนโลโก้ -->
 <span class="collab-school-name">ชื่อโรงเรียน</span>  <!-- ← เปลี่ยนชื่อ -->
 ```
 
@@ -26,7 +26,7 @@
 
 | รายการ | ตำแหน่งในไฟล์ | ค่าตัวอย่าง (BCC) |
 |--------|--------------|------------------|
-| โลโก้โรงเรียน (Header) | `collab.html` → `<img src="assets/...">` | `Bangkok_Christian_College_logo.png` |
+| โลโก้โรงเรียน (Header) | `collab.html` → `<img src="assets/logos/...">` | `bangkok-christian-college-logo.png` |
 | ชื่อโรงเรียนเต็ม | `collab.html` → `.collab-school-name` | `Bangkok Christian College` |
 | Subtitle ใต้ชื่อ | `collab.html` → `.collab-school-subtitle` | `A-Chieve to School partnership with BCC` |
 | ชื่อ Platform (Sidebar) | `collab.html` → `#sidebarBrand` | `a-achieve` / `to school` |
@@ -105,7 +105,7 @@
 | Display / Title font | `FC Subject Rounded` | Heading, nav label, ตัวเลข value |
 | Body font | `Inter`, `Noto Sans Thai` | ข้อความทั่วไป |
 
-เปลี่ยน font ใน `collab.html` → `tailwind.config.fontFamily` และ `collab.css` ทุก `font-family` declaration
+เปลี่ยน font ใน `collab.html` → `tailwind.config.fontFamily` และ `css/collab.css` ทุก `font-family` declaration
 
 ---
 
