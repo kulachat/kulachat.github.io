@@ -5,35 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="สำรวจ 17 อาชีพในกลุ่มแพทย์และสุขภาพ — คลังข้อมูลอาชีพ a-achieve" />
     <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://a-chieve.org" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>แพทย์และสุขภาพ — a-achieve</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..600,0..1,0" />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', '"Noto Sans Thai"', 'sans-serif'],
-              title: ['"FC Subject Rounded"', '"Noto Sans Thai"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              fc: ['"FC Subject Rounded"', '"Noto Sans Thai"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-            },
-            colors: {
-              achieve: { blue: '#0A8DCD', deep: '#0677AD', ink: '#14213d', line: '#e5edf5', soft: '#f1f8fd' },
-            },
-            boxShadow: {
-              card: '0 4px 20px rgba(0,0,0,0.06)',
-              soft: '0 3px 10px rgba(0,0,0,0.04)',
-              drawer: '-14px 0 40px rgba(28,45,71,0.12)',
-            },
-          },
-        },
-      };
-    </script>
+    <link rel="stylesheet" href="css/prototype-tailwind.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/prototype-header.js"></script>
   </head>
-  <body class="bg-[#f7fbff] font-sans text-[14px] text-achieve-ink antialiased">
+  <body class="bg-white font-sans text-[14px] text-achieve-ink antialiased">
     <div class="min-h-screen">
-      <div id="app-header"></div>
+      <header class="sticky top-0 z-10 border-b border-sky-100 bg-white/95 backdrop-blur shadow-sm" role="banner">
+        <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8" aria-label="เมนูหลัก">
+      
+          <!-- Logo -->
+          <a href="#" class="shrink-0" aria-label="a-achieve หน้าหลัก">
+            <img src="https://a-chieve.org/assets/a-chieve.2d9a0e0d.svg" alt="a-achieve" class="h-8 w-auto" />
+          </a>
+      
+          <!-- Desktop nav -->
+          <ul class="hidden items-center gap-1 md:flex" role="list">
+            <li><a href="#" class="rounded-full px-4 py-2 font-title font-medium text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors">ออกแบบเส้นทางชีวิต</a></li>
+            <li><a href="#" class="rounded-full px-4 py-2 font-title font-medium text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors">สำรวจอารมณ์</a></li>
+            <li><a href="#" class="rounded-full px-4 py-2 font-title font-medium text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors">คลังข้อมูลอาชีพ</a></li>
+            <li><a href="#" class="rounded-full px-4 py-2 font-title font-medium text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors">บทความ</a></li>
+            <li><a href="#" class="rounded-full px-4 py-2 font-title font-medium text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors">กิจกรรม</a></li>
+          </ul>
+      
+          <!-- Right side: notification bell + user menu -->
+          <div class="hidden items-center gap-2 md:flex">
+      
+            <!-- Notification bell -->
+            <div class="relative" id="notifWrapper">
+              <button class="relative grid h-10 w-10 place-items-center rounded-full border border-sky-100 bg-sky-50 text-sky-500 hover:bg-sky-100 transition-colors" type="button" id="notifButton" aria-label="การแจ้งเตือน" aria-expanded="false" aria-controls="notifDropdown">
+                <span class="material-symbols-rounded text-[22px]">notifications</span>
+                <span class="absolute right-1.5 top-1.5 hidden min-h-4 min-w-4 items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-blue-500 text-[10px] font-bold text-white" id="notifBadge"></span>
+              </button>
+      
+              <!-- Notification dropdown -->
+              <div class="absolute right-0 top-full z-20 mt-2 hidden w-80 overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-card" id="notifDropdown" role="dialog" aria-label="การแจ้งเตือน">
+                <div class="flex items-center justify-between border-b border-sky-100 bg-gradient-to-r from-sky-50 to-blue-50 px-4 py-3">
+                  <p class="font-semibold text-achieve-ink">การแจ้งเตือน</p>
+                  <span class="rounded-full bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-700" id="notifHeaderBadge"></span>
+                </div>
+                <ul class="max-h-72 overflow-y-auto" id="notifList" role="list"></ul>
+                <div class="border-t border-sky-100 bg-sky-50/40 px-4 py-3">
+                  <a href="#" class="flex items-center justify-center gap-1.5 text-sm font-semibold text-sky-500 hover:text-sky-600 transition-colors">
+                    ดูใบงานทั้งหมด
+                    <span class="material-symbols-rounded text-[16px]">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+      
+            <!-- User menu -->
+            <div class="relative" id="userMenuWrapper">
+              <button class="inline-flex min-h-10 shrink-0 items-center gap-2.5 rounded-full border border-sky-100 bg-sky-50 pl-1 pr-4 font-title font-medium text-slate-700 hover:bg-sky-100 transition-colors" type="button" id="userMenuButton" aria-label="เมนูผู้ใช้" aria-expanded="false" aria-controls="userDropdown">
+                <span class="relative grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 border-white bg-gradient-to-br from-sky-200 to-blue-200 text-lg shadow-soft">
+                  🧒
+                  <span class="absolute -right-0.5 -top-0.5 hidden h-3 w-3 rounded-full border-2 border-white bg-gradient-to-r from-sky-500 to-blue-500" id="avatarDot"></span>
+                </span>
+                <span class="text-sm leading-tight">
+                  <span class="block font-semibold text-achieve-ink">อาชีฟเวอร์</span>
+                  <span class="block text-xs font-normal text-slate-500">อาชีพที่ใช่</span>
+                </span>
+                <span class="material-symbols-rounded text-[18px] text-slate-400 transition-transform duration-200" id="userMenuChevron">expand_more</span>
+              </button>
+      
+              <!-- Dropdown -->
+              <div class="absolute right-0 top-full z-20 mt-2 hidden w-56 overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-card" id="userDropdown" role="menu">
+                <div class="border-b border-sky-100 bg-gradient-to-r from-sky-50 to-blue-50 px-4 py-3">
+                  <p class="font-semibold text-achieve-ink">อาชีฟเวอร์</p>
+                  <p class="text-xs text-slate-500">อาชีพที่ใช่</p>
+                </div>
+                <ul class="p-1.5">
+                  <li>
+                    <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-700 hover:bg-sky-50 transition-colors" role="menuitem">
+                      <span class="material-symbols-rounded text-[19px] text-slate-400">person</span>
+                      โปรไฟล์ของฉัน
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-slate-700 hover:bg-sky-50 transition-colors" role="menuitem" id="myAssignmentsLink">
+                      <span class="flex items-center gap-3">
+                        <span class="material-symbols-rounded text-[19px] text-sky-500">assignment</span>
+                        ใบงานของฉัน
+                      </span>
+                      <span class="hidden min-h-5 min-w-5 items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-blue-500 text-[11px] font-bold text-white" id="dropdownAssignmentBadge"></span>
+                    </a>
+                  </li>
+                  <li class="mx-1.5 my-1 h-px bg-sky-100"></li>
+                  <li>
+                    <a href="#" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-red-500 hover:bg-red-50 transition-colors" role="menuitem">
+                      <span class="material-symbols-rounded text-[19px]">logout</span>
+                      ออกจากระบบ
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+      
+          </div><!-- end right side -->
+      
+          <!-- Mobile: bell + hamburger -->
+          <div class="flex items-center gap-2 md:hidden">
+            <div class="relative" id="notifWrapperMobile">
+              <button class="relative grid h-10 w-10 place-items-center rounded-full border border-sky-100 bg-sky-50 text-sky-500 hover:bg-sky-100 transition-colors" type="button" id="notifButtonMobile" aria-label="การแจ้งเตือน">
+                <span class="material-symbols-rounded text-[22px]">notifications</span>
+                <span class="absolute right-1.5 top-1.5 hidden min-h-4 min-w-4 items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-blue-500 text-[10px] font-bold text-white" id="notifBadgeMobile"></span>
+              </button>
+            </div>
+      
+            <!-- Mobile hamburger -->
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-sky-100 bg-sky-50 text-sky-500 hover:bg-sky-100 transition-colors md:hidden" type="button" id="mobileMenuButton" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="mobileMenu">
+              <span class="material-symbols-rounded text-[22px]" id="mobileMenuIcon">menu</span>
+            </button>
+          </div><!-- end mobile right -->
+      
+        </nav>
+      
+        <!-- Mobile menu -->
+        <div class="hidden border-t border-sky-100 bg-white px-5 pb-4 pt-2 md:hidden" id="mobileMenu">
+          <ul class="grid gap-1" role="list">
+            <li><a href="#" class="block rounded-xl px-4 py-3 font-title font-medium text-slate-600 hover:bg-sky-50 transition-colors">ออกแบบเส้นทางชีวิต</a></li>
+            <li><a href="#" class="block rounded-xl px-4 py-3 font-title font-medium text-slate-600 hover:bg-sky-50 transition-colors">สำรวจอารมณ์</a></li>
+            <li><a href="#" class="block rounded-xl px-4 py-3 font-title font-medium text-slate-600 hover:bg-sky-50 transition-colors">คลังข้อมูลอาชีพ</a></li>
+            <li><a href="#" class="block rounded-xl px-4 py-3 font-title font-medium text-slate-600 hover:bg-sky-50 transition-colors">บทความ</a></li>
+            <li><a href="#" class="block rounded-xl px-4 py-3 font-title font-medium text-slate-600 hover:bg-sky-50 transition-colors">กิจกรรม</a></li>
+          </ul>
+          <div class="mt-3 border-t border-sky-100 pt-3">
+            <a href="#" class="flex items-center justify-between rounded-xl px-4 py-3 font-medium text-slate-700 hover:bg-sky-50 transition-colors">
+              <span class="flex items-center gap-3">
+                <span class="material-symbols-rounded text-[20px] text-sky-500">assignment</span>
+                ใบงานของฉัน
+              </span>
+              <span class="hidden min-h-5 min-w-5 items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-blue-500 text-[11px] font-bold text-white" id="mobileAssignmentBadge"></span>
+            </a>
+          </div>
+        </div>
+      </header>
 
       <main class="pb-16">
 
@@ -52,37 +162,33 @@
         </div>
 
         <!-- Category Banner -->
-        <section class="relative overflow-hidden bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600">
-          <div class="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10"></div>
-          <div class="pointer-events-none absolute -bottom-12 -left-12 h-52 w-52 rounded-full bg-white/8"></div>
-          <div class="pointer-events-none absolute right-1/3 top-6 h-16 w-16 rounded-full bg-white/10"></div>
-
-          <div class="relative mx-auto max-w-7xl px-5 py-8 lg:px-8 lg:py-10">
+        <section class="border-b border-sky-100 bg-[#eef8ff]">
+          <div class="relative mx-auto max-w-7xl overflow-hidden px-5 py-7 lg:px-8 lg:py-9">
             <div class="flex items-end justify-between gap-6">
-              <div class="flex-1 text-white">
-                <div class="mb-3 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-bold backdrop-blur-sm">
+              <div class="relative flex-1">
+                <div class="mb-3 inline-flex items-center gap-1.5 rounded-full border border-sky-100 bg-white px-3 py-1 text-xs font-bold text-sky-700 shadow-soft">
                   <span class="material-symbols-rounded text-[15px]">medical_services</span>
                   หมวดอาชีพ
                 </div>
-                <h1 class="font-title text-2xl font-bold leading-tight text-white md:text-3xl lg:text-[2.25rem]">แพทย์และสุขภาพ</h1>
-                <p class="mt-2 max-w-lg text-sm leading-6 text-white/85">อาชีพที่ใช้ความรู้วิทยาศาสตร์ชีวภาพในการรักษา ดูแล และส่งเสริมสุขภาพมนุษย์ ทั้งกายและใจ</p>
+                <h1 class="font-title text-2xl font-bold leading-tight text-slate-950 md:text-3xl lg:text-[2.25rem]">แพทย์และสุขภาพ</h1>
+                <p class="mt-2 max-w-xl text-sm leading-6 text-slate-600">อาชีพที่ใช้ความรู้วิทยาศาสตร์ชีวภาพในการรักษา ดูแล และส่งเสริมสุขภาพมนุษย์ ทั้งกายและใจ</p>
 
-                <div class="mt-5 flex flex-wrap gap-2.5">
-                  <div class="flex items-center gap-2.5 rounded-2xl bg-white/15 px-4 py-2.5 backdrop-blur-sm">
-                    <p class="font-title text-2xl font-bold leading-none">17</p>
-                    <p class="text-xs leading-tight text-white/80">อาชีพ<br/>ทั้งหมด</p>
+                <div class="mt-5 grid max-w-xl grid-cols-1 divide-y divide-sky-100 rounded-lg border border-sky-100 bg-white/80 shadow-[0_8px_24px_rgba(14,165,233,0.08)] sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+                  <div class="flex min-h-12 items-center gap-2.5 px-4 py-2.5">
+                    <p class="font-title text-2xl font-bold leading-none text-sky-600">17</p>
+                    <p class="text-xs leading-tight text-slate-500">อาชีพ<br/>ทั้งหมด</p>
                   </div>
-                  <div class="flex items-center gap-2 rounded-2xl bg-white/15 px-4 py-2.5 backdrop-blur-sm">
+                  <div class="flex min-h-12 items-center gap-2.5 px-4 py-2.5">
                     <span class="text-xl">🧬</span>
                     <div>
-                      <p class="text-[11px] leading-none text-white/70">วิชาหลักที่ใช้</p>
-                      <p class="mt-0.5 text-sm font-bold">ชีววิทยา · เคมี</p>
+                      <p class="text-[11px] leading-none text-slate-500">วิชาหลักที่ใช้</p>
+                      <p class="mt-0.5 text-sm font-bold text-slate-800">ชีววิทยา · เคมี</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="hidden lg:block shrink-0">
+              <div class="hidden shrink-0 lg:block">
                 <img src="https://a-chieve.org/uploads/large_1_70165d76dd.png" alt=""
                   class="h-40 w-40 object-contain drop-shadow-xl" loading="eager" />
               </div>
@@ -91,7 +197,7 @@
         </section>
 
         <!-- Sticky filter bar -->
-        <div class="sticky top-0 z-20 border-b border-sky-100 bg-[#f7fbff]/95 backdrop-blur">
+        <div class="sticky top-0 z-20 border-b border-slate-100 bg-white/95 backdrop-blur">
           <div class="mx-auto max-w-7xl px-5 lg:px-8">
             <div class="flex items-center gap-3 py-2.5">
               <div class="flex flex-1 gap-2 overflow-x-auto pb-0.5" id="subTabs" role="tablist">
@@ -347,7 +453,7 @@
         }
 
         grid.innerHTML = list.map(c => `
-          <article class="career-card">
+          <a href="career-detail.html" class="career-card">
             <div class="cc-icon" style="background:${c.bg}">${c.icon}</div>
             <div class="cc-body">
               <p class="cc-name">${c.name}</p>
@@ -364,7 +470,7 @@
               </div>
             </div>
             <span class="material-symbols-rounded cc-chevron" style="font-size:22px">chevron_right</span>
-          </article>
+          </a>
         `).join('');
       }
 
@@ -385,22 +491,6 @@
       document.getElementById('sortSelect')?.addEventListener('change', e => syncSort(e.target.value));
       document.getElementById('sortSelectMobile')?.addEventListener('change', e => syncSort(e.target.value));
 
-      fetch('components/header-student.html')
-        .then(r => r.text())
-        .then(html => {
-          document.getElementById('app-header').innerHTML = html;
-          const btn  = document.getElementById('mobileMenuButton');
-          const menu = document.getElementById('mobileMenu');
-          const icon = document.getElementById('mobileMenuIcon');
-          if (btn && menu && icon) {
-            btn.addEventListener('click', () => {
-              const isOpen = !menu.classList.contains('hidden');
-              menu.classList.toggle('hidden', isOpen);
-              btn.setAttribute('aria-expanded', String(!isOpen));
-              icon.textContent = isOpen ? 'menu' : 'close';
-            });
-          }
-        });
 
       render();
     </script>
