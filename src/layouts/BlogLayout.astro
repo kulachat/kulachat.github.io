@@ -29,8 +29,15 @@ const {
 } = Astro.props;
 
 const siteURL = "https://kulachat.github.io";
-const canonicalURL = Astro.url.href;
+const canonical = new URL(Astro.url.href, siteURL);
+canonical.protocol = "https:";
+canonical.host = "kulachat.github.io";
+canonical.search = "";
+canonical.hash = "";
+const canonicalURL = canonical.href;
 const ogImage = image?.src ?? "/images/Me.jpg";
+const imageURL = ogImage.startsWith("http") ? ogImage : `${siteURL}${ogImage}`;
+const categoryLabel = getCategoryLabel(category);
 
 const formattedPublishDate = publishDate.toLocaleDateString('th-TH', {
   year: 'numeric',
@@ -46,23 +53,37 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('th-TH', {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL,
+  },
   "headline": title,
   "description": description,
-  "image": ogImage.startsWith("http") ? ogImage : `${siteURL}${ogImage}`,
+  "image": imageURL,
   "author": {
     "@type": "Person",
     "name": author,
     "url": siteURL,
   },
   "publisher": {
-    "@type": "Person",
+    "@type": "Organization",
     "name": "kulachat",
     "url": siteURL,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteURL}/images/Me.jpg`,
+    },
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "kulachat",
+    "url": `${siteURL}/blog/`,
   },
   "datePublished": publishDate.toISOString(),
   "dateModified": (updatedDate ?? publishDate).toISOString(),
   "url": canonicalURL,
   "inLanguage": "th",
+  "articleSection": categoryLabel,
   "keywords": tags.join(", "),
 };
 ---
@@ -73,9 +94,15 @@ const jsonLd = {
   ogType="article"
   ogImage={ogImage}
   canonicalURL={canonicalURL}
+  jsonLd={jsonLd}
+  article={{
+    publishedTime: publishDate.toISOString(),
+    modifiedTime: (updatedDate ?? publishDate).toISOString(),
+    author,
+    section: categoryLabel,
+    tags,
+  }}
 >
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
   <div class="page-wrap">
 
     <!-- ─── HEADER (outside paper) ─── -->
@@ -83,8 +110,8 @@ const jsonLd = {
 
       <!-- Meta row: category + date -->
       <div class="meta-row">
-        <a href={`/blog/category/${category}`} class="meta-category">
-          {getCategoryLabel(category)}
+        <a href={`/blog/category/${category}/`} class="meta-category">
+          {categoryLabel}
         </a>
         <span class="meta-dot">·</span>
         <time datetime={publishDate.toISOString()} class="meta-date">
@@ -143,7 +170,7 @@ const jsonLd = {
 
         <!-- Back link -->
         <div class="paper-back">
-          <a href="/blog" class="back-link">← กลับไปที่บทความทั้งหมด</a>
+          <a href="/blog/" class="back-link">← กลับไปที่บทความทั้งหมด</a>
         </div>
 
       </div>

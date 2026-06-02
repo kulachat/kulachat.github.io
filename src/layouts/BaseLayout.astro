@@ -5,6 +5,14 @@ export interface Props {
   ogImage?: string;
   ogType?: 'website' | 'article';
   canonicalURL?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author?: string;
+    section?: string;
+    tags?: string[];
+  };
 }
 
 const {
@@ -13,10 +21,20 @@ const {
   ogImage = "",
   ogType = "website",
   canonicalURL = Astro.url.href,
+  jsonLd,
+  article,
 } = Astro.props;
 
 const siteURL = "https://kulachat.github.io";
+const siteName = "kulachat";
+const canonical = new URL(canonicalURL, siteURL);
+canonical.protocol = "https:";
+canonical.host = "kulachat.github.io";
+canonical.search = "";
+canonical.hash = "";
+const canonicalHref = canonical.href;
 const ogImageFull = ogImage ? (ogImage.startsWith("http") ? ogImage : `${siteURL}${ogImage}`) : `${siteURL}/images/Me.jpg`;
+const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!DOCTYPE html>
@@ -29,13 +47,14 @@ const ogImageFull = ogImage ? (ogImage.startsWith("http") ? ogImage : `${siteURL
     <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonicalHref} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:site_name" content="kulachat" />
+    <meta property="og:url" content={canonicalHref} />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:type" content={ogType} />
     <meta property="og:image" content={ogImageFull} />
     <meta property="og:image:width" content="1200" />
@@ -48,6 +67,20 @@ const ogImageFull = ogImage ? (ogImage.startsWith("http") ? ogImage : `${siteURL
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageFull} />
     <meta name="twitter:site" content="@kulachat" />
+
+    {article && (
+      <>
+        <meta property="article:published_time" content={article.publishedTime} />
+        <meta property="article:modified_time" content={article.modifiedTime ?? article.publishedTime} />
+        {article.author && <meta property="article:author" content={article.author} />}
+        {article.section && <meta property="article:section" content={article.section} />}
+        {article.tags?.map(tag => <meta property="article:tag" content={tag} />)}
+      </>
+    )}
+
+    {jsonLdItems.map((item) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

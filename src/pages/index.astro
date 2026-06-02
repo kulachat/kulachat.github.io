@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 
+const siteURL = 'https://kulachat.github.io';
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const latestPosts = allPosts
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
@@ -13,7 +14,7 @@ const articleCards = [
   ...latestPosts.map((post) => ({
     title: post.data.title,
     description: post.data.description,
-    href: `/blog/${post.id}`,
+    href: `/blog/${post.id}/`,
     cover: post.data.image ?? {
       src: '/images/Me.jpg',
       alt: post.data.title,
@@ -23,7 +24,7 @@ const articleCards = [
   {
     title: 'บันทึกการเรียนรู้',
     description: 'ทดลองจัดวางบทความอีกชิ้นสำหรับดูจังหวะของ card สองคอลัมน์บนหน้าแรก พร้อมพื้นที่ข้อความที่ยาวขึ้นเพื่อทดสอบการอ่านและสมดุลของ layout',
-    href: '/blog',
+    href: '/blog/',
     cover: {
       src: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200',
       alt: 'สมุดบันทึกและปากกาบนโต๊ะทำงาน',
@@ -31,13 +32,45 @@ const articleCards = [
     theme: 'mint',
   },
 ].slice(0, Math.max(2, latestPosts.length));
+
+const homepageJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteURL}/#website`,
+      name: 'kulachat',
+      url: siteURL,
+      inLanguage: 'th',
+      description: 'บันทึกส่วนตัวของ kulachat เขียนเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี',
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteURL}/#person`,
+      name: 'kulachat',
+      url: siteURL,
+      image: `${siteURL}/images/Me.jpg`,
+      sameAs: ['https://techthaiban.org/'],
+    },
+    {
+      '@type': 'ItemList',
+      name: 'บทความล่าสุด',
+      itemListElement: latestPosts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${siteURL}/blog/${post.id}/`,
+        name: post.data.title,
+      })),
+    },
+  ],
+};
 ---
 
 <BaseLayout
   title="kulachat — แนวคิดชีวิต การเดินทาง เทคโนโลยี"
   description="บันทึกส่วนตัวของ kulachat เขียนเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี"
+  jsonLd={homepageJsonLd}
 >
-
   <main class="max-w-[985px] mx-auto px-6 sm:px-8">
 
     <!-- Hero -->

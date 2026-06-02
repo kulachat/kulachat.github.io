@@ -4,6 +4,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Footer from '../../../components/Footer.astro';
 import { getCategoryLabel } from '../../../utils/index';
 
+const siteURL = 'https://kulachat.github.io';
+
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog', ({ data }) => !data.draft);
   const categories = [...new Set(allPosts.map(p => p.data.category))];
@@ -20,19 +22,37 @@ const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const posts = allPosts
   .filter(p => p.data.category === category)
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const categoryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `${label} — kulachat`,
+  description: `บทความหมวด ${label} โดย kulachat`,
+  url: `${siteURL}/blog/category/${category}/`,
+  inLanguage: 'th',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${siteURL}/blog/${post.id}/`,
+      name: post.data.title,
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title={`${label} — kulachat`}
   description={`บทความหมวด ${label} โดย kulachat`}
+  jsonLd={categoryJsonLd}
 >
-
   <main class="max-w-2xl mx-auto px-6 sm:px-8">
 
     <!-- Page header -->
     <div class="pt-20 pb-10 border-b border-gray-200">
       <p class="text-xs text-gray-400 mb-2">
-        <a href="/blog" class="hover:text-gray-900 transition-colors">บทความ</a>
+        <a href="/blog/" class="hover:text-gray-900 transition-colors">บทความ</a>
         <span class="mx-1">→</span>
       </p>
       <h1 class="text-4xl font-bold text-gray-900 mb-4">{label}</h1>
@@ -40,15 +60,15 @@ const posts = allPosts
       <!-- Category filter -->
       <div class="flex items-center gap-4 flex-wrap">
         {[
-          { href: '/blog', label: 'ทั้งหมด' },
-          { href: '/blog/category/life', label: 'แนวคิดชีวิต' },
-          { href: '/blog/category/travel', label: 'การเดินทาง' },
-          { href: '/blog/category/tech', label: 'เทคโนโลยี' },
+          { href: '/blog/', label: 'ทั้งหมด' },
+          { href: '/blog/category/life/', label: 'แนวคิดชีวิต' },
+          { href: '/blog/category/travel/', label: 'การเดินทาง' },
+          { href: '/blog/category/tech/', label: 'เทคโนโลยี' },
         ].map(cat => (
           <a
             href={cat.href}
             class={`text-sm transition-colors underline-offset-2 ${
-              cat.href === `/blog/category/${category}`
+              cat.href === `/blog/category/${category}/`
                 ? 'text-gray-900 font-semibold underline'
                 : 'text-gray-400 hover:text-gray-900 hover:underline'
             }`}
@@ -77,7 +97,7 @@ const posts = allPosts
               </time>
               <div class="min-w-0">
                 <h2 class="text-base font-semibold text-gray-900 hover:text-gray-600 transition-colors leading-snug">
-                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                  <a href={`/blog/${post.id}/`}>{post.data.title}</a>
                 </h2>
                 <p class="text-sm text-gray-400 mt-0.5 line-clamp-1">{post.data.description}</p>
               </div>

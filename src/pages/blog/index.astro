@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
 import { getCategoryLabel } from '../../utils/index';
 
+const siteURL = 'https://kulachat.github.io';
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort((a, b) =>
   new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
@@ -17,13 +18,31 @@ for (const post of sortedPosts) {
   postsByYear[year].push(post);
 }
 const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
+
+const archiveJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'บทความทั้งหมด — kulachat',
+  description: 'บทความเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี โดย kulachat',
+  url: `${siteURL}/blog/`,
+  inLanguage: 'th',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: sortedPosts.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${siteURL}/blog/${post.id}/`,
+      name: post.data.title,
+    })),
+  },
+};
 ---
 
 <BaseLayout
   title="บทความทั้งหมด — kulachat"
   description="บทความเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี โดย kulachat"
+  jsonLd={archiveJsonLd}
 >
-
   <main class="max-w-2xl mx-auto px-6 sm:px-8">
 
     <!-- Page header -->
@@ -33,10 +52,10 @@ const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
       <!-- Category filter -->
       <div class="flex items-center gap-3 flex-wrap">
         {[
-          { href: '/blog', label: 'ทั้งหมด' },
-          { href: '/blog/category/life', label: 'แนวคิดชีวิต' },
-          { href: '/blog/category/travel', label: 'การเดินทาง' },
-          { href: '/blog/category/tech', label: 'เทคโนโลยี' },
+          { href: '/blog/', label: 'ทั้งหมด' },
+          { href: '/blog/category/life/', label: 'แนวคิดชีวิต' },
+          { href: '/blog/category/travel/', label: 'การเดินทาง' },
+          { href: '/blog/category/tech/', label: 'เทคโนโลยี' },
         ].map(cat => (
           <a
             href={cat.href}
@@ -69,7 +88,7 @@ const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
                   </time>
                   <div class="min-w-0">
                     <h3 class="text-base font-semibold text-gray-900 hover:text-gray-600 transition-colors leading-snug">
-                      <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                      <a href={`/blog/${post.id}/`}>{post.data.title}</a>
                     </h3>
                     <p class="text-sm text-gray-400 mt-0.5">{getCategoryLabel(post.data.category)}</p>
                   </div>
