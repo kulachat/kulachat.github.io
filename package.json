@@ -16,8 +16,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run build:prototype-css && astro check && astro build",
-    "build:prototype-css": "tailwindcss -c prototype.tailwind.config.cjs -i public/prototype/css/prototype-tailwind.input.css -o public/prototype/css/prototype-tailwind.css --minify",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "clean": "rm -rf dist .astro",
