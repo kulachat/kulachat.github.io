@@ -1,13 +1,36 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
-import { getCategoryLabel } from '../utils/index';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const latestPosts = allPosts
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
   .slice(0, 8);
+
+const articleCards = [
+  ...latestPosts.map((post) => ({
+    title: post.data.title,
+    description: post.data.description,
+    href: `/blog/${post.id}`,
+    cover: post.data.image ?? {
+      src: '/images/Me.jpg',
+      alt: post.data.title,
+    },
+    theme: 'cream',
+  })),
+  {
+    title: 'บันทึกการเรียนรู้',
+    description: 'ทดลองจัดวางบทความอีกชิ้นสำหรับดูจังหวะของ card สองคอลัมน์บนหน้าแรก พร้อมพื้นที่ข้อความที่ยาวขึ้นเพื่อทดสอบการอ่านและสมดุลของ layout',
+    href: '/blog',
+    cover: {
+      src: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200',
+      alt: 'สมุดบันทึกและปากกาบนโต๊ะทำงาน',
+    },
+    theme: 'mint',
+  },
+].slice(0, Math.max(2, latestPosts.length));
 ---
 
 <BaseLayout
@@ -15,10 +38,10 @@ const latestPosts = allPosts
   description="บันทึกส่วนตัวของ kulachat เขียนเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี"
 >
 
-  <main class="max-w-2xl mx-auto px-6 sm:px-8">
+  <main class="max-w-[985px] mx-auto px-6 sm:px-8">
 
     <!-- Hero -->
-    <section class="pt-20 pb-16 text-center">
+    <section class="max-w-2xl mx-auto pt-20 pb-16 text-center">
       <img src="/images/Me.jpg" alt="kulachat" class="w-24 h-24 rounded-full object-cover mx-auto mb-6" />
       <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6 font-google-sans">
         Decentralized Knowledge
@@ -32,39 +55,44 @@ const latestPosts = allPosts
     <!-- Latest posts -->
     <section class="py-14">
 
-      {latestPosts.length === 0 ? (
+      {articleCards.length === 0 ? (
         <div class="py-16 text-gray-400">
           <p>ยังไม่มีบทความ — เร็วๆ นี้</p>
         </div>
       ) : (
-        <div class="divide-y divide-gray-100">
-          {latestPosts.map(post => (
-            <article class="py-7">
-              <div class="flex items-baseline gap-4 mb-1">
-                <time class="text-sm text-gray-400 shrink-0" datetime={post.data.publishDate.toISOString()}>
-                  {post.data.publishDate.toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </time>
-                <span class="text-xs text-gray-300">—</span>
-                <span class="text-xs text-gray-400 uppercase tracking-wide">
-                  {getCategoryLabel(post.data.category)}
-                </span>
-              </div>
-              <h2 class="text-[32px] font-bold text-gray-900 leading-snug hover:text-gray-600 transition-colors mb-2">
-                <a href={`/blog/${post.id}`}>{post.data.title}</a>
-              </h2>
-              <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">
-                {post.data.description}
-              </p>
-            </article>
+        <div class="article-card-grid">
+          {articleCards.map(card => (
+            <a
+              class:list={['article-feature-card', `article-feature-card--${card.theme}`]}
+              href={card.href}
+              aria-label={`อ่าน ${card.title}`}
+            >
+              <span class="article-cover-link">
+                <Image
+                  src={card.cover.src}
+                  alt={card.cover.alt}
+                  class="article-cover"
+                  width={720}
+                  height={405}
+                  format="webp"
+                  loading="eager"
+                  decoding="async"
+                  inferSize
+                />
+              </span>
+              <span class="article-card-body">
+                <h2 class="article-title">
+                  {card.title}
+                </h2>
+                <p class="article-description">
+                  {card.description}
+                </p>
+              </span>
+            </a>
           ))}
         </div>
       )}
 
-      <div class="pt-8">
-        <a href="/blog" class="text-sm font-medium text-gray-900 underline underline-offset-2 hover:text-gray-600 transition-colors">
-          ดูบทความทั้งหมด →
-        </a>
-      </div>
     </section>
 
   </main>
@@ -73,10 +101,97 @@ const latestPosts = allPosts
 </BaseLayout>
 
 <style>
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  .article-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .article-feature-card {
+    display: flex;
+    min-height: 31rem;
+    flex-direction: column;
     overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem 2rem;
+    text-align: center;
+    box-shadow:
+      inset 0 0 0 0 #222,
+      0 12px 34px rgba(31, 31, 31, 0.06);
+    transition:
+      border-color 0.18s ease,
+      box-shadow 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .article-feature-card:hover,
+  .article-feature-card:focus-visible {
+    border-color: #222;
+    box-shadow:
+      inset 0 0 0 2px #222,
+      0 18px 48px rgba(34, 34, 34, 0.14);
+    transform: translateY(-1px);
+    outline: none;
+  }
+
+  .article-feature-card--cream {
+    background: #faf5ed;
+  }
+
+  .article-feature-card--mint {
+    background: #bff4e6;
+  }
+
+  .article-cover-link {
+    display: block;
+    margin: 0 auto 2rem;
+    width: 100%;
+    max-width: 22.5rem;
+  }
+
+  .article-cover {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 18px 44px rgba(31, 31, 31, 0.12);
+  }
+
+  .article-card-body {
+    display: block;
+    margin: 0 auto;
+    max-width: 22rem;
+  }
+
+  .article-title {
+    margin: 0;
+    color: #050505;
+    font-family: "Prompt", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(1.6rem, 3.2vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
+
+  .article-description {
+    margin: 1.5rem auto 0;
+    max-width: 21rem;
+    color: #111;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  @media (max-width: 640px) {
+    .article-card-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .article-feature-card {
+      min-height: auto;
+      margin-inline: -0.5rem;
+      padding: 1rem 1rem 1.5rem;
+    }
   }
 </style>

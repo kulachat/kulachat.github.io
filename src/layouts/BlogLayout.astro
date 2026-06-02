@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import { getCategoryLabel } from '../utils/index';
+import { Image } from 'astro:assets';
 import 'plyr/dist/plyr.css';
 
 export interface Props {
@@ -105,7 +106,16 @@ const jsonLd = {
         <!-- Featured image -->
         {image && (
           <div class="paper-image">
-            <img src={image.src} alt={image.alt} />
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={1200}
+              height={675}
+              format="webp"
+              loading="eager"
+              decoding="async"
+              inferSize
+            />
           </div>
         )}
 

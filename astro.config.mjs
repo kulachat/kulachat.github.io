@@ -17,6 +17,9 @@ export default defineConfig({
     assets: 'assets',
     inlineStylesheets: 'always',
   },
+  image: {
+    domains: ['images.unsplash.com', 'techthaiban.org'],
+  },
   compressHTML: true,
   vite: {
     build: {

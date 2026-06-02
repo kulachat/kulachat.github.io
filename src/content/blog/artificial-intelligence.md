@@ -1,10 +1,13 @@
 ---
 title: "ปัญญาประดิษฐ์"
-description: "ว่าด้วยเรื่องของ AI ที่ไม่ใช่แค่เทคโนโลยี แต่คือมันคือความเป็นมนุษย์ในตัวผมเอง"
+description: "ว่าด้วยเรื่องของ AI ที่ไม่ใช่แค่เทคโนโลยี แต่คือความเป็นมนุษย์ในตัวผมเอง ผ่านเรื่องเล่าจากชีวิต ครอบครัว และเส้นทางที่ทำให้ผมมองปัญญาประดิษฐ์ต่างออกไป"
 author: kulachat
 publishDate: 2026-04-13
 tags: []
 category: tech
+image:
+  src: "https://techthaiban.org/_assets/StepLearning.d5B0NBYd_144dpQ.webp"
+  alt: "ปัญญาประดิษฐ์"
 lang: th
 ---
 
@@ -25,4 +28,3 @@ lang: th
     </audio>
   </div>
 </div>
-
