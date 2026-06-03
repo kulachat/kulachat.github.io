@@ -105,75 +105,66 @@ const jsonLd = {
 >
   <div class="page-wrap">
 
-    <!-- ─── HEADER (outside paper) ─── -->
-    <div class="article-header">
+    <div class="article-wrap">
 
-      <!-- Meta row: category + date -->
-      <div class="meta-row">
-        <a href={`/blog/category/${category}/`} class="meta-category">
-          {categoryLabel}
-        </a>
-        <span class="meta-dot">·</span>
-        <time datetime={publishDate.toISOString()} class="meta-date">
-          {formattedPublishDate}
-        </time>
-      </div>
-
-      <!-- Big title -->
-      <h1 class="article-title">{title}</h1>
-
-    </div>
-
-    <!-- ─── PAPER STACK (content) ─── -->
-    <div class="paper-stack-wrap">
-      <div class="paper-sheet paper-sheet-back"></div>
-      <div class="paper-sheet paper-sheet-mid"></div>
-      <div class="paper-stack">
-
-        <!-- Featured image -->
-        {image && (
-          <div class="paper-image">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={1200}
-              height={675}
-              format="webp"
-              loading="eager"
-              decoding="async"
-              inferSize
-            />
-          </div>
-        )}
-
-        <!-- Article body -->
-        <article class="prose">
-          <slot />
-        </article>
-
-        <!-- Author row inside paper -->
-        <div class="paper-author">
-          <a href="/" class="author-link">
-            <img src="/images/Me.jpg" alt={author} class="author-avatar" />
-            <div class="author-info">
-              <span class="author-name">{author}</span>
-              {updatedDate && <span class="updated-date"> · อัปเดต {formattedUpdatedDate}</span>}
-            </div>
+      <!-- ─── HEADER ─── -->
+      <header class="article-header">
+        <div class="meta-row">
+          <a href={`/blog/category/${category}/`} class="meta-category">
+            {categoryLabel}
           </a>
-          <button id="share-btn" class="share-btn" title="แชร์">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-            </svg>
-          </button>
+          <span class="meta-dot">·</span>
+          <time datetime={publishDate.toISOString()} class="meta-date">
+            {formattedPublishDate}
+          </time>
         </div>
+        <h1 class="article-title">{title}</h1>
+      </header>
 
-        <!-- Back link -->
-        <div class="paper-back">
-          <a href="/blog/" class="back-link">← กลับไปที่บทความทั้งหมด</a>
+      <!-- ─── COVER IMAGE ─── -->
+      {image && (
+        <div class="article-cover">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={1200}
+            height={675}
+            format="webp"
+            loading="eager"
+            decoding="async"
+            inferSize
+          />
         </div>
+      )}
 
+      <!-- ─── BODY ─── -->
+      <article class="prose">
+        <slot />
+      </article>
+
+      <!-- ─── AUTHOR ─── -->
+      <div class="article-author">
+        <a href="/" class="author-link">
+          <img src="/images/Me.jpg" alt={author} class="author-avatar" />
+          <div class="author-info">
+            <span class="author-label">เขียนโดย</span>
+            <span class="author-name">{author}</span>
+            {updatedDate && <span class="updated-date">อัปเดต {formattedUpdatedDate}</span>}
+          </div>
+        </a>
+        <button id="share-btn" class="share-btn" title="แชร์บทความ" aria-label="แชร์บทความ">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+          </svg>
+        </button>
       </div>
+
+      <!-- ─── BACK LINK ─── -->
+      <div class="article-back">
+        <a href="/blog/" class="back-link">← กลับไปที่บทความทั้งหมด</a>
+      </div>
+
     </div>
 
     <Footer />
@@ -221,11 +212,17 @@ const jsonLd = {
     min-height: 100vh;
   }
 
-  /* ── Article header (outside paper) ── */
-  .article-header {
-    max-width: 760px;
+  /* ── Single centered column ── */
+  .article-wrap {
+    max-width: 700px;
     margin: 0 auto;
-    padding: 3.5rem 2rem 2.5rem;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* ── Header ── */
+  .article-header {
+    padding: 3.5rem 0 2rem;
+    text-align: center;
   }
 
   .meta-row {
@@ -235,111 +232,77 @@ const jsonLd = {
     gap: 0.5rem;
     margin-bottom: 1.25rem;
     font-family: 'Sarabun', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    color: #888;
   }
 
   .meta-category {
-    font-weight: 700;
-    color: #1a1a1a;
-    text-decoration: underline;
-    text-decoration-color: rgba(0,0,0,0.3);
-    transition: text-decoration-color 0.15s;
+    font-weight: 600;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.15s;
   }
-  .meta-category:hover { text-decoration-color: #1a1a1a; }
+  .meta-category:hover { color: #111; }
 
-  .meta-dot {
-    color: #999;
-    font-weight: 400;
-  }
+  .meta-dot { color: #ccc; }
 
-  .meta-date {
-    font-weight: 700;
-    color: #1a1a1a;
-  }
+  .meta-date { color: #888; }
 
   .article-title {
     font-family: 'Prompt', sans-serif !important;
-    font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem);
+    font-size: clamp(2rem, 4vw + 0.5rem, 3.25rem);
     font-weight: 800;
     color: #111;
-    line-height: 1.1;
+    line-height: 1.15;
     letter-spacing: -0.02em;
     margin: 0;
-    text-align: center;
   }
 
-  /* ── Paper stack ── */
-  .paper-stack-wrap {
-    position: relative;
-    max-width: 928px;
-    margin: 0 auto;
-    padding: 0 2rem 4rem;
-  }
-
-  /* Behind sheets — absolute, matching paper-stack size */
-  .paper-sheet {
-    position: absolute;
-    background: #fff;
-    border: 1px solid #e2e2e2;
-    top: 0;
-    left: 2rem;
-    right: 2rem;
-    bottom: 4rem;
-  }
-
-  .paper-sheet-back {
-    transform: rotate(-2deg) translateX(-3px) translateY(6px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    z-index: 0;
-  }
-
-  .paper-sheet-mid {
-    transform: rotate(2deg) translateX(2px) translateY(4px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    z-index: 1;
-  }
-
-  .paper-stack {
-    position: relative;
-    background: #fff;
-    border: 1px solid #e8e8e8;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    z-index: 2;
-  }
-
-  /* ── Featured image ── */
-  .paper-image {
+  /* ── Cover image ── */
+  .article-cover {
+    margin-bottom: 3rem;
+    border-radius: 2rem;
     overflow: hidden;
-    border-bottom: 1px solid #f0f0f0;
   }
-  .paper-image img {
+  .article-cover img {
     width: 100%;
     height: auto;
-    max-height: 420px;
-    object-fit: cover;
     display: block;
+    border-radius: 2rem;
   }
 
-  /* ── Author row (inside paper) ── */
-  .paper-author {
+  /* ── Prose ── */
+  .prose {
+    font-family: 'Sarabun', sans-serif;
+    color: #1f1f1f;
+    font-size: 1.0625rem;
+    line-height: 2;
+    margin: auto;
+  }
+
+  /* ── Author row ── */
+  .article-author {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1.5rem 2.5rem;
-    border-top: 1px solid #f0f0f0;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #ececec;
+    margin: 3.25rem 0 1rem;
   }
 
   .author-link {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     text-decoration: none;
     flex: 1;
+    min-width: 0;
   }
 
   .author-avatar {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 9999px;
     object-fit: cover;
     flex-shrink: 0;
@@ -348,50 +311,61 @@ const jsonLd = {
   .author-info {
     flex: 1;
     font-family: 'Sarabun', sans-serif;
+    min-width: 0;
+  }
+
+  .author-label {
+    display: block;
+    color: #9a9a9a;
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 0.15rem;
   }
 
   .author-name {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #1a1a1a;
+    display: block;
+    color: #111;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
   }
 
   .updated-date {
-    font-size: 0.8rem;
+    display: block;
     color: #aaa;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    margin-top: 0.15rem;
   }
 
   .share-btn {
-    padding: 0.375rem;
-    color: #bbb;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #aaa;
     background: none;
     border: none;
     cursor: pointer;
     border-radius: 9999px;
+    flex-shrink: 0;
     transition: color 0.15s, background 0.15s;
   }
-  .share-btn:hover { color: #555; background: #f3f3f3; }
+  .share-btn:hover { color: #222; background: #f5f5f5; }
 
-  /* ── Prose ── */
-  .prose {
-    padding: 4rem 2.5rem 2rem;
-    max-width: 640px;
-    margin: 0 auto;
-    font-family: 'Sarabun', sans-serif;
-    color: #1f1f1f;
-    font-size: 1.0625rem;
-    line-height: 2;
+  /* ── Back link ── */
+  .article-back {
+    padding-top: 1.25rem;
   }
 
   @media (max-width: 640px) {
-    .article-header { padding: 2.5rem 1.25rem 1.5rem; }
-    .paper-stack-wrap { padding: 0 1.25rem 3rem; }
-    .paper-sheet-back { display: none !important; }
-    .paper-sheet-mid { display: none !important; }
-    .paper-stack { border: none !important; box-shadow: none !important; }
-    .paper-author { padding: 1.25rem 1.25rem; }
-    .prose { padding: 2rem 1.25rem 1.5rem; }
-    .paper-back { padding: 1rem 1.25rem 1.5rem; }
+    .article-wrap { padding: 0 1.25rem 3.5rem; }
+    .article-header { padding: 2.5rem 0 1.5rem; }
+    .article-cover { border-radius: 1rem; margin-bottom: 2rem; }
+    .article-cover img { border-radius: 1rem; }
+    .article-author { margin-top: 2.5rem; }
   }
 
   .prose h2 {
@@ -567,12 +541,6 @@ const jsonLd = {
     border-radius: 0;
     box-shadow: none;
     border: none;
-  }
-
-  /* ── Back link ── */
-  .paper-back {
-    padding: 1.25rem 2.5rem 2rem;
-    border-top: 1px solid #f0f0f0;
   }
 
   .back-link {
