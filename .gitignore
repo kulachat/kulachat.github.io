@@ -41,3 +41,9 @@ yarn-error.log*
 .idea/
 *.swp
 *.swo
+
+# Local private writing/context files
+.codex/
+private/
+*.private.md
+*.secret.md
