@@ -1,39 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Footer from '../components/Footer.astro';
-import { resolveContentImage } from '../utils/images';
+import OrbitArt from '../assets/techthaiban-orbit.svg';
 
 const siteURL = 'https://kulachat.github.io';
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
-const latestPosts = allPosts
-  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
-  .slice(0, 8);
+const githubURL = 'https://github.com/kulachat';
+const techthaibanURL = 'https://techthaiban.org/';
 
-const articleCards = [
-  ...latestPosts.map((post) => ({
-    title: post.data.title,
-    description: post.data.description,
-    href: `/blog/${post.id}/`,
-    cover: resolveContentImage(post.data.image) ?? {
-      src: '/images/Me.jpg',
-      alt: post.data.title,
-      publicSrc: '/images/Me.jpg',
-    },
-    theme: 'cream',
-  })),
-  {
-    title: 'บันทึกการเรียนรู้',
-    description: 'ทดลองจัดวางบทความอีกชิ้นสำหรับดูจังหวะของ card สองคอลัมน์บนหน้าแรก พร้อมพื้นที่ข้อความที่ยาวขึ้นเพื่อทดสอบการอ่านและสมดุลของ layout',
-    href: '/blog/',
-    cover: {
-      src: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200',
-      alt: 'สมุดบันทึกและปากกาบนโต๊ะทำงาน',
-    },
-    theme: 'mint',
-  },
-].slice(0, Math.max(2, latestPosts.length));
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+
+const dayMonth = new Intl.DateTimeFormat('th-TH', { day: 'numeric', month: 'short' });
+const fullDate = new Intl.DateTimeFormat('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
+const latestDate = posts.length ? new Date(posts[0].data.publishDate) : undefined;
+const firstDate = posts.length ? new Date(posts[posts.length - 1].data.publishDate) : undefined;
 
 const homepageJsonLd = {
   '@context': 'https://schema.org',
@@ -52,12 +33,12 @@ const homepageJsonLd = {
       name: 'kulachat',
       url: siteURL,
       image: `${siteURL}/images/Me.jpg`,
-      sameAs: ['https://techthaiban.org/'],
+      sameAs: [techthaibanURL, githubURL],
     },
     {
       '@type': 'ItemList',
       name: 'บทความล่าสุด',
-      itemListElement: latestPosts.map((post, index) => ({
+      itemListElement: posts.map((post, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         url: `${siteURL}/blog/${post.id}/`,
@@ -73,173 +54,508 @@ const homepageJsonLd = {
   description="บันทึกส่วนตัวของ kulachat เขียนเรื่องแนวคิดชีวิต การเดินทาง และเทคโนโลยี"
   jsonLd={homepageJsonLd}
 >
-  <main class="max-w-[985px] mx-auto px-6 sm:px-8">
+  <link
+    slot="head"
+    href="https://fonts.googleapis.com/css2?family=Trirong:wght@400;500;600&family=Caveat:wght@500;600&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Hero -->
-    <section class="max-w-2xl mx-auto pt-20 pb-16 text-center">
-      <img src="/images/Me.jpg" alt="kulachat" class="w-24 h-24 rounded-full object-cover mx-auto mb-6" />
-      <h1 class="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6 font-google-sans">
-        Decentralized Knowledge
-      </h1>
-      <p class="text-lg text-gray-700 leading-relaxed">
-        <b>ผู้สนับสนุนการกระจายอำนาจความรู้  ❝เทคไทบ้าน❞ <br class="hidden sm:block" />
-        เขียนเรื่องราว — แนวคิดชีวิต การเดินทาง และเทคโนโลยี</b>
-      </p>
-    </section>
+  <main class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
 
-    <!-- Latest posts -->
-    <section class="py-14">
+    <div class="hero__inner">
+      <section class="hero__copy" aria-labelledby="hero-title">
+        <h1 id="hero-title">
+          <span class="sr-only">เทคโนโลยี เพื่อคนไทบ้าน</span>
+          <OrbitArt class="hero__art" aria-hidden="true" focusable="false" />
+        </h1>
+        <p class="hero__lede">
+          ผู้สนับสนุนการกระจายอำนาจความรู้ <b class="nowrap">❝เทคไทบ้าน❞</b>
+          <br />
+          เขียนเรื่องราว — <b>แนวคิดชีวิต</b> <b>การเดินทาง</b> และ<b>เทคโนโลยี</b>
+        </p>
+        <a class="hero__cta" href={techthaibanURL} target="_blank" rel="noopener">
+          ไปที่เทคไทบ้าน
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6"></path>
+          </svg>
+        </a>
+      </section>
 
-      {articleCards.length === 0 ? (
-        <div class="py-16 text-gray-400">
-          <p>ยังไม่มีบทความ — เร็วๆ นี้</p>
+      <article class="receipt" aria-label="ใบเสร็จบทความล่าสุด">
+        <header class="receipt__head">
+          <img class="receipt__avatar" src="/images/Me.jpg" alt="" width="64" height="64" />
+          <p class="receipt__brand">kulachat</p>
+          <p class="receipt__kind">ใบเสร็จ · บทความ</p>
+          {latestDate && firstDate && (
+            <p class="receipt__meta">
+              อัปเดตล่าสุด: {fullDate.format(latestDate)}
+              <span class="receipt__period"><br />ช่วงเวลา: {dayMonth.format(firstDate)} – {fullDate.format(latestDate)}</span>
+            </p>
+          )}
+        </header>
+
+        <div class="receipt__cols" aria-hidden="true">
+          <span>รายการ</span>
+          <span>วันที่</span>
         </div>
-      ) : (
-        <div class="article-card-grid">
-          {articleCards.map(card => (
-            <a
-              class:list={['article-feature-card', `article-feature-card--${card.theme}`]}
-              href={card.href}
-              aria-label={`อ่าน ${card.title}`}
-            >
-              <span class="article-cover-link">
-                {typeof card.cover.src === 'string' ? (
-                  <Image
-                    src={card.cover.src}
-                    alt={card.cover.alt}
-                    class="article-cover"
-                    width={720}
-                    height={405}
-                    format="webp"
-                    loading="eager"
-                    decoding="async"
-                    inferSize
-                  />
-                ) : (
-                  <Image
-                    src={card.cover.src}
-                    alt={card.cover.alt}
-                    class="article-cover"
-                    width={720}
-                    height={405}
-                    format="webp"
-                    loading="eager"
-                    decoding="async"
-                  />
-                )}
-              </span>
-              <span class="article-card-body">
-                <h2 class="article-title">
-                  {card.title}
-                </h2>
-                <p class="article-description">
-                  {card.description}
-                </p>
-              </span>
-            </a>
-          ))}
+        <hr class="receipt__dots" />
+
+        {posts.length === 0 ? (
+          <p class="receipt__empty">ยังไม่มีบทความ — เร็วๆ นี้</p>
+        ) : (
+          <ol class="receipt__items">
+            {posts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`}>
+                  <span class="receipt__title">{post.data.title}</span>
+                  <time datetime={new Date(post.data.publishDate).toISOString().slice(0, 10)}>
+                    {dayMonth.format(new Date(post.data.publishDate))}
+                  </time>
+                </a>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        <hr class="receipt__dots" />
+
+        <dl class="receipt__totals">
+          <div><dt>รวม</dt><dd>{posts.length} เรื่อง</dd></div>
+          <div><dt>ค่าอ่าน</dt><dd>฿ 0.00</dd></div>
+        </dl>
+        <div class="receipt__payrow">
+          <span>ชำระด้วย: ความอยากรู้</span>
+          <a class="receipt__all" href="/blog/">ดูทั้งหมด →</a>
         </div>
-      )}
 
-    </section>
+        <hr class="receipt__dots" />
 
+        <footer class="receipt__foot">
+          <p>ขอบคุณที่สนับสนุนงานของเทคไทบ้าน</p>
+          <a class="receipt__sign" href={githubURL} target="_blank" rel="noopener">
+            github.com/kulachat
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+              <path d="M20 3.5c9.6-.4 16.6 6.9 16.4 16.3-.2 9.3-7.6 16.6-16.8 16.5C10.4 36.2 3.4 28.7 3.6 19.6 3.8 10.8 10.9 3.9 20 3.5Z"></path>
+              <path d="M14 15.5v2.2M26 15.5v2.2M12.5 24c4.4 5 10.6 5 15 0"></path>
+            </svg>
+          </a>
+        </footer>
+      </article>
+    </div>
   </main>
 
-  <Footer />
 </BaseLayout>
 
 <style>
-  .article-card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-  }
-
-  .article-feature-card {
-    display: flex;
-    min-height: 31rem;
-    flex-direction: column;
+  .hero {
+    --ink: #0d0d0d;
+    --paper: #f8f8f6;
+    --sign: #1d3fd6;
+    position: relative;
+    isolation: isolate;
     overflow: hidden;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    padding: 1.5rem 1.5rem 2rem;
-    text-align: center;
-    box-shadow:
-      inset 0 0 0 0 #222,
-      0 12px 34px rgba(31, 31, 31, 0.06);
-    transition:
-      border-color 0.18s ease,
-      box-shadow 0.18s ease,
-      transform 0.18s ease;
+    background: #42585f;
+    color: var(--ink);
   }
 
-  .article-feature-card:hover,
-  .article-feature-card:focus-visible {
-    border-color: #222;
-    box-shadow:
-      inset 0 0 0 2px #222,
-      0 18px 48px rgba(34, 34, 34, 0.14);
-    transform: translateY(-1px);
-    outline: none;
+  /* Soft out-of-focus wash with a canvas weave, in place of a photo. */
+  .hero__bg {
+    position: absolute;
+    inset: -8%;
+    z-index: -1;
+    background:
+      radial-gradient(34% 40% at 24% 30%, #f7f8f4 0%, rgb(247 248 244 / 0) 72%),
+      radial-gradient(26% 34% at 36% 64%, #f5eed7 0%, rgb(245 238 215 / 0) 72%),
+      radial-gradient(22% 46% at 55% 42%, #e3e9e6 0%, rgb(227 233 230 / 0) 72%),
+      radial-gradient(30% 36% at 12% 84%, #c3cf9e 0%, rgb(195 207 158 / 0) 72%),
+      radial-gradient(38% 46% at 86% 16%, #2c4648 0%, rgb(44 70 72 / 0) 72%),
+      radial-gradient(36% 44% at 74% 88%, #78935f 0%, rgb(120 147 95 / 0) 72%),
+      radial-gradient(30% 40% at 60% 8%, #9fb6c2 0%, rgb(159 182 194 / 0) 72%),
+      linear-gradient(118deg, #91a8b4 0%, #50696f 52%, #2d4247 100%);
+    filter: blur(28px) saturate(1.05);
   }
 
-  .article-feature-card--cream {
-    background: #faf5ed;
+  .hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgb(255 255 255 / 0.05) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(90deg, rgb(0 0 0 / 0.05) 0 1px, transparent 1px 3px);
   }
 
-  .article-feature-card--mint {
-    background: #bff4e6;
-  }
-
-  .article-cover-link {
-    display: block;
-    margin: 0 auto 2rem;
-    width: 100%;
-    max-width: 22.5rem;
-  }
-
-  .article-cover {
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    border-radius: 16px;
-    object-fit: cover;
-    box-shadow: 0 18px 44px rgba(31, 31, 31, 0.12);
-  }
-
-  .article-card-body {
-    display: block;
+  .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 27rem);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+    max-width: 82rem;
+    min-height: 100svh;
     margin: 0 auto;
-    max-width: 22rem;
+    padding: clamp(2rem, 4vw, 2rem) clamp(1rem, 5vw, 4.5rem);
   }
 
-  .article-title {
+  .hero__copy {
+    max-width: 38rem;
+  }
+
+  .hero__copy h1 {
     margin: 0;
-    color: #050505;
-    font-family: "Prompt", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: clamp(1.6rem, 3.2vw, 2rem);
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1.08;
   }
 
-  .article-description {
-    margin: 1.5rem auto 0;
-    max-width: 21rem;
-    color: #111;
-    font-size: 16px;
+  .hero__art {
+    display: block;
+    width: clamp(17rem, 40vw, 34rem);
+    height: auto;
+    margin-left: -0.5rem;
+    color: var(--ink);
+  }
+
+  .hero__lede {
+    margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+    font-family: 'Google Sans', 'Prompt', sans-serif;
+    font-size: clamp(1.125rem, 1.9vw, 1.5rem);
     line-height: 1.65;
+    color: #161616;
   }
 
-  @media (max-width: 640px) {
-    .article-card-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+  .hero__lede .nowrap {
+    white-space: nowrap;
+  }
+
+  .hero__lede b {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 3.75rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: 0 2rem;
+    border-radius: 999px;
+    background: #000;
+    color: #fff;
+    font-family: 'Google Sans', 'Prompt', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .hero__cta svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    transition: transform 0.18s ease;
+  }
+
+  .hero__cta:hover {
+    box-shadow: 0 14px 34px rgb(0 0 0 / 0.25);
+  }
+
+  .hero__cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  .hero__cta:focus-visible,
+  .receipt a:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  /* Receipt */
+  .receipt {
+    display: flex;
+    flex-direction: column;
+    min-height: min(44rem, calc(100svh - 4rem));
+    padding: 2rem clamp(1.5rem, 3.5vw, 2.5rem) 1.75rem;
+    background: var(--paper);
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.08),
+      0 24px 60px rgb(10 25 30 / 0.28);
+    font-family: 'Trirong', 'Sarabun', serif;
+    color: var(--ink);
+  }
+
+  .receipt__head {
+    text-align: center;
+  }
+
+  .receipt__avatar {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1);
+  }
+
+  .receipt__brand {
+    margin: 0.5rem 0 0;
+    font-size: clamp(2.5rem, 4.5vw, 3.25rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .receipt__kind {
+    margin: 1rem 0 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+
+  .receipt__meta {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #222;
+  }
+
+  .receipt__cols {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+
+  .receipt__dots {
+    height: 4px;
+    margin: 0.6rem 0;
+    border: 0;
+    background: radial-gradient(circle, #222 1px, transparent 1.4px) 0 50% / 9px 4px repeat-x;
+  }
+
+  .receipt__items {
+    margin: 0.25rem 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .receipt__items a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .receipt__title {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 0.15s ease;
+  }
+
+  .receipt__items a:hover .receipt__title {
+    text-decoration-color: currentColor;
+  }
+
+  .receipt__items time {
+    flex: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .receipt__empty {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .receipt__totals {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+
+  .receipt__totals div {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0;
+  }
+
+  .receipt__totals dd {
+    margin: 0;
+  }
+
+  .receipt__payrow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+
+  .receipt__all {
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .receipt__foot {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  .receipt__foot p {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+
+  .receipt__sign {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0;
+    color: var(--sign);
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.75rem, 3vw, 2.1rem);
+    font-weight: 600;
+    line-height: 1.1;
+    transform: rotate(-3deg);
+  }
+
+  .receipt__sign svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .receipt__sign:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  @media (max-width: 960px) {
+    .hero__inner {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      min-height: auto;
     }
 
-    .article-feature-card {
+    .hero__inner {
+      padding-block: 3rem;
+    }
+
+    .hero__copy {
+      justify-self: stretch;
+    }
+
+    .hero__art {
+      margin-left: 0;
+    }
+
+    .receipt {
+      width: 100%;
+      max-width: 28rem;
       min-height: auto;
-      margin-inline: -0.5rem;
-      padding: 1rem 1rem 1.5rem;
+    }
+  }
+
+  /* Desktop: the whole page is exactly one screen tall. */
+  @media (min-width: 961px) and (min-height: 700px) {
+    .hero {
+      height: 100svh;
+    }
+
+    .hero__inner {
+      height: 100%;
+      min-height: 0;
+      padding-block: clamp(1.25rem, 4vh, 2.5rem);
+    }
+
+    .receipt {
+      align-self: stretch;
+      min-height: 0;
+      padding-top: clamp(1.25rem, 3.5vh, 2rem);
+      padding-bottom: clamp(1rem, 3vh, 1.75rem);
+    }
+
+    .receipt__avatar {
+      width: clamp(2.25rem, 5vh, 3rem);
+      height: clamp(2.25rem, 5vh, 3rem);
+    }
+
+    .receipt__brand {
+      font-size: clamp(2rem, 5.5vh, 3.25rem);
+    }
+
+    .receipt__kind {
+      margin-top: clamp(0.5rem, 1.6vh, 1rem);
+    }
+
+    .receipt__cols {
+      margin-top: clamp(0.75rem, 2.4vh, 1.5rem);
+    }
+
+    .receipt__dots {
+      margin-block: clamp(0.35rem, 1vh, 0.6rem);
+    }
+
+    /* Long lists scroll inside the receipt instead of growing the page. */
+    .receipt__items {
+      flex: 0 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .receipt__items a {
+      padding-block: clamp(0.3rem, 0.9vh, 0.5rem);
+    }
+
+    .receipt__foot {
+      padding-top: clamp(0.75rem, 2.4vh, 1.5rem);
+    }
+
+  }
+
+  /* Short desktop screens: drop the decorative bits so every article still fits. */
+  @media (min-width: 961px) and (min-height: 700px) and (max-height: 820px) {
+    .receipt__avatar,
+    .receipt__period {
+      display: none;
+    }
+
+    .receipt__brand {
+      margin-top: 0;
+    }
+
+    .receipt__items a {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .receipt__totals div {
+      padding-block: 0.1rem;
+    }
+
+    .receipt__foot p {
+      font-size: 1.05rem;
+    }
+
+    .receipt__sign {
+      margin-top: 0.25rem;
+      font-size: 1.75rem;
+    }
+
+    .receipt__sign svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__cta,
+    .hero__cta svg {
+      transition: none;
     }
   }
 </style>
