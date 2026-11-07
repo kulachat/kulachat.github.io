@@ -1,7 +1,8 @@
 // Builds the private trip guide and encrypts it with the PIN from .env (TRIP_PIN).
 //
-// The plaintext source (src/pages/trip-source.astro) and the ticket image
-// (public/images/wedding-weekend/) are git-ignored. Only the encrypted payload
+// The plaintext source (src/pages/trip-source.astro) and private images
+// (public/images/wedding-weekend/) are git-ignored. Any of those images the page
+// uses are inlined into the encrypted HTML. Only the encrypted payload
 // written to src/data/trip.enc.json is committed; src/pages/trip.astro asks for
 // the PIN and decrypts it in the browser.
 //
@@ -19,11 +20,7 @@ const root = path.resolve(
 );
 const SOURCE = path.join(root, 'src/pages/trip-source.astro');
 const BUILT = path.join(root, 'dist/trip-source/index.html');
-const TICKET = path.join(
-  root,
-  'public/images/wedding-weekend/boarding-pass.png'
-);
-const TICKET_URL = '/images/wedding-weekend/boarding-pass.png';
+const PRIVATE_IMAGES = '/images/wedding-weekend/';
 const OUT = path.join(root, 'src/data/trip.enc.json');
 const ITERATIONS = 600_000;
 
@@ -51,12 +48,24 @@ if (!fs.existsSync(OUT)) {
 execSync('npx astro build', { cwd: root, stdio: 'inherit' });
 let html = fs.readFileSync(BUILT, 'utf8');
 
-const ticket = await sharp(TICKET).webp({ quality: 82 }).toBuffer();
-const ticketDataUrl = `data:image/webp;base64,${ticket.toString('base64')}`;
-const refs = html.split(TICKET_URL).length - 1;
-if (refs === 0)
-  throw new Error('Ticket image reference not found in built page.');
-html = html.replaceAll(TICKET_URL, ticketDataUrl);
+// Private images are not deployed, so inline every one the page references.
+const imageUrls = [
+  ...new Set(html.match(/\/images\/wedding-weekend\/[\w.-]+/g) ?? []),
+];
+let inlinedBytes = 0;
+for (const url of imageUrls) {
+  const image = await sharp(path.join(root, 'public', url))
+    .webp({ quality: 82 })
+    .toBuffer();
+  inlinedBytes += image.length;
+  html = html.replaceAll(
+    url,
+    `data:image/webp;base64,${image.toString('base64')}`
+  );
+}
+if (html.includes(PRIVATE_IMAGES)) {
+  throw new Error(`Unresolved ${PRIVATE_IMAGES} reference left in page.`);
+}
 
 // Never leave the plaintext build lying around in dist/.
 fs.rmSync(path.dirname(BUILT), { recursive: true, force: true });
@@ -99,5 +108,5 @@ fs.writeFileSync(
 );
 
 console.log(
-  `\nEncrypted trip guide -> ${path.relative(root, OUT)} (${(fs.statSync(OUT).size / 1024).toFixed(0)} KB, ticket ${(ticket.length / 1024).toFixed(0)} KB, ${refs} image refs inlined)`
+  `\nEncrypted trip guide -> ${path.relative(root, OUT)} (${(fs.statSync(OUT).size / 1024).toFixed(0)} KB, ${imageUrls.length} private images inlined, ${(inlinedBytes / 1024).toFixed(0)} KB)`
 );
