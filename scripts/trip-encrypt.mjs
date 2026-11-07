@@ -54,9 +54,11 @@ const imageUrls = [
 ];
 let inlinedBytes = 0;
 for (const url of imageUrls) {
-  const image = await sharp(path.join(root, 'public', url))
-    .webp({ quality: 82 })
-    .toBuffer();
+  const file = path.join(root, 'public', url);
+  // Already-optimised WebP is used as is; re-encoding would only grow it.
+  const image = url.endsWith('.webp')
+    ? fs.readFileSync(file)
+    : await sharp(file).webp({ quality: 82 }).toBuffer();
   inlinedBytes += image.length;
   html = html.replaceAll(
     url,
