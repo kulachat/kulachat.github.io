@@ -22,7 +22,8 @@
     "clean": "rm -rf dist .astro",
     "type-check": "astro check",
     "lint": "prettier --check . && astro check",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "trip:encrypt": "node scripts/trip-encrypt.mjs"
   },
   "overrides": {
     "axios": "^1.13.1",

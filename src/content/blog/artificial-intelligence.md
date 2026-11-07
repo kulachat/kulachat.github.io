@@ -6,7 +6,7 @@ publishDate: 2026-04-13
 tags: []
 category: tech
 image:
-  src: "https://techthaiban.org/_assets/StepLearning.d5B0NBYd_144dpQ.webp"
+  src: "/images/blog/artificial-intelligence.webp"
   alt: "ปัญญาประดิษฐ์"
 lang: th
 ---

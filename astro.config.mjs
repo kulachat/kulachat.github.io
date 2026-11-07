@@ -8,7 +8,10 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      // /trip is a private, PIN-protected page.
+      filter: (page) => !page.includes('/trip'),
+    }),
   ],
   site: 'https://kulachat.github.io',
   base: '/',

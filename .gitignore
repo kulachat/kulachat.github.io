@@ -47,3 +47,7 @@ yarn-error.log*
 private/
 *.private.md
 *.secret.md
+
+# Private trip guide: only the encrypted payload (src/data/trip.enc.json) is committed
+src/pages/trip-source.astro
+public/images/wedding-weekend/
