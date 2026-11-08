@@ -11,10 +11,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
 );
 
-const dayMonth = new Intl.DateTimeFormat('th-TH', { day: 'numeric', month: 'short' });
-const fullDate = new Intl.DateTimeFormat('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
+const longDate = new Intl.DateTimeFormat('th-TH', { day: 'numeric', month: 'long', year: 'numeric' });
 const latestDate = posts.length ? new Date(posts[0].data.publishDate) : undefined;
-const firstDate = posts.length ? new Date(posts[posts.length - 1].data.publishDate) : undefined;
 
 const homepageJsonLd = {
   '@context': 'https://schema.org',
@@ -56,7 +54,7 @@ const homepageJsonLd = {
 >
   <link
     slot="head"
-    href="https://fonts.googleapis.com/css2?family=Trirong:wght@400;500;600&family=Caveat:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap"
     rel="stylesheet"
   />
 
@@ -72,7 +70,7 @@ const homepageJsonLd = {
         <p class="hero__lede">
           ผู้สนับสนุนการกระจายอำนาจความรู้ <b class="nowrap">❝เทคไทบ้าน❞</b>
           <br />
-          เขียนเรื่องราว — <b>แนวคิดชีวิต</b> <b>การเดินทาง</b> และ<b>เทคโนโลยี</b>
+          เขียนเรื่องราว — <b>แนวคิดชีวิต</b> <b>การเดินทาง</b> <span class="nowrap">และ<b>เทคโนโลยี</b></span>
         </p>
         <a class="hero__cta" href={techthaibanURL} target="_blank" rel="noopener">
           ไปที่เทคไทบ้าน
@@ -82,22 +80,20 @@ const homepageJsonLd = {
         </a>
       </section>
 
-      <article class="receipt" aria-label="ใบเสร็จบทความล่าสุด">
+      <article class="receipt" aria-label="เทคไทบ้าน — คลังบทความและความคิด">
         <header class="receipt__head">
           <img class="receipt__avatar" src="/images/Me.jpg" alt="" width="64" height="64" />
           <p class="receipt__brand">kulachat</p>
-          <p class="receipt__kind">ใบเสร็จ · บทความ</p>
-          {latestDate && firstDate && (
-            <p class="receipt__meta">
-              อัปเดตล่าสุด: {fullDate.format(latestDate)}
-              <span class="receipt__period"><br />ช่วงเวลา: {dayMonth.format(firstDate)} – {fullDate.format(latestDate)}</span>
-            </p>
-          )}
+          <p class="receipt__kind">เทคไทบ้าน — คลังบทความและความคิด</p>
+          <p class="receipt__meta">
+            <span class="receipt__lede">รวมบันทึกเรื่องราว แนวคิดชีวิต การเดินทาง และเทคโนโลยี เพื่อคนไทบ้าน</span>
+            {latestDate && <span class="receipt__updated">อัปเดตล่าสุด: {longDate.format(latestDate)}</span>}
+          </p>
         </header>
 
         <div class="receipt__cols" aria-hidden="true">
-          <span>รายการ</span>
-          <span>วันที่</span>
+          <span>บทความ</span>
+          <span>{posts.length} เรื่อง</span>
         </div>
         <hr class="receipt__dots" />
 
@@ -105,29 +101,30 @@ const homepageJsonLd = {
           <p class="receipt__empty">ยังไม่มีบทความ — เร็วๆ นี้</p>
         ) : (
           <ol class="receipt__items">
-            {posts.map((post) => (
-              <li>
-                <a href={`/blog/${post.id}/`}>
-                  <span class="receipt__title">{post.data.title}</span>
-                  <time datetime={new Date(post.data.publishDate).toISOString().slice(0, 10)}>
-                    {dayMonth.format(new Date(post.data.publishDate))}
-                  </time>
-                </a>
-              </li>
-            ))}
+            {posts.map((post) => {
+              const date = new Date(post.data.publishDate);
+              return (
+                <li>
+                  <a href={`/blog/${post.id}/`}>
+                    <span class="receipt__title">{post.data.title}</span>
+                    <time class="receipt__info" datetime={date.toISOString().slice(0, 10)}>
+                      {longDate.format(date)}
+                    </time>
+                  </a>
+                </li>
+              );
+            })}
           </ol>
         )}
 
         <hr class="receipt__dots" />
 
         <dl class="receipt__totals">
-          <div><dt>รวม</dt><dd>{posts.length} เรื่อง</dd></div>
-          <div><dt>ค่าอ่าน</dt><dd>฿ 0.00</dd></div>
+          <div><dt>คลังบทความทั้งหมด</dt><dd>{posts.length} เรื่อง</dd></div>
+          <div><dt>ค่าเข้าชม</dt><dd>ฟรี</dd></div>
         </dl>
-        <div class="receipt__payrow">
-          <span>ชำระด้วย: ความอยากรู้</span>
-          <a class="receipt__all" href="/blog/">ดูทั้งหมด →</a>
-        </div>
+        <p class="receipt__note">(สนับสนุนด้วยความอยากรู้และพลังขับเคลื่อนชุมชน)</p>
+        <a class="receipt__all" href="/blog/">ดูบทความทั้งหมดในคลัง →</a>
 
         <hr class="receipt__dots" />
 
@@ -187,8 +184,8 @@ const homepageJsonLd = {
 
   .hero__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 27rem);
-    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+    gap: clamp(2rem, 5vw, 5rem);
     align-items: center;
     max-width: 82rem;
     min-height: 100svh;
@@ -275,7 +272,7 @@ const homepageJsonLd = {
     box-shadow:
       0 1px 2px rgb(0 0 0 / 0.08),
       0 24px 60px rgb(10 25 30 / 0.28);
-    font-family: 'Trirong', 'Sarabun', serif;
+    font-family: 'Google Sans', sans-serif;
     color: var(--ink);
   }
 
@@ -295,22 +292,37 @@ const homepageJsonLd = {
   .receipt__brand {
     margin: 0.5rem 0 0;
     font-size: clamp(2.5rem, 4.5vw, 3.25rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
   }
 
   .receipt__kind {
     margin: 1rem 0 0;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   .receipt__meta {
-    margin: 0.5rem 0 0;
+    margin: 0.35rem 0 0;
     font-size: 0.875rem;
     line-height: 1.6;
     color: #222;
+  }
+
+  .receipt__lede,
+  .receipt__updated {
+    display: block;
+  }
+
+  .receipt__lede {
+    color: #444;
+  }
+
+  .receipt__updated {
+    margin-top: 0.15rem;
+    color: #444;
   }
 
   .receipt__cols {
@@ -335,16 +347,14 @@ const homepageJsonLd = {
   }
 
   .receipt__items a {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1.25rem;
+    display: block;
     padding: 0.5rem 0;
     font-size: 1rem;
     line-height: 1.5;
   }
 
   .receipt__title {
+    display: block;
     text-decoration: underline;
     text-decoration-color: transparent;
     text-underline-offset: 4px;
@@ -355,9 +365,12 @@ const homepageJsonLd = {
     text-decoration-color: currentColor;
   }
 
-  .receipt__items time {
-    flex: none;
-    font-variant-numeric: tabular-nums;
+  .receipt__info {
+    display: block;
+    margin-top: 0.1rem;
+    color: #444;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
   }
 
   .receipt__empty {
@@ -381,17 +394,15 @@ const homepageJsonLd = {
     margin: 0;
   }
 
-  .receipt__payrow {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 0.35rem;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
+  .receipt__note {
+    margin: 0.2rem 0 0;
+    color: #444;
+    font-size: 0.85rem;
   }
 
   .receipt__all {
+    align-self: flex-start;
+    margin-top: 0.2rem;
     padding: 0.35rem 0;
     font-size: 0.9rem;
     text-decoration: underline;
@@ -445,11 +456,13 @@ const homepageJsonLd = {
     }
 
     .hero__copy {
-      justify-self: stretch;
+      justify-self: center;
+      width: 100%;
+      text-align: center;
     }
 
     .hero__art {
-      margin-left: 0;
+      margin-inline: auto;
     }
 
     .receipt {
@@ -518,19 +531,44 @@ const homepageJsonLd = {
   }
 
   /* Short desktop screens: drop the decorative bits so every article still fits. */
-  @media (min-width: 961px) and (min-height: 700px) and (max-height: 820px) {
-    .receipt__avatar,
-    .receipt__period {
+  @media (min-width: 961px) and (min-height: 700px) and (max-height: 940px) {
+    .receipt__avatar {
       display: none;
     }
 
     .receipt__brand {
       margin-top: 0;
+      font-size: clamp(1.75rem, 4.5vh, 2.25rem);
+    }
+
+    .receipt__meta {
+      font-size: 0.82rem;
+      line-height: 1.5;
     }
 
     .receipt__items a {
-      font-size: 0.95rem;
+      padding-block: 0.3rem;
+      font-size: 0.94rem;
       line-height: 1.4;
+    }
+
+    .receipt__info {
+      margin-top: 0;
+      font-size: 0.76rem;
+    }
+
+    .receipt__note {
+      margin-top: 0;
+      font-size: 0.8rem;
+    }
+
+    .receipt__all {
+      margin-top: 0;
+      padding-block: 0.2rem;
+    }
+
+    .receipt__foot {
+      padding-top: 0.5rem;
     }
 
     .receipt__totals div {
@@ -538,17 +576,29 @@ const homepageJsonLd = {
     }
 
     .receipt__foot p {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
     }
 
     .receipt__sign {
-      margin-top: 0.25rem;
-      font-size: 1.75rem;
+      margin-top: 0.1rem;
+      font-size: 1.5rem;
     }
 
     .receipt__sign svg {
       width: 2rem;
       height: 2rem;
+    }
+  }
+
+  /* Very short desktop screens: the totals already give the article count. */
+  @media (min-width: 961px) and (min-height: 700px) and (max-height: 780px) {
+    .receipt__cols,
+    .receipt__cols + .receipt__dots {
+      display: none;
+    }
+
+    .receipt__items {
+      margin-top: 0.6rem;
     }
   }
 
